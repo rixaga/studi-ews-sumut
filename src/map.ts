@@ -34,6 +34,11 @@ export type StudyMap = {
   setSungai(nyala: boolean): Promise<void>;
   setDas(nyala: boolean): Promise<void>;
   setBatas(jenis: BatasJenis, nyala: boolean): Promise<void>;
+  setUsulan(fitur: GeoJSON.Feature[], tampil: boolean): void;
+  aturAksiUsulan(admin: boolean, sunting: (id: string) => void, hapus: (id: string) => void): void;
+  aturModeTambah(nyala: boolean, onKlik: ((lon: number, lat: number) => void) | null): void;
+  taruhPenanda(lon: number, lat: number): void;
+  hapusPenanda(): void;
   fokusTitik(titik: Titik): void;
   fitTitik(titik: Titik[]): void;
   fitProvinsi(): void;
@@ -304,6 +309,31 @@ export async function createStudyMap(
     filter: ["all", ["!", ["has", "point_count"]], ["==", ["get", "jenis"], "sensor"]],
     layout: { ...tataIkon, "icon-image": ikonSensor() },
   });
+  map.addSource("usulan", { type: "geojson", data: { type: "FeatureCollection", features: [] } });
+  map.addLayer({
+    id: "usulan-titik",
+    type: "symbol",
+    source: "usulan",
+    layout: {
+      "icon-image": [
+        "match",
+        ["concat", ["get", "jenis"], "-", ["get", "status"]],
+        "sirine-usulan_studi",
+        "sirene-usulan-studi",
+        "sirine-usulan_bpbd",
+        "sirene-usulan-bpbd",
+        "sensor-usulan_studi",
+        "sensor-usulan-studi",
+        "sensor-usulan_bpbd",
+        "sensor-usulan-bpbd",
+        "sirene-usulan-studi",
+      ],
+      "icon-anchor": "bottom",
+      "icon-allow-overlap": true,
+      "icon-ignore-placement": true,
+      visibility: "none",
+    },
+  });
 
   for (const layer of ["titik-sirine", "titik-sensor", "titik-clusters"] as const) {
     map.on("mouseenter", layer, () => {
@@ -315,6 +345,21 @@ export async function createStudyMap(
   }
   map.on("click", "titik-sirine", (event) => bukaPopup(map, event));
   map.on("click", "titik-sensor", (event) => bukaPopup(map, event));
+  map.on("click", "usulan-titik", (event) => {
+    const feature = event.features?.[0];
+    if (!feature || feature.geometry.type !== "Point") return;
+    bukaPopupUsulanDari(map, feature.geometry.coordinates as [number, number], (feature.properties ?? {}) as Record<string, unknown>, {
+      admin: adminUsulan,
+      sunting: onSuntingUsulan,
+      hapus: onHapusUsulan,
+    });
+  });
+  map.on("mouseenter", "usulan-titik", () => {
+    map.getCanvas().style.cursor = "pointer";
+  });
+  map.on("mouseleave", "usulan-titik", () => {
+    map.getCanvas().style.cursor = "";
+  });
   map.on("click", "titik-clusters", (event) => bukaKlaster(map, event));
   map.on("mouseenter", "titik-clusters", (event) => tampilRincianKlaster(map, event));
   map.on("mouseleave", "titik-clusters", () => popupKlaster?.remove());
@@ -325,6 +370,20 @@ export async function createStudyMap(
   let simpanSensor: Titik[] = [];
   let lihatSirine = true;
   let lihatSensor = true;
+  let adminUsulan = false;
+  let onSuntingUsulan: ((id: string) => void) | null = null;
+  let onHapusUsulan: ((id: string) => void) | null = null;
+  let modeTambah = false;
+  let onKlikKosong: ((lon: number, lat: number) => void) | null = null;
+  let penanda: maplibregl.Marker | null = null;
+  map.on("click", (event) => {
+    if (!modeTambah || !onKlikKosong) return;
+    const kena = map.queryRenderedFeatures(event.point, {
+      layers: ["titik-sirine", "titik-sensor", "titik-clusters", "usulan-titik"],
+    });
+    if (kena.length) return;
+    onKlikKosong(event.lngLat.lng, event.lngLat.lat);
+  });
 
   function tulisTitik() {
     const tampil = [
@@ -429,6 +488,31 @@ export async function createStudyMap(
     async setBatas(jenis, nyala) {
       await pasangBatas(map, onRaster, jenis, nyala);
     },
+    aturAksiUsulan(admin, sunting, hapus) {
+      adminUsulan = admin;
+      onSuntingUsulan = sunting;
+      onHapusUsulan = hapus;
+    },
+    setUsulan(fitur, tampil) {
+      (map.getSource("usulan") as GeoJSONSource).setData({ type: "FeatureCollection", features: fitur });
+      if (map.getLayer("usulan-titik")) {
+        map.setLayoutProperty("usulan-titik", "visibility", tampil ? "visible" : "none");
+      }
+    },
+    aturModeTambah(nyala, onKlik) {
+      modeTambah = nyala;
+      onKlikKosong = onKlik;
+      map.getCanvas().style.cursor = nyala ? "crosshair" : "";
+    },
+    taruhPenanda(lon, lat) {
+      penanda?.remove();
+      penanda = new maplibregl.Marker({ color: "#7B1FA2" }).setLngLat([lon, lat]).addTo(map);
+      map.flyTo({ center: [lon, lat], zoom: Math.max(map.getZoom(), 13), essential: true });
+    },
+    hapusPenanda() {
+      penanda?.remove();
+      penanda = null;
+    },
     async setDas(nyala) {
       await pasangVektor(map, onRaster, "das", nyala, "data/hidro/das_sumut_hydrobasins_l7.geojson", {
         id: "das",
@@ -443,6 +527,19 @@ export async function createStudyMap(
     },
     fokusTitik(titik) {
       const coordinates = titik.geometry.coordinates;
+      if (titik.properties.status_sumber === "appwrite") {
+        bukaPopupUsulanDari(map, coordinates, titik.properties as unknown as Record<string, unknown>, {
+          admin: adminUsulan,
+          sunting: onSuntingUsulan,
+          hapus: onHapusUsulan,
+        });
+        map.flyTo({
+          center: coordinates,
+          zoom: Math.min(Math.max(map.getZoom(), 13), map.getMaxZoom()),
+          essential: true,
+        });
+        return;
+      }
       map.flyTo({
         center: coordinates,
         zoom: Math.min(Math.max(map.getZoom(), 13), map.getMaxZoom()),
@@ -546,6 +643,39 @@ function tampilRincianKlaster(map: Map, event: maplibregl.MapLayerMouseEvent) {
     .setLngLat(feature.geometry.coordinates as [number, number])
     .setHTML(rincianKlaster(feature.properties))
     .addTo(map);
+}
+
+function bukaPopupUsulanDari(
+  map: Map,
+  coordinates: [number, number],
+  properties: Record<string, unknown>,
+  aksi: { admin: boolean; sunting: ((id: string) => void) | null; hapus: ((id: string) => void) | null },
+) {
+  popupKlaster?.remove();
+  const id = String(properties.id ?? "");
+  const tombol = aksi.admin
+    ? `<p class="popup-aksi"><button type="button" data-sunting>Ubah</button><button type="button" data-hapus>Hapus</button></p>`
+    : "";
+  const baris: Array<[string, string]> = [
+    ["Nama", String(properties.remark ?? properties.nama ?? "—")],
+    ["Jenis", String(properties.jenis ?? "—")],
+    ["Status", STATUS_LABEL[String(properties.status) as keyof typeof STATUS_LABEL] ?? String(properties.status ?? "—")],
+    ["Kabupaten/kota", String(properties.wadmkk ?? "—")],
+    ["Kecamatan", String(properties.wadmkc ?? "—")],
+    ["Desa", String(properties.wadmkd ?? "—")],
+    ["DAS", String(properties.das_nama ?? "—")],
+    ["Catatan", String(properties.keterangan ?? "—")],
+    ["Sumber geocode", String(properties.sumber_geocode ?? "—")],
+    ["Bujur", formatDerajat(coordinates[0])],
+    ["Lintang", formatDerajat(coordinates[1])],
+  ];
+  const isi = baris.map(([label, value]) => `<tr><th>${escapeHtml(label)}</th><td>${escapeHtml(value)}</td></tr>`).join("");
+  const popup = new maplibregl.Popup({ maxWidth: "320px", className: "ews-popup" })
+    .setLngLat(coordinates)
+    .setHTML(`<h3>${escapeHtml(id)}</h3><p class="popup-catatan">Titik usulan dari Appwrite. Bukan bagian dari 274 titik studi.</p><table>${isi}</table>${tombol}`)
+    .addTo(map);
+  popup.getElement()?.querySelector("[data-sunting]")?.addEventListener("click", () => aksi.sunting?.(id));
+  popup.getElement()?.querySelector("[data-hapus]")?.addEventListener("click", () => aksi.hapus?.(id));
 }
 
 function bukaPopup(map: Map, event: maplibregl.MapLayerMouseEvent) {

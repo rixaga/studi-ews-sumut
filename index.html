@@ -27,6 +27,59 @@
             <small>Sumatera Utara</small>
           </span>
         </div>
+        <section class="panel-blok akun" id="akun">
+          <p class="label-grup">Akun</p>
+          <form id="form-masuk">
+            <label class="field">Email <input name="email" type="email" autocomplete="username" required /></label>
+            <label class="field">Kata sandi <input name="password" type="password" autocomplete="current-password" required /></label>
+            <div class="akun-aksi">
+              <button type="submit" class="v3-muat">Masuk</button>
+              <button type="button" id="akun-lupa" class="tautan">Lupa password</button>
+            </div>
+          </form>
+          <form id="form-lupa" hidden>
+            <label class="field">Email pemulihan <input name="email" type="email" required /></label>
+            <button type="submit" class="v3-muat">Kirim tautan</button>
+          </form>
+          <form id="form-pulih" hidden>
+            <p class="hint">Tautan pemulihan diterima. Buat kata sandi baru (minimal 8 karakter).</p>
+            <label class="field">Kata sandi baru <input name="password" type="password" minlength="8" autocomplete="new-password" required /></label>
+            <button type="submit" class="v3-muat">Simpan kata sandi</button>
+          </form>
+          <div id="akun-masuk" hidden>
+            <p class="v3-baris-judul" id="akun-nama"></p>
+            <p class="hint" id="akun-peran"></p>
+            <button type="button" id="akun-keluar" class="v3-muat">Keluar</button>
+          </div>
+          <p id="akun-pesan" class="hint" hidden></p>
+        </section>
+        <section class="panel-blok" id="panel-admin" hidden>
+          <p class="label-grup">Admin</p>
+          <label class="switch"><input id="mode-klik" type="checkbox" /> Klik peta untuk menambah titik</label>
+          <form id="form-usulan" hidden>
+            <p class="v3-baris-judul">Titik usulan</p>
+            <p id="usulan-wilayah" class="hint"></p>
+            <label class="field">Nama <input name="nama" required maxlength="255" /></label>
+            <label class="field">Jenis
+              <select name="jenis">
+                <option value="sirine">Sirine</option>
+                <option value="sensor">Sensor</option>
+              </select>
+            </label>
+            <label class="field">Status
+              <select name="status">
+                <option value="usulan_studi">Usulan studi</option>
+                <option value="usulan_bpbd">Usulan BPBD</option>
+              </select>
+            </label>
+            <label class="field">Catatan <textarea name="catatan" maxlength="2000" rows="3"></textarea></label>
+            <div class="akun-aksi">
+              <button type="submit" class="v3-muat">Simpan</button>
+              <button type="button" id="usulan-batal" class="tautan">Batal</button>
+              <button type="button" id="usulan-hapus" class="tautan" hidden>Hapus</button>
+            </div>
+          </form>
+        </section>
 
         <section class="panel-blok">
           <p class="label-grup">Saring</p>
@@ -54,6 +107,16 @@
           <label class="switch"><input id="tog-sensor" type="checkbox" checked /> Sensor</label>
           <div id="ikon-legenda" class="matriks" aria-label="Legenda jenis dan status"></div>
           <p class="hint">Belum ditentukan memakai pin asli: sirine merah, sensor biru.</p>
+          <div class="layer-block">
+            <label class="switch"><input id="tog-usulan" type="checkbox" checked /> Titik usulan</label>
+            <ul class="kelas legenda-usulan">
+              <li><img src="./icons/sirene_usulan_studi.png" alt="" /> Sirine, usulan studi</li>
+              <li><img src="./icons/sirene_usulan_bpbd.png" alt="" /> Sirine, usulan BPBD</li>
+              <li><img src="./icons/sensor_banjir_usulan_studi.png" alt="" /> Sensor, usulan studi</li>
+              <li><img src="./icons/sensor_banjir_usulan_bpbd.png" alt="" /> Sensor, usulan BPBD</li>
+            </ul>
+            <p id="usulan-status" class="hint">Memuat titik usulan…</p>
+          </div>
         </section>
 
         <section class="panel-blok">
@@ -211,6 +274,12 @@
         <div id="panel-peta" role="tabpanel">
         <section class="v3-kartu v3-peta-kartu">
           <div id="map" role="region" aria-label="Peta Sumatera Utara"></div>
+          <form class="cari-peta" id="form-geocode" role="search" onsubmit="return false">
+            <label class="field">Cari tempat
+              <input id="geocode-q" type="search" placeholder="Nama tempat di Sumatera Utara" autocomplete="off" />
+            </label>
+            <ul id="geocode-hasil" hidden></ul>
+          </form>
           <div id="map-status" class="map-status" hidden></div>
         </section>
         <section class="v3-kartu tabel-kartu" aria-labelledby="judul-tabel">
@@ -332,6 +401,15 @@
                   <td><a href="https://www.geoboundaries.org/">geoboundaries.org</a></td>
                   <td>ADM1, shapeName North Sumatra, shapeISO ID-SU. Koordinat tidak disederhanakan.</td>
                   <td><span class="pil">statis</span></td>
+                </tr>
+                <tr>
+                  <td>Appwrite — titik usulan</td>
+                  <td>Appwrite Cloud, wilayah Singapore</td>
+                  <td>Layanan berjalan</td>
+                  <td>Proyek studi-ews-sumut. Baca: siapa saja. Tulis: tim admin. Tanpa kunci API di peramban.</td>
+                  <td><a href="https://sgp.cloud.appwrite.io/v1">sgp.cloud.appwrite.io</a></td>
+                  <td>Database ews, tabel titik_usulan. Pemeriksaan memakai /v1/ping.</td>
+                  <td id="status-appwrite"><span class="pil pil-tunggu">Memeriksa…</span></td>
                 </tr>
                 <tr>
                   <td>OpenFreeMap — gaya Liberty</td>

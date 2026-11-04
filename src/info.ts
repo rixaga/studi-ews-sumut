@@ -3,11 +3,19 @@ const HIDUP = [
     id: "inarisk",
     nama: "InaRISK — Indeks Bahaya Banjir",
     url: "https://gis.bnpb.go.id/server/rest/services/inarisk/INDEKS_BAHAYA_BANJIR/ImageServer?f=json",
+    headers: {},
   },
   {
     id: "openfreemap",
     nama: "OpenFreeMap — gaya Liberty",
     url: "https://tiles.openfreemap.org/styles/liberty",
+    headers: {},
+  },
+  {
+    id: "appwrite",
+    nama: "Appwrite",
+    url: "https://sgp.cloud.appwrite.io/v1/ping",
+    headers: { "X-Appwrite-Project": "studi-ews-sumut" },
   },
 ] as const;
 
@@ -19,12 +27,12 @@ function formatSaat(waktu: Date): string {
   return new Intl.DateTimeFormat("id-ID", { dateStyle: "medium", timeStyle: "medium" }).format(waktu);
 }
 
-async function periksa(url: string, batasMs = 8000): Promise<{ ok: boolean; ms: number }> {
+async function periksa(url: string, headers: HeadersInit, batasMs = 8000): Promise<{ ok: boolean; ms: number }> {
   const mulai = performance.now();
   const kontrol = new AbortController();
   const timer = setTimeout(() => kontrol.abort(), batasMs);
   try {
-    const respons = await fetch(url, { signal: kontrol.signal, cache: "no-store" });
+    const respons = await fetch(url, { signal: kontrol.signal, cache: "no-store", headers });
     return { ok: respons.ok, ms: Math.round(performance.now() - mulai) };
   } catch {
     return { ok: false, ms: Math.round(performance.now() - mulai) };
@@ -56,7 +64,7 @@ export async function periksaUlang() {
   gambarStatus();
   await Promise.all(
     HIDUP.map(async (sumber) => {
-      const cek = await periksa(sumber.url);
+      const cek = await periksa(sumber.url, sumber.headers);
       hasil.set(sumber.id, {
         keadaan: cek.ok ? "terhubung" : "gagal",
         ms: cek.ms,

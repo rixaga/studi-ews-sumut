@@ -1,13 +1,14 @@
 import type { Titik } from "./model";
-import { asset, escapeHtml, formatDerajat } from "./model";
+import { asset, escapeHtml, formatDerajat, STATUS_LABEL } from "./model";
 
-type Kunci = "id" | "jenis" | "kab" | "kecamatan" | "desa" | "lokasi" | "lon" | "lat" | "das" | "subDas";
+type Kunci = "id" | "jenis" | "status" | "kab" | "kecamatan" | "desa" | "lokasi" | "lon" | "lat" | "das" | "subDas";
 type Kelompok = "kab" | "das";
 
 type Baris = {
   titik: Titik;
   id: string;
   jenis: string;
+  status: string;
   kab: string;
   kecamatan: string;
   desa: string;
@@ -21,6 +22,7 @@ type Baris = {
 const KOLOM: Array<[Kunci, string]> = [
   ["id", "ID"],
   ["jenis", "Jenis"],
+  ["status", "Status"],
   ["kab", "Kab/Kota"],
   ["kecamatan", "Kecamatan"],
   ["desa", "Desa"],
@@ -39,6 +41,7 @@ const tombolKab = document.querySelector<HTMLButtonElement>("#grup-kab");
 const tombolDas = document.querySelector<HTMLButtonElement>("#grup-das");
 
 let sumber: Titik[] = [];
+let tambahan: Titik[] = [];
 let dasIndeks = new Map<string, { das: string; subDas: string }>();
 let kelompok: Kelompok = "kab";
 let urut: { kunci: Kunci; arah: "naik" | "turun" } = { kunci: "id", arah: "naik" };
@@ -115,6 +118,7 @@ function jadiBaris(titik: Titik): Baris {
     titik,
     id: titik.properties.id,
     jenis: labelJenis(titik.properties.jenis),
+    status: STATUS_LABEL[titik.properties.status] ?? titik.properties.status,
     kab: kosong(titik.properties.wadmkk_tampil),
     kecamatan: kosong(titik.properties.wadmkc),
     desa: kosong(titik.properties.wadmkd),
@@ -128,7 +132,7 @@ function jadiBaris(titik: Titik): Baris {
 
 function cocok(baris: Baris, kata: string): boolean {
   if (!kata) return true;
-  const haystack = [baris.id, baris.jenis, baris.kab, baris.kecamatan, baris.desa, baris.lokasi, formatDerajat(baris.lon), formatDerajat(baris.lat), baris.das, baris.subDas]
+  const haystack = [baris.id, baris.jenis, baris.status, baris.kab, baris.kecamatan, baris.desa, baris.lokasi, formatDerajat(baris.lon), formatDerajat(baris.lat), baris.das, baris.subDas]
     .join(" ")
     .toLocaleLowerCase("id");
   return haystack.includes(kata);
@@ -152,6 +156,7 @@ function sel(baris: Baris): string {
   const nilai: Record<Kunci, string> = {
     id: baris.id,
     jenis: baris.jenis,
+    status: baris.status,
     kab: baris.kab,
     kecamatan: baris.kecamatan,
     desa: baris.desa,
@@ -228,7 +233,7 @@ function kelompokkan(baris: Baris[]): string {
 
 function gambar() {
   const kata = (cari?.value ?? "").trim().toLocaleLowerCase("id");
-  const baris = sumber.map(jadiBaris).filter((item) => cocok(item, kata)).sort(banding);
+  const baris = [...sumber, ...tambahan].map(jadiBaris).filter((item) => cocok(item, kata)).sort(banding);
   if (meta) {
     const adaSub = [...dasIndeks.values()].some((item) => item.subDas);
     meta.textContent = dasIndeks.size
@@ -290,5 +295,10 @@ function pilihBaris(id: string) {
 
 export function gambarTabel(titik: Titik[]) {
   sumber = titik;
+  gambar();
+}
+
+export function aturTambahan(titik: Titik[]) {
+  tambahan = titik;
   gambar();
 }

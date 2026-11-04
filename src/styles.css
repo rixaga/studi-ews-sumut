@@ -249,6 +249,34 @@ input[type="range"] { width: 100%; accent-color: #1c1c1f; }
   padding: 10px;
 }
 #map { height: 100%; border-radius: 16px; overflow: hidden; }
+.cari-peta { position: absolute; z-index: 3; top: 18px; left: 18px; width: min(360px, calc(100% - 36px)); }
+.cari-peta .field { margin: 0; }
+.cari-peta input, .akun input, .akun textarea, .akun select {
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  border-radius: 16px;
+  padding: 8px 12px;
+  font: inherit;
+  color: var(--v3-tinta);
+  width: 100%;
+}
+#geocode-hasil { list-style: none; background: #fff; border-radius: 16px; box-shadow: 0 12px 32px rgba(30, 27, 75, 0.12); max-height: 240px; overflow: auto; margin: 6px 0 0; padding: 0; }
+#geocode-hasil li { display: flex; gap: 8px; align-items: center; padding: 8px 10px; border-top: 1px solid var(--v3-garis); }
+#geocode-hasil button, .tautan {
+  border: 0;
+  background: none;
+  padding: 0;
+  font: inherit;
+  font-weight: 700;
+  color: #4338ca;
+  cursor: pointer;
+  text-align: left;
+}
+#geocode-hasil [data-pilih] { flex: 1; color: var(--v3-tinta); }
+.akun-aksi { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 6px; }
+.popup-aksi { display: flex; gap: 8px; }
+.popup-aksi button { border: 1px solid #e5e7eb; background: #fff; border-radius: 999px; padding: 4px 10px; font: inherit; font-weight: 700; cursor: pointer; }
+.legenda-usulan img { height: 28px; width: auto; vertical-align: middle; }
 .tabel-kartu { padding: 14px 14px 12px; }
 .tabel-alat {
   display: flex;
