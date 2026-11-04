@@ -2,7 +2,8 @@ import maplibregl, { type GeoJSONSource, type Map } from "maplibre-gl";
 import type { BatasProvinsi, Titik } from "./model";
 import { asset, escapeHtml, formatDerajat, labelStatusSumber, STATUS_LABEL } from "./model";
 
-export type RasterKind = "bahaya" | "proxy" | "sungai" | "das";
+export type RasterKind = "bahaya" | "proxy" | "sungai" | "das" | "batas-das" | "batas-kab" | "batas-kec" | "batas-desa";
+export type BatasJenis = "das" | "kab" | "kec" | "desa";
 export type RasterState = "off" | "loading" | "ready" | "error" | "partial";
 
 const BAHAYA_URL =
@@ -32,6 +33,7 @@ export type StudyMap = {
   setProxy(nyala: boolean, opasitas: number): void;
   setSungai(nyala: boolean): Promise<void>;
   setDas(nyala: boolean): Promise<void>;
+  setBatas(jenis: BatasJenis, nyala: boolean): Promise<void>;
   fokusTitik(titik: Titik): void;
   fitTitik(titik: Titik[]): void;
   fitProvinsi(): void;
@@ -86,6 +88,46 @@ function koleksi(features: Titik[]): GeoJSON.FeatureCollection {
   return { type: "FeatureCollection", features: features as GeoJSON.Feature[] };
 }
 
+function jarakMeter(a: [number, number], b: [number, number]): number {
+  const lintang = ((a[1] + b[1]) / 2) * (Math.PI / 180);
+  const dx = (a[0] - b[0]) * Math.cos(lintang) * 111_320;
+  const dy = (a[1] - b[1]) * 110_540;
+  return Math.hypot(dx, dy);
+}
+
+function denganSpider(titik: Titik[]): Titik[] {
+  const induk = titik.map((_, index) => index);
+  const cari = (index: number): number => (induk[index] === index ? index : (induk[index] = cari(induk[index])));
+  for (let i = 0; i < titik.length; i += 1) {
+    for (let j = i + 1; j < titik.length; j += 1) {
+      if (jarakMeter(titik[i].geometry.coordinates, titik[j].geometry.coordinates) <= 40) {
+        induk[cari(j)] = cari(i);
+      }
+    }
+  }
+  const kelompok: Record<number, number[]> = {};
+  titik.forEach((_, index) => {
+    const akar = cari(index);
+    const daftar = kelompok[akar] ?? [];
+    daftar.push(index);
+    kelompok[akar] = daftar;
+  });
+  return titik.map((fitur, index) => {
+    const daftar = kelompok[cari(index)] ?? [index];
+    const urutan = daftar.indexOf(index);
+    const spider: [number, number] = daftar.length < 2
+      ? [0, 0]
+      : [
+          Math.cos((2 * Math.PI * urutan) / daftar.length - Math.PI / 2) * (16 + daftar.length),
+          Math.sin((2 * Math.PI * urutan) / daftar.length - Math.PI / 2) * (16 + daftar.length),
+        ];
+    return {
+      ...fitur,
+      properties: { ...fitur.properties, spider },
+    };
+  });
+}
+
 function ikonSirine(): maplibregl.ExpressionSpecification {
   return [
     "match",
@@ -134,10 +176,24 @@ function popupHtml(properties: Record<string, unknown>, coordinates: [number, nu
     ["Lintang", formatDerajat(coordinates[1])],
     ["Baris Excel", String(properties.baris_excel ?? "—")],
   ];
+  if (properties.cek_wilayah) {
+    const beda: Array<[string, unknown]> = [
+      ["Kabupaten/kota pada poligon", properties.cek_adm2_name],
+      ["Kecamatan pada poligon", properties.cek_adm3_name],
+      ["Desa pada poligon", properties.cek_adm4_name],
+      ["Kode desa poligon", properties.cek_adm4_pcode],
+    ];
+    for (const [label, value] of beda) {
+      if (value) baris.push([label, String(value)]);
+    }
+  }
   const isi = baris
     .map(([label, value]) => `<tr><th>${escapeHtml(label)}</th><td>${escapeHtml(value)}</td></tr>`)
     .join("");
-  return `<h3>${escapeHtml(properties.id ?? "Titik")}</h3><p class="popup-catatan">Status bukan kolom Excel. Koordinat WGS84 dari teks DMS.</p><table>${isi}</table>`;
+  const cek = properties.cek_wilayah
+    ? `<p class="popup-catatan">Cek wilayah: nama pada poligon HDX COD-AB berbeda dari teks Excel. Nama Excel tidak diubah.</p>`
+    : "";
+  return `<h3>${escapeHtml(properties.id ?? "Titik")}</h3><p class="popup-catatan">Status bukan kolom Excel. Koordinat WGS84 dari teks DMS.</p>${cek}<table>${isi}</table>`;
 }
 
 export async function createStudyMap(
@@ -199,19 +255,20 @@ export async function createStudyMap(
     attribution: "Batas provinsi © geoBoundaries / OpenStreetMap contributors (ODbL)",
   });
   map.addSource("mask", { type: "geojson", data: { type: "FeatureCollection", features: [mask] } });
-  map.addSource("sirine", {
+  map.addSource("titik", {
     type: "geojson",
     data: koleksi([]),
     cluster: true,
     clusterRadius: 48,
     clusterMaxZoom: 14,
-  });
-  map.addSource("sensor", {
-    type: "geojson",
-    data: koleksi([]),
-    cluster: true,
-    clusterRadius: 48,
-    clusterMaxZoom: 14,
+    clusterProperties: {
+      sirine: ["+", ["case", ["==", ["get", "jenis"], "sirine"], 1, 0]],
+      sensor: ["+", ["case", ["==", ["get", "jenis"], "sensor"], 1, 0]],
+      usulan_studi: ["+", ["case", ["==", ["get", "status"], "usulan_studi"], 1, 0]],
+      usulan_bpbd: ["+", ["case", ["==", ["get", "status"], "usulan_bpbd"], 1, 0]],
+      hasil_survei: ["+", ["case", ["==", ["get", "status"], "hasil_survei"], 1, 0]],
+      belum_ditentukan: ["+", ["case", ["==", ["get", "status"], "belum_ditentukan"], 1, 0]],
+    },
   });
 
   map.addLayer({
@@ -226,34 +283,29 @@ export async function createStudyMap(
     source: "sumut",
     paint: { "line-color": "#1c1c1f", "line-width": 1.75 },
   });
-  tambahKlaster(map, "sirine", "#D32F2F");
-  tambahKlaster(map, "sensor", "#1565C0");
+  tambahKlaster(map);
+  const tataIkon = {
+    "icon-anchor": "bottom" as const,
+    "icon-allow-overlap": true,
+    "icon-ignore-placement": true,
+    "icon-offset": ["get", "spider"] as maplibregl.ExpressionSpecification,
+  };
   map.addLayer({
-    id: "sirine-points",
+    id: "titik-sirine",
     type: "symbol",
-    source: "sirine",
-    filter: ["!", ["has", "point_count"]],
-    layout: {
-      "icon-image": ikonSirine(),
-      "icon-anchor": "bottom",
-      "icon-allow-overlap": true,
-      "icon-ignore-placement": true,
-    },
+    source: "titik",
+    filter: ["all", ["!", ["has", "point_count"]], ["==", ["get", "jenis"], "sirine"]],
+    layout: { ...tataIkon, "icon-image": ikonSirine() },
   });
   map.addLayer({
-    id: "sensor-points",
+    id: "titik-sensor",
     type: "symbol",
-    source: "sensor",
-    filter: ["!", ["has", "point_count"]],
-    layout: {
-      "icon-image": ikonSensor(),
-      "icon-anchor": "bottom",
-      "icon-allow-overlap": true,
-      "icon-ignore-placement": true,
-    },
+    source: "titik",
+    filter: ["all", ["!", ["has", "point_count"]], ["==", ["get", "jenis"], "sensor"]],
+    layout: { ...tataIkon, "icon-image": ikonSensor() },
   });
 
-  for (const layer of ["sirine-points", "sensor-points", "sirine-clusters", "sensor-clusters"] as const) {
+  for (const layer of ["titik-sirine", "titik-sensor", "titik-clusters"] as const) {
     map.on("mouseenter", layer, () => {
       map.getCanvas().style.cursor = "pointer";
     });
@@ -261,13 +313,26 @@ export async function createStudyMap(
       map.getCanvas().style.cursor = "";
     });
   }
-  map.on("click", "sirine-points", (event) => bukaPopup(map, event));
-  map.on("click", "sensor-points", (event) => bukaPopup(map, event));
-  map.on("click", "sirine-clusters", (event) => bukaKlaster(map, "sirine", event));
-  map.on("click", "sensor-clusters", (event) => bukaKlaster(map, "sensor", event));
+  map.on("click", "titik-sirine", (event) => bukaPopup(map, event));
+  map.on("click", "titik-sensor", (event) => bukaPopup(map, event));
+  map.on("click", "titik-clusters", (event) => bukaKlaster(map, event));
+  map.on("mouseenter", "titik-clusters", (event) => tampilRincianKlaster(map, event));
+  map.on("mouseleave", "titik-clusters", () => popupKlaster?.remove());
 
   const lepas: Partial<Record<RasterKind, Stop>> = {};
   let popupTitik: maplibregl.Popup | null = null;
+  let simpanSirine: Titik[] = [];
+  let simpanSensor: Titik[] = [];
+  let lihatSirine = true;
+  let lihatSensor = true;
+
+  function tulisTitik() {
+    const tampil = [
+      ...(lihatSirine ? simpanSirine : []),
+      ...(lihatSensor ? simpanSensor : []),
+    ];
+    (map.getSource("titik") as GeoJSONSource).setData(koleksi(denganSpider(tampil)));
+  }
   let bahayaUrl = "";
 
   function fitProvinsi() {
@@ -285,6 +350,10 @@ export async function createStudyMap(
 
   map.on("resize", jagaMinZoom);
   fitProvinsi();
+  void pasangBatas(map, onRaster, "kab", true);
+  if (new URLSearchParams(window.location.search).has("uji")) {
+    (window as unknown as { __studiPeta?: maplibregl.Map }).__studiPeta = map;
+  }
 
   function pasangRaster(
   kind: RasterKind,
@@ -305,14 +374,14 @@ export async function createStudyMap(
 
   return {
     setTitik(sirine, sensor) {
-      (map.getSource("sirine") as GeoJSONSource).setData(koleksi(sirine));
-      (map.getSource("sensor") as GeoJSONSource).setData(koleksi(sensor));
+      simpanSirine = sirine;
+      simpanSensor = sensor;
+      tulisTitik();
     },
     setVisible(lapisan, nyala) {
-      const visibility = nyala ? "visible" : "none";
-      for (const id of [`${lapisan}-points`, `${lapisan}-clusters`, `${lapisan}-count`]) {
-        if (map.getLayer(id)) map.setLayoutProperty(id, "visibility", visibility);
-      }
+      if (lapisan === "sirine") lihatSirine = nyala;
+      else lihatSensor = nyala;
+      tulisTitik();
     },
     setBahaya(nyala, opasitas, klasifikasi) {
       if (!nyala) {
@@ -357,6 +426,9 @@ export async function createStudyMap(
         },
       }, "© WWF HydroSHEDS (Lehner & Grill 2013)");
     },
+    async setBatas(jenis, nyala) {
+      await pasangBatas(map, onRaster, jenis, nyala);
+    },
     async setDas(nyala) {
       await pasangVektor(map, onRaster, "das", nyala, "data/hidro/das_sumut_hydrobasins_l7.geojson", {
         id: "das",
@@ -376,6 +448,7 @@ export async function createStudyMap(
         zoom: Math.min(Math.max(map.getZoom(), 13), map.getMaxZoom()),
         essential: true,
       });
+      popupKlaster?.remove();
       popupTitik?.remove();
       popupTitik = new maplibregl.Popup({ maxWidth: "320px", className: "ews-popup" })
         .setLngLat(coordinates)
@@ -413,26 +486,35 @@ export async function createStudyMap(
   };
 }
 
-function tambahKlaster(map: Map, id: string, warna: string) {
+function tambahKlaster(map: Map) {
   map.addLayer({
-    id: `${id}-clusters`,
+    id: "titik-clusters",
     type: "circle",
-    source: id,
+    source: "titik",
     filter: ["has", "point_count"],
     paint: {
-      "circle-color": warna,
+      "circle-color": [
+        "case",
+        ["==", ["get", "usulan_studi"], ["get", "point_count"]],
+        "#7B1FA2",
+        ["==", ["get", "usulan_bpbd"], ["get", "point_count"]],
+        "#EF6C00",
+        ["==", ["get", "hasil_survei"], ["get", "point_count"]],
+        "#2E7D32",
+        "#1c1c1f",
+      ],
       "circle-radius": ["step", ["get", "point_count"], 16, 8, 20, 24, 26],
       "circle-stroke-width": 2,
       "circle-stroke-color": "#ffffff",
     },
   });
   map.addLayer({
-    id: `${id}-count`,
+    id: "titik-count",
     type: "symbol",
-    source: id,
+    source: "titik",
     filter: ["has", "point_count"],
     layout: {
-      "text-field": ["get", "point_count_abbreviated"],
+      "text-field": ["get", "point_count"],
       "text-font": ["Noto Sans Bold"],
       "text-size": 12,
     },
@@ -440,7 +522,34 @@ function tambahKlaster(map: Map, id: string, warna: string) {
   });
 }
 
+function rincianKlaster(properties: GeoJSON.GeoJsonProperties): string {
+  const nilai = (kunci: string) => Number(properties?.[kunci] ?? 0);
+  const status: Array<[string, number]> = [];
+  const masuk = (nama: string, jumlah: number) => {
+    if (jumlah > 0) status.push([nama, jumlah]);
+  };
+  masuk("Usulan studi", nilai("usulan_studi"));
+  masuk("Usulan BPBD", nilai("usulan_bpbd"));
+  masuk("Hasil survei", nilai("hasil_survei"));
+  masuk("Belum ditentukan", nilai("belum_ditentukan"));
+  const barisStatus = status.map(([nama, jumlah]) => `<li>${escapeHtml(nama)}: ${escapeHtml(jumlah)}</li>`).join("");
+  return `<strong>${escapeHtml(nilai("point_count"))} titik</strong><ul class="rincian-klaster"><li>Sirine: ${escapeHtml(nilai("sirine"))}</li><li>Sensor: ${escapeHtml(nilai("sensor"))}</li>${barisStatus}</ul>`;
+}
+
+let popupKlaster: maplibregl.Popup | null = null;
+
+function tampilRincianKlaster(map: Map, event: maplibregl.MapLayerMouseEvent) {
+  const feature = event.features?.[0];
+  if (!feature || feature.geometry.type !== "Point") return;
+  popupKlaster?.remove();
+  popupKlaster = new maplibregl.Popup({ closeButton: false, closeOnClick: false, maxWidth: "220px", className: "ews-popup", offset: 12 })
+    .setLngLat(feature.geometry.coordinates as [number, number])
+    .setHTML(rincianKlaster(feature.properties))
+    .addTo(map);
+}
+
 function bukaPopup(map: Map, event: maplibregl.MapLayerMouseEvent) {
+  popupKlaster?.remove();
   const feature = event.features?.[0];
   if (!feature || feature.geometry.type !== "Point") return;
   const coordinates = feature.geometry.coordinates as [number, number];
@@ -450,11 +559,12 @@ function bukaPopup(map: Map, event: maplibregl.MapLayerMouseEvent) {
     .addTo(map);
 }
 
-function bukaKlaster(map: Map, sourceId: string, event: maplibregl.MapLayerMouseEvent) {
+function bukaKlaster(map: Map, event: maplibregl.MapLayerMouseEvent) {
+  popupKlaster?.remove();
   const feature = event.features?.[0];
   const clusterId = feature?.properties?.cluster_id;
   if (!feature || feature.geometry.type !== "Point" || typeof clusterId !== "number") return;
-  const source = map.getSource(sourceId) as GeoJSONSource;
+  const source = map.getSource("titik") as GeoJSONSource;
   void source.getClusterExpansionZoom(clusterId).then((zoom) => {
     map.easeTo({
       center: feature.geometry.type === "Point" ? (feature.geometry.coordinates as [number, number]) : event.lngLat,
@@ -524,7 +634,7 @@ async function pasangVektor(
     if (!map.getSource(kind)) {
       map.addSource(kind, { type: "geojson", data, attribution });
     }
-    if (!map.getLayer(kind)) map.addLayer(layer, "sirine-clusters");
+    if (!map.getLayer(kind)) map.addLayer(layer, "titik-clusters");
     onRaster(kind, "ready");
   } catch {
     if (vektorGen[kind] !== gen) return;
@@ -544,4 +654,195 @@ function matikan(
   if (map.getLayer(sourceId)) map.removeLayer(sourceId);
   if (map.getSource(sourceId)) map.removeSource(sourceId);
   onRaster(kind, "off");
+}
+
+const batasGen: Partial<Record<BatasJenis, number>> = {};
+const batasLayer: Record<BatasJenis, string[]> = {
+  das: ["batas-das-garis", "batas-das-label"],
+  kab: ["batas-toba", "batas-toba-label", "batas-kab-garis", "batas-kab-label"],
+  kec: ["batas-kec-garis"],
+  desa: ["batas-desa-garis"],
+};
+const batasSource: Record<BatasJenis, string[]> = {
+  das: ["batas-das"],
+  kab: ["batas-kab", "batas-toba"],
+  kec: ["batas-kec"],
+  desa: ["batas-desa"],
+};
+
+function hapusBatas(map: Map, jenis: BatasJenis) {
+  for (const id of batasLayer[jenis]) {
+    if (map.getLayer(id)) map.removeLayer(id);
+  }
+  for (const id of batasSource[jenis]) {
+    if (map.getSource(id)) map.removeSource(id);
+  }
+}
+
+async function pasangBatas(
+  map: Map,
+  onRaster: (kind: RasterKind, state: RasterState) => void,
+  jenis: BatasJenis,
+  nyala: boolean,
+): Promise<void> {
+  const kind = `batas-${jenis}` as RasterKind;
+  const gen = (batasGen[jenis] ?? 0) + 1;
+  batasGen[jenis] = gen;
+  if (!nyala) {
+    hapusBatas(map, jenis);
+    onRaster(kind, "off");
+    return;
+  }
+  onRaster(kind, "loading");
+  const path = {
+    das: "data/wilayah/das_sumut.geojson",
+    kab: "data/wilayah/adm2_kab.geojson",
+    kec: "data/wilayah/adm3_kec.geojson",
+    desa: "data/wilayah/adm4_desa.geojson",
+  }[jenis];
+  try {
+    let data = vektorCache[path];
+    if (!data) {
+      const response = await fetch(asset(path));
+      if (!response.ok) throw new Error(path);
+      data = (await response.json()) as GeoJSON.FeatureCollection;
+      vektorCache[path] = data;
+    }
+    if (batasGen[jenis] !== gen) return;
+    hapusBatas(map, jenis);
+    if (jenis === "das") {
+      map.addSource("batas-das", {
+        type: "geojson",
+        data,
+        attribution: "Batas DAS: cermin ArcGIS Online pklpengeo 2023 (skema KLHK), lisensi tidak dinyatakan",
+      });
+      map.addLayer(
+        {
+          id: "batas-das-garis",
+          type: "line",
+          source: "batas-das",
+          paint: { "line-color": "#0f766e", "line-width": 1.6 },
+        },
+        "titik-clusters",
+      );
+      map.addLayer(
+        {
+          id: "batas-das-label",
+          type: "symbol",
+          source: "batas-das",
+          layout: {
+            "text-field": ["get", "nama_das"],
+            "text-font": ["Noto Sans Regular"],
+            "text-size": 11,
+            "text-max-width": 10,
+          },
+          paint: { "text-color": "#0f766e", "text-halo-color": "#ffffff", "text-halo-width": 1.2 },
+        },
+        "titik-clusters",
+      );
+    } else if (jenis === "kab") {
+      const semua = data.features ?? [];
+      const toba = semua.filter((fitur) => String(fitur.properties?.adm2_name ?? "") === "Danau Toba");
+      const kab = semua.filter((fitur) => String(fitur.properties?.adm2_name ?? "") !== "Danau Toba");
+      map.addSource("batas-kab", {
+        type: "geojson",
+        data: { type: "FeatureCollection", features: kab },
+        attribution: "Batas wilayah © HDX COD-AB Indonesia v01 (2020), CC BY-IGO",
+      });
+      map.addSource("batas-toba", {
+        type: "geojson",
+        data: { type: "FeatureCollection", features: toba },
+      });
+      map.addLayer(
+        {
+          id: "batas-toba",
+          type: "fill",
+          source: "batas-toba",
+          paint: { "fill-color": "#7eb6d6", "fill-opacity": 0.55 },
+        },
+        "titik-clusters",
+      );
+      map.addLayer(
+        {
+          id: "batas-toba-label",
+          type: "symbol",
+          source: "batas-toba",
+          layout: {
+            "text-field": ["get", "adm2_name"],
+            "text-font": ["Noto Sans Regular"],
+            "text-size": 12,
+          },
+          paint: { "text-color": "#1c1c1f", "text-halo-color": "#ffffff", "text-halo-width": 1.2 },
+        },
+        "titik-clusters",
+      );
+      map.addLayer(
+        {
+          id: "batas-kab-garis",
+          type: "line",
+          source: "batas-kab",
+          paint: { "line-color": "#1c1c1f", "line-width": 1.5 },
+        },
+        "titik-clusters",
+      );
+      map.addLayer(
+        {
+          id: "batas-kab-label",
+          type: "symbol",
+          source: "batas-kab",
+          layout: {
+            "text-field": ["get", "adm2_name"],
+            "text-font": ["Noto Sans Regular"],
+            "text-size": 13,
+            "text-max-width": 10,
+            "text-padding": 4,
+            "text-allow-overlap": false,
+            "text-ignore-placement": false,
+          },
+          paint: {
+            "text-color": "#1c1c1f",
+            "text-halo-color": "#ffffff",
+            "text-halo-width": 1.6,
+          },
+        },
+        "titik-clusters",
+      );
+    } else if (jenis === "kec") {
+      map.addSource("batas-kec", {
+        type: "geojson",
+        data,
+        attribution: "Batas wilayah © HDX COD-AB Indonesia v01 (2020), CC BY-IGO",
+      });
+      map.addLayer(
+        {
+          id: "batas-kec-garis",
+          type: "line",
+          source: "batas-kec",
+          paint: { "line-color": "#6b7280", "line-width": 1 },
+        },
+        "titik-clusters",
+      );
+    } else {
+      map.addSource("batas-desa", {
+        type: "geojson",
+        data,
+        attribution: "Batas wilayah © HDX COD-AB Indonesia v01 (2020), CC BY-IGO",
+      });
+      map.addLayer(
+        {
+          id: "batas-desa-garis",
+          type: "line",
+          source: "batas-desa",
+          minzoom: 10,
+          paint: { "line-color": "#9aa0ab", "line-width": 0.7 },
+        },
+        "titik-clusters",
+      );
+    }
+    onRaster(kind, "ready");
+  } catch {
+    if (batasGen[jenis] !== gen) return;
+    hapusBatas(map, jenis);
+    onRaster(kind, "error");
+  }
 }

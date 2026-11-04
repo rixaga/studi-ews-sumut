@@ -14,6 +14,11 @@ export type TitikProps = {
   baris_excel: number;
   status: StatusTitik;
   status_sumber: string;
+  cek_wilayah?: string;
+  cek_adm2_name?: string;
+  cek_adm3_name?: string;
+  cek_adm4_name?: string;
+  cek_adm4_pcode?: string;
 };
 
 export type Titik = {

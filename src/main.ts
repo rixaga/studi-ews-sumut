@@ -1,6 +1,6 @@
 import "maplibre-gl/dist/maplibre-gl.css";
 import "./styles.css";
-import { createStudyMap, type RasterKind, type RasterState, type StudyMap } from "./map";
+import { createStudyMap, type BatasJenis, type RasterKind, type RasterState, type StudyMap } from "./map";
 import {
   type BarisAlternatif,
   type BatasProvinsi,
@@ -15,6 +15,7 @@ import {
   formatBulat,
   STATUS_LABEL,
 } from "./model";
+import { pasangInfo, periksaUlang } from "./info";
 import { gambarTabel, muatIndeksDas, pasangTabel } from "./tabel";
 
 function wajib<T>(node: T | null, nama: string): T {
@@ -32,8 +33,6 @@ const togSungai = wajib(document.querySelector<HTMLInputElement>("#tog-sungai"),
 const togDas = wajib(document.querySelector<HTMLInputElement>("#tog-das"), "das");
 const sungaiDetail = wajib(document.querySelector<HTMLElement>("#sungai-detail"), "detail sungai");
 const dasDetail = wajib(document.querySelector<HTMLElement>("#das-detail"), "detail das");
-const sungaiStatus = wajib(document.querySelector<HTMLElement>("#sungai-status"), "status sungai");
-const dasStatus = wajib(document.querySelector<HTMLElement>("#das-status"), "status das");
 const bahayaOpacity = wajib(document.querySelector<HTMLInputElement>("#bahaya-opacity"), "opasitas bahaya");
 const bahayaKelas = wajib(document.querySelector<HTMLInputElement>("#bahaya-kelas"), "kelas bahaya");
 const proxyOpacity = wajib(document.querySelector<HTMLInputElement>("#proxy-opacity"), "opasitas proksi");
@@ -41,8 +40,6 @@ const bahayaDetail = wajib(document.querySelector<HTMLElement>("#bahaya-detail")
 const proxyDetail = wajib(document.querySelector<HTMLElement>("#proxy-detail"), "detail proksi");
 const bahayaLegend = wajib(document.querySelector<HTMLElement>("#bahaya-legend"), "legenda bahaya");
 const proxyLegend = wajib(document.querySelector<HTMLElement>("#proxy-legend"), "legenda proksi");
-const bahayaStatus = wajib(document.querySelector<HTMLElement>("#bahaya-status"), "status bahaya");
-const proxyStatus = wajib(document.querySelector<HTMLElement>("#proxy-status"), "status proksi");
 const mapStatus = wajib(document.querySelector<HTMLElement>("#map-status"), "status peta");
 const loadError = wajib(document.querySelector<HTMLElement>("#load-error"), "galat");
 const desaList = wajib(document.querySelector<HTMLElement>("#desa-list"), "daftar desa");
@@ -53,12 +50,28 @@ const menuBtn = wajib(document.querySelector<HTMLButtonElement>("#menu-btn"), "m
 const sidebar = wajib(document.querySelector<HTMLElement>("#sidebar"), "sidebar");
 const scrim = wajib(document.querySelector<HTMLButtonElement>("#scrim"), "scrim");
 
+const togBatasDas = wajib(document.querySelector<HTMLInputElement>("#tog-batas-das"), "batas das");
+const togBatasKec = wajib(document.querySelector<HTMLInputElement>("#tog-batas-kec"), "batas kecamatan");
+const togBatasDesa = wajib(document.querySelector<HTMLInputElement>("#tog-batas-desa"), "batas desa");
+const batasDasDetail = wajib(document.querySelector<HTMLElement>("#batas-das-detail"), "detail batas das");
+const batasKecDetail = wajib(document.querySelector<HTMLElement>("#batas-kec-detail"), "detail batas kecamatan");
+const batasDesaDetail = wajib(document.querySelector<HTMLElement>("#batas-desa-detail"), "detail batas desa");
+const tabPeta = wajib(document.querySelector<HTMLButtonElement>("#tab-peta"), "tab peta");
+const tabInfo = wajib(document.querySelector<HTMLButtonElement>("#tab-info"), "tab info");
+const panelPeta = wajib(document.querySelector<HTMLElement>("#panel-peta"), "panel peta");
+const panelInfo = wajib(document.querySelector<HTMLElement>("#panel-info"), "panel info");
+
 const rasterState: Record<RasterKind, RasterState> = {
   bahaya: "off",
   proxy: "off",
   sungai: "off",
   das: "off",
+  "batas-das": "off",
+  "batas-kab": "off",
+  "batas-kec": "off",
+  "batas-desa": "off",
 };
+const batasNyala: Record<Exclude<BatasJenis, "kab">, boolean> = { das: false, kec: false, desa: false };
 let peta: StudyMap | null = null;
 let sungaiNyala = false;
 let dasNyala = false;
@@ -201,13 +214,21 @@ function gambarAlt() {
 }
 
 function perbaruiStatus() {
-  bahayaStatus.textContent = pesanRaster(rasterState.bahaya);
-  proxyStatus.textContent = pesanRaster(rasterState.proxy);
-  sungaiStatus.textContent = pesanRaster(rasterState.sungai);
-  dasStatus.textContent = pesanRaster(rasterState.das);
-  const aktif = (["bahaya", "proxy", "sungai", "das"] as const)
-    .map((kind) => pesanRaster(rasterState[kind]))
-    .filter(Boolean);
+  const pasangan: Array<[RasterKind, string]> = [
+    ["bahaya", "bahaya-status"],
+    ["proxy", "proxy-status"],
+    ["sungai", "sungai-status"],
+    ["das", "das-status"],
+    ["batas-das", "batas-das-status"],
+    ["batas-kab", "batas-kab-status"],
+    ["batas-kec", "batas-kec-status"],
+    ["batas-desa", "batas-desa-status"],
+  ];
+  for (const [jenis, id] of pasangan) {
+    const simpul = document.getElementById(id);
+    if (simpul) simpul.textContent = pesanRaster(rasterState[jenis]);
+  }
+  const aktif = pasangan.map(([jenis]) => pesanRaster(rasterState[jenis])).filter(Boolean);
   mapStatus.hidden = aktif.length === 0;
   mapStatus.textContent = aktif.join(" · ");
 }
@@ -222,6 +243,12 @@ function terapkan(geserPeta: boolean) {
   proxyDetail.hidden = !togProxy.checked;
   sungaiDetail.hidden = !togSungai.checked;
   dasDetail.hidden = !togDas.checked;
+  batasDasDetail.hidden = !togBatasDas.checked;
+  batasKecDetail.hidden = !togBatasKec.checked;
+  batasDesaDetail.hidden = !togBatasDesa.checked;
+  sinkronBatas("das", togBatasDas.checked);
+  sinkronBatas("kec", togBatasKec.checked);
+  sinkronBatas("desa", togBatasDesa.checked);
   if (togBahaya.checked) gambarLegendaBahaya();
   if (togProxy.checked) gambarLegendaProxy();
   peta?.setBahaya(togBahaya.checked, Number(bahayaOpacity.value) / 100, bahayaKelas.checked);
@@ -252,6 +279,81 @@ function terapkan(geserPeta: boolean) {
   if (geserPeta) peta?.fitTitik([...sirineSaring, ...sensorSaring]);
 }
 
+function sinkronBatas(jenis: Exclude<BatasJenis, "kab">, nyala: boolean) {
+  if (batasNyala[jenis] === nyala) return;
+  batasNyala[jenis] = nyala;
+  void peta?.setBatas(jenis, nyala);
+}
+
+function idCek(idBerkas: string): string {
+  const id = idBerkas.trim();
+  if (/^(SRN|SNS)-DS-\d+$/.test(id)) return id;
+  const cocok = /^(SRN|SNS)-(\d+)$/.exec(id);
+  if (!cocok) return id;
+  return `${cocok[1]}-DS-${cocok[2]}`;
+}
+
+function bagiCsv(baris: string): string[] {
+  const hasil: string[] = [];
+  let sel = "";
+  let kutip = false;
+  for (let i = 0; i < baris.length; i += 1) {
+    const huruf = baris[i];
+    if (huruf === '"') {
+      if (kutip && baris[i + 1] === '"') {
+        sel += '"';
+        i += 1;
+      } else kutip = !kutip;
+    } else if (huruf === "," && !kutip) {
+      hasil.push(sel);
+      sel = "";
+    } else sel += huruf;
+  }
+  hasil.push(sel);
+  return hasil;
+}
+
+async function pasangCekWilayah(titik: Titik[]) {
+  const indeks = new Map(titik.map((fitur) => [fitur.properties.id, fitur]));
+  try {
+    const respons = await fetch(asset("data/mismatch_points.csv"));
+    if (!respons.ok) return;
+    const baris = (await respons.text()).replace(/^\uFEFF/, "").split(/\r?\n/).filter((line) => line.trim());
+    const header = bagiCsv(baris[0] ?? "").map((kolom) => kolom.trim());
+    const kolom = (nama: string) => header.indexOf(nama);
+    for (const line of baris.slice(1)) {
+      const sel = bagiCsv(line);
+      const fitur = indeks.get(idCek(sel[kolom("id")] ?? ""));
+      if (!fitur) continue;
+      const adm2 = (sel[kolom("adm2_name")] ?? "").trim();
+      const adm3 = (sel[kolom("adm3_name")] ?? "").trim();
+      const adm4 = (sel[kolom("adm4_name")] ?? "").trim();
+      const kode = (sel[kolom("adm4_pcode")] ?? "").trim();
+      if (adm2 && adm2 !== fitur.properties.wadmkk) fitur.properties.cek_adm2_name = adm2;
+      if (adm3 && adm3 !== fitur.properties.wadmkc) fitur.properties.cek_adm3_name = adm3;
+      if (adm4 && adm4 !== fitur.properties.wadmkd) fitur.properties.cek_adm4_name = adm4;
+      if (fitur.properties.cek_adm2_name || fitur.properties.cek_adm3_name || fitur.properties.cek_adm4_name) {
+        fitur.properties.cek_wilayah = "berbeda";
+        if (kode) fitur.properties.cek_adm4_pcode = kode;
+      }
+    }
+  } catch {
+    // Berkas cek bersifat tambahan. Titik tetap tampil tanpa tanda.
+  }
+}
+
+function pasangTab() {
+  const pilih = (info: boolean) => {
+    panelPeta.hidden = info;
+    panelInfo.hidden = !info;
+    tabPeta.setAttribute("aria-selected", String(!info));
+    tabInfo.setAttribute("aria-selected", String(info));
+    if (!info) peta?.resize();
+  };
+  tabPeta.addEventListener("click", () => pilih(false));
+  tabInfo.addEventListener("click", () => pilih(true));
+}
+
 function isiKabupaten() {
   const nama = new Set<string>();
   for (const feature of [...sirine, ...sensor]) nama.add(feature.properties.wadmkk_tampil);
@@ -280,7 +382,7 @@ async function muat<T>(path: string): Promise<T> {
 function pasangMenu() {
   menuBtn.addEventListener("click", () => menu(!sidebar.classList.contains("terbuka")));
   scrim.addEventListener("click", () => menu(false));
-  for (const elemen of [kabSelect, statusSelect, togSirine, togSensor, togBahaya, togProxy, bahayaKelas, togSungai, togDas]) {
+  for (const elemen of [kabSelect, statusSelect, togSirine, togSensor, togBahaya, togProxy, bahayaKelas, togSungai, togDas, togBatasDas, togBatasKec, togBatasDesa]) {
     elemen.addEventListener("change", () => {
       const geser = elemen === kabSelect || elemen === statusSelect;
       terapkan(geser);
@@ -297,7 +399,10 @@ async function mulai() {
   gambarLegendaBahaya();
   gambarLegendaProxy();
   pasangTabel((titik) => peta?.fokusTitik(titik));
+  pasangInfo();
+  pasangTab();
   pasangMenu();
+  void periksaUlang();
   try {
     const [sirineData, sensorData, penduduk, alternatifData, batas] = await Promise.all([
       muat<KoleksiTitik>("data/sirine.geojson"),
@@ -312,6 +417,7 @@ async function mulai() {
     alternatif = alternatifData;
     isiKabupaten();
     await muatIndeksDas();
+    await pasangCekWilayah([...sirine, ...sensor]);
     const mapNode = document.querySelector<HTMLElement>("#map");
     if (!mapNode) throw new Error("Peta tidak ditemukan");
     peta = await createStudyMap(mapNode, batas, (kind, state) => {

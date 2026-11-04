@@ -161,7 +161,12 @@ function sel(baris: Baris): string {
     das: baris.das,
     subDas: baris.subDas,
   };
-  return KOLOM.map(([kunci]) => `<td>${escapeHtml(nilai[kunci])}</td>`).join("");
+  return KOLOM.map(([kunci]) => {
+    if (kunci === "id" && baris.titik.properties.cek_wilayah) {
+      return `<td>${escapeHtml(nilai.id)} <span class="cek" title="Nama pada poligon COD-AB berbeda dari Excel">cek</span></td>`;
+    }
+    return `<td>${escapeHtml(nilai[kunci])}</td>`;
+  }).join("");
 }
 
 function barisHtml(baris: Baris): string {
@@ -225,9 +230,9 @@ function gambar() {
   const kata = (cari?.value ?? "").trim().toLocaleLowerCase("id");
   const baris = sumber.map(jadiBaris).filter((item) => cocok(item, kata)).sort(banding);
   if (meta) {
-    const terisi = dasIndeks.size;
-    meta.textContent = terisi
-      ? `${baris.length.toLocaleString("id-ID")} titik. Nama DAS hanya dari data/points_das.csv.`
+    const adaSub = [...dasIndeks.values()].some((item) => item.subDas);
+    meta.textContent = dasIndeks.size
+      ? `${baris.length.toLocaleString("id-ID")} titik. DAS dari data/points_das.csv.${adaSub ? "" : " Sub-DAS kosong pada berkas, ditampilkan -."}`
       : `${baris.length.toLocaleString("id-ID")} titik. DAS dan Sub-DAS masih - sampai data/points_das.csv diisi.`;
   }
   gambarKepala();
