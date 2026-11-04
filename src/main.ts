@@ -17,6 +17,7 @@ import {
 } from "./model";
 import { pasangInfo, periksaUlang } from "./info";
 import { gambarTabel, muatIndeksDas, pasangTabel } from "./tabel";
+import { saatTandaBerubah, tempelProperti } from "./tanda";
 import { pasangUsulan } from "./usulan-ui";
 
 function wajib<T>(node: T | null, nama: string): T {
@@ -237,6 +238,7 @@ function perbaruiStatus() {
 function terapkan(geserPeta: boolean) {
   const sirineSaring = saringTitik(sirine);
   const sensorSaring = saringTitik(sensor);
+  for (const titik of [...sirineSaring, ...sensorSaring]) tempelProperti(titik.properties, "asli");
   peta?.setTitik(sirineSaring, sensorSaring);
   peta?.setVisible("sirine", togSirine.checked);
   peta?.setVisible("sensor", togSensor.checked);
@@ -425,6 +427,7 @@ async function mulai() {
       rasterState[kind] = state;
       perbaruiStatus();
     });
+    saatTandaBerubah(() => terapkan(false));
     pasangUsulan(peta);
     terapkan(false);
   } catch (error) {

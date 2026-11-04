@@ -68,6 +68,7 @@ body {
 .panel-blok h2 { margin: 0; font-size: 16px; }
 .v3-kartu-kepala { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; }
 
+[hidden] { display: none !important; }
 .field, .switch { display: flex; gap: 8px; }
 .field {
   flex-direction: column;
@@ -250,6 +251,33 @@ input[type="range"] { width: 100%; accent-color: #1c1c1f; }
 }
 #map { height: 100%; border-radius: 16px; overflow: hidden; }
 .cari-peta { position: absolute; z-index: 3; top: 18px; left: 18px; width: min(360px, calc(100% - 36px)); }
+.alat-admin {
+  position: absolute;
+  z-index: 3;
+  left: 18px;
+  top: 92px;
+  width: min(240px, calc(100% - 120px));
+  background: rgba(255, 255, 255, 0.94);
+  border-radius: 16px;
+  box-shadow: 0 12px 32px rgba(30, 27, 75, 0.12);
+  padding: 10px 12px;
+}
+.alat-judul { margin: 0 0 8px; font-size: 12px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--v3-samar); }
+.alat-admin button {
+  display: block;
+  width: 100%;
+  margin: 0 0 6px;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  border-radius: 999px;
+  padding: 8px 12px;
+  font: inherit;
+  color: var(--v3-tinta);
+  cursor: pointer;
+}
+.alat-admin button[aria-pressed="true"] { background: #00838f; color: #fff; border-color: #00838f; }
+.alat-admin .hint { margin: 4px 0 0; }
+.popup-dihapus { margin: 8px 0; padding: 8px 10px; border-radius: 12px; background: #ffebee; color: #b71c1c; }
 .cari-peta .field { margin: 0; }
 .cari-peta input, .akun input, .akun textarea, .akun select {
   border: 1px solid #e5e7eb;
@@ -399,6 +427,7 @@ input[type="range"] { width: 100%; accent-color: #1c1c1f; }
   .v3-judul-bar { flex-direction: column; }
   .v3-judul-bar h1 { font-size: 28px; }
   .v3-peta-kartu { height: 62vh; min-height: 320px; }
+  .alat-admin { top: 108px; width: min(220px, calc(100% - 36px)); }
   .tabel-alat { align-items: stretch; }
   .v3-diperbarui { white-space: normal; }
 }

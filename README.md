@@ -151,7 +151,23 @@ Pencarian tempat memakai Nominatim, dibatasi ke kotak Sumatera Utara dan `countr
 
 Masuk admin memakai email dan kata sandi Appwrite. Tautan lupa password mengarah kembali ke `https://rixaga.github.io/studi-ews-sumut/`. Formulir kata sandi baru muncul jika URL memuat `userId` dan `secret`. Tombol tambah, ubah, dan hapus hanya tampil bila pengguna adalah anggota tim `admin`.
 
-Titik usulan disimpan di Appwrite (endpoint dan ID proyek ada di `src/appwrite-config.ts`, tanpa kunci API). Lapisan peta dan angkanya terpisah dari 274 titik studi. Kabupaten, kecamatan, desa, dan DAS diisi dari poligon yang sudah ada di repositori.
+Titik usulan disimpan di Appwrite (endpoint dan ID proyek ada di `src/appwrite-config.ts`, tanpa kunci API). Lapisan peta dan angkanya terpisah dari 274 titik studi. Kabupaten, kecamatan, desa, dan DAS diisi dari poligon yang sudah ada di repositori. Ikon usulan baru berwarna teal, bukan merah sirine atau biru sensor.
+
+Anggota tim `admin` melihat bilah **Alat admin** di dalam peta. **Tambah lokasi** lalu klik peta membuka formulir jenis (sirine atau sensor), nama, dan catatan. Status tersimpan sebagai `usulan_studi`. **Hapus lokasi** tidak menghapus geometri: klik titik (studi atau usulan) menandai baris di tabel `titik_tanda`. Ikon asli tetap, dengan silang merah di atasnya. Popup menampilkan Dihapus, id pembuat, dan waktu. Admin dapat memilih Pulihkan. Pengunjung tanpa login tetap melihat tanda silang.
+
+### Tabel `titik_tanda`
+
+Tabel sudah ada di database `ews`. Klien memakai sesi admin yang sedang masuk. Tidak ada kunci API di peramban. Pulihkan menghapus baris itu.
+
+Izin tabel: baca `any`, buat/ubah/hapus `team:admin`. `rowSecurity` false. Indeks `idx_titik` pada `titik_id`.
+
+| key | jenis | wajib | catatan |
+| --- | --- | --- | --- |
+| titik_id | string 64 | ya | ID titik studi (`SRN-DS-…` / `SNS-DS-…`) atau `$id` baris usulan |
+| sumber | enum `asli`, `usulan` | ya | `asli` untuk 274 titik, `usulan` untuk `titik_usulan` |
+| status | enum `dihapus` | ya | satu nilai |
+| dibuat_oleh | string 128 | tidak | `$id` pengguna Appwrite |
+| waktu | datetime | ya | ISO 8601, offset UTC (`…+00:00`) |
 
 ## Menjalankan di mesin sendiri
 
