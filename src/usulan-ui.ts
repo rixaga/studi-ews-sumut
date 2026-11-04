@@ -126,6 +126,7 @@ function keTitik(item: BarisUsulan): Titik {
       wadmkd: item.desa,
       keterangan: item.catatan || "Titik usulan",
       remark: item.nama,
+      nama: item.nama,
       x_dms: "",
       y_dms: "",
       baris_excel: 0,
