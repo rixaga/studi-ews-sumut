@@ -279,12 +279,7 @@ async function tandaiTitik(info: { id: string; sumber: "asli" | "usulan"; nama: 
     await tandaiDihapus({ titikId: info.id, sumber: info.sumber, dibuatOleh: pengguna.id });
     tampilPesan("");
   } catch (galat) {
-    const dasar = pesanGalat(galat);
-    tampilPesan(
-      galatTanda()
-        ? `${dasar} Tabel titik_tanda belum tersedia. Skema ada di README dan scripts/setup-titik-tanda.mjs.`
-        : dasar,
-    );
+    tampilPesan(pesanGalat(galat));
   }
 }
 
@@ -459,7 +454,7 @@ export function pasangUsulan(petaAktif: StudyMap) {
     gambarLapisan();
     const alatAktif = alatTambah?.getAttribute("aria-pressed") === "true" || alatHapus?.getAttribute("aria-pressed") === "true";
     if (pengguna?.admin && galatTanda() && alatPetunjuk && !alatAktif) {
-      alatPetunjuk.textContent = "Tabel titik_tanda belum ada. Tanda hapus belum bisa disimpan.";
+      alatPetunjuk.textContent = galatTanda();
     }
   });
   void muatUlang();

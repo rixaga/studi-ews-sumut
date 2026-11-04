@@ -1,4 +1,4 @@
-import { daftarTanda, hapusTanda, buatTanda, type BarisTanda, type SumberTanda } from "./appwrite";
+import { daftarTanda, hapusTanda, buatTanda, waktuSekarang, type BarisTanda, type SumberTanda } from "./appwrite";
 import type { TitikProps } from "./model";
 
 const indeks = new Map<string, BarisTanda>();
@@ -65,7 +65,7 @@ export async function tandaiDihapus(input: { titikId: string; sumber: SumberTand
     sumber: input.sumber,
     status: "dihapus",
     dibuat_oleh: input.dibuatOleh,
-    waktu: new Date().toISOString(),
+    waktu: waktuSekarang(),
   });
   indeks.set(kunci(baris.sumber, baris.titik_id), baris);
   galatMuat = "";

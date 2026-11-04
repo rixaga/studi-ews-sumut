@@ -167,9 +167,14 @@ function bacaTanda(baris: BarisTandaMentah): BarisTanda | null {
     titik_id: teks(baris.titik_id, 64),
     sumber: baris.sumber,
     status: "dihapus",
-    dibuat_oleh: teks(baris.dibuat_oleh, 64),
-    waktu: teks(baris.waktu, 40),
+    dibuat_oleh: teks(baris.dibuat_oleh, 128),
+    waktu: teks(baris.waktu, 64),
   };
+}
+
+/** Datetime Appwrite: ISO 8601 dengan offset UTC, misalnya 2026-11-04T12:00:00.000+00:00. */
+export function waktuSekarang(): string {
+  return new Date().toISOString().replace("Z", "+00:00");
 }
 
 export async function daftarTanda(): Promise<BarisTanda[]> {
@@ -204,8 +209,8 @@ export async function buatTanda(data: Omit<BarisTanda, "id">): Promise<BarisTand
       titik_id: teks(data.titik_id, 64),
       sumber: data.sumber,
       status: "dihapus",
-      dibuat_oleh: teks(data.dibuat_oleh, 64),
-      waktu: teks(data.waktu, 40),
+      dibuat_oleh: teks(data.dibuat_oleh, 128),
+      waktu: teks(data.waktu, 64),
     },
     permissions: izinBaris,
   });

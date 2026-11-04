@@ -157,27 +157,17 @@ Anggota tim `admin` melihat bilah **Alat admin** di dalam peta. **Tambah lokasi*
 
 ### Tabel `titik_tanda`
 
-Tabel ini belum dibuat dari lingkungan agen karena tidak ada kunci API admin. Buat sekali dengan kunci server:
+Tabel sudah ada di database `ews`. Klien memakai sesi admin yang sedang masuk. Tidak ada kunci API di peramban. Pulihkan menghapus baris itu.
 
-```bash
-APPWRITE_API_KEY=... node scripts/setup-titik-tanda.mjs
-```
-
-Database `ews` (sudah ada), tabel `titik_tanda`, nama “Titik tanda”.
-
-Izin tabel: `read("any")`, `create("team:admin")`, `update("team:admin")`, `delete("team:admin")`. `rowSecurity` false. Baris yang dibuat klien juga memakai izin baca `any` dan ubah/hapus `team:admin`.
-
-Kolom:
+Izin tabel: baca `any`, buat/ubah/hapus `team:admin`. `rowSecurity` false. Indeks `idx_titik` pada `titik_id`.
 
 | key | jenis | wajib | catatan |
 | --- | --- | --- | --- |
-| titik_id | varchar 64 | ya | ID titik studi (`SRN-DS-…` / `SNS-DS-…`) atau `$id` baris usulan |
+| titik_id | string 64 | ya | ID titik studi (`SRN-DS-…` / `SNS-DS-…`) atau `$id` baris usulan |
 | sumber | enum `asli`, `usulan` | ya | `asli` untuk 274 titik, `usulan` untuk `titik_usulan` |
 | status | enum `dihapus` | ya | satu nilai |
-| dibuat_oleh | varchar 64 | ya | `$id` pengguna Appwrite |
-| waktu | varchar 40 | ya | ISO-8601 |
-
-Tanpa tabel ini peta tetap jalan. Menyimpan tanda gagal dengan pesan yang menyebut skema ini.
+| dibuat_oleh | string 128 | tidak | `$id` pengguna Appwrite |
+| waktu | datetime | ya | ISO 8601, offset UTC (`…+00:00`) |
 
 ## Menjalankan di mesin sendiri
 
