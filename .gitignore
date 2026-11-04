@@ -1,0 +1,12 @@
+node_modules/
+dist/
+__pycache__/
+*.pyc
+.venv/
+public/data/sirine.geojson
+public/data/sensor.geojson
+public/data/penduduk_terpapar.json
+public/data/alternatif_lokasi.json
+public/data/points_das.csv
+public/data/batas/
+public/data/hidro/

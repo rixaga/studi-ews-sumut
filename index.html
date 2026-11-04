@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Studi EWS Sumut</title>
+    <meta
+      name="description"
+      content="Dasbor statis penempatan sirine dan sensor peringatan dini di Sumatera Utara. Bukan siaran langsung."
+    />
+    <link rel="icon" href="./favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="v3-app" id="app">
+      <button type="button" class="v3-menu" id="menu-btn" aria-expanded="false" aria-controls="sidebar">Menu</button>
+      <aside class="v3-sidebar" id="sidebar" aria-label="Panel studi">
+        <div class="v3-merek">
+          <span class="v3-tanda" aria-hidden="true">ES</span>
+          <span>
+            <strong>Studi EWS</strong>
+            <small>Sumatera Utara</small>
+          </span>
+        </div>
+
+        <section class="panel-blok">
+          <p class="label-grup">Saring</p>
+          <label class="field">
+            Kabupaten/kota
+            <select id="kab-select">
+              <option value="semua">Semua kabupaten/kota</option>
+            </select>
+          </label>
+          <label class="field">
+            Status titik
+            <select id="status-select">
+              <option value="semua">Semua status</option>
+              <option value="usulan_studi">Usulan studi</option>
+              <option value="usulan_bpbd">Usulan BPBD</option>
+              <option value="hasil_survei">Hasil survei</option>
+              <option value="belum_ditentukan">Belum ditentukan</option>
+            </select>
+          </label>
+        </section>
+
+        <section class="panel-blok">
+          <p class="label-grup">Lapisan titik</p>
+          <label class="switch"><input id="tog-sirine" type="checkbox" checked /> Sirine</label>
+          <label class="switch"><input id="tog-sensor" type="checkbox" checked /> Sensor</label>
+          <div id="ikon-legenda" class="matriks" aria-label="Legenda jenis dan status"></div>
+          <p class="hint">Belum ditentukan memakai pin asli: sirine merah, sensor biru.</p>
+        </section>
+
+        <section class="panel-blok">
+          <p class="label-grup">Sungai</p>
+          <div class="layer-block">
+            <label class="switch">
+              <input id="tog-sungai" type="checkbox" />
+              Aliran Sungai (HydroRIVERS)
+            </label>
+            <div id="sungai-detail" class="layer-detail" hidden>
+              <ul class="kelas">
+                <li><i class="garis garis-tipis"></i> Orde 1, garis tipis</li>
+                <li><i class="garis garis-tebal"></i> Orde 6, garis tebal</li>
+              </ul>
+              <p class="hint">Di bawah zoom 9 hanya orde Strahler 3 ke atas. Tidak ada nama sungai. © WWF HydroSHEDS (Lehner &amp; Grill 2013).</p>
+              <p id="sungai-status" class="hint"></p>
+            </div>
+          </div>
+          <div class="layer-block">
+            <label class="switch">
+              <input id="tog-das" type="checkbox" />
+              Sub-DAS (HydroBASINS L7, proksi, bukan DAS resmi KLHK)
+            </label>
+            <div id="das-detail" class="layer-detail" hidden>
+              <ul class="kelas">
+                <li><i class="garis garis-putus"></i> Garis batas sub-DAS</li>
+              </ul>
+              <p class="hint">40 poligon level 7. Garis saja, bukan DAS resmi KLHK. © WWF HydroSHEDS (Lehner &amp; Grill 2013).</p>
+              <p id="das-status" class="hint"></p>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel-blok">
+          <p class="label-grup">Bahaya dan proksi</p>
+          <div class="layer-block">
+            <label class="switch">
+              <input id="tog-bahaya" type="checkbox" />
+              Indeks Bahaya Banjir (BNPB InaRISK)
+            </label>
+            <div id="bahaya-detail" class="layer-detail" hidden>
+              <label class="field">Opasitas <input id="bahaya-opacity" type="range" min="0" max="100" value="75" /></label>
+              <label class="switch">
+                <input id="bahaya-kelas" type="checkbox" />
+                Klasifikasi tampilan (bukan kelas resmi BNPB)
+              </label>
+              <div id="bahaya-legend"></div>
+              <p id="bahaya-status" class="hint"></p>
+            </div>
+          </div>
+          <div class="layer-block">
+            <label class="switch">
+              <input id="tog-proxy" type="checkbox" />
+              Proksi risiko banjir
+            </label>
+            <p class="hint">Proksi, bukan indeks risiko resmi BNPB (tanpa komponen kapasitas).</p>
+            <div id="proxy-detail" class="layer-detail" hidden>
+              <label class="field">Opasitas <input id="proxy-opacity" type="range" min="0" max="100" value="75" /></label>
+              <div id="proxy-legend"></div>
+              <p id="proxy-status" class="hint"></p>
+            </div>
+          </div>
+          <div class="layer-block is-disabled">
+            <label class="switch">
+              <input type="checkbox" disabled />
+              Indeks Risiko Banjir (InaRISK)
+            </label>
+            <p class="hint">butuh token BNPB</p>
+          </div>
+        </section>
+
+        <section class="panel-blok">
+          <div class="v3-kartu-kepala">
+            <h2>Ringkasan</h2>
+          </div>
+          <div class="angka-grid">
+            <div><p class="v3-angka v3-angka-kecil" id="n-sirine">—</p><p class="v3-angka-catatan">Sirine</p></div>
+            <div><p class="v3-angka v3-angka-kecil" id="n-sensor">—</p><p class="v3-angka-catatan">Sensor</p></div>
+            <div><p class="v3-angka v3-angka-kecil" id="n-desa">—</p><p class="v3-angka-catatan">Desa terpapar</p></div>
+            <div><p class="v3-angka v3-angka-kecil" id="n-pop">—</p><p class="v3-angka-catatan">Penduduk, dibulatkan</p></div>
+          </div>
+        </section>
+
+        <section class="panel-blok">
+          <div class="v3-kartu-kepala">
+            <h2>Desa terpapar tertinggi</h2>
+          </div>
+          <p id="desa-meta" class="hint"></p>
+          <div id="desa-list"></div>
+        </section>
+
+        <section class="panel-blok">
+          <div class="v3-kartu-kepala">
+            <h2>Alternatif lokasi</h2>
+          </div>
+          <div id="alt-body"></div>
+        </section>
+
+        <div class="v3-kaki">
+          <p>
+            Data statis untuk studi penempatan. Bukan siaran langsung, bukan produk BNPB atau BMKG.
+            Tampilan mengikuti bahasa visual Pantau Bencana v0.3.
+          </p>
+          <p>Peta dasar OpenFreeMap © OpenMapTiles © OpenStreetMap contributors.</p>
+        </div>
+      </aside>
+      <button type="button" class="v3-scrim" id="scrim" hidden aria-label="Tutup menu"></button>
+      <div class="v3-kolom">
+        <header class="v3-judul-bar">
+          <div>
+            <h1>Studi EWS Sumut</h1>
+            <p>Sirine dan sensor peringatan dini di Provinsi Sumatera Utara. Angka penduduk dibulatkan untuk tampilan.</p>
+          </div>
+          <p class="v3-diperbarui">WGS84 · tidak ada umpan langsung</p>
+        </header>
+        <p id="load-error" class="banner" hidden></p>
+        <section class="v3-kartu v3-peta-kartu">
+          <div id="map" role="region" aria-label="Peta Sumatera Utara"></div>
+          <div id="map-status" class="map-status" hidden></div>
+        </section>
+        <section class="v3-kartu tabel-kartu" aria-labelledby="judul-tabel">
+          <div class="tabel-alat">
+            <div>
+              <h2 id="judul-tabel">Daftar titik</h2>
+              <p id="tabel-meta" class="hint"></p>
+            </div>
+            <label class="field cari">
+              Cari
+              <input id="tabel-cari" type="search" placeholder="ID, desa, lokasi, kabupaten…" />
+            </label>
+            <div class="kelompok" role="group" aria-label="Kelompokkan berdasarkan">
+              <span>Kelompokkan berdasarkan</span>
+              <button type="button" id="grup-kab" aria-pressed="true">Kab/Kota</button>
+              <button type="button" id="grup-das" aria-pressed="false">DAS</button>
+            </div>
+          </div>
+          <div class="tabel-bungkus">
+            <table id="tabel-titik">
+              <thead>
+                <tr id="tabel-kepala"></tr>
+              </thead>
+              <tbody id="tabel-isi"></tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

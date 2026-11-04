@@ -1,0 +1,1100 @@
+{
+  "sumber_berkas": "Olah Penduduk Terpapar.xlsx",
+  "sumber_lembar": "Alternatif Lokasi",
+  "catatan": "Lembar tersusun dua panel berdampingan. Judul kolom yang tertulis hanya kota/kab, kecamatan, dan desa. Kolom numerik (E di panel kiri, J di panel kanan) tidak berjudul pada sumber dan disimpan sebagai nilai. Kolom A dan F berisi angka pada sebagian baris, juga tanpa judul, disimpan sebagai penanda_angka dan tidak diisi-ke-depan. Status (kolom K) dan catatan (kolom L) hanya ada pada panel kanan. Makna resmi angka tanpa judul tidak tertulis di berkas.",
+  "panel_kiri": [
+    {
+      "kab_kota": "Asahan",
+      "kecamatan": "Simpang Empat",
+      "desa": "Simpang Empat",
+      "nilai": 13214.501006,
+      "penanda_angka": 4.0,
+      "status": null,
+      "catatan": null,
+      "baris_excel": 2
+    },
+    {
+      "kab_kota": "Asahan",
+      "kecamatan": "Air Joman",
+      "desa": "Punggulan",
+      "nilai": 11732.137634,
+      "penanda_angka": null,
+      "status": null,
+      "catatan": null,
+      "baris_excel": 3
+    },
+    {
+      "kab_kota": "Asahan",
+      "kecamatan": "Kota Kisaran Timur",
+      "desa": "Mutiara",
+      "nilai": 10974.260538,
+      "penanda_angka": null,
+      "status": null,
+      "catatan": null,
+      "baris_excel": 4
+    },
+    {
+      "kab_kota": "Asahan",
+      "kecamatan": "Air Joman",
+      "desa": "Binjai Serbangan",
+      "nilai": 9184.300881,
+      "penanda_angka": null,
+      "status": null,
+      "catatan": null,
+      "baris_excel": 5
+    },
+    {
+      "kab_kota": "Batu Bara",
+      "kecamatan": "Medang Deras",
+      "desa": "Lalang",
+      "nilai": 9690.664467,
+      "penanda_angka": 4.0,
+      "status": null,
+      "catatan": null,
+      "baris_excel": 6
+    },
+    {
+      "kab_kota": "Batu Bara",
+      "kecamatan": "Tanjung Tiram",
+      "desa": "Suka Maju",
+      "nilai": 9588.532578,
+      "penanda_angka": null,
+      "status": null,
+      "catatan": null,
+      "baris_excel": 7
+    },
+    {
+      "kab_kota": "Batu Bara",
+      "kecamatan": "Nibung Hangus",
+      "desa": "Ujung Kubu",
+      "nilai": 7984.165467,
+      "penanda_angka": null,
+      "status": null,
+      "catatan": null,
+      "baris_excel": 8
+    },
+    {
+      "kab_kota": "Batu Bara",
+      "kecamatan": "Lima Puluh Pesisir",
+      "desa": "Gambus Laut",
+      "nilai": 6902.593003,
+      "penanda_angka": null,
+      "status": null,
+      "catatan": null,
+      "baris_excel": 9
+    },
+    {
+      "kab_kota": "Mandailing Natal",
+      "kecamatan": "Panyabungan",
+      "desa": "Sipolu-Polu",
+      "nilai": 6169.699661,
+      "penanda_angka": 4.0,
+      "status": null,
+      "catatan": null,
+      "baris_excel": 10
+    },
+    {
+      "kab_kota": "Mandailing Natal",
+      "kecamatan": "Muara Batang Gadis",
+      "desa": "Tabuyung",
+      "nilai": 4575.023684,
+      "penanda_angka": null,
+      "status": null,
+      "catatan": null,
+      "baris_excel": 11
+    },
+    {
+      "kab_kota": "Mandailing Natal",
+      "kecamatan": "Lingga Bayu",
+      "desa": "Simpang Gambir",
+      "nilai": 3767.704491,
+      "penanda_angka": null,
+      "status": null,
+      "catatan": null,
+      "baris_excel": 12
+    },
+    {
+      "kab_kota": "Mandailing Natal",
+      "kecamatan": "Panyabungan",
+      "desa": "Kota Siantar",
+      "nilai": 2761.806601,
+      "penanda_angka": null,
+      "status": null,
+      "catatan": null,
+      "baris_excel": 13
+    },
+    {
+      "kab_kota": "Nias",
+      "kecamatan": "Idanogawo",
+      "desa": "Laowo Hilimbaruzo",
+      "nilai": 1893.586939,
+      "penanda_angka": 4.0,
+      "status": null,
+      "catatan": null,
+      "baris_excel": 14
+    },
+    {
+      "kab_kota": "Nias",
+      "kecamatan": "Gido",
+      "desa": "Somi",
+      "nilai": 1821.091396,
+      "penanda_angka": null,
+      "status": null,
+      "catatan": null,
+      "baris_excel": 15
+    },
+    {
+      "kab_kota": "Nias",
+      "kecamatan": "Bawolato",
+      "desa": "Siofaewali",
+      "nilai": 1780.173416,
+      "penanda_angka": null,
+      "status": null,
+      "catatan": null,
+      "baris_excel": 16
+    },
+    {
+      "kab_kota": "Nias",
+      "kecamatan": "Bawolato",
+      "desa": "Hilihoru",
+      "nilai": 1650.999994,
+      "penanda_angka": null,
+      "status": null,
+      "catatan": null,
+      "baris_excel": 17
+    },
+    {
+      "kab_kota": "Nias Selatan",
+      "kecamatan": "Teluk Dalam",
+      "desa": "Pasar Teluk Dalam",
+      "nilai": 5797.608048,
+      "penanda_angka": 4.0,
+      "status": null,
+      "catatan": null,
+      "baris_excel": 18
+    },
+    {
+      "kab_kota": "Nias Selatan",
+      "kecamatan": "Toma",
+      "desa": "Hilisataro Raya",
+      "nilai": 3018.633845,
+      "penanda_angka": null,
+      "status": null,
+      "catatan": null,
+      "baris_excel": 19
+    },
+    {
+      "kab_kota": "Nias Selatan",
+      "kecamatan": "Lahusa",
+      "desa": "Sarahililaza",
+      "nilai": 1831.033329,
+      "penanda_angka": null,
+      "status": null,
+      "catatan": null,
+      "baris_excel": 20
+    },
+    {
+      "kab_kota": "Nias Selatan",
+      "kecamatan": "Susua",
+      "desa": "Sifalago Susua",
+      "nilai": 1677.216086,
+      "penanda_angka": null,
+      "status": null,
+      "catatan": null,
+      "baris_excel": 21
+    },
+    {
+      "kab_kota": "Nias Utara",
+      "kecamatan": "Tuhemberua",
+      "desa": "Siofa Banua",
+      "nilai": 2676.566016,
+      "penanda_angka": 4.0,
+      "status": null,
+      "catatan": null,
+      "baris_excel": 22
+    },
+    {
+      "kab_kota": "Nias Utara",
+      "kecamatan": "Lahewa",
+      "desa": "Pasar Lahewa",
+      "nilai": 2577.407904,
+      "penanda_angka": null,
+      "status": null,
+      "catatan": null,
+      "baris_excel": 23
+    },
+    {
+      "kab_kota": "Nias Utara",
+      "kecamatan": "Sawo",
+      "desa": "Lasara Sawo",
+      "nilai": 2197.684568,
+      "penanda_angka": null,
+      "status": null,
+      "catatan": null,
+      "baris_excel": 24
+    },
+    {
+      "kab_kota": "Nias Utara",
+      "kecamatan": "Afulu",
+      "desa": "Lauru Fadoro",
+      "nilai": 1933.567297,
+      "penanda_angka": null,
+      "status": null,
+      "catatan": null,
+      "baris_excel": 25
+    },
+    {
+      "kab_kota": "Pakpak Bharat",
+      "kecamatan": "Sitelu Tali Urang Jehe",
+      "desa": "Simberruna",
+      "nilai": 804.087956,
+      "penanda_angka": 4.0,
+      "status": null,
+      "catatan": null,
+      "baris_excel": 26
+    },
+    {
+      "kab_kota": "Pakpak Bharat",
+      "kecamatan": "Sitelu Tali Urang Jehe",
+      "desa": "Tanjung Meriah",
+      "nilai": 544.527414,
+      "penanda_angka": null,
+      "status": null,
+      "catatan": null,
+      "baris_excel": 27
+    },
+    {
+      "kab_kota": "Pakpak Bharat",
+      "kecamatan": "Sitelu Tali Urang Jehe",
+      "desa": "Mbinalun",
+      "nilai": 491.492182,
+      "penanda_angka": null,
+      "status": null,
+      "catatan": null,
+      "baris_excel": 28
+    },
+    {
+      "kab_kota": "Pakpak Bharat",
+      "kecamatan": "Siempat Rube",
+      "desa": "Siempat Rube II",
+      "nilai": 257.127776,
+      "penanda_angka": null,
+      "status": null,
+      "catatan": null,
+      "baris_excel": 29
+    }
+  ],
+  "panel_kanan": [
+    {
+      "kab_kota": "Deli Serdang",
+      "kecamatan": "Percut Sei Tuan",
+      "desa": "Kenangan Baru",
+      "nilai": 40376.160462,
+      "penanda_angka": 15.0,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 2
+    },
+    {
+      "kab_kota": "Deli Serdang",
+      "kecamatan": "Percut Sei Tuan",
+      "desa": "Sei Rotan",
+      "nilai": 31554.576743,
+      "penanda_angka": null,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 3
+    },
+    {
+      "kab_kota": "Deli Serdang",
+      "kecamatan": "Percut Sei Tuan",
+      "desa": "Sambirejo Timur",
+      "nilai": 29904.472402,
+      "penanda_angka": null,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 4
+    },
+    {
+      "kab_kota": "Deli Serdang",
+      "kecamatan": "Percut Sei Tuan",
+      "desa": "Sampali",
+      "nilai": 26814.994861,
+      "penanda_angka": null,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 5
+    },
+    {
+      "kab_kota": "Deli Serdang",
+      "kecamatan": "Percut Sei Tuan",
+      "desa": "Bandar Klippa",
+      "nilai": 17462.646139,
+      "penanda_angka": null,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 6
+    },
+    {
+      "kab_kota": "Deli Serdang",
+      "kecamatan": "Percut Sei Tuan",
+      "desa": "Saentis",
+      "nilai": 16352.395309,
+      "penanda_angka": null,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 7
+    },
+    {
+      "kab_kota": "Deli Serdang",
+      "kecamatan": "Hamparan Perak",
+      "desa": "Hamparan Perak",
+      "nilai": 16131.225864,
+      "penanda_angka": null,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 8
+    },
+    {
+      "kab_kota": "Deli Serdang",
+      "kecamatan": "Labuhan Deli",
+      "desa": "Pematang Johar",
+      "nilai": 16059.26885,
+      "penanda_angka": null,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 9
+    },
+    {
+      "kab_kota": "Deli Serdang",
+      "kecamatan": "Percut Sei Tuan",
+      "desa": "Percut",
+      "nilai": 15536.351818,
+      "penanda_angka": null,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 10
+    },
+    {
+      "kab_kota": "Deli Serdang",
+      "kecamatan": "Percut Sei Tuan",
+      "desa": "Tembung",
+      "nilai": 14263.268275,
+      "penanda_angka": null,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 11
+    },
+    {
+      "kab_kota": "Deli Serdang",
+      "kecamatan": "Batang Kuis",
+      "desa": "Tanjung Sari",
+      "nilai": 13444.265889,
+      "penanda_angka": null,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 12
+    },
+    {
+      "kab_kota": "Deli Serdang",
+      "kecamatan": "Hamparan Perak",
+      "desa": "Klumpang Kebun",
+      "nilai": 13151.353912,
+      "penanda_angka": null,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 13
+    },
+    {
+      "kab_kota": "Deli Serdang",
+      "kecamatan": "Beringin",
+      "desa": "Sidodadi Ramunia",
+      "nilai": 13148.363783,
+      "penanda_angka": null,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 14
+    },
+    {
+      "kab_kota": "Deli Serdang",
+      "kecamatan": "Percut Sei Tuan",
+      "desa": "Bandar Khalipah",
+      "nilai": 13062.109304,
+      "penanda_angka": null,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 15
+    },
+    {
+      "kab_kota": "Deli Serdang",
+      "kecamatan": "Lubuk Pakam",
+      "desa": "Sekip",
+      "nilai": 12221.030904,
+      "penanda_angka": null,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 16
+    },
+    {
+      "kab_kota": "Kota Binjai",
+      "kecamatan": "Binjai Utara",
+      "desa": "Cengkeh Turi",
+      "nilai": 10116.467062,
+      "penanda_angka": 5.0,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 17
+    },
+    {
+      "kab_kota": "Kota Binjai",
+      "kecamatan": "Binjai Utara",
+      "desa": "Jati Karya",
+      "nilai": 9202.497102,
+      "penanda_angka": null,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 18
+    },
+    {
+      "kab_kota": "Kota Binjai",
+      "kecamatan": "Binjai Kota",
+      "desa": "Berngam",
+      "nilai": 7448.255898,
+      "penanda_angka": null,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 19
+    },
+    {
+      "kab_kota": "Kota Binjai",
+      "kecamatan": "Binjai Utara",
+      "desa": "Jati Utomo",
+      "nilai": 6825.585584,
+      "penanda_angka": null,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 20
+    },
+    {
+      "kab_kota": "Kota Binjai",
+      "kecamatan": "Binjai Barat",
+      "desa": "Paya Roba",
+      "nilai": 6393.590081,
+      "penanda_angka": null,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 21
+    },
+    {
+      "kab_kota": "Kota Medan",
+      "kecamatan": "Medan Marelan",
+      "desa": "Rengas Pulau",
+      "nilai": 62820.900635,
+      "penanda_angka": 10.0,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 22
+    },
+    {
+      "kab_kota": "Kota Medan",
+      "kecamatan": "Medan Marelan",
+      "desa": "Terjun",
+      "nilai": 49635.454185,
+      "penanda_angka": null,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 23
+    },
+    {
+      "kab_kota": "Kota Medan",
+      "kecamatan": "Medan Labuhan",
+      "desa": "Besar",
+      "nilai": 40311.401134,
+      "penanda_angka": null,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 24
+    },
+    {
+      "kab_kota": "Kota Medan",
+      "kecamatan": "Medan Deli",
+      "desa": "Tanjung Mulia Hilir",
+      "nilai": 35597.981127,
+      "penanda_angka": null,
+      "status": null,
+      "catatan": null,
+      "baris_excel": 25
+    },
+    {
+      "kab_kota": "Kota Medan",
+      "kecamatan": "Medan Deli",
+      "desa": "Tanjung Mulya",
+      "nilai": 33577.394281,
+      "penanda_angka": null,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 26
+    },
+    {
+      "kab_kota": "Kota Medan",
+      "kecamatan": "Medan Deli",
+      "desa": "Mabar Hilir",
+      "nilai": 32110.618503,
+      "penanda_angka": null,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 27
+    },
+    {
+      "kab_kota": "Kota Medan",
+      "kecamatan": "Medan Sunggal",
+      "desa": "Tanjung Rejo",
+      "nilai": 31853.136097,
+      "penanda_angka": null,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 28
+    },
+    {
+      "kab_kota": "Kota Medan",
+      "kecamatan": "Medan Labuhan",
+      "desa": "Tangkahan",
+      "nilai": 31323.767169,
+      "penanda_angka": null,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 29
+    },
+    {
+      "kab_kota": "Kota Medan",
+      "kecamatan": "Medan Helvetia",
+      "desa": "Tanjung Gusta",
+      "nilai": 28220.547083,
+      "penanda_angka": null,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 30
+    },
+    {
+      "kab_kota": "Kota Medan",
+      "kecamatan": "Medan Tembung",
+      "desa": "Bantan",
+      "nilai": 27075.51463,
+      "penanda_angka": null,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 31
+    },
+    {
+      "kab_kota": "Langkat",
+      "kecamatan": "Stabat",
+      "desa": "Perdamaian",
+      "nilai": 13956.622438,
+      "penanda_angka": 15.0,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 32
+    },
+    {
+      "kab_kota": "Langkat",
+      "kecamatan": "Stabat",
+      "desa": "Kwala Bingai",
+      "nilai": 12917.977303,
+      "penanda_angka": null,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 33
+    },
+    {
+      "kab_kota": "Langkat",
+      "kecamatan": "Tanjung Pura",
+      "desa": "Pekan Tanjung Pura",
+      "nilai": 11644.44418,
+      "penanda_angka": null,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 34
+    },
+    {
+      "kab_kota": "Langkat",
+      "kecamatan": "Babalan",
+      "desa": "Teluk Meku",
+      "nilai": 10480.421443,
+      "penanda_angka": null,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 35
+    },
+    {
+      "kab_kota": "Langkat",
+      "kecamatan": "Gebang",
+      "desa": "Air Hitam",
+      "nilai": 10426.015619,
+      "penanda_angka": null,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 36
+    },
+    {
+      "kab_kota": "Langkat",
+      "kecamatan": "Sei Lepan",
+      "desa": "Sei Bilah",
+      "nilai": 10131.265237,
+      "penanda_angka": null,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 37
+    },
+    {
+      "kab_kota": "Langkat",
+      "kecamatan": "Babalan",
+      "desa": "Securai Utara",
+      "nilai": 9518.245164,
+      "penanda_angka": null,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 38
+    },
+    {
+      "kab_kota": "Langkat",
+      "kecamatan": "Hinai",
+      "desa": "Batu Malenggang",
+      "nilai": 9484.6765,
+      "penanda_angka": null,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 39
+    },
+    {
+      "kab_kota": "Langkat",
+      "kecamatan": "Tanjung Pura",
+      "desa": "Pematang Cengal",
+      "nilai": 9319.108223,
+      "penanda_angka": null,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 40
+    },
+    {
+      "kab_kota": "Langkat",
+      "kecamatan": "Stabat",
+      "desa": "Pantai Gemi",
+      "nilai": 9173.719456,
+      "penanda_angka": null,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 41
+    },
+    {
+      "kab_kota": "Langkat",
+      "kecamatan": "Binjai",
+      "desa": "Sambi Rejo",
+      "nilai": 9105.357022,
+      "penanda_angka": null,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 42
+    },
+    {
+      "kab_kota": "Langkat",
+      "kecamatan": "Babalan",
+      "desa": "Securai Selatan",
+      "nilai": 8090.832225,
+      "penanda_angka": null,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 43
+    },
+    {
+      "kab_kota": "Langkat",
+      "kecamatan": "Babalan",
+      "desa": "Pelawi Utara",
+      "nilai": 8065.998481,
+      "penanda_angka": null,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 44
+    },
+    {
+      "kab_kota": "Langkat",
+      "kecamatan": "Stabat",
+      "desa": "Ara Condong",
+      "nilai": 7509.67528,
+      "penanda_angka": null,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 45
+    },
+    {
+      "kab_kota": "Langkat",
+      "kecamatan": "Secanggang",
+      "desa": "Secanggang",
+      "nilai": 7418.47263,
+      "penanda_angka": null,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 46
+    },
+    {
+      "kab_kota": "Serdang Bedagai",
+      "kecamatan": "Perbaungan",
+      "desa": "Melati II",
+      "nilai": 17315.922689,
+      "penanda_angka": 6.0,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 47
+    },
+    {
+      "kab_kota": "Serdang Bedagai",
+      "kecamatan": "Tebing Tinggi",
+      "desa": "Paya Lombang",
+      "nilai": 14509.648523,
+      "penanda_angka": null,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 48
+    },
+    {
+      "kab_kota": "Serdang Bedagai",
+      "kecamatan": "Sei Rampah",
+      "desa": "Sei Rampah",
+      "nilai": 13952.996474,
+      "penanda_angka": null,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 49
+    },
+    {
+      "kab_kota": "Serdang Bedagai",
+      "kecamatan": "Tanjung Beringin",
+      "desa": "Pekan Tanjung Beringin",
+      "nilai": 13757.467963,
+      "penanda_angka": null,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 50
+    },
+    {
+      "kab_kota": "Serdang Bedagai",
+      "kecamatan": "Sei Bamban",
+      "desa": "Sei Bamban",
+      "nilai": 12189.697222,
+      "penanda_angka": null,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 51
+    },
+    {
+      "kab_kota": "Serdang Bedagai",
+      "kecamatan": "Teluk Mengkudu",
+      "desa": "Sei Buluh",
+      "nilai": 10204.244593,
+      "penanda_angka": null,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 52
+    },
+    {
+      "kab_kota": "Humbang Hasundutan",
+      "kecamatan": "Baktiraja",
+      "desa": "Marbun Toruan",
+      "nilai": 1271.873147,
+      "penanda_angka": 4.0,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 53
+    },
+    {
+      "kab_kota": "Humbang Hasundutan",
+      "kecamatan": "Baktiraja",
+      "desa": "Marbun Tonga Marbun Dolok",
+      "nilai": 1192.486663,
+      "penanda_angka": null,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 54
+    },
+    {
+      "kab_kota": "Humbang Hasundutan",
+      "kecamatan": "Lintong Nihuta",
+      "desa": "Pargaulan",
+      "nilai": 1123.521506,
+      "penanda_angka": null,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 55
+    },
+    {
+      "kab_kota": "Humbang Hasundutan",
+      "kecamatan": "Baktiraja",
+      "desa": "Sinambela",
+      "nilai": 1088.481667,
+      "penanda_angka": null,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 56
+    },
+    {
+      "kab_kota": "Humbang Hasundutan",
+      "kecamatan": "Baktiraja",
+      "desa": "Tipang",
+      "nilai": 1030.575475,
+      "penanda_angka": null,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 57
+    },
+    {
+      "kab_kota": "Kota Padangsidimpuan",
+      "kecamatan": "Padangsidimpuan Tenggara",
+      "desa": "Manunggang Jae",
+      "nilai": 341.639816,
+      "penanda_angka": 4.0,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 58
+    },
+    {
+      "kab_kota": "Kota Padangsidimpuan",
+      "kecamatan": "Padangsidimpuan Tenggara",
+      "desa": "Tarutung Baru",
+      "nilai": 269.673191,
+      "penanda_angka": null,
+      "status": "-",
+      "catatan": null,
+      "baris_excel": 59
+    },
+    {
+      "kab_kota": "Kota Padangsidimpuan",
+      "kecamatan": "Padangsidimpuan Tenggara",
+      "desa": "Huta Padang",
+      "nilai": 259.211512,
+      "penanda_angka": null,
+      "status": "-",
+      "catatan": null,
+      "baris_excel": 60
+    },
+    {
+      "kab_kota": "Kota Padangsidimpuan",
+      "kecamatan": "Padangsidimpuan Tenggara",
+      "desa": "Huta Lombang",
+      "nilai": 104.445086,
+      "penanda_angka": null,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 61
+    },
+    {
+      "kab_kota": "Kota Sibolga",
+      "kecamatan": "Sibolga Selatan",
+      "desa": "Aek Muara Pinang",
+      "nilai": 5735.317344,
+      "penanda_angka": 4.0,
+      "status": "V",
+      "catatan": "Tidak Ada Lokasi Sensor",
+      "baris_excel": 62
+    },
+    {
+      "kab_kota": "Kota Sibolga",
+      "kecamatan": "Sibolga Utara",
+      "desa": "Sibolga Ilir",
+      "nilai": 4705.74078,
+      "penanda_angka": null,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 63
+    },
+    {
+      "kab_kota": "Kota Sibolga",
+      "kecamatan": "Sibolga Selatan",
+      "desa": "Aek Habil",
+      "nilai": 3701.204819,
+      "penanda_angka": null,
+      "status": "V",
+      "catatan": "Tidak Ada Lokasi Sensor",
+      "baris_excel": 64
+    },
+    {
+      "kab_kota": "Kota Sibolga",
+      "kecamatan": "Sibolga Utara",
+      "desa": "Simare-Mare",
+      "nilai": 3522.151751,
+      "penanda_angka": null,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 65
+    },
+    {
+      "kab_kota": "Kota Tebing Tinggi",
+      "kecamatan": "Rambutan",
+      "desa": "Karya Jaya",
+      "nilai": 7749.532831,
+      "penanda_angka": 5.0,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 66
+    },
+    {
+      "kab_kota": "Kota Tebing Tinggi",
+      "kecamatan": "Bajenis",
+      "desa": "Durian",
+      "nilai": 7524.216811,
+      "penanda_angka": null,
+      "status": "V",
+      "catatan": "Tidak Ada Lokasi Sensor",
+      "baris_excel": 67
+    },
+    {
+      "kab_kota": "Kota Tebing Tinggi",
+      "kecamatan": "Bajenis",
+      "desa": "Bulian",
+      "nilai": 7086.775232,
+      "penanda_angka": null,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 68
+    },
+    {
+      "kab_kota": "Kota Tebing Tinggi",
+      "kecamatan": "Rambutan",
+      "desa": "Tanjung Marulak",
+      "nilai": 7053.465291,
+      "penanda_angka": null,
+      "status": "V",
+      "catatan": "Tidak Ada Lokasi Sensor",
+      "baris_excel": 69
+    },
+    {
+      "kab_kota": "Kota Tebing Tinggi",
+      "kecamatan": "Rambutan",
+      "desa": "Lalang",
+      "nilai": 6621.348544,
+      "penanda_angka": null,
+      "status": "V",
+      "catatan": "Tidak Ada Lokasi Sensor",
+      "baris_excel": 70
+    },
+    {
+      "kab_kota": "Tapanuli Selatan",
+      "kecamatan": "Angkola Sangkunur",
+      "desa": "Sangkunur",
+      "nilai": 5251.830166,
+      "penanda_angka": 4.0,
+      "status": "-",
+      "catatan": "Tidak Ada Lokasi Sensor dan permukiman sedikit",
+      "baris_excel": 71
+    },
+    {
+      "kab_kota": "Tapanuli Selatan",
+      "kecamatan": "Angkola Selatan",
+      "desa": "Pardomuan",
+      "nilai": 4656.509351,
+      "penanda_angka": null,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 72
+    },
+    {
+      "kab_kota": "Tapanuli Selatan",
+      "kecamatan": "Sayur Matinggi",
+      "desa": "Sayur Matinggi",
+      "nilai": 4540.764155,
+      "penanda_angka": null,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 73
+    },
+    {
+      "kab_kota": "Tapanuli Selatan",
+      "kecamatan": "Muara Batang Toru",
+      "desa": "Muara Ampolu",
+      "nilai": 3335.770283,
+      "penanda_angka": null,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 74
+    },
+    {
+      "kab_kota": "Tapanuli Tengah",
+      "kecamatan": "Pandan",
+      "desa": "Pandan",
+      "nilai": 5646.057159,
+      "penanda_angka": 4.0,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 75
+    },
+    {
+      "kab_kota": "Tapanuli Tengah",
+      "kecamatan": "Sarudik",
+      "desa": "Sarudik",
+      "nilai": 4867.970724,
+      "penanda_angka": null,
+      "status": "V",
+      "catatan": "Tidak Ada Lokasi Sensor",
+      "baris_excel": 76
+    },
+    {
+      "kab_kota": "Tapanuli Tengah",
+      "kecamatan": "Pandan",
+      "desa": "Kalangan",
+      "nilai": 4384.046942,
+      "penanda_angka": null,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 77
+    },
+    {
+      "kab_kota": "Tapanuli Tengah",
+      "kecamatan": "Pandan",
+      "desa": "Aek Tolang",
+      "nilai": 4133.542311,
+      "penanda_angka": null,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 78
+    },
+    {
+      "kab_kota": "Tapanuli Utara",
+      "kecamatan": "Tarutung",
+      "desa": "Hutatoruan VII",
+      "nilai": 5406.895609,
+      "penanda_angka": 4.0,
+      "status": "V",
+      "catatan": "Tidak Ada Jembatan",
+      "baris_excel": 79
+    },
+    {
+      "kab_kota": "Tapanuli Utara",
+      "kecamatan": "Tarutung",
+      "desa": "Simamora",
+      "nilai": 2110.875439,
+      "penanda_angka": null,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 80
+    },
+    {
+      "kab_kota": "Tapanuli Utara",
+      "kecamatan": "Tarutung",
+      "desa": "Hutatoruan I",
+      "nilai": 1975.62056,
+      "penanda_angka": null,
+      "status": "V",
+      "catatan": "Tidak Ada Lokasi Lahan Pemda",
+      "baris_excel": 81
+    },
+    {
+      "kab_kota": "Tapanuli Utara",
+      "kecamatan": "Tarutung",
+      "desa": "Hutatoruan X",
+      "nilai": 1879.111241,
+      "penanda_angka": null,
+      "status": "V",
+      "catatan": null,
+      "baris_excel": 82
+    }
+  ],
+  "angka_penutup": 108.0
+}
