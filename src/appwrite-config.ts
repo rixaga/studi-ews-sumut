@@ -4,6 +4,7 @@ export const APPWRITE = {
   projectId: "studi-ews-sumut",
   databaseId: "ews",
   tableId: "titik_usulan",
+  tableIdTanda: "titik_tanda",
   timAdmin: "admin",
   pemulihanUrl: "https://rixaga.github.io/studi-ews-sumut/",
 } as const;

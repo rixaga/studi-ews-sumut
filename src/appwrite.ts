@@ -138,6 +138,90 @@ export async function ubahUsulan(id: string, data: DataUsulan): Promise<void> {
   });
 }
 
+export type SumberTanda = "asli" | "usulan";
+
+export type BarisTanda = {
+  id: string;
+  titik_id: string;
+  sumber: SumberTanda;
+  status: "dihapus";
+  dibuat_oleh: string;
+  waktu: string;
+};
+
+type BarisTandaMentah = {
+  $id: string;
+  titik_id?: string;
+  sumber?: string;
+  status?: string;
+  dibuat_oleh?: string;
+  waktu?: string;
+};
+
+function bacaTanda(baris: BarisTandaMentah): BarisTanda | null {
+  if (!baris.titik_id?.trim()) return null;
+  if (baris.sumber !== "asli" && baris.sumber !== "usulan") return null;
+  if (baris.status !== "dihapus") return null;
+  return {
+    id: baris.$id,
+    titik_id: teks(baris.titik_id, 64),
+    sumber: baris.sumber,
+    status: "dihapus",
+    dibuat_oleh: teks(baris.dibuat_oleh, 64),
+    waktu: teks(baris.waktu, 40),
+  };
+}
+
+export async function daftarTanda(): Promise<BarisTanda[]> {
+  const semua: BarisTanda[] = [];
+  let kursor = "";
+  for (;;) {
+    const kueri = [Query.limit(100)];
+    if (kursor) kueri.push(Query.cursorAfter(kursor));
+    const halaman = await tabel.listRows({
+      databaseId: APPWRITE.databaseId,
+      tableId: APPWRITE.tableIdTanda,
+      queries: kueri,
+    });
+    const baris = halaman.rows ?? [];
+    for (const item of baris) {
+      const bersih = bacaTanda(item as BarisTandaMentah);
+      if (bersih) semua.push(bersih);
+    }
+    if (baris.length < 100) break;
+    kursor = baris[baris.length - 1]?.$id ?? "";
+    if (!kursor) break;
+  }
+  return semua;
+}
+
+export async function buatTanda(data: Omit<BarisTanda, "id">): Promise<BarisTanda> {
+  const hasil = await tabel.createRow({
+    databaseId: APPWRITE.databaseId,
+    tableId: APPWRITE.tableIdTanda,
+    rowId: ID.unique(),
+    data: {
+      titik_id: teks(data.titik_id, 64),
+      sumber: data.sumber,
+      status: "dihapus",
+      dibuat_oleh: teks(data.dibuat_oleh, 64),
+      waktu: teks(data.waktu, 40),
+    },
+    permissions: izinBaris,
+  });
+  const bersih = bacaTanda(hasil as BarisTandaMentah);
+  if (!bersih) throw new Error("Tanda yang tersimpan tidak lengkap.");
+  return bersih;
+}
+
+export async function hapusTanda(id: string): Promise<void> {
+  await tabel.deleteRow({
+    databaseId: APPWRITE.databaseId,
+    tableId: APPWRITE.tableIdTanda,
+    rowId: id,
+  });
+}
+
 export async function hapusUsulan(id: string): Promise<void> {
   await tabel.deleteRow({
     databaseId: APPWRITE.databaseId,

@@ -4,7 +4,6 @@ import {
   akun,
   buatUsulan,
   daftarUsulan,
-  hapusUsulan,
   pesanGalat,
   tim,
   ubahUsulan,
@@ -17,6 +16,7 @@ import { cariTempat, type HasilGeocode } from "./geocode";
 import type { StudyMap } from "./map";
 import { escapeHtml, type Titik } from "./model";
 import { aturTambahan } from "./tabel";
+import { cariTanda, galatTanda, muatTanda, pulihkanTanda, saatTandaBerubah, tandaiDihapus, tempelProperti } from "./tanda";
 import { wilayahPada } from "./wilayah";
 
 type Pengguna = { id: string; nama: string; email: string; admin: boolean };
@@ -38,6 +38,11 @@ const formUsulan = document.querySelector<HTMLFormElement>("#form-usulan");
 const cariInput = document.querySelector<HTMLInputElement>("#geocode-q");
 const cariHasil = document.querySelector<HTMLElement>("#geocode-hasil");
 const modeKlik = document.querySelector<HTMLInputElement>("#mode-klik");
+const alatAdmin = document.querySelector<HTMLElement>("#alat-admin");
+const alatTambah = document.querySelector<HTMLButtonElement>("#alat-tambah");
+const alatHapus = document.querySelector<HTMLButtonElement>("#alat-hapus");
+const alatPetunjuk = document.querySelector<HTMLElement>("#alat-petunjuk");
+const statusField = document.querySelector<HTMLElement>("#usulan-status-field");
 const togUsulan = document.querySelector<HTMLInputElement>("#tog-usulan");
 const usulanStatus = document.querySelector<HTMLElement>("#usulan-status");
 
@@ -89,6 +94,18 @@ function gambarAkun() {
       : "Akun ini bukan anggota tim admin.";
   }
   if (panelAdmin) panelAdmin.hidden = !pengguna?.admin;
+  if (alatAdmin) alatAdmin.hidden = !pengguna?.admin;
+  if (!pengguna?.admin) matikanAlat();
+  peta?.aturAksiTanda(
+    pengguna?.admin
+      ? {
+          admin: true,
+          pulihkan: (id, sumber) => {
+            void pulihkan(id, sumber);
+          },
+        }
+      : null,
+  );
   peta?.aturAksiUsulan(
     Boolean(pengguna?.admin),
     (id) => {
@@ -134,13 +151,18 @@ function keTitik(item: BarisUsulan): Titik {
       status_sumber: "appwrite",
       das_nama: item.das || "—",
       sumber_geocode: item.sumber_geocode || "—",
+      spider: [0, 0],
     },
     geometry: { type: "Point", coordinates: [item.lon, item.lat] },
   };
 }
 
 function gambarLapisan() {
-  const fitur = baris.map((item) => keTitik(item) as unknown as GeoJSON.Feature);
+  const fitur = baris.map((item) => {
+    const titik = keTitik(item);
+    tempelProperti(titik.properties, "usulan");
+    return titik as unknown as GeoJSON.Feature;
+  });
   peta?.setUsulan(fitur, togUsulan?.checked !== false);
   aturTambahan(togUsulan?.checked === false ? [] : baris.map(keTitik));
   if (usulanStatus) {
@@ -177,6 +199,7 @@ async function bukaForm(item: BarisUsulan | null, lon?: number, lat?: number, su
   (formUsulan.elements.namedItem("nama") as HTMLInputElement).value = item?.nama ?? nama;
   (formUsulan.elements.namedItem("jenis") as HTMLSelectElement).value = item?.jenis ?? "sirine";
   (formUsulan.elements.namedItem("status") as HTMLSelectElement).value = item?.status ?? "usulan_studi";
+  if (statusField) statusField.hidden = !item;
   (formUsulan.elements.namedItem("catatan") as HTMLTextAreaElement).value = item?.catatan ?? "";
   const ringkas = document.querySelector("#usulan-wilayah");
   if (ringkas) {
@@ -202,7 +225,7 @@ async function simpan(event: Event) {
   const data: DataUsulan = {
     nama: (formUsulan.elements.namedItem("nama") as HTMLInputElement).value,
     jenis: (formUsulan.elements.namedItem("jenis") as HTMLSelectElement).value as JenisUsulan,
-    status: (formUsulan.elements.namedItem("status") as HTMLSelectElement).value as StatusUsulan,
+    status: itemStatus(),
     lat: draf.lat,
     lon: draf.lon,
     kabupaten: formUsulan.dataset.kabupaten ?? "",
@@ -229,16 +252,58 @@ async function simpan(event: Event) {
   }
 }
 
-async function hapus(id: string) {
+function itemStatus(): StatusUsulan {
+  if (statusField?.hidden) return "usulan_studi";
+  const nilai = (formUsulan?.elements.namedItem("status") as HTMLSelectElement | null)?.value;
+  return nilai === "usulan_bpbd" ? "usulan_bpbd" : "usulan_studi";
+}
+
+function matikanAlat() {
+  if (alatTambah) alatTambah.setAttribute("aria-pressed", "false");
+  if (alatHapus) alatHapus.setAttribute("aria-pressed", "false");
+  if (alatPetunjuk) alatPetunjuk.textContent = "";
+  if (modeKlik) modeKlik.checked = false;
+  peta?.aturModeTambah(false, null);
+  peta?.aturModeHapus(false, null);
+}
+
+async function tandaiTitik(info: { id: string; sumber: "asli" | "usulan"; nama: string }) {
   if (!pengguna?.admin) return;
-  if (!window.confirm("Hapus titik usulan ini?")) return;
+  if (cariTanda(info.sumber, info.id)) {
+    tampilPesan("Titik ini sudah ditandai dihapus.");
+    return;
+  }
+  const nama = info.nama || info.id;
+  if (!window.confirm(`Tandai “${nama}” sebagai dihapus? Titik tetap di peta, dengan tanda silang.`)) return;
   try {
-    await hapusUsulan(id);
-    if (formUsulan) formUsulan.hidden = true;
-    await muatUlang();
+    await tandaiDihapus({ titikId: info.id, sumber: info.sumber, dibuatOleh: pengguna.id });
+    tampilPesan("");
+  } catch (galat) {
+    const dasar = pesanGalat(galat);
+    tampilPesan(
+      galatTanda()
+        ? `${dasar} Tabel titik_tanda belum tersedia. Skema ada di README dan scripts/setup-titik-tanda.mjs.`
+        : dasar,
+    );
+  }
+}
+
+async function pulihkan(id: string, sumber: "asli" | "usulan") {
+  if (!pengguna?.admin) return;
+  if (!window.confirm("Pulihkan titik ini? Tanda silang akan dihilangkan.")) return;
+  try {
+    await pulihkanTanda(sumber, id);
+    tampilPesan("");
   } catch (galat) {
     tampilPesan(pesanGalat(galat));
   }
+}
+
+async function hapus(id: string) {
+  const item = baris.find((row) => row.id === id);
+  await tandaiTitik({ id, sumber: "usulan", nama: item?.nama ?? id });
+  if (formUsulan) formUsulan.hidden = true;
+  peta?.hapusPenanda();
 }
 
 function gambarHasil(hasil: HasilGeocode[]) {
@@ -300,11 +365,31 @@ function pasangCari() {
 export function pasangUsulan(petaAktif: StudyMap) {
   peta = petaAktif;
   pasangCari();
-  modeKlik?.addEventListener("change", () => {
-    peta?.aturModeTambah(Boolean(modeKlik.checked && pengguna?.admin), (lon, lat) => {
+  const mulaiTambah = (nyala: boolean) => {
+    if (!pengguna?.admin) return;
+    if (alatHapus) alatHapus.setAttribute("aria-pressed", "false");
+    peta?.aturModeHapus(false, null);
+    if (alatTambah) alatTambah.setAttribute("aria-pressed", String(nyala));
+    if (modeKlik) modeKlik.checked = nyala;
+    if (alatPetunjuk) alatPetunjuk.textContent = nyala ? "Klik peta untuk menambah lokasi." : "";
+    peta?.aturModeTambah(nyala, (lon, lat) => {
       void bukaForm(null, lon, lat, "klik peta");
-      if (modeKlik) modeKlik.checked = false;
-      peta?.aturModeTambah(false, null);
+      matikanAlat();
+    });
+  };
+  modeKlik?.addEventListener("change", () => mulaiTambah(Boolean(modeKlik.checked)));
+  alatTambah?.addEventListener("click", () => mulaiTambah(alatTambah.getAttribute("aria-pressed") !== "true"));
+  alatHapus?.addEventListener("click", () => {
+    if (!pengguna?.admin) return;
+    const nyala = alatHapus.getAttribute("aria-pressed") !== "true";
+    if (alatTambah) alatTambah.setAttribute("aria-pressed", "false");
+    if (modeKlik) modeKlik.checked = false;
+    peta?.aturModeTambah(false, null);
+    alatHapus.setAttribute("aria-pressed", String(nyala));
+    if (alatPetunjuk) alatPetunjuk.textContent = nyala ? "Klik titik yang akan ditandai dihapus." : "";
+    peta?.aturModeHapus(nyala, (info) => {
+      void tandaiTitik(info);
+      matikanAlat();
     });
   });
   togUsulan?.addEventListener("change", gambarLapisan);
@@ -370,5 +455,13 @@ export function pasangUsulan(petaAktif: StudyMap) {
     pengguna = hasil;
     gambarAkun();
   });
+  saatTandaBerubah(() => {
+    gambarLapisan();
+    const alatAktif = alatTambah?.getAttribute("aria-pressed") === "true" || alatHapus?.getAttribute("aria-pressed") === "true";
+    if (pengguna?.admin && galatTanda() && alatPetunjuk && !alatAktif) {
+      alatPetunjuk.textContent = "Tabel titik_tanda belum ada. Tanda hapus belum bisa disimpan.";
+    }
+  });
   void muatUlang();
+  void muatTanda();
 }

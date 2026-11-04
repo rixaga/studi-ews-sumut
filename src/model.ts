@@ -22,6 +22,12 @@ export type TitikProps = {
   cek_adm4_pcode?: string;
   das_nama?: string;
   sumber_geocode?: string;
+  tanda?: "dihapus";
+  dihapus?: boolean;
+  dihapus_oleh?: string;
+  dihapus_waktu?: string;
+  tanda_id?: string;
+  spider?: [number, number];
 };
 
 export type Titik = {

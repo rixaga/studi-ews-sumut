@@ -151,7 +151,33 @@ Pencarian tempat memakai Nominatim, dibatasi ke kotak Sumatera Utara dan `countr
 
 Masuk admin memakai email dan kata sandi Appwrite. Tautan lupa password mengarah kembali ke `https://rixaga.github.io/studi-ews-sumut/`. Formulir kata sandi baru muncul jika URL memuat `userId` dan `secret`. Tombol tambah, ubah, dan hapus hanya tampil bila pengguna adalah anggota tim `admin`.
 
-Titik usulan disimpan di Appwrite (endpoint dan ID proyek ada di `src/appwrite-config.ts`, tanpa kunci API). Lapisan peta dan angkanya terpisah dari 274 titik studi. Kabupaten, kecamatan, desa, dan DAS diisi dari poligon yang sudah ada di repositori.
+Titik usulan disimpan di Appwrite (endpoint dan ID proyek ada di `src/appwrite-config.ts`, tanpa kunci API). Lapisan peta dan angkanya terpisah dari 274 titik studi. Kabupaten, kecamatan, desa, dan DAS diisi dari poligon yang sudah ada di repositori. Ikon usulan baru berwarna teal, bukan merah sirine atau biru sensor.
+
+Anggota tim `admin` melihat bilah **Alat admin** di dalam peta. **Tambah lokasi** lalu klik peta membuka formulir jenis (sirine atau sensor), nama, dan catatan. Status tersimpan sebagai `usulan_studi`. **Hapus lokasi** tidak menghapus geometri: klik titik (studi atau usulan) menandai baris di tabel `titik_tanda`. Ikon asli tetap, dengan silang merah di atasnya. Popup menampilkan Dihapus, id pembuat, dan waktu. Admin dapat memilih Pulihkan. Pengunjung tanpa login tetap melihat tanda silang.
+
+### Tabel `titik_tanda`
+
+Tabel ini belum dibuat dari lingkungan agen karena tidak ada kunci API admin. Buat sekali dengan kunci server:
+
+```bash
+APPWRITE_API_KEY=... node scripts/setup-titik-tanda.mjs
+```
+
+Database `ews` (sudah ada), tabel `titik_tanda`, nama “Titik tanda”.
+
+Izin tabel: `read("any")`, `create("team:admin")`, `update("team:admin")`, `delete("team:admin")`. `rowSecurity` false. Baris yang dibuat klien juga memakai izin baca `any` dan ubah/hapus `team:admin`.
+
+Kolom:
+
+| key | jenis | wajib | catatan |
+| --- | --- | --- | --- |
+| titik_id | varchar 64 | ya | ID titik studi (`SRN-DS-…` / `SNS-DS-…`) atau `$id` baris usulan |
+| sumber | enum `asli`, `usulan` | ya | `asli` untuk 274 titik, `usulan` untuk `titik_usulan` |
+| status | enum `dihapus` | ya | satu nilai |
+| dibuat_oleh | varchar 64 | ya | `$id` pengguna Appwrite |
+| waktu | varchar 40 | ya | ISO-8601 |
+
+Tanpa tabel ini peta tetap jalan. Menyimpan tanda gagal dengan pesan yang menyebut skema ini.
 
 ## Menjalankan di mesin sendiri
 

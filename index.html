@@ -66,7 +66,7 @@
                 <option value="sensor">Sensor</option>
               </select>
             </label>
-            <label class="field">Status
+            <label class="field" id="usulan-status-field">Status
               <select name="status">
                 <option value="usulan_studi">Usulan studi</option>
                 <option value="usulan_bpbd">Usulan BPBD</option>
@@ -110,10 +110,9 @@
           <div class="layer-block">
             <label class="switch"><input id="tog-usulan" type="checkbox" checked /> Titik usulan</label>
             <ul class="kelas legenda-usulan">
-              <li><img src="./icons/sirene_usulan_studi.png" alt="" /> Sirine, usulan studi</li>
-              <li><img src="./icons/sirene_usulan_bpbd.png" alt="" /> Sirine, usulan BPBD</li>
-              <li><img src="./icons/sensor_banjir_usulan_studi.png" alt="" /> Sensor, usulan studi</li>
-              <li><img src="./icons/sensor_banjir_usulan_bpbd.png" alt="" /> Sensor, usulan BPBD</li>
+              <li><img src="./icons/usulan_baru_sirine.png" alt="" /> Usulan baru, sirine</li>
+              <li><img src="./icons/usulan_baru_sensor.png" alt="" /> Usulan baru, sensor</li>
+              <li><img src="./icons/tanda_hapus.png" alt="" /> Dihapus (ditandai)</li>
             </ul>
             <p id="usulan-status" class="hint">Memuat titik usulan…</p>
           </div>
@@ -274,6 +273,12 @@
         <div id="panel-peta" role="tabpanel">
         <section class="v3-kartu v3-peta-kartu">
           <div id="map" role="region" aria-label="Peta Sumatera Utara"></div>
+          <div id="alat-admin" class="alat-admin" hidden>
+            <p class="alat-judul">Alat admin</p>
+            <button type="button" id="alat-tambah" aria-pressed="false">Tambah lokasi</button>
+            <button type="button" id="alat-hapus" aria-pressed="false">Hapus lokasi</button>
+            <p id="alat-petunjuk" class="hint"></p>
+          </div>
           <form class="cari-peta" id="form-geocode" role="search" onsubmit="return false">
             <label class="field">Cari tempat
               <input id="geocode-q" type="search" placeholder="Nama tempat di Sumatera Utara" autocomplete="off" />
