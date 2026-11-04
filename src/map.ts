@@ -305,6 +305,7 @@ export async function createStudyMap(
   });
   map.dragRotate.disable();
   map.touchZoomRotate.disableRotation();
+  map.addControl(new maplibregl.NavigationControl({ showCompass: false }), "top-right");
 
   await new Promise<void>((resolve) => {
     map.once("load", () => resolve());

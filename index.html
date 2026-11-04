@@ -102,127 +102,6 @@
         </section>
 
         <section class="panel-blok">
-          <p class="label-grup">Lapisan titik</p>
-          <label class="switch"><input id="tog-sirine" type="checkbox" checked /> Sirine</label>
-          <label class="switch"><input id="tog-sensor" type="checkbox" checked /> Sensor</label>
-          <div id="ikon-legenda" class="matriks" aria-label="Legenda jenis dan status"></div>
-          <p class="hint">Belum ditentukan memakai pin asli: sirine merah, sensor biru.</p>
-          <div class="layer-block">
-            <label class="switch"><input id="tog-usulan" type="checkbox" checked /> Titik usulan</label>
-            <ul class="kelas legenda-usulan">
-              <li><img src="./icons/usulan_baru_sirine.png" alt="" /> Usulan baru, sirine</li>
-              <li><img src="./icons/usulan_baru_sensor.png" alt="" /> Usulan baru, sensor</li>
-              <li><img src="./icons/tanda_hapus.png" alt="" /> Dihapus (ditandai)</li>
-            </ul>
-            <p id="usulan-status" class="hint">Memuat titik usulan…</p>
-          </div>
-        </section>
-
-        <section class="panel-blok">
-          <p class="label-grup">Batas</p>
-          <div class="layer-block">
-            <label class="switch"><input id="tog-batas-das" type="checkbox" /> Batas DAS</label>
-            <div id="batas-das-detail" class="layer-detail" hidden>
-              <ul class="kelas"><li><i class="garis garis-das"></i> Garis dan nama DAS</li></ul>
-              <p class="hint">218 poligon. Cermin ArcGIS Online pklpengeo 2023, skema KLHK. Bukan pernyataan resmi KLHK. Lisensi tidak dinyatakan.</p>
-              <p id="batas-das-status" class="hint"></p>
-            </div>
-          </div>
-          <div class="layer-block">
-            <p class="tetap">Batas Kab/Kota</p>
-            <ul class="kelas">
-              <li><i class="garis garis-kab"></i> Kabupaten/kota, dengan nama</li>
-              <li><i class="kotak-air"></i> Danau Toba, air, bukan kabupaten</li>
-            </ul>
-            <p class="hint">Selalu tampil. HDX COD-AB Indonesia v01 (2020), CC BY-IGO.</p>
-            <p id="batas-kab-status" class="hint"></p>
-          </div>
-          <div class="layer-block">
-            <label class="switch"><input id="tog-batas-kec" type="checkbox" /> Batas Kecamatan</label>
-            <div id="batas-kec-detail" class="layer-detail" hidden>
-              <ul class="kelas"><li><i class="garis garis-kec"></i> Kecamatan</li></ul>
-              <p id="batas-kec-status" class="hint"></p>
-            </div>
-          </div>
-          <div class="layer-block">
-            <label class="switch"><input id="tog-batas-desa" type="checkbox" /> Batas Desa</label>
-            <div id="batas-desa-detail" class="layer-detail" hidden>
-              <ul class="kelas"><li><i class="garis garis-desa"></i> Desa/kelurahan, mulai zoom 10</li></ul>
-              <p id="batas-desa-status" class="hint"></p>
-            </div>
-          </div>
-        </section>
-
-        <section class="panel-blok">
-          <p class="label-grup">Sungai</p>
-          <div class="layer-block">
-            <label class="switch">
-              <input id="tog-sungai" type="checkbox" />
-              Aliran Sungai (HydroRIVERS)
-            </label>
-            <div id="sungai-detail" class="layer-detail" hidden>
-              <ul class="kelas">
-                <li><i class="garis garis-tipis"></i> Orde 1, garis tipis</li>
-                <li><i class="garis garis-tebal"></i> Orde 6, garis tebal</li>
-              </ul>
-              <p class="hint">Di bawah zoom 9 hanya orde Strahler 3 ke atas. Tidak ada nama sungai. © WWF HydroSHEDS (Lehner &amp; Grill 2013).</p>
-              <p id="sungai-status" class="hint"></p>
-            </div>
-          </div>
-          <div class="layer-block">
-            <label class="switch">
-              <input id="tog-das" type="checkbox" />
-              Sub-DAS (HydroBASINS L7, proksi, bukan DAS resmi KLHK)
-            </label>
-            <div id="das-detail" class="layer-detail" hidden>
-              <ul class="kelas">
-                <li><i class="garis garis-putus"></i> Garis batas sub-DAS</li>
-              </ul>
-              <p class="hint">40 poligon level 7. Garis saja, bukan DAS resmi KLHK. © WWF HydroSHEDS (Lehner &amp; Grill 2013).</p>
-              <p id="das-status" class="hint"></p>
-            </div>
-          </div>
-        </section>
-
-        <section class="panel-blok">
-          <p class="label-grup">Bahaya dan proksi</p>
-          <div class="layer-block">
-            <label class="switch">
-              <input id="tog-bahaya" type="checkbox" />
-              Indeks Bahaya Banjir (BNPB InaRISK)
-            </label>
-            <div id="bahaya-detail" class="layer-detail" hidden>
-              <label class="field">Opasitas <input id="bahaya-opacity" type="range" min="0" max="100" value="75" /></label>
-              <label class="switch">
-                <input id="bahaya-kelas" type="checkbox" />
-                Klasifikasi tampilan (bukan kelas resmi BNPB)
-              </label>
-              <div id="bahaya-legend"></div>
-              <p id="bahaya-status" class="hint"></p>
-            </div>
-          </div>
-          <div class="layer-block">
-            <label class="switch">
-              <input id="tog-proxy" type="checkbox" />
-              Proksi risiko banjir
-            </label>
-            <p class="hint">Proksi, bukan indeks risiko resmi BNPB (tanpa komponen kapasitas).</p>
-            <div id="proxy-detail" class="layer-detail" hidden>
-              <label class="field">Opasitas <input id="proxy-opacity" type="range" min="0" max="100" value="75" /></label>
-              <div id="proxy-legend"></div>
-              <p id="proxy-status" class="hint"></p>
-            </div>
-          </div>
-          <div class="layer-block is-disabled">
-            <label class="switch">
-              <input type="checkbox" disabled />
-              Indeks Risiko Banjir (InaRISK)
-            </label>
-            <p class="hint">butuh token BNPB</p>
-          </div>
-        </section>
-
-        <section class="panel-blok">
           <div class="v3-kartu-kepala">
             <h2>Ringkasan</h2>
           </div>
@@ -278,6 +157,95 @@
             <button type="button" id="alat-tambah" aria-pressed="false">Tambah lokasi</button>
             <button type="button" id="alat-hapus" aria-pressed="false">Hapus lokasi</button>
             <p id="alat-petunjuk" class="hint"></p>
+          </div>
+          <div class="lapisan-peta" id="lapisan-peta">
+            <button type="button" id="lapisan-tombol" class="lapisan-tombol" aria-expanded="true" aria-controls="lapisan-isi">
+              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+                <path fill="currentColor" d="M12 3 3 8l9 5 9-5-9-5Zm0 8.2L5.2 8 12 4.2 18.8 8 12 11.2ZM3 12l9 5 9-5v2l-9 5-9-5v-2Zm0 4 9 5 9-5v2l-9 5-9-5v-2Z"/>
+              </svg>
+              <span class="sr-only">Lapisan</span>
+            </button>
+            <div id="lapisan-isi" class="lapisan-isi">
+              <section>
+                <p class="label-grup">Titik</p>
+                <label class="switch"><input id="tog-sirine" type="checkbox" checked /> Sirine</label>
+                <label class="switch"><input id="tog-sensor" type="checkbox" checked /> Sensor</label>
+                <div id="ikon-legenda" class="matriks" aria-label="Legenda jenis dan status"></div>
+                <p class="hint">Belum ditentukan memakai pin asli: sirine merah, sensor biru.</p>
+                <label class="switch"><input id="tog-usulan" type="checkbox" checked /> Titik usulan</label>
+                <ul class="kelas legenda-usulan">
+                  <li><img src="./icons/usulan_baru_sirine.png" alt="" /> Usulan baru, sirine</li>
+                  <li><img src="./icons/usulan_baru_sensor.png" alt="" /> Usulan baru, sensor</li>
+                  <li><img src="./icons/tanda_hapus.png" alt="" /> Dihapus (ditandai)</li>
+                </ul>
+                <p id="usulan-status" class="hint">Memuat titik usulan…</p>
+              </section>
+              <section>
+                <p class="label-grup">Batas wilayah</p>
+                <label class="switch"><input id="tog-batas-das" type="checkbox" /> Batas DAS</label>
+                <div id="batas-das-detail" class="layer-detail" hidden>
+                  <ul class="kelas"><li><i class="garis garis-das"></i> Garis dan nama DAS</li></ul>
+                  <p class="hint">218 poligon. Cermin ArcGIS Online pklpengeo 2023, skema KLHK. Bukan pernyataan resmi KLHK. Lisensi tidak dinyatakan.</p>
+                  <p id="batas-das-status" class="hint"></p>
+                </div>
+                <p class="tetap">Batas Kab/Kota</p>
+                <ul class="kelas">
+                  <li><i class="garis garis-kab"></i> Kabupaten/kota, dengan nama</li>
+                  <li><i class="kotak-air"></i> Danau Toba, air, bukan kabupaten</li>
+                </ul>
+                <p class="hint">Selalu tampil. HDX COD-AB Indonesia v01 (2020), CC BY-IGO.</p>
+                <p id="batas-kab-status" class="hint"></p>
+                <label class="switch"><input id="tog-batas-kec" type="checkbox" /> Batas Kecamatan</label>
+                <div id="batas-kec-detail" class="layer-detail" hidden>
+                  <ul class="kelas"><li><i class="garis garis-kec"></i> Kecamatan</li></ul>
+                  <p id="batas-kec-status" class="hint"></p>
+                </div>
+                <label class="switch"><input id="tog-batas-desa" type="checkbox" /> Batas Desa</label>
+                <div id="batas-desa-detail" class="layer-detail" hidden>
+                  <ul class="kelas"><li><i class="garis garis-desa"></i> Desa/kelurahan, mulai zoom 10</li></ul>
+                  <p id="batas-desa-status" class="hint"></p>
+                </div>
+              </section>
+              <section>
+                <p class="label-grup">Hidrologi</p>
+                <label class="switch"><input id="tog-sungai" type="checkbox" /> Aliran Sungai (HydroRIVERS)</label>
+                <div id="sungai-detail" class="layer-detail" hidden>
+                  <ul class="kelas">
+                    <li><i class="garis garis-tipis"></i> Orde 1, garis tipis</li>
+                    <li><i class="garis garis-tebal"></i> Orde 6, garis tebal</li>
+                  </ul>
+                  <p class="hint">Di bawah zoom 9 hanya orde Strahler 3 ke atas. Tidak ada nama sungai. © WWF HydroSHEDS (Lehner &amp; Grill 2013).</p>
+                  <p id="sungai-status" class="hint"></p>
+                </div>
+                <label class="switch"><input id="tog-das" type="checkbox" /> Sub-DAS (HydroBASINS L7, proksi, bukan DAS resmi KLHK)</label>
+                <div id="das-detail" class="layer-detail" hidden>
+                  <ul class="kelas"><li><i class="garis garis-putus"></i> Garis batas sub-DAS</li></ul>
+                  <p class="hint">40 poligon level 7. Garis saja, bukan DAS resmi KLHK. © WWF HydroSHEDS (Lehner &amp; Grill 2013).</p>
+                  <p id="das-status" class="hint"></p>
+                </div>
+              </section>
+              <section>
+                <p class="label-grup">Bahaya &amp; proksi</p>
+                <label class="switch"><input id="tog-bahaya" type="checkbox" /> Indeks Bahaya Banjir (BNPB InaRISK)</label>
+                <div id="bahaya-detail" class="layer-detail" hidden>
+                  <label class="field">Opasitas <input id="bahaya-opacity" type="range" min="0" max="100" value="75" /></label>
+                  <label class="switch"><input id="bahaya-kelas" type="checkbox" /> Klasifikasi tampilan (bukan kelas resmi BNPB)</label>
+                  <div id="bahaya-legend"></div>
+                  <p id="bahaya-status" class="hint"></p>
+                </div>
+                <label class="switch"><input id="tog-proxy" type="checkbox" /> Proksi risiko banjir</label>
+                <p class="hint">Proksi, bukan indeks risiko resmi BNPB (tanpa komponen kapasitas).</p>
+                <div id="proxy-detail" class="layer-detail" hidden>
+                  <label class="field">Opasitas <input id="proxy-opacity" type="range" min="0" max="100" value="75" /></label>
+                  <div id="proxy-legend"></div>
+                  <p id="proxy-status" class="hint"></p>
+                </div>
+                <div class="layer-block is-disabled">
+                  <label class="switch"><input type="checkbox" disabled /> Indeks Risiko Banjir (InaRISK)</label>
+                  <p class="hint">butuh token BNPB</p>
+                </div>
+              </section>
+            </div>
           </div>
           <form class="cari-peta" id="form-geocode" role="search" onsubmit="return false">
             <label class="field">Cari tempat

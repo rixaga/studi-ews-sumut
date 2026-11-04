@@ -382,6 +382,18 @@ async function muat<T>(path: string): Promise<T> {
   return response.json() as Promise<T>;
 }
 
+function pasangLapisan() {
+  const tombol = document.querySelector<HTMLButtonElement>("#lapisan-tombol");
+  const isi = document.querySelector<HTMLElement>("#lapisan-isi");
+  if (!tombol || !isi) return;
+  const atur = (buka: boolean) => {
+    tombol.setAttribute("aria-expanded", String(buka));
+    isi.hidden = !buka;
+  };
+  atur(window.matchMedia("(min-width: 768px)").matches);
+  tombol.addEventListener("click", () => atur(tombol.getAttribute("aria-expanded") !== "true"));
+}
+
 function pasangMenu() {
   menuBtn.addEventListener("click", () => menu(!sidebar.classList.contains("terbuka")));
   scrim.addEventListener("click", () => menu(false));
@@ -404,6 +416,7 @@ async function mulai() {
   pasangTabel((titik) => peta?.fokusTitik(titik));
   pasangInfo();
   pasangTab();
+  pasangLapisan();
   pasangMenu();
   void periksaUlang();
   try {
