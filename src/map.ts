@@ -161,6 +161,34 @@ function ikonSensor(): maplibregl.ExpressionSpecification {
   ];
 }
 
+const namaLokasi: maplibregl.ExpressionSpecification = [
+  "case",
+  [">", ["length", ["to-string", ["coalesce", ["get", "remark"], ""]]], 0],
+  ["get", "remark"],
+  [">", ["length", ["to-string", ["coalesce", ["get", "nama"], ""]]], 0],
+  ["get", "nama"],
+  ["get", "id"],
+];
+
+const tataLabel = {
+  "text-field": namaLokasi,
+  "text-font": ["Noto Sans Regular"],
+  "text-size": 12,
+  "text-anchor": "top" as const,
+  "text-offset": [0, 0.35] as [number, number],
+  "text-max-width": 12,
+  "text-padding": 4,
+  "text-allow-overlap": false,
+  "text-ignore-placement": false,
+  "text-optional": true,
+};
+
+function judulTitik(properties: Record<string, unknown>): string {
+  const remark = String(properties.remark ?? "").trim();
+  const nama = String(properties.nama ?? "").trim();
+  return remark || nama || String(properties.id ?? "Titik");
+}
+
 function popupHtml(properties: Record<string, unknown>, coordinates: [number, number]): string {
   const status = String(properties.status ?? "");
   const statusLabel = STATUS_LABEL[status as keyof typeof STATUS_LABEL] ?? status;
@@ -198,7 +226,7 @@ function popupHtml(properties: Record<string, unknown>, coordinates: [number, nu
   const cek = properties.cek_wilayah
     ? `<p class="popup-catatan">Cek wilayah: nama pada poligon HDX COD-AB berbeda dari teks Excel. Nama Excel tidak diubah.</p>`
     : "";
-  return `<h3>${escapeHtml(properties.id ?? "Titik")}</h3><p class="popup-catatan">Status bukan kolom Excel. Koordinat WGS84 dari teks DMS.</p>${cek}<table>${isi}</table>`;
+  return `<h3>${escapeHtml(judulTitik(properties))}</h3><p class="popup-catatan">Status bukan kolom Excel. Koordinat WGS84 dari teks DMS.</p>${cek}<table>${isi}</table>`;
 }
 
 export async function createStudyMap(
@@ -334,6 +362,31 @@ export async function createStudyMap(
       visibility: "none",
     },
   });
+  map.addLayer({
+    id: "titik-label",
+    type: "symbol",
+    source: "titik",
+    minzoom: 13,
+    filter: ["!", ["has", "point_count"]],
+    layout: tataLabel,
+    paint: {
+      "text-color": "#1c1c1f",
+      "text-halo-color": "#ffffff",
+      "text-halo-width": 1.4,
+    },
+  });
+  map.addLayer({
+    id: "usulan-label",
+    type: "symbol",
+    source: "usulan",
+    minzoom: 13,
+    layout: { ...tataLabel, visibility: "none" },
+    paint: {
+      "text-color": "#1c1c1f",
+      "text-halo-color": "#ffffff",
+      "text-halo-width": 1.4,
+    },
+  });
 
   for (const layer of ["titik-sirine", "titik-sensor", "titik-clusters"] as const) {
     map.on("mouseenter", layer, () => {
@@ -345,7 +398,8 @@ export async function createStudyMap(
   }
   map.on("click", "titik-sirine", (event) => bukaPopup(map, event));
   map.on("click", "titik-sensor", (event) => bukaPopup(map, event));
-  map.on("click", "usulan-titik", (event) => {
+  map.on("click", "titik-label", (event) => bukaPopup(map, event));
+  const bukaUsulan = (event: maplibregl.MapLayerMouseEvent) => {
     const feature = event.features?.[0];
     if (!feature || feature.geometry.type !== "Point") return;
     bukaPopupUsulanDari(map, feature.geometry.coordinates as [number, number], (feature.properties ?? {}) as Record<string, unknown>, {
@@ -353,7 +407,9 @@ export async function createStudyMap(
       sunting: onSuntingUsulan,
       hapus: onHapusUsulan,
     });
-  });
+  };
+  map.on("click", "usulan-titik", bukaUsulan);
+  map.on("click", "usulan-label", bukaUsulan);
   map.on("mouseenter", "usulan-titik", () => {
     map.getCanvas().style.cursor = "pointer";
   });
@@ -379,7 +435,7 @@ export async function createStudyMap(
   map.on("click", (event) => {
     if (!modeTambah || !onKlikKosong) return;
     const kena = map.queryRenderedFeatures(event.point, {
-      layers: ["titik-sirine", "titik-sensor", "titik-clusters", "usulan-titik"],
+      layers: ["titik-sirine", "titik-sensor", "titik-clusters", "titik-label", "usulan-titik", "usulan-label"],
     });
     if (kena.length) return;
     onKlikKosong(event.lngLat.lng, event.lngLat.lat);
@@ -495,8 +551,9 @@ export async function createStudyMap(
     },
     setUsulan(fitur, tampil) {
       (map.getSource("usulan") as GeoJSONSource).setData({ type: "FeatureCollection", features: fitur });
-      if (map.getLayer("usulan-titik")) {
-        map.setLayoutProperty("usulan-titik", "visibility", tampil ? "visible" : "none");
+      const tampak = tampil ? "visible" : "none";
+      for (const id of ["usulan-titik", "usulan-label"]) {
+        if (map.getLayer(id)) map.setLayoutProperty(id, "visibility", tampak);
       }
     },
     aturModeTambah(nyala, onKlik) {
@@ -656,8 +713,10 @@ function bukaPopupUsulanDari(
   const tombol = aksi.admin
     ? `<p class="popup-aksi"><button type="button" data-sunting>Ubah</button><button type="button" data-hapus>Hapus</button></p>`
     : "";
+  const nama = judulTitik(properties);
   const baris: Array<[string, string]> = [
-    ["Nama", String(properties.remark ?? properties.nama ?? "—")],
+    ["ID", id],
+    ["Nama", nama],
     ["Jenis", String(properties.jenis ?? "—")],
     ["Status", STATUS_LABEL[String(properties.status) as keyof typeof STATUS_LABEL] ?? String(properties.status ?? "—")],
     ["Kabupaten/kota", String(properties.wadmkk ?? "—")],
@@ -672,7 +731,7 @@ function bukaPopupUsulanDari(
   const isi = baris.map(([label, value]) => `<tr><th>${escapeHtml(label)}</th><td>${escapeHtml(value)}</td></tr>`).join("");
   const popup = new maplibregl.Popup({ maxWidth: "320px", className: "ews-popup" })
     .setLngLat(coordinates)
-    .setHTML(`<h3>${escapeHtml(id)}</h3><p class="popup-catatan">Titik usulan dari Appwrite. Bukan bagian dari 274 titik studi.</p><table>${isi}</table>${tombol}`)
+    .setHTML(`<h3>${escapeHtml(nama)}</h3><p class="popup-catatan">Titik usulan dari Appwrite. Bukan bagian dari 274 titik studi.</p><table>${isi}</table>${tombol}`)
     .addTo(map);
   popup.getElement()?.querySelector("[data-sunting]")?.addEventListener("click", () => aksi.sunting?.(id));
   popup.getElement()?.querySelector("[data-hapus]")?.addEventListener("click", () => aksi.hapus?.(id));

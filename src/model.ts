@@ -9,6 +9,7 @@ export type TitikProps = {
   wadmkd: string;
   keterangan: string;
   remark: string;
+  nama?: string;
   x_dms: string;
   y_dms: string;
   baris_excel: number;
