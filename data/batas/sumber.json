@@ -1,0 +1,28 @@
+{
+  "nama_tampil": "Sumatera Utara",
+  "shapeName": "North Sumatra",
+  "shapeISO": "ID-SU",
+  "shapeID": "65028918B37605681672150",
+  "penyedia": "geoBoundaries",
+  "produk": "gbOpen",
+  "tingkat": "ADM1",
+  "negara": "IDN",
+  "boundaryID": "IDN-ADM1-65028918",
+  "boundaryYearRepresented": "2017",
+  "buildDate": "Dec 12, 2023",
+  "commit": "9469f09592ced973a3448cf66b6100b741b64c0d",
+  "url_geojson": "https://media.githubusercontent.com/media/wmgeolab/geoBoundaries/9469f09592ced973a3448cf66b6100b741b64c0d/releaseData/gbOpen/IDN/ADM1/geoBoundaries-IDN-ADM1.geojson",
+  "url_api": "https://www.geoboundaries.org/api/current/gbOpen/IDN/ADM1/",
+  "lisensi": "Open Data Commons Open Database License 1.0",
+  "url_lisensi": "https://opendatacommons.org/licenses/odbl/1.0/",
+  "sumber_geometri": "OpenStreetMap, Wambacher",
+  "atribusi": "Batas administrasi © geoBoundaries / OpenStreetMap contributors (ODbL)",
+  "crs": "EPSG:4326",
+  "bbox": [
+    97.0586196,
+    -0.6383341,
+    100.4401959,
+    4.3016772
+  ],
+  "catatan": "Satu fitur ADM1 (shapeName North Sumatra) disalin dari berkas geoBoundaries-IDN-ADM1.geojson tanpa menyederhanakan atau menggeser koordinat. Nama tampilan Sumatera Utara ditambahkan sebagai properti; geometri tidak diubah."
+}

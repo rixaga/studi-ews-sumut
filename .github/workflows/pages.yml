@@ -1,0 +1,60 @@
+name: Deploy ke GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  data:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Pasang openpyxl
+        run: pip install -r scripts/requirements.txt
+      - name: Konversi ulang dan bandingkan
+        run: |
+          python scripts/convert_data.py
+          git diff --exit-code -- data/sirine.geojson data/sensor.geojson data/penduduk_terpapar.csv data/penduduk_terpapar.json data/penduduk_terdampak.json data/penduduk_sumut.json data/alternatif_lokasi.json data/QA.md
+
+  build:
+    needs: data
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - name: Unggah artefak Pages
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Terbitkan
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,20 @@
+{
+  "name": "studi-ews-sumut",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "predev": "node scripts/publish-data.mjs",
+    "prebuild": "node scripts/publish-data.mjs",
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --host 0.0.0.0"
+  },
+  "dependencies": {
+    "maplibre-gl": "^5.15.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3",
+    "vite": "^7.1.12"
+  }
+}
