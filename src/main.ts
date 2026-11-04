@@ -17,6 +17,7 @@ import {
 } from "./model";
 import { pasangInfo, periksaUlang } from "./info";
 import { gambarTabel, muatIndeksDas, pasangTabel } from "./tabel";
+import { pasangUsulan } from "./usulan-ui";
 
 function wajib<T>(node: T | null, nama: string): T {
   if (!node) throw new Error(`Elemen hilang: ${nama}`);
@@ -424,6 +425,7 @@ async function mulai() {
       rasterState[kind] = state;
       perbaruiStatus();
     });
+    pasangUsulan(peta);
     terapkan(false);
   } catch (error) {
     loadError.hidden = false;

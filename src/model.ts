@@ -19,6 +19,8 @@ export type TitikProps = {
   cek_adm3_name?: string;
   cek_adm4_name?: string;
   cek_adm4_pcode?: string;
+  das_nama?: string;
+  sumber_geocode?: string;
 };
 
 export type Titik = {

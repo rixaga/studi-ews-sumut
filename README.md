@@ -145,6 +145,14 @@ Label pada panel: “Proksi, bukan indeks risiko resmi BNPB (tanpa komponen kapa
 
 Snapshot 4 November 2026. Danau Toba dan tubuh air lain dapat tampil tinggi pada petak ini. Jejak petak mencakup Sumatera Utara ke selatan sampai lintang −0,8°, termasuk Pulau-Pulau Batu.
 
+## Titik usulan
+
+Pencarian tempat memakai Nominatim, dibatasi ke kotak Sumatera Utara dan `countrycodes=id`, paling banyak sekitar satu permintaan per detik. Peramban tidak mengizinkan header User-Agent buatan; identitas situs dikirim lewat Referer.
+
+Masuk admin memakai email dan kata sandi Appwrite. Tautan lupa password mengarah kembali ke `https://rixaga.github.io/studi-ews-sumut/`. Formulir kata sandi baru muncul jika URL memuat `userId` dan `secret`. Tombol tambah, ubah, dan hapus hanya tampil bila pengguna adalah anggota tim `admin`.
+
+Titik usulan disimpan di Appwrite (endpoint dan ID proyek ada di `src/appwrite-config.ts`, tanpa kunci API). Lapisan peta dan angkanya terpisah dari 274 titik studi. Kabupaten, kecamatan, desa, dan DAS diisi dari poligon yang sudah ada di repositori.
+
 ## Menjalankan di mesin sendiri
 
 Perlu Python 3.12 dan Node.js 22.
