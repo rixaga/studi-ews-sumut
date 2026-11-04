@@ -8,5 +8,7 @@ public/data/sensor.geojson
 public/data/penduduk_terpapar.json
 public/data/alternatif_lokasi.json
 public/data/points_das.csv
+public/data/mismatch_points.csv
+public/data/wilayah/
 public/data/batas/
 public/data/hidro/

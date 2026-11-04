@@ -53,11 +53,19 @@ Nilai yang diterima:
 
 Untuk mengubah status nanti: sunting kolom `status` pada ID yang bersangkutan, lalu jalankan ulang `python scripts/convert_data.py`. ID yang tidak tercantum di CSV tetap memakai bawaan `usulan_studi`. ID pada CSV berbentuk `SRN-DS-001` dan `SNS-DS-001` karena banyak remark sensor hanya bertuliskan `Jembatan`.
 
+### Batas wilayah
+
+Batas kabupaten/kota dari HDX COD-AB selalu tampil, beserta nama `adm2_name`. Fitur `Danau Toba` pada berkas adm2 digambar sebagai air, bukan sebagai kabupaten. Batas kecamatan, desa (mulai zoom 10), dan DAS (garis plus `nama_das`) mati sampai dinyalakan.
+
+Klaster peta memakai satu sumber untuk sirine dan sensor sekaligus. Angka pada lingkaran adalah jumlah seluruh titik di dalamnya. Mengarahkan kursor menampilkan rincian sirine, sensor, dan status. Beberapa titik berjarak kurang dari 40 m; ikonnya digeser sedikit hanya pada zoom 14 ke atas supaya tidak bertumpuk. Koordinat di tabel dan popup tetap koordinat sumber.
+
 ### Daftar titik
 
 Di bawah peta ada tabel ID, jenis, kabupaten/kota, kecamatan, desa, lokasi (remark), bujur, lintang, DAS, dan sub-DAS. Judul kolom bisa diurutkan. Kotak cari menyaring baris. “Kelompokkan berdasarkan” memilih kabupaten/kota atau DAS. Satu DAS dapat meliputi beberapa kabupaten/kota, jadi kelompok DAS menampilkan kabupaten/kota di dalamnya. Mengklik baris membawa peta ke titik itu dan membuka popup.
 
-Nama DAS dan sub-DAS **tidak** ada pada Excel. Kolom itu dibaca dari `data/points_das.csv` (kolom `id`, `das`, `sub_das`, kunci `id` sama dengan ID titik). Berkas yang ada sekarang hanya berisi header, jadi setiap sel DAS dan sub-DAS tampil `-`. Jangan mengisi nama yang tidak berasal dari sumber. Setelah baris ditambahkan, bangun ulang situs; skrip Python tidak perlu dijalankan untuk berkas ini.
+Nama DAS dibaca dari `data/points_das.csv` (kolom `id`, `das`, `sub_das`). Seluruh 274 titik punya nama DAS. Kolom `sub_das` kosong pada berkas, jadi tabel menampilkan `-`. Nama Excel tidak diubah.
+
+`data/mismatch_points.csv` menandai titik yang nama kab/kec/desanya pada Excel berbeda dari poligon HDX COD-AB. ID pada berkas itu berbentuk `SRN-001` / `SNS-001`; dasbor mencocokkannya ke `SRN-DS-001` / `SNS-DS-001` karena nomor dan nama Excel-nya sama. Baris itu mendapat tanda “cek” dan catatan pada popup. Nama sumber tidak diganti.
 
 ### Penduduk
 

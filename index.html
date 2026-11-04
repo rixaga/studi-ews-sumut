@@ -57,6 +57,41 @@
         </section>
 
         <section class="panel-blok">
+          <p class="label-grup">Batas</p>
+          <div class="layer-block">
+            <label class="switch"><input id="tog-batas-das" type="checkbox" /> Batas DAS</label>
+            <div id="batas-das-detail" class="layer-detail" hidden>
+              <ul class="kelas"><li><i class="garis garis-das"></i> Garis dan nama DAS</li></ul>
+              <p class="hint">218 poligon. Cermin ArcGIS Online pklpengeo 2023, skema KLHK. Bukan pernyataan resmi KLHK. Lisensi tidak dinyatakan.</p>
+              <p id="batas-das-status" class="hint"></p>
+            </div>
+          </div>
+          <div class="layer-block">
+            <p class="tetap">Batas Kab/Kota</p>
+            <ul class="kelas">
+              <li><i class="garis garis-kab"></i> Kabupaten/kota, dengan nama</li>
+              <li><i class="kotak-air"></i> Danau Toba, air, bukan kabupaten</li>
+            </ul>
+            <p class="hint">Selalu tampil. HDX COD-AB Indonesia v01 (2020), CC BY-IGO.</p>
+            <p id="batas-kab-status" class="hint"></p>
+          </div>
+          <div class="layer-block">
+            <label class="switch"><input id="tog-batas-kec" type="checkbox" /> Batas Kecamatan</label>
+            <div id="batas-kec-detail" class="layer-detail" hidden>
+              <ul class="kelas"><li><i class="garis garis-kec"></i> Kecamatan</li></ul>
+              <p id="batas-kec-status" class="hint"></p>
+            </div>
+          </div>
+          <div class="layer-block">
+            <label class="switch"><input id="tog-batas-desa" type="checkbox" /> Batas Desa</label>
+            <div id="batas-desa-detail" class="layer-detail" hidden>
+              <ul class="kelas"><li><i class="garis garis-desa"></i> Desa/kelurahan, mulai zoom 10</li></ul>
+              <p id="batas-desa-status" class="hint"></p>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel-blok">
           <p class="label-grup">Sungai</p>
           <div class="layer-block">
             <label class="switch">
@@ -167,9 +202,13 @@
             <h1>Studi EWS Sumut</h1>
             <p>Sirine dan sensor peringatan dini di Provinsi Sumatera Utara. Angka penduduk dibulatkan untuk tampilan.</p>
           </div>
-          <p class="v3-diperbarui">WGS84 · tidak ada umpan langsung</p>
+          <div class="tab-peta" role="tablist" aria-label="Tampilan utama">
+            <button type="button" id="tab-peta" role="tab" aria-selected="true" aria-controls="panel-peta">Peta</button>
+            <button type="button" id="tab-info" role="tab" aria-selected="false" aria-controls="panel-info">Info</button>
+          </div>
         </header>
         <p id="load-error" class="banner" hidden></p>
+        <div id="panel-peta" role="tabpanel">
         <section class="v3-kartu v3-peta-kartu">
           <div id="map" role="region" aria-label="Peta Sumatera Utara"></div>
           <div id="map-status" class="map-status" hidden></div>
@@ -196,6 +235,114 @@
                 <tr id="tabel-kepala"></tr>
               </thead>
               <tbody id="tabel-isi"></tbody>
+            </table>
+          </div>
+        </section>
+        </div>
+        <section id="panel-info" class="v3-kartu info-kartu" role="tabpanel" hidden aria-labelledby="tab-info">
+          <div class="info-kepala">
+            <div>
+              <h2>Sumber data</h2>
+              <p class="hint">Hanya sumber yang dipakai dasbor. Sel yang tidak diketahui dari berkas ditulis apa adanya.</p>
+            </div>
+            <button type="button" id="info-muat" class="v3-muat">Periksa ulang</button>
+          </div>
+          <div class="tabel-bungkus">
+            <table class="info-tabel">
+              <thead>
+                <tr>
+                  <th>Nama</th>
+                  <th>Penerbit</th>
+                  <th>Tahun</th>
+                  <th>Lisensi</th>
+                  <th>URL</th>
+                  <th>Catatan</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Sebaran sirine dan sensor</td>
+                  <td>Tidak tercantum pada berkas</td>
+                  <td>Tidak tercantum</td>
+                  <td>Tidak tercantum</td>
+                  <td>—</td>
+                  <td>Excel studi, lembar SIRINE dan SENSOR. Koordinat teks DMS, WGS84.</td>
+                  <td><span class="pil">statis</span></td>
+                </tr>
+                <tr>
+                  <td>Penduduk terpapar</td>
+                  <td>Tidak tercantum pada berkas</td>
+                  <td>Tidak tercantum</td>
+                  <td>Tidak tercantum</td>
+                  <td>—</td>
+                  <td>Excel studi, lembar Terpapar, Terdampak, Sumut, dan Alternatif Lokasi. Metode penduduk tidak tertulis.</td>
+                  <td><span class="pil">statis</span></td>
+                </tr>
+                <tr>
+                  <td>InaRISK — Indeks Bahaya Banjir</td>
+                  <td>BNPB</td>
+                  <td>Layanan berjalan</td>
+                  <td>Tidak dinyatakan pada layanan yang dicek</td>
+                  <td><a href="https://gis.bnpb.go.id/server/rest/services/inarisk/INDEKS_BAHAYA_BANJIR/ImageServer">ImageServer</a></td>
+                  <td>Petak langsung, tanpa token. Bukan indeks risiko.</td>
+                  <td id="status-inarisk"><span class="pil pil-tunggu">Memeriksa…</span></td>
+                </tr>
+                <tr>
+                  <td>Proksi risiko banjir</td>
+                  <td>Olahan dari BNPB InaRISK, bukan produk resmi</td>
+                  <td>Snapshot 4 November 2026</td>
+                  <td>Tidak dinyatakan</td>
+                  <td>—</td>
+                  <td>√(bahaya × kerentanan), 100 m, tanpa komponen kapasitas. 1.118 petak, bounds [97, −0,8, 100,5, 4,5]. Danau Toba dapat tampil tinggi.</td>
+                  <td><span class="pil">statis</span></td>
+                </tr>
+                <tr>
+                  <td>HydroRIVERS dan HydroBASINS</td>
+                  <td>WWF HydroSHEDS (Lehner &amp; Grill 2013)</td>
+                  <td>2013</td>
+                  <td>Atribusi pada ketentuan HydroSHEDS</td>
+                  <td><a href="https://www.hydrosheds.org/">hydrosheds.org</a></td>
+                  <td>HydroRIVERS v1, 9.574 ruas, tanpa nama. HydroBASINS L7, 40 sub-DAS, proksi bukan DAS KLHK. DEM sekitar 500 m; sungai dengan daerah tangkapan sekurang-kurangnya 10 km².</td>
+                  <td><span class="pil">statis</span></td>
+                </tr>
+                <tr>
+                  <td>Batas DAS</td>
+                  <td>pklpengeo, cermin pihak ketiga</td>
+                  <td>2023</td>
+                  <td>Tidak dinyatakan</td>
+                  <td>—</td>
+                  <td>ArcGIS Online “Batas DAS KLHK se_Indonesia”. 218 poligon pada berkas ini. Skema KLHK, bukan unggahan resmi KLHK di dasbor ini. luas_ha adalah luas DAS utuh.</td>
+                  <td><span class="pil">statis</span></td>
+                </tr>
+                <tr>
+                  <td>Batas kabupaten, kecamatan, dan desa</td>
+                  <td>HDX, COD-AB Indonesia</td>
+                  <td>2020 (v01)</td>
+                  <td>CC BY-IGO</td>
+                  <td><a href="https://data.humdata.org/dataset/cod-ab-idn">data.humdata.org/dataset/cod-ab-idn</a></td>
+                  <td>adm2, adm3, dan adm4. Fitur Danau Toba pada adm2 tidak digambar sebagai kabupaten.</td>
+                  <td><span class="pil">statis</span></td>
+                </tr>
+                <tr>
+                  <td>Batas provinsi Sumatera Utara</td>
+                  <td>geoBoundaries, dari OpenStreetMap dan Wambacher</td>
+                  <td>Representasi 2017, bangun Desember 2023</td>
+                  <td>ODbL 1.0</td>
+                  <td><a href="https://www.geoboundaries.org/">geoboundaries.org</a></td>
+                  <td>ADM1, shapeName North Sumatra, shapeISO ID-SU. Koordinat tidak disederhanakan.</td>
+                  <td><span class="pil">statis</span></td>
+                </tr>
+                <tr>
+                  <td>OpenFreeMap — gaya Liberty</td>
+                  <td>OpenFreeMap</td>
+                  <td>Layanan berjalan</td>
+                  <td>Peta dasar OpenStreetMap (ODbL); gaya OpenFreeMap / OpenMapTiles</td>
+                  <td><a href="https://openfreemap.org/">openfreemap.org</a></td>
+                  <td>Tanpa kunci API. Diperiksa sebagai berkas gaya, bukan sebagai ubin OSMF.</td>
+                  <td id="status-openfreemap"><span class="pil pil-tunggu">Memeriksa…</span></td>
+                </tr>
+              </tbody>
             </table>
           </div>
         </section>

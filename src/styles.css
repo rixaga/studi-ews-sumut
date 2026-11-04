@@ -178,6 +178,36 @@ input[type="range"] { width: 100%; accent-color: #1c1c1f; }
 .garis-tipis { border-top: 1px solid #0277bd !important; }
 .garis-tebal { border-top: 3px solid #0277bd !important; }
 .garis-putus { border-top: 2px dashed #4338ca !important; }
+.garis-das { border-top: 2px solid #0f766e !important; }
+.garis-kab { border-top: 2px solid #1c1c1f !important; }
+.garis-kec { border-top: 1px solid #6b7280 !important; }
+.garis-desa { border-top: 1px solid #9aa0ab !important; }
+.kotak-air { width: 14px; height: 10px; border-radius: 3px; background: #7eb6d6; display: inline-block; }
+.tetap { margin: 8px 0 0; font-weight: 700; }
+.cek { display: inline-block; margin-left: 4px; padding: 1px 6px; border-radius: 999px; background: #fef3c7; color: #b45309; font-size: 11px; font-weight: 700; }
+.rincian-klaster { margin: 6px 0 0; padding-left: 16px; }
+.tab-peta { display: flex; gap: 6px; align-items: center; }
+.tab-peta button {
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  border-radius: 999px;
+  padding: 8px 14px;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+.tab-peta button[aria-selected="true"] { background: #1c1c1f; color: #fff; border-color: #1c1c1f; }
+.info-kartu { padding: 16px; }
+.info-kepala, .info-kepala { display: flex; justify-content: space-between; gap: 12px; align-items: start; }
+.info-kepala h2 { margin: 0; font-size: 16px; }
+.info-tabel { width: 100%; border-collapse: collapse; font-size: 13px; }
+.info-tabel th, .info-tabel td { padding: 8px 10px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--v3-garis); }
+.info-tabel a { color: #4338ca; font-weight: 700; }
+.pil { display: inline-block; border-radius: 999px; padding: 2px 8px; background: #f3f4f6; font-size: 12px; font-weight: 700; }
+.pil-siap { background: #d1fae5; color: #047857; }
+.pil-gagal { background: #fee2e2; color: #b91c1c; }
+.pil-tunggu { background: #fef3c7; color: #b45309; }
+#status-inarisk, #status-openfreemap { display: flex; flex-direction: column; gap: 4px; min-width: 9rem; }
 .skala { display: grid; grid-template-columns: auto 1fr auto; gap: 8px; align-items: center; font-size: 12px; color: var(--v3-samar); margin-top: 6px; }
 .skala-bar { height: 8px; border-radius: 999px; background: linear-gradient(90deg, #e5e7eb, #1c1c1f); }
 
@@ -191,6 +221,8 @@ input[type="range"] { width: 100%; accent-color: #1c1c1f; }
   flex-direction: column;
   gap: 12px;
 }
+#panel-peta { display: flex; flex-direction: column; gap: 12px; }
+#panel-peta[hidden], #panel-info[hidden] { display: none; }
 .v3-judul-bar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; }
 .v3-judul-bar h1 { margin: 0; font-size: 32px; letter-spacing: -0.04em; }
 .v3-judul-bar p { margin: 4px 0 0; color: var(--v3-samar); }

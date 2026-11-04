@@ -10,6 +10,11 @@ const files = [
   "hidro/rivers_sumut.geojson",
   "hidro/das_sumut_hydrobasins_l7.geojson",
   "points_das.csv",
+  "mismatch_points.csv",
+  "wilayah/das_sumut.geojson",
+  "wilayah/adm2_kab.geojson",
+  "wilayah/adm3_kec.geojson",
+  "wilayah/adm4_desa.geojson",
 ];
 
 for (const rel of files) {

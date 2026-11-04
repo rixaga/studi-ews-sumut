@@ -1,0 +1,103 @@
+id,kab,kec,desa,adm2_name,adm3_name,adm4_name,adm4_pcode
+SRN-001,Deli Serdang,Batang Kuis,Tanjung Sari,Deli Serdang,Batang Kuis,Bakaran Batu,ID1212270005
+SRN-002,Deli Serdang,Batang Kuis,Tanjung Sari,Deli Serdang,Batang Kuis,Bakaran Batu,ID1212270005
+SRN-003,Deli Serdang,Batang Kuis,Tanjung Sari,Deli Serdang,Batang Kuis,Sena,ID1212270001
+SRN-004,Deli Serdang,Beringin,Sidodadi Ramunia,Deli Serdang,Lubuk Pakam,Sekip,ID1212300013
+SRN-005,Deli Serdang,Beringin,Sidodadi Ramunia,Deli Serdang,Beringin,Emplasmen Kuala Namu,ID1212290002
+SRN-006,Deli Serdang,Beringin,Sidodadi Ramunia,Deli Serdang,Beringin,Emplasmen Kuala Namu,ID1212290002
+SRN-007,Deli Serdang,Hamparan Perak,Hamparan Perak,Deli Serdang,Hamparan Perak,Klumpang Kebon,ID1212240006
+SRN-008,Deli Serdang,Hamparan Perak,Hamparan Perak,Deli Serdang,Hamparan Perak,Klumpang Kebon,ID1212240006
+SRN-009,Deli Serdang,Hamparan Perak,Hamparan Perak,Deli Serdang,Hamparan Perak,Klumpang Kebon,ID1212240006
+SRN-010,Deli Serdang,Hamparan Perak,Klumpang Kebun,Deli Serdang,Hamparan Perak,Klambir Lima Kebon,ID1212240005
+SRN-011,Deli Serdang,Hamparan Perak,Klumpang Kebun,Deli Serdang,Labuhan Deli,Helvetia,ID1212250001
+SRN-012,Deli Serdang,Hamparan Perak,Klumpang Kebun,Deli Serdang,Hamparan Perak,Klambir Lima Kebon,ID1212240005
+SRN-013,Deli Serdang,Labuhan Deli,Pematang Johar,Deli Serdang,Percut Sei Tuan,Sampali,ID1212260010
+SRN-014,Deli Serdang,Labuhan Deli,Pematang Johar,Deli Serdang,Percut Sei Tuan,Sampali,ID1212260010
+SRN-015,Deli Serdang,Lubuk Pakam,Sekip,Deli Serdang,Lubuk Pakam,Syahmad,ID1212300008
+SRN-016,Deli Serdang,Lubuk Pakam,Sekip,Deli Serdang,Lubuk Pakam,Pagar Jati,ID1212300007
+SRN-017,Deli Serdang,Lubuk Pakam,Sekip,Deli Serdang,Lubuk Pakam,Lubuk Pakam Tiga,ID1212300009
+SRN-018,Deli Serdang,Percut Sei Tuan,Bandar Khalipah,Deli Serdang,Percut Sei Tuan,Bandar Klippa,ID1212260006
+SRN-019,Deli Serdang,Percut Sei Tuan,Bandar Khalipah,Deli Serdang,Percut Sei Tuan,Tembung,ID1212260003
+SRN-020,Deli Serdang,Percut Sei Tuan,Bandar Khalipah,Deli Serdang,Percut Sei Tuan,Tembung,ID1212260003
+SRN-021,Deli Serdang,Percut Sei Tuan,Bandar Klippa,Deli Serdang,Percut Sei Tuan,Hutan,ID1212260999
+SRN-022,Deli Serdang,Percut Sei Tuan,Bandar Klippa,Deli Serdang,Percut Sei Tuan,Hutan,ID1212260999
+SRN-023,Deli Serdang,Percut Sei Tuan,Bandar Klippa,Deli Serdang,Percut Sei Tuan,Sei Rotan,ID1212260005
+SRN-024,Deli Serdang,Percut Sei Tuan,Kenangan Baru,Kota Medan,Medan Denai,Tegal Sari Mandala II,ID1275040005
+SRN-025,Deli Serdang,Percut Sei Tuan,Kenangan Baru,Kota Medan,Medan Denai,Tegal Sari Mandala II,ID1275040005
+SRN-026,Deli Serdang,Percut Sei Tuan,Kenangan Baru,Kota Medan,Medan Denai,Tegal Sari Mandala II,ID1275040005
+SRN-027,Deli Serdang,Percut Sei Tuan,Kenangan Baru,Kota Medan,Medan Denai,Tegal Sari Mandala II,ID1275040005
+SRN-028,Deli Serdang,Percut Sei Tuan,Kenangan Baru,Kota Medan,Medan Denai,Tegal Sari Mandala II,ID1275040005
+SRN-029,Deli Serdang,Percut Sei Tuan,Percut,Deli Serdang,Percut Sei Tuan,Cinta Rakyat,ID1212260014
+SRN-030,Deli Serdang,Percut Sei Tuan,Percut,Deli Serdang,Percut Sei Tuan,Saentis,ID1212260013
+SRN-031,Deli Serdang,Percut Sei Tuan,Percut,Deli Serdang,Percut Sei Tuan,Cinta Rakyat,ID1212260014
+SRN-032,Deli Serdang,Percut Sei Tuan,Saentis,Deli Serdang,Percut Sei Tuan,Sampali,ID1212260010
+SRN-033,Deli Serdang,Percut Sei Tuan,Saentis,Deli Serdang,Percut Sei Tuan,Sampali,ID1212260010
+SRN-034,Deli Serdang,Percut Sei Tuan,Saentis,Deli Serdang,Percut Sei Tuan,Sampali,ID1212260010
+SRN-035,Deli Serdang,Percut Sei Tuan,Sambirejo Timur,Deli Serdang,Percut Sei Tuan,Hutan,ID1212260999
+SRN-036,Deli Serdang,Percut Sei Tuan,Sambirejo Timur,Deli Serdang,Tanjung Morawa,Telaga Sari,ID1212200016
+SRN-037,Deli Serdang,Percut Sei Tuan,Sambirejo Timur,Deli Serdang,Tanjung Morawa,Telaga Sari,ID1212200016
+SRN-038,Deli Serdang,Percut Sei Tuan,Sampali,Deli Serdang,Percut Sei Tuan,Medan Estate,ID1212260008
+SRN-040,Deli Serdang,Percut Sei Tuan,Sampali,Deli Serdang,Percut Sei Tuan,Medan Estate,ID1212260008
+SRN-041,Deli Serdang,Percut Sei Tuan,Sei Rotan,Deli Serdang,Percut Sei Tuan,Hutan,ID1212260999
+SRN-042,Deli Serdang,Percut Sei Tuan,Sei Rotan,Deli Serdang,Percut Sei Tuan,Hutan,ID1212260999
+SRN-043,Deli Serdang,Percut Sei Tuan,Sei Rotan,Deli Serdang,Percut Sei Tuan,Sumber Rejo Timur,ID1212260004
+SRN-044,Deli Serdang,Percut Sei Tuan,Tembung,Deli Serdang,Percut Sei Tuan,Hutan,ID1212260999
+SRN-045,Deli Serdang,Percut Sei Tuan,Tembung,Deli Serdang,Percut Sei Tuan,Hutan,ID1212260999
+SRN-046,Deli Serdang,Percut Sei Tuan,Tembung,Deli Serdang,Percut Sei Tuan,Hutan,ID1212260999
+SRN-047,Humbang Hasundutan,Baktiraja,Marbun Tonga Marbun Dolok,Humbang Hasundutan,Bakti Raja,Sinambela,ID1215070005
+SRN-048,Humbang Hasundutan,Baktiraja,Marbun Tonga Marbun Dolok,Humbang Hasundutan,Bakti Raja,Sinambela,ID1215070005
+SRN-049,Humbang Hasundutan,Baktiraja,Marbun Toruan,Humbang Hasundutan,Bakti Raja,Sinambela,ID1215070005
+SRN-055,Humbang Hasundutan,Baktiraja,Tipang,Danau Toba,Danau Toba,Danai Toba,ID1288888888
+SRN-074,Kota Medan,Medan Deli,Tanjung Mulya,Kota Medan,Medan Deli,Tanjung Mulia,ID1275180001
+SRN-075,Kota Medan,Medan Deli,Tanjung Mulya,Kota Medan,Medan Deli,Tanjung Mulia,ID1275180001
+SRN-088,Kota Medan,Medan Marelan,Terjun,Deli Serdang,Hamparan Perak,Klumpang Kebon,ID1212240006
+SRN-133,Langkat,Babalan,Teluk Meku,Langkat,Babalan,Pelawi Selatan,ID1213160004
+SRN-138,Langkat,Gebang,Air Hitam,Langkat,Gebang,Pasiran,ID1213150011
+SRN-143,Langkat,Secanggang,Secanggang,Langkat,Secanggang,Selotong,ID1213130008
+SRN-148,Langkat,Stabat,Ara Condong,Langkat,Stabat,Kwala Begumit,ID1213070008
+SRN-165,Serdang Bedagai,Perbaungan,Melati II,Serdang Bedagai,Perbaungan,Melati Dua,ID1218100011
+SRN-166,Serdang Bedagai,Perbaungan,Melati II,Serdang Bedagai,Perbaungan,Melati Dua,ID1218100011
+SRN-167,Serdang Bedagai,Perbaungan,Melati II,Serdang Bedagai,Perbaungan,Melati Dua,ID1218100011
+SRN-183,Tapanuli Selatan,Angkola Selatan,Pardomuan,Tapanuli Selatan,Angkola Selatan,Kelurahan Pardomuan,ID1203080001
+SRN-184,Tapanuli Selatan,Angkola Selatan,Pardomuan,Tapanuli Selatan,Batang Angkola,Sidadi II,ID1203010083
+SRN-185,Tapanuli Selatan,Angkola Selatan,Pardomuan,Tapanuli Selatan,Angkola Selatan,Kelurahan Pardomuan,ID1203080001
+SRN-186,Tapanuli Selatan,Muara Batang Toru,Muara Ampolu,Tapanuli Selatan,Muara Batang Toru,Muara Huta Raja,ID1203102008
+SRN-187,Tapanuli Selatan,Muara Batang Toru,Muara Ampolu,Tapanuli Selatan,Muara Batang Toru,Muara Huta Raja,ID1203102008
+SRN-200,Tapanuli Utara,Tarutung,Hutatoruan I,Tapanuli Utara,Tarutung,Huta Toruan V,ID1205060024
+SRN-201,Tapanuli Utara,Tarutung,Hutatoruan VII,Tapanuli Utara,Tarutung,Huta Toruan VI,ID1205060025
+SRN-202,Tapanuli Utara,Tarutung,Hutatoruan VII,Tapanuli Utara,Tarutung,Huta Toruan IX,ID1205060027
+SRN-203,Tapanuli Utara,Tarutung,Hutatoruan VII,Tapanuli Utara,Tarutung,Huta Toruan X,ID1205060028
+SRN-204,Tapanuli Utara,Tarutung,Hutatoruan X,Tapanuli Utara,Tarutung,Hutagalung Siwaluompu,ID1205060035
+SRN-205,Tapanuli Utara,Tarutung,Hutatoruan X,Tapanuli Utara,Tarutung,Hutagalung Siwaluompu,ID1205060035
+SRN-206,Tapanuli Utara,Tarutung,Hutatoruan X,Tapanuli Utara,Tarutung,Hutagalung Siwaluompu,ID1205060035
+SRN-207,Tapanuli Utara,Tarutung,Simamora,Tapanuli Utara,Tarutung,Huta Toruan VI,ID1205060025
+SRN-208,Tapanuli Utara,Tarutung,Simamora,Tapanuli Utara,Tarutung,Huta Toruan VI,ID1205060025
+SRN-209,Tapanuli Utara,Tarutung,Simamora,Tapanuli Utara,Tarutung,Huta Toruan VI,ID1205060025
+SNS-001,Deli Serdang,Batang Kuis,Tanjung Sari,Deli Serdang,Batang Kuis,Bakaran Batu,ID1212270005
+SNS-002,Deli Serdang,Beringin,Sidodadi Ramunia,Deli Serdang,Pagar Merbau,Sukamandi Hulu,ID1212310015
+SNS-003,Deli Serdang,Hamparan Perak,Hamparan Perak,Deli Serdang,Hamparan Perak,Klumpang Kebon,ID1212240006
+SNS-004,Deli Serdang,Hamparan Perak,Klumpang Kebun,Deli Serdang,Labuhan Deli,Manunggal,ID1212250002
+SNS-005,Deli Serdang,Labuhan Deli,Pematang Johar,Deli Serdang,Percut Sei Tuan,Sampali,ID1212260010
+SNS-006,Deli Serdang,Lubuk Pakam,Sekip,Deli Serdang,Lubuk Pakam,Cemara,ID1212300005
+SNS-007,Deli Serdang,Percut Sei Tuan,Bandar Khalipah,Deli Serdang,Percut Sei Tuan,Tembung,ID1212260003
+SNS-008,Deli Serdang,Percut Sei Tuan,Bandar Klippa,Deli Serdang,Percut Sei Tuan,Sei Rotan,ID1212260005
+SNS-009,Deli Serdang,Percut Sei Tuan,Kenangan Baru,,,,
+SNS-010,Deli Serdang,Percut Sei Tuan,Percut,Deli Serdang,Percut Sei Tuan,Cinta Rakyat,ID1212260014
+SNS-011,Deli Serdang,Percut Sei Tuan,Saentis,Deli Serdang,Percut Sei Tuan,Sampali,ID1212260010
+SNS-012,Deli Serdang,Percut Sei Tuan,Sambirejo Timur,Deli Serdang,Batang Kuis,Sena,ID1212270001
+SNS-014,Deli Serdang,Percut Sei Tuan,Sei Rotan,Deli Serdang,Percut Sei Tuan,Sumber Rejo Timur,ID1212260004
+SNS-015,Deli Serdang,Percut Sei Tuan,Tembung,,,,
+SNS-016,Humbang Hasundutan,Baktiraja,Marbun Toruan,Humbang Hasundutan,Bakti Raja,Sinambela,ID1215070005
+SNS-018,Humbang Hasundutan,Baktiraja,Tipang,Danau Toba,Danau Toba,Danai Toba,ID1288888888
+SNS-025,Kota Medan,Medan Deli,Tanjung Mulya,Kota Medan,Medan Deli,Tanjung Mulia,ID1275180001
+SNS-027,Kota Medan,Medan Labuhan,Besar,Kota Medan,Medan Marelan,Rengas Pulau,ID1275200002
+SNS-028,Kota Medan,Medan Labuhan,Tangkahan,Kota Medan,Medan Labuhan,Besar,ID1275190001
+SNS-029,Kota Medan,Medan Marelan,Rengas Pulau,Kota Medan,Medan Labuhan,Martubung,ID1275190003
+SNS-033,Kota Padangsidimpuan,Padangsidimpuan Tenggara,Huta Lombang,Kota Padangsidimpuan,Padangsidimpuan Tenggara,Perkebunan P Koling,ID1277010017
+SNS-037,Kota Tebing Tinggi,Rambutan,Karya Jaya,Kota Tebing Tinggi,Bajenis,Bandar Sakti,ID1274021004
+SNS-045,Langkat,Secanggang,Secanggang,Langkat,Secanggang,Selotong,ID1213130008
+SNS-047,Langkat,Stabat,Ara Condong,Langkat,Secanggang,Karang Anyar,ID1213130015
+SNS-053,Serdang Bedagai,Perbaungan,Melati II,Serdang Bedagai,Perbaungan,Melati Dua,ID1218100011
+SNS-059,Tapanuli Selatan,Angkola Selatan,Pardomuan,Tapanuli Selatan,Angkola Selatan,Kelurahan Pardomuan,ID1203080001
+SNS-064,Tapanuli Utara,Tarutung,Hutatoruan X,Tapanuli Utara,Tarutung,Huta Toruan VI,ID1205060025
+SNS-065,Tapanuli Utara,Tarutung,Simamora,Tapanuli Utara,Tarutung,Huta Toruan VI,ID1205060025
