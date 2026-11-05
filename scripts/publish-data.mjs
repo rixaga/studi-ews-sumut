@@ -16,6 +16,7 @@ const files = [
   "wilayah/adm3_kec.geojson",
   "wilayah/adm4_desa.geojson",
   "survei.geojson",
+  "pos_hidrologi_bbws2.geojson",
 ];
 
 for (const rel of files) {

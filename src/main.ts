@@ -60,12 +60,14 @@ const togBatasDesa = wajib(document.querySelector<HTMLInputElement>("#tog-batas-
 const togJalanRtrw = wajib(document.querySelector<HTMLInputElement>("#tog-jalan-rtrw"), "jalan rtrw");
 const togSungaiRtrw = wajib(document.querySelector<HTMLInputElement>("#tog-sungai-rtrw"), "sungai rtrw");
 const togDanauRtrw = wajib(document.querySelector<HTMLInputElement>("#tog-danau-rtrw"), "danau rtrw");
+const togPosHidro = wajib(document.querySelector<HTMLInputElement>("#tog-pos-hidro"), "pos hidrologi");
 const batasDasDetail = wajib(document.querySelector<HTMLElement>("#batas-das-detail"), "detail batas das");
 const batasKecDetail = wajib(document.querySelector<HTMLElement>("#batas-kec-detail"), "detail batas kecamatan");
 const batasDesaDetail = wajib(document.querySelector<HTMLElement>("#batas-desa-detail"), "detail batas desa");
 const jalanRtrwDetail = wajib(document.querySelector<HTMLElement>("#jalan-rtrw-detail"), "detail jalan rtrw");
 const sungaiRtrwDetail = wajib(document.querySelector<HTMLElement>("#sungai-rtrw-detail"), "detail sungai rtrw");
 const danauRtrwDetail = wajib(document.querySelector<HTMLElement>("#danau-rtrw-detail"), "detail danau rtrw");
+const posHidroDetail = wajib(document.querySelector<HTMLElement>("#pos-hidro-detail"), "detail pos hidrologi");
 const tabPeta = wajib(document.querySelector<HTMLButtonElement>("#tab-peta"), "tab peta");
 const tabInfo = wajib(document.querySelector<HTMLButtonElement>("#tab-info"), "tab info");
 const panelPeta = wajib(document.querySelector<HTMLElement>("#panel-peta"), "panel peta");
@@ -83,6 +85,7 @@ const rasterState: Record<RasterKind, RasterState> = {
   "jalan-rtrw": "off",
   "sungai-rtrw": "off",
   "danau-rtrw": "off",
+  "pos-hidro": "off",
 };
 const batasNyala: Record<Exclude<BatasJenis, "kab">, boolean> = { das: false, kec: false, desa: false };
 let peta: StudyMap | null = null;
@@ -91,6 +94,7 @@ let dasNyala = false;
 let jalanRtrwNyala = false;
 let sungaiRtrwNyala = false;
 let danauRtrwNyala = false;
+let posHidroNyala = false;
 let sirine: Titik[] = [];
 let sensor: Titik[] = [];
 let desa: DesaTerpapar[] = [];
@@ -242,6 +246,7 @@ function perbaruiStatus() {
     ["jalan-rtrw", "jalan-rtrw-status"],
     ["sungai-rtrw", "sungai-rtrw-status"],
     ["danau-rtrw", "danau-rtrw-status"],
+    ["pos-hidro", "pos-hidro-status"],
   ];
   for (const [jenis, id] of pasangan) {
     const simpul = document.getElementById(id);
@@ -269,6 +274,7 @@ function terapkan(geserPeta: boolean) {
   jalanRtrwDetail.hidden = !togJalanRtrw.checked;
   sungaiRtrwDetail.hidden = !togSungaiRtrw.checked;
   danauRtrwDetail.hidden = !togDanauRtrw.checked;
+  posHidroDetail.hidden = !togPosHidro.checked;
   sinkronBatas("das", togBatasDas.checked);
   sinkronBatas("kec", togBatasKec.checked);
   sinkronBatas("desa", togBatasDesa.checked);
@@ -295,6 +301,10 @@ function terapkan(geserPeta: boolean) {
   if (togDanauRtrw.checked !== danauRtrwNyala) {
     danauRtrwNyala = togDanauRtrw.checked;
     void peta?.setDanauRtrw(danauRtrwNyala);
+  }
+  if (togPosHidro.checked !== posHidroNyala) {
+    posHidroNyala = togPosHidro.checked;
+    void peta?.setPosHidro(posHidroNyala);
   }
   const desaAktif = desaSaring();
   const jumlahPenduduk = desaAktif.reduce((total, row) => total + (row.penduduk_terpapar ?? 0), 0);
@@ -429,7 +439,7 @@ function pasangLapisan() {
 function pasangMenu() {
   menuBtn.addEventListener("click", () => menu(!sidebar.classList.contains("terbuka")));
   scrim.addEventListener("click", () => menu(false));
-  for (const elemen of [kabSelect, statusSelect, togSirine, togSensor, togBahaya, togProxy, bahayaKelas, togSungai, togDas, togBatasDas, togBatasKec, togBatasDesa, togJalanRtrw, togSungaiRtrw, togDanauRtrw]) {
+  for (const elemen of [kabSelect, statusSelect, togSirine, togSensor, togBahaya, togProxy, bahayaKelas, togSungai, togDas, togBatasDas, togBatasKec, togBatasDesa, togJalanRtrw, togSungaiRtrw, togDanauRtrw, togPosHidro]) {
     elemen.addEventListener("change", () => {
       const geser = elemen === kabSelect || elemen === statusSelect;
       terapkan(geser);
