@@ -252,6 +252,18 @@ input[type="range"] { width: 100%; accent-color: #1c1c1f; }
 }
 #map { height: 100%; border-radius: 16px; overflow: hidden; }
 .cari-peta { position: absolute; z-index: 3; top: 18px; left: 18px; width: min(340px, calc(100% - 120px)); }
+.peta-dasar { position: absolute; z-index: 3; left: 18px; bottom: 72px; margin: 0; }
+.peta-dasar select {
+  border: 0;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 8px;
+  color: #1c1c1f;
+}
 .alat-admin {
   position: absolute;
   z-index: 4;
@@ -506,4 +518,5 @@ input[type="range"] { width: 100%; accent-color: #1c1c1f; }
   .lapisan-peta { top: 78px; right: 12px; width: min(200px, calc(52% - 10px)); }
   .lapisan-isi { max-height: min(36vh, calc(62vh - 250px)); }
   .alat-admin { top: 84px; bottom: auto; left: 12px; width: auto; }
+  .peta-dasar { left: 12px; bottom: 100px; }
 }

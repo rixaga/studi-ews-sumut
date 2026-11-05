@@ -97,6 +97,10 @@ Di luar poligon, peta diredupkan. Garis tepi mengikuti geometri yang sama.
 
 Diperiksa 4 November 2026: berkas gaya kembali HTTP 200 bertipe JSON, tanpa kunci API, header `access-control-allow-origin: *`. Atribusi pada peta: OpenFreeMap, OpenMapTiles, dan OpenStreetMap contributors.
 
+Pemilih di kiri bawah peta punya tiga pilihan. **Peta jalan** adalah gaya Liberty itu dan menjadi bawaan. **Satelit** memakai petak Esri World Imagery (`.../World_Imagery/MapServer/tile/{z}/{y}/{x}`, `maxzoom` 19). **Satelit + label** menambah petak referensi `Reference/World_Boundaries_and_Places` di atas citra. Citra disisipkan di lapisan paling bawah; lapisan studi (titik, label, batas, sungai, DAS, bahaya, proksi, usulan, tanda silang) tidak dibuat ulang dan status nyala/mati tetap. Pilihan disimpan di `localStorage` dengan kunci `studi-ews-basemap`.
+
+Atribusi citra: Tiles © Esri — Source: Esri, Maxar, Earthstar Geographics, and the GIS User Community.
+
 ### Aliran sungai dan sub-DAS
 
 Dua lapisan vektor, keduanya **mati sampai dinyalakan**. Legenda hanya muncul saat lapisan menyala. Berkas ada di `data/hidro/` dan tidak diubah.
