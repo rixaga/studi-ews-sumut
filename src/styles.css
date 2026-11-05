@@ -211,6 +211,7 @@ input[type="range"] { width: 100%; accent-color: #1c1c1f; }
 #status-inarisk, #status-openfreemap { display: flex; flex-direction: column; gap: 4px; min-width: 9rem; }
 .skala { display: grid; grid-template-columns: auto 1fr auto; gap: 8px; align-items: center; font-size: 12px; color: var(--v3-samar); margin-top: 6px; }
 .skala-bar { height: 8px; border-radius: 999px; background: linear-gradient(90deg, #e5e7eb, #1c1c1f); }
+.skala-bahaya { height: 8px; border-radius: 999px; background: linear-gradient(90deg, #ffff00, #ff8c00, #ff0000); }
 
 .v3-kolom {
   flex: 1;

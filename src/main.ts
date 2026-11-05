@@ -118,8 +118,8 @@ function gambarLegendaBahaya() {
     return;
   }
   bahayaLegend.innerHTML = `
-    <div class="skala"><span>0 (rendah)</span><span class="skala-bar"></span><span>1 (tinggi)</span></div>
-    <p class="hint">Warna mengikuti server InaRISK. Bukan kelas buatan dasbor.</p>`;
+    <div class="skala"><span>0,01</span><span class="skala-bahaya"></span><span>1</span></div>
+    <p class="hint">Ramp kuning–jingga–merah. Di bawah 0,01 transparan. Bukan kelas resmi BNPB.</p>`;
 }
 
 function gambarLegendaProxy() {

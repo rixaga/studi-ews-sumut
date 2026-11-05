@@ -115,15 +115,17 @@ Lapisan raster MapLibre, **mati sampai dinyalakan**. Petak 256 piksel:
 
 Diperiksa 4 November 2026 tanpa token: respons `image/png`, dan dengan header `Origin: https://rixaga.github.io` server mengembalikan `access-control-allow-origin: https://rixaga.github.io`. Server menggambar langsung (bukan tembolok petak tetap). Jika petak gagal, dasbor menampilkan “Memuat lapisan…” atau “Layer tidak tersedia”.
 
-Legenda bawaan: 0 (rendah) – 1 (tinggi). Warna pada mode ini mengikuti server.
+Tanpa `renderingRule`, server mengembalikan rentangan abu-abu. Kedua mode memakai `renderingRule`. Kotak “Klasifikasi tampilan (bukan kelas resmi BNPB)” **nyala sejak awal**.
 
-Kotak “Klasifikasi tampilan (bukan kelas resmi BNPB)” menambahkan `renderingRule` yang di-URL-encode:
+Mode klasifikasi (bawaan) memakai `renderingRule` yang di-URL-encode:
 
 ```json
 {"rasterFunction":"Colormap","rasterFunctionArguments":{"Raster":{"rasterFunction":"Remap","rasterFunctionArguments":{"InputRanges":[0.01,0.333,0.333,0.666,0.666,1.01],"OutputValues":[1,2,3],"NoDataRanges":[-1,0.01]}},"Colormap":[[1,56,168,0],[2,255,255,0],[3,255,0,0]]}}
 ```
 
-Hijau, kuning, dan merah pada mode itu adalah pewarnaan tampilan, bukan kelas resmi BNPB.
+Hijau, kuning, dan merah pada mode itu adalah pewarnaan tampilan, bukan kelas resmi BNPB. Nilai di bawah 0,01 transparan.
+
+Jika kotak klasifikasi dimatikan, petak memakai ramp 16 langkah kuning–jingga–merah (Colormap setelah Remap), juga dengan nilai di bawah 0,01 transparan. `Stretch` plus `ColorRamp` pada ImageServer ini tetap menghasilkan abu-abu, jadi ramp itu tidak dipakai. Ramp ini bukan kelas resmi BNPB.
 
 Atribusi: Indeks Bahaya Banjir © BNPB – InaRISK.
 
