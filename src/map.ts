@@ -9,8 +9,12 @@ export type RasterState = "off" | "loading" | "ready" | "error" | "partial";
 const BAHAYA_URL =
   "https://gis.bnpb.go.id/server/rest/services/inarisk/INDEKS_BAHAYA_BANJIR/ImageServer/exportImage?bbox={bbox-epsg-3857}&bboxSR=3857&imageSR=3857&size=256,256&format=png32&transparent=true&f=image";
 
-const RENDERING_RULE =
+const RENDERING_RULE_KELAS =
   '{"rasterFunction":"Colormap","rasterFunctionArguments":{"Raster":{"rasterFunction":"Remap","rasterFunctionArguments":{"InputRanges":[0.01,0.333,0.333,0.666,0.666,1.01],"OutputValues":[1,2,3],"NoDataRanges":[-1,0.01]}},"Colormap":[[1,56,168,0],[2,255,255,0],[3,255,0,0]]}}';
+// ImageServer ini mengabaikan ColorRamp pada Stretch dan tetap mengembalikan abu-abu.
+// Ramp tampilan memakai Colormap 16 langkah kuning–jingga–merah. Di bawah 0,01 jadi NoData.
+const RENDERING_RULE_RAMP =
+  '{"rasterFunction":"Colormap","rasterFunctionArguments":{"Colormap":[[1,255,255,0],[2,255,240,0],[3,255,224,0],[4,255,209,0],[5,255,194,0],[6,255,178,0],[7,255,163,0],[8,255,148,0],[9,255,131,0],[10,255,112,0],[11,255,93,0],[12,255,75,0],[13,255,56,0],[14,255,37,0],[15,255,19,0],[16,255,0,0]],"Raster":{"rasterFunction":"Remap","rasterFunctionArguments":{"InputRanges":[0.01,0.0725,0.0725,0.135,0.135,0.1975,0.1975,0.26,0.26,0.3225,0.3225,0.385,0.385,0.4475,0.4475,0.51,0.51,0.5725,0.5725,0.635,0.635,0.6975,0.6975,0.76,0.76,0.8225,0.8225,0.885,0.885,0.9475,0.9475,1.01],"OutputValues":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16],"NoDataRanges":[-1,0.01],"AllowUnmatched":false}}}}';
 
 const IKON: Array<[string, string]> = [
   ["sirene", "sirene.png"],
@@ -579,7 +583,8 @@ export async function createStudyMap(
         bahayaUrl = "";
         return;
       }
-      const url = klasifikasi ? `${BAHAYA_URL}&renderingRule=${encodeURIComponent(RENDERING_RULE)}` : BAHAYA_URL;
+      const aturan = klasifikasi ? RENDERING_RULE_KELAS : RENDERING_RULE_RAMP;
+      const url = `${BAHAYA_URL}&renderingRule=${encodeURIComponent(aturan)}`;
       if (bahayaUrl !== url) {
         pasangRaster("bahaya", "bahaya", [url], {
           attribution: "Indeks Bahaya Banjir © BNPB – InaRISK",
