@@ -58,29 +58,6 @@ export type StudyMap = {
   resize(): void;
 };
 
-function signedArea(ring: Ring): number {
-  let area = 0;
-  for (let index = 0; index < ring.length - 1; index += 1) {
-    area += ring[index][0] * ring[index + 1][1] - ring[index + 1][0] * ring[index][1];
-  }
-  return area / 2;
-}
-
-function closeRing(ring: Ring): Ring {
-  if (ring.length < 2) return ring;
-  const first = ring[0];
-  const last = ring[ring.length - 1];
-  if (first[0] === last[0] && first[1] === last[1]) return ring;
-  return [...ring, [first[0], first[1]]];
-}
-
-function orient(ring: Ring, ccw: boolean): Ring {
-  const closed = closeRing(ring);
-  const positive = signedArea(closed) > 0;
-  if (positive === ccw) return closed;
-  return [...closed].reverse();
-}
-
 function outerRings(geometry: BatasProvinsi["features"][number]["geometry"]): Ring[] {
   if (geometry.type === "Polygon") return [geometry.coordinates[0] as Ring];
   return (geometry.coordinates as number[][][][]).map((polygon) => polygon[0]);
@@ -328,25 +305,7 @@ export async function createStudyMap(
   if (!geometry) throw new Error("Batas provinsi kosong");
   const rings = outerRings(geometry);
   const [west, south, east, north] = bboxOf(rings);
-  const pad = 0.08;
-  // Pulau-Pulau Batu mencapai sekitar 0,64° LS. Geser peta dibuka sampai −0,8°.
-  const southBound = Math.min(south - pad, -0.8);
-  const padded: [number, number, number, number] = [west - pad, southBound, east + pad, north + pad];
   const provinceBounds = new maplibregl.LngLatBounds([west, south], [east, north]);
-  const shell = orient(
-    [
-      [padded[0], padded[1]],
-      [padded[2], padded[1]],
-      [padded[2], padded[3]],
-      [padded[0], padded[3]],
-    ],
-    true,
-  );
-  const mask: GeoJSON.Feature = {
-    type: "Feature",
-    properties: {},
-    geometry: { type: "Polygon", coordinates: [shell, ...rings.map((ring) => orient(ring, false))] },
-  };
 
   const map = new maplibregl.Map({
     container,
@@ -409,7 +368,6 @@ export async function createStudyMap(
     data: batas as GeoJSON.FeatureCollection,
     attribution: "Batas provinsi © geoBoundaries / OpenStreetMap contributors (ODbL)",
   });
-  map.addSource("mask", { type: "geojson", data: { type: "FeatureCollection", features: [mask] } });
   map.addSource("titik", {
     type: "geojson",
     data: koleksi([]),
@@ -426,12 +384,6 @@ export async function createStudyMap(
     },
   });
 
-  map.addLayer({
-    id: "mask",
-    type: "fill",
-    source: "mask",
-    paint: { "fill-color": "#1c1c1f", "fill-opacity": 0.38 },
-  });
   map.addLayer({
     id: "sumut-garis",
     type: "line",
@@ -682,7 +634,7 @@ export async function createStudyMap(
     map.addSource(sourceId, { type: "raster", tiles, tileSize: 256, ...extra });
     map.addLayer(
       { id: sourceId, type: "raster", source: sourceId, paint: { "raster-opacity": 0.75 } },
-      "mask",
+      "sumut-garis",
     );
     lepas[kind] = awasi(map, sourceId, (state) => onRaster(kind, state));
   }
