@@ -308,9 +308,8 @@ export async function createStudyMap(
     style: "https://tiles.openfreemap.org/styles/liberty",
     center: [(west + east) / 2, (south + north) / 2],
     zoom: 6,
-    minZoom: 5,
+    minZoom: 3.5,
     maxZoom: 19,
-    maxBounds: padded,
     renderWorldCopies: false,
     attributionControl: { compact: true },
     fadeDuration: 0,
@@ -318,6 +317,7 @@ export async function createStudyMap(
   map.dragRotate.disable();
   map.touchZoomRotate.disableRotation();
   map.addControl(new maplibregl.NavigationControl({ showCompass: false }), "top-right");
+  map.addControl(tombolSeluruhSumut(() => lihatSumut(true)), "top-right");
 
   await new Promise<void>((resolve) => {
     map.once("load", () => resolve());
@@ -561,21 +561,21 @@ export async function createStudyMap(
   }
   let bahayaUrl = "";
 
+  function paddingSumut(): maplibregl.PaddingOptions {
+    const lebar = map.getContainer().clientWidth;
+    if (lebar < 700) return { top: 92, right: 52, bottom: 150, left: 16 };
+    return { top: 76, right: 64, bottom: 88, left: 16 };
+  }
+
+  function lihatSumut(animasi: boolean) {
+    map.fitBounds(provinceBounds, { padding: paddingSumut(), duration: animasi ? 650 : 0 });
+  }
+
   function fitProvinsi() {
-    const camera = map.cameraForBounds(provinceBounds, { padding: 28 });
-    if (!camera || typeof camera.zoom !== "number" || !camera.center) return;
-    map.setMinZoom(camera.zoom);
-    map.jumpTo({ center: camera.center, zoom: camera.zoom });
+    lihatSumut(true);
   }
 
-  function jagaMinZoom() {
-    const camera = map.cameraForBounds(provinceBounds, { padding: 28 });
-    if (!camera || typeof camera.zoom !== "number") return;
-    map.setMinZoom(camera.zoom);
-  }
-
-  map.on("resize", jagaMinZoom);
-  fitProvinsi();
+  lihatSumut(false);
   void pasangBatas(map, onRaster, "kab", true);
   if (new URLSearchParams(window.location.search).has("uji")) {
     const uji = window as unknown as {
@@ -774,6 +774,30 @@ export async function createStudyMap(
     fitProvinsi,
     resize() {
       map.resize();
+    },
+  };
+}
+
+function tombolSeluruhSumut(saatKlik: () => void): maplibregl.IControl {
+  let wadah: HTMLDivElement | undefined;
+  return {
+    onAdd() {
+      const tombol = document.createElement("button");
+      tombol.type = "button";
+      tombol.className = "maplibregl-ctrl-sumut";
+      tombol.title = "Lihat seluruh Sumut";
+      tombol.setAttribute("aria-label", "Lihat seluruh Sumut");
+      tombol.innerHTML =
+        '<svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M3 8V3h5v2H5v3H3zm9-5h5v5h-2V5h-3V3zM3 12h2v3h3v2H3v-5zm12 3v-3h2v5h-5v-2h3z"/></svg>';
+      tombol.addEventListener("click", saatKlik);
+      wadah = document.createElement("div");
+      wadah.className = "maplibregl-ctrl maplibregl-ctrl-group";
+      wadah.append(tombol);
+      return wadah;
+    },
+    onRemove() {
+      wadah?.remove();
+      wadah = undefined;
     },
   };
 }

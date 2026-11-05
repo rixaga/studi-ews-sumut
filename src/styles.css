@@ -515,7 +515,7 @@ input[type="range"] { width: 100%; accent-color: #1c1c1f; }
 }
 @media (max-width: 767px) {
   .cari-peta { width: min(340px, calc(100% - 72px)); }
-  .lapisan-peta { top: 78px; right: 12px; width: min(200px, calc(52% - 10px)); }
+  .lapisan-peta { top: 124px; right: 12px; width: min(200px, calc(52% - 10px)); }
   .lapisan-isi { max-height: min(36vh, calc(62vh - 250px)); }
   .alat-admin { top: 84px; bottom: auto; left: 12px; width: auto; }
   .peta-dasar { left: 12px; bottom: 100px; }

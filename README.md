@@ -85,9 +85,7 @@ Geometri Sumatera Utara diambil dari geoBoundaries gbOpen, ADM1 Indonesia, fitur
 
 Commit `9469f09592ced973a3448cf66b6100b741b64c0d`. Tahun representasi batas 2017, tanggal bangun Desember 2023. Lisensi Open Data Commons Open Database License 1.0. Geometri bersumber OpenStreetMap dan Wambacher. Koordinat fitur itu disalin tanpa digeser atau disederhanakan. Rincian ada di `data/batas/sumber.json`.
 
-Bbox verteks: bujur 97,0586196–100,4401959, lintang −0,6383341–4,3016772. Angka ini lebih luas ke selatan daripada perkiraan 0,5° LU karena Pulau-Pulau Batu di selatan khatulistiwa ikut dalam ADM1 yang sama. `maxBounds` memakai bbox itu ditambah 0,08°, dengan batas selatan dibuka sampai −0,8° agar pulau itu tidak terpotong tepi peta. `minZoom` dihitung dari bbox geometri supaya tampilan paling jauh tetap seprovinsi.
-
-Di luar poligon, peta diredupkan. Garis tepi mengikuti geometri yang sama.
+Bbox verteks: bujur 97,0586196–100,4401959, lintang −0,6383341–4,3016772. Angka ini lebih luas ke selatan daripada perkiraan 0,5° LU karena Pulau-Pulau Batu di selatan khatulistiwa ikut dalam ADM1 yang sama, dan ke barat mencakup Nias. `minZoom` 3,5 dan tanpa `maxBounds`, supaya tampilan bisa mundur sampai seluruh Indonesia (untuk demo di luar Sumut). Kotak 90–145 BT dan −15–10 LU terlalu sempit untuk tinggi kartu peta, jadi kamera tidak dikunci. Tampilan awal tetap `fitBounds` pada bbox ADM1 Sumut, dengan ruang untuk kotak cari, tombol zoom, dan atribusi. Tombol **Lihat seluruh Sumut** di bawah tombol zoom mengembalikan tampilan itu. Di luar poligon Sumut, peta diredupkan. Garis tepi mengikuti geometri yang sama.
 
 ### Peta dasar
 
