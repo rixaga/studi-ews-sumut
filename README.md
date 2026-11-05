@@ -55,7 +55,7 @@ Untuk mengubah status nanti: sunting kolom `status` pada ID yang bersangkutan, l
 
 ### Batas wilayah
 
-Batas kabupaten/kota dari HDX COD-AB selalu tampil, beserta nama `adm2_name`. Fitur `Danau Toba` pada berkas adm2 digambar sebagai air, bukan sebagai kabupaten. Batas kecamatan, desa (mulai zoom 10), dan DAS (garis plus `nama_das`) mati sampai dinyalakan.
+Batas kabupaten/kota dari HDX COD-AB selalu tampil, beserta nama `adm2_name`. Garisnya hitam `#111`, tebal sekitar 2,2 di bawah zoom 9 dan 3 mulai zoom 11, dengan selubung putih tipis supaya terbaca di citra satelit. Kecamatan ungu tua `#5b2a86` (tebal 1,4, opasitas 0,9). Desa abu-abu muda putus-putus `#9e9e9e` mulai zoom 10 (tebal 0,6–0,9, opasitas 0,7). Urutan gambar: desa di bawah kecamatan, kecamatan di bawah kabupaten, semuanya di bawah titik. Tidak ada isian poligon admin. Fitur `Danau Toba` pada berkas adm2 digambar sebagai air, bukan sebagai kabupaten. Batas kecamatan, desa, dan DAS (garis plus `nama_das`) mati sampai dinyalakan.
 
 Klaster peta memakai satu sumber untuk sirine dan sensor sekaligus. Angka pada lingkaran adalah jumlah seluruh titik di dalamnya. Mengarahkan kursor menampilkan rincian sirine, sensor, dan status. Beberapa titik berjarak kurang dari 40 m; ikonnya digeser sedikit hanya pada zoom 14 ke atas supaya tidak bertumpuk. Koordinat di tabel dan popup tetap koordinat sumber.
 
@@ -85,9 +85,7 @@ Geometri Sumatera Utara diambil dari geoBoundaries gbOpen, ADM1 Indonesia, fitur
 
 Commit `9469f09592ced973a3448cf66b6100b741b64c0d`. Tahun representasi batas 2017, tanggal bangun Desember 2023. Lisensi Open Data Commons Open Database License 1.0. Geometri bersumber OpenStreetMap dan Wambacher. Koordinat fitur itu disalin tanpa digeser atau disederhanakan. Rincian ada di `data/batas/sumber.json`.
 
-Bbox verteks: bujur 97,0586196–100,4401959, lintang −0,6383341–4,3016772. Angka ini lebih luas ke selatan daripada perkiraan 0,5° LU karena Pulau-Pulau Batu di selatan khatulistiwa ikut dalam ADM1 yang sama. `maxBounds` memakai bbox itu ditambah 0,08°, dengan batas selatan dibuka sampai −0,8° agar pulau itu tidak terpotong tepi peta. `minZoom` dihitung dari bbox geometri supaya tampilan paling jauh tetap seprovinsi.
-
-Di luar poligon, peta diredupkan. Garis tepi mengikuti geometri yang sama.
+Bbox verteks: bujur 97,0586196–100,4401959, lintang −0,6383341–4,3016772. Angka ini lebih luas ke selatan daripada perkiraan 0,5° LU karena Pulau-Pulau Batu di selatan khatulistiwa ikut dalam ADM1 yang sama, dan ke barat mencakup Nias. `minZoom` 3,5 dan tanpa `maxBounds`, supaya tampilan bisa mundur sampai seluruh Indonesia (untuk demo di luar Sumut). Kotak 90–145 BT dan −15–10 LU terlalu sempit untuk tinggi kartu peta, jadi kamera tidak dikunci. Tampilan awal tetap `fitBounds` pada bbox ADM1 Sumut, dengan ruang untuk kotak cari, tombol zoom, dan atribusi. Tombol **Lihat seluruh Sumut** di bawah tombol zoom mengembalikan tampilan itu. Di luar poligon Sumut, peta diredupkan. Garis tepi mengikuti geometri yang sama.
 
 ### Peta dasar
 

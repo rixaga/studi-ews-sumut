@@ -308,9 +308,8 @@ export async function createStudyMap(
     style: "https://tiles.openfreemap.org/styles/liberty",
     center: [(west + east) / 2, (south + north) / 2],
     zoom: 6,
-    minZoom: 5,
+    minZoom: 3.5,
     maxZoom: 19,
-    maxBounds: padded,
     renderWorldCopies: false,
     attributionControl: { compact: true },
     fadeDuration: 0,
@@ -318,6 +317,7 @@ export async function createStudyMap(
   map.dragRotate.disable();
   map.touchZoomRotate.disableRotation();
   map.addControl(new maplibregl.NavigationControl({ showCompass: false }), "top-right");
+  map.addControl(tombolSeluruhSumut(() => lihatSumut(true)), "top-right");
 
   await new Promise<void>((resolve) => {
     map.once("load", () => resolve());
@@ -561,21 +561,21 @@ export async function createStudyMap(
   }
   let bahayaUrl = "";
 
+  function paddingSumut(): maplibregl.PaddingOptions {
+    const lebar = map.getContainer().clientWidth;
+    if (lebar < 700) return { top: 92, right: 52, bottom: 150, left: 16 };
+    return { top: 76, right: 64, bottom: 88, left: 16 };
+  }
+
+  function lihatSumut(animasi: boolean) {
+    map.fitBounds(provinceBounds, { padding: paddingSumut(), duration: animasi ? 650 : 0 });
+  }
+
   function fitProvinsi() {
-    const camera = map.cameraForBounds(provinceBounds, { padding: 28 });
-    if (!camera || typeof camera.zoom !== "number" || !camera.center) return;
-    map.setMinZoom(camera.zoom);
-    map.jumpTo({ center: camera.center, zoom: camera.zoom });
+    lihatSumut(true);
   }
 
-  function jagaMinZoom() {
-    const camera = map.cameraForBounds(provinceBounds, { padding: 28 });
-    if (!camera || typeof camera.zoom !== "number") return;
-    map.setMinZoom(camera.zoom);
-  }
-
-  map.on("resize", jagaMinZoom);
-  fitProvinsi();
+  lihatSumut(false);
   void pasangBatas(map, onRaster, "kab", true);
   if (new URLSearchParams(window.location.search).has("uji")) {
     const uji = window as unknown as {
@@ -774,6 +774,30 @@ export async function createStudyMap(
     fitProvinsi,
     resize() {
       map.resize();
+    },
+  };
+}
+
+function tombolSeluruhSumut(saatKlik: () => void): maplibregl.IControl {
+  let wadah: HTMLDivElement | undefined;
+  return {
+    onAdd() {
+      const tombol = document.createElement("button");
+      tombol.type = "button";
+      tombol.className = "maplibregl-ctrl-sumut";
+      tombol.title = "Lihat seluruh Sumut";
+      tombol.setAttribute("aria-label", "Lihat seluruh Sumut");
+      tombol.innerHTML =
+        '<svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M3 8V3h5v2H5v3H3zm9-5h5v5h-2V5h-3V3zM3 12h2v3h3v2H3v-5zm12 3v-3h2v5h-5v-2h3z"/></svg>';
+      tombol.addEventListener("click", saatKlik);
+      wadah = document.createElement("div");
+      wadah.className = "maplibregl-ctrl maplibregl-ctrl-group";
+      wadah.append(tombol);
+      return wadah;
+    },
+    onRemove() {
+      wadah?.remove();
+      wadah = undefined;
     },
   };
 }
@@ -986,7 +1010,7 @@ function matikan(
 const batasGen: Partial<Record<BatasJenis, number>> = {};
 const batasLayer: Record<BatasJenis, string[]> = {
   das: ["batas-das-garis", "batas-das-label"],
-  kab: ["batas-toba", "batas-toba-label", "batas-kab-garis", "batas-kab-label"],
+  kab: ["batas-toba", "batas-toba-label", "batas-kab-casing", "batas-kab-garis", "batas-kab-label"],
   kec: ["batas-kec-garis"],
   desa: ["batas-desa-garis"],
 };
@@ -996,6 +1020,13 @@ const batasSource: Record<BatasJenis, string[]> = {
   kec: ["batas-kec"],
   desa: ["batas-desa"],
 };
+
+function sebelumGarisBatas(map: Map, urutan: string[]): string {
+  for (const id of urutan) {
+    if (map.getLayer(id)) return id;
+  }
+  return "titik-clusters";
+}
 
 function hapusBatas(map: Map, jenis: BatasJenis) {
   for (const id of batasLayer[jenis]) {
@@ -1105,12 +1136,30 @@ async function pasangBatas(
       );
       map.addLayer(
         {
+          id: "batas-kab-casing",
+          type: "line",
+          source: "batas-kab",
+          layout: { "line-join": "round", "line-cap": "round" },
+          paint: {
+            "line-color": "#ffffff",
+            "line-width": ["interpolate", ["linear"], ["zoom"], 9, 3.8, 11, 4.8],
+            "line-opacity": 0.9,
+          },
+        },
+        sebelumGarisBatas(map, ["titik-clusters"]),
+      );
+      map.addLayer(
+        {
           id: "batas-kab-garis",
           type: "line",
           source: "batas-kab",
-          paint: { "line-color": "#1c1c1f", "line-width": 1.5 },
+          layout: { "line-join": "round", "line-cap": "round" },
+          paint: {
+            "line-color": "#111111",
+            "line-width": ["interpolate", ["linear"], ["zoom"], 9, 2.2, 11, 3],
+          },
         },
-        "titik-clusters",
+        sebelumGarisBatas(map, ["titik-clusters"]),
       );
       map.addLayer(
         {
@@ -1145,9 +1194,10 @@ async function pasangBatas(
           id: "batas-kec-garis",
           type: "line",
           source: "batas-kec",
-          paint: { "line-color": "#6b7280", "line-width": 1 },
+          layout: { "line-join": "round", "line-cap": "round" },
+          paint: { "line-color": "#5b2a86", "line-width": 1.4, "line-opacity": 0.9 },
         },
-        "titik-clusters",
+        sebelumGarisBatas(map, ["batas-kab-casing", "batas-kab-garis", "titik-clusters"]),
       );
     } else {
       map.addSource("batas-desa", {
@@ -1161,9 +1211,14 @@ async function pasangBatas(
           type: "line",
           source: "batas-desa",
           minzoom: 10,
-          paint: { "line-color": "#9aa0ab", "line-width": 0.7 },
+          paint: {
+            "line-color": "#9e9e9e",
+            "line-width": ["interpolate", ["linear"], ["zoom"], 10, 0.6, 13, 0.9],
+            "line-opacity": 0.7,
+            "line-dasharray": [2, 2],
+          },
         },
-        "titik-clusters",
+        sebelumGarisBatas(map, ["batas-kec-garis", "batas-kab-casing", "batas-kab-garis", "titik-clusters"]),
       );
     }
     onRaster(kind, "ready");

@@ -452,6 +452,8 @@ async function mulai() {
         // Penyimpanan bisa ditolak. Pilihan tetap berlaku untuk sesi ini.
       }
     });
+    peta.resize();
+    requestAnimationFrame(() => peta?.resize());
     saatTandaBerubah(() => terapkan(false));
     pasangUsulan(peta);
     terapkan(false);
