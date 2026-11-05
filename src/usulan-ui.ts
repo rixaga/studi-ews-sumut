@@ -37,7 +37,6 @@ const panelAdmin = document.querySelector<HTMLElement>("#panel-admin");
 const formUsulan = document.querySelector<HTMLFormElement>("#form-usulan");
 const cariInput = document.querySelector<HTMLInputElement>("#geocode-q");
 const cariHasil = document.querySelector<HTMLElement>("#geocode-hasil");
-const modeKlik = document.querySelector<HTMLInputElement>("#mode-klik");
 const alatAdmin = document.querySelector<HTMLElement>("#alat-admin");
 const alatTambah = document.querySelector<HTMLButtonElement>("#alat-tambah");
 const alatHapus = document.querySelector<HTMLButtonElement>("#alat-hapus");
@@ -91,11 +90,10 @@ function gambarAkun() {
   const peran = document.querySelector("#akun-peran");
   if (nama) nama.textContent = pengguna ? pengguna.nama : "";
   if (peran) {
-    peran.textContent = pengguna?.admin
-      ? "Anggota tim admin. Titik usulan dapat ditambah, diubah, dan dihapus."
-      : "Akun ini bukan anggota tim admin.";
+    peran.textContent = pengguna?.admin ? "Anggota tim admin." : "Akun ini bukan anggota tim admin.";
   }
-  if (panelAdmin) panelAdmin.hidden = !pengguna?.admin;
+  if (panelAdmin) panelAdmin.hidden = true;
+  if (formUsulan) formUsulan.hidden = true;
   if (alatAdmin) alatAdmin.hidden = !pengguna?.admin;
   if (!pengguna?.admin) matikanAlat();
   peta?.aturAksiTanda(
@@ -114,14 +112,8 @@ function gambarAkun() {
       const item = baris.find((row) => row.id === id);
       if (item) bukaForm(item);
     },
-    (id) => {
-      void hapus(id);
-    },
+    () => undefined,
   );
-  if (!pengguna?.admin && modeKlik) {
-    modeKlik.checked = false;
-    peta?.aturModeTambah(false, null);
-  }
 }
 
 function parameterPulih(): { userId: string; secret: string } | null {
@@ -216,8 +208,7 @@ async function bukaForm(item: BarisUsulan | null, lon?: number, lat?: number, su
   formUsulan.dataset.kecamatan = wilayah.kecamatan || item?.kecamatan || "";
   formUsulan.dataset.desa = wilayah.desa || item?.desa || "";
   formUsulan.dataset.das = wilayah.das || item?.das || "";
-  const hapusTombol = document.querySelector<HTMLButtonElement>("#usulan-hapus");
-  if (hapusTombol) hapusTombol.hidden = !item;
+  if (panelAdmin) panelAdmin.hidden = false;
   formUsulan.hidden = false;
 }
 
@@ -246,6 +237,7 @@ async function simpan(event: Event) {
     if (draf.id) await ubahUsulan(draf.id, data);
     else await buatUsulan(data);
     formUsulan.hidden = true;
+    if (panelAdmin) panelAdmin.hidden = true;
     peta?.hapusPenanda();
     tampilPesan("");
     await muatUlang();
@@ -264,7 +256,9 @@ function matikanAlat() {
   if (alatTambah) alatTambah.setAttribute("aria-pressed", "false");
   if (alatHapus) alatHapus.setAttribute("aria-pressed", "false");
   if (alatPetunjuk) alatPetunjuk.textContent = "";
-  if (modeKlik) modeKlik.checked = false;
+  if (formUsulan) formUsulan.hidden = true;
+  if (panelAdmin) panelAdmin.hidden = true;
+  peta?.hapusPenanda();
   peta?.aturModeTambah(false, null);
   peta?.aturModeHapus(false, null);
 }
@@ -296,13 +290,6 @@ async function pulihkan(id: string, sumber: "asli" | "usulan") {
   }
 }
 
-async function hapus(id: string) {
-  const item = baris.find((row) => row.id === id);
-  await tandaiTitik({ id, sumber: "usulan", nama: item?.nama ?? id });
-  if (formUsulan) formUsulan.hidden = true;
-  peta?.hapusPenanda();
-}
-
 function gambarHasil(hasil: HasilGeocode[]) {
   if (!cariHasil) return;
   if (!hasil.length) {
@@ -313,8 +300,7 @@ function gambarHasil(hasil: HasilGeocode[]) {
   cariHasil.hidden = false;
   cariHasil.innerHTML = hasil
     .map((item, index) => {
-      const usul = pengguna?.admin ? `<button type="button" data-usul="${index}">Usulkan di sini</button>` : "";
-      return `<li><button type="button" data-pilih="${index}">${escapeHtml(item.nama)}</button>${usul}</li>`;
+      return `<li><button type="button" data-pilih="${index}">${escapeHtml(item.nama)}</button></li>`;
     })
     .join("");
   cariHasil.querySelectorAll<HTMLButtonElement>("[data-pilih]").forEach((tombol) => {
@@ -322,14 +308,6 @@ function gambarHasil(hasil: HasilGeocode[]) {
       const item = hasil[Number(tombol.dataset.pilih)];
       if (!item) return;
       peta?.taruhPenanda(item.lon, item.lat);
-      if (cariHasil) cariHasil.hidden = true;
-    });
-  });
-  cariHasil.querySelectorAll<HTMLButtonElement>("[data-usul]").forEach((tombol) => {
-    tombol.addEventListener("click", () => {
-      const item = hasil[Number(tombol.dataset.usul)];
-      if (!item) return;
-      void bukaForm(null, item.lon, item.lat, item.sumber, item.nama.split(",")[0] ?? item.nama);
       if (cariHasil) cariHasil.hidden = true;
     });
   });
@@ -364,17 +342,17 @@ export function pasangUsulan(petaAktif: StudyMap) {
   pasangCari();
   const mulaiTambah = (nyala: boolean) => {
     if (!pengguna?.admin) return;
-    if (alatHapus) alatHapus.setAttribute("aria-pressed", "false");
-    peta?.aturModeHapus(false, null);
-    if (alatTambah) alatTambah.setAttribute("aria-pressed", String(nyala));
-    if (modeKlik) modeKlik.checked = nyala;
-    if (alatPetunjuk) alatPetunjuk.textContent = nyala ? "Klik peta untuk menambah lokasi." : "";
-    peta?.aturModeTambah(nyala, (lon, lat) => {
+    matikanAlat();
+    if (!nyala) return;
+    if (alatTambah) alatTambah.setAttribute("aria-pressed", "true");
+    if (alatPetunjuk) alatPetunjuk.textContent = "Klik peta untuk menambah lokasi.";
+    peta?.aturModeTambah(true, (lon, lat) => {
       void bukaForm(null, lon, lat, "klik peta");
-      matikanAlat();
+      if (alatTambah) alatTambah.setAttribute("aria-pressed", "false");
+      if (alatPetunjuk) alatPetunjuk.textContent = "";
+      peta?.aturModeTambah(false, null);
     });
   };
-  modeKlik?.addEventListener("change", () => mulaiTambah(Boolean(modeKlik.checked)));
   window.addEventListener("keydown", (event) => {
     if (event.key !== "Escape") return;
     if (!pengguna?.admin) return;
@@ -384,12 +362,11 @@ export function pasangUsulan(petaAktif: StudyMap) {
   alatHapus?.addEventListener("click", () => {
     if (!pengguna?.admin) return;
     const nyala = alatHapus.getAttribute("aria-pressed") !== "true";
-    if (alatTambah) alatTambah.setAttribute("aria-pressed", "false");
-    if (modeKlik) modeKlik.checked = false;
-    peta?.aturModeTambah(false, null);
-    alatHapus.setAttribute("aria-pressed", String(nyala));
-    if (alatPetunjuk) alatPetunjuk.textContent = nyala ? "Klik titik yang akan ditandai dihapus." : "";
-    peta?.aturModeHapus(nyala, (info) => {
+    matikanAlat();
+    if (!nyala) return;
+    alatHapus.setAttribute("aria-pressed", "true");
+    if (alatPetunjuk) alatPetunjuk.textContent = "Klik titik yang akan ditandai dihapus.";
+    peta?.aturModeHapus(true, (info) => {
       void tandaiTitik(info);
       matikanAlat();
     });
@@ -446,13 +423,7 @@ export function pasangUsulan(petaAktif: StudyMap) {
   formUsulan?.addEventListener("submit", (event) => {
     void simpan(event);
   });
-  document.querySelector("#usulan-batal")?.addEventListener("click", () => {
-    if (formUsulan) formUsulan.hidden = true;
-    peta?.hapusPenanda();
-  });
-  document.querySelector("#usulan-hapus")?.addEventListener("click", () => {
-    if (draf?.id) void hapus(draf.id);
-  });
+  document.querySelector("#usulan-batal")?.addEventListener("click", () => matikanAlat());
   void bacaSesi().then((hasil) => {
     pengguna = hasil;
     gambarAkun();

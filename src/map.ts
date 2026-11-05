@@ -801,9 +801,7 @@ function bukaPopupUsulanDari(
 ) {
   popupKlaster?.remove();
   const id = String(properties.id ?? "");
-  const tombol = aksi.admin
-    ? `<p class="popup-aksi"><button type="button" data-sunting>Ubah</button><button type="button" data-hapus>Tandai dihapus</button></p>`
-    : "";
+  const tombol = aksi.admin ? `<p class="popup-aksi"><button type="button" data-sunting>Ubah</button></p>` : "";
   const nama = judulTitik(properties);
   const baris: Array<[string, string]> = [
     ["ID", id],
@@ -825,7 +823,6 @@ function bukaPopupUsulanDari(
     .setHTML(`<h3>${escapeHtml(nama)}</h3><p class="popup-catatan">Titik usulan dari Appwrite. Bukan bagian dari 274 titik studi.</p>${blokDihapus(properties, aksi.admin)}<table>${isi}</table>${tombol}`)
     .addTo(map);
   popup.getElement()?.querySelector("[data-sunting]")?.addEventListener("click", () => aksi.sunting?.(id));
-  popup.getElement()?.querySelector("[data-hapus]")?.addEventListener("click", () => aksi.hapus?.(id));
   pasangPulihkan(popup, id, "usulan");
 }
 
