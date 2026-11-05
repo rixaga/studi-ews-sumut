@@ -17,6 +17,7 @@ import {
 } from "./model";
 import { pasangInfo, periksaUlang } from "./info";
 import { gambarTabel, muatIndeksDas, pasangTabel } from "./tabel";
+import { muatSurvei, pasangFoto } from "./survei";
 import { saatTandaBerubah, tempelProperti } from "./tanda";
 import { pasangUsulan } from "./usulan-ui";
 
@@ -53,6 +54,7 @@ const sidebar = wajib(document.querySelector<HTMLElement>("#sidebar"), "sidebar"
 const scrim = wajib(document.querySelector<HTMLButtonElement>("#scrim"), "scrim");
 
 const togBatasDas = wajib(document.querySelector<HTMLInputElement>("#tog-batas-das"), "batas das");
+const togSurvei = wajib(document.querySelector<HTMLInputElement>("#tog-survei"), "hasil survei");
 const togBatasKec = wajib(document.querySelector<HTMLInputElement>("#tog-batas-kec"), "batas kecamatan");
 const togBatasDesa = wajib(document.querySelector<HTMLInputElement>("#tog-batas-desa"), "batas desa");
 const batasDasDetail = wajib(document.querySelector<HTMLElement>("#batas-das-detail"), "detail batas das");
@@ -415,6 +417,7 @@ async function mulai() {
   gambarLegendaProxy();
   pasangTabel((titik) => peta?.fokusTitik(titik));
   pasangInfo();
+  pasangFoto();
   pasangTab();
   pasangLapisan();
   pasangMenu();
@@ -456,6 +459,10 @@ async function mulai() {
     requestAnimationFrame(() => peta?.resize());
     saatTandaBerubah(() => terapkan(false));
     pasangUsulan(peta);
+    togSurvei.addEventListener("change", () => {
+      void muatSurvei(peta!, togSurvei.checked);
+    });
+    await muatSurvei(peta, togSurvei.checked);
     terapkan(false);
   } catch (error) {
     loadError.hidden = false;

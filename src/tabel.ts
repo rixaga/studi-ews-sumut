@@ -1,7 +1,7 @@
 import type { Titik } from "./model";
 import { asset, escapeHtml, formatDerajat, STATUS_LABEL } from "./model";
 
-type Kunci = "id" | "jenis" | "status" | "kab" | "kecamatan" | "desa" | "lokasi" | "lon" | "lat" | "das" | "subDas";
+type Kunci = "id" | "jenis" | "status" | "survei" | "kab" | "kecamatan" | "desa" | "lokasi" | "lon" | "lat" | "das" | "subDas";
 type Kelompok = "kab" | "das";
 
 type Baris = {
@@ -9,6 +9,7 @@ type Baris = {
   id: string;
   jenis: string;
   status: string;
+  survei: string;
   kab: string;
   kecamatan: string;
   desa: string;
@@ -23,6 +24,7 @@ const KOLOM: Array<[Kunci, string]> = [
   ["id", "ID"],
   ["jenis", "Jenis"],
   ["status", "Status"],
+  ["survei", "Survei"],
   ["kab", "Kab/Kota"],
   ["kecamatan", "Kecamatan"],
   ["desa", "Desa"],
@@ -47,6 +49,7 @@ let kelompok: Kelompok = "kab";
 let urut: { kunci: Kunci; arah: "naik" | "turun" } = { kunci: "id", arah: "naik" };
 let terpilih = "";
 let onPilih: (titik: Titik) => void = () => undefined;
+const sudahSurvei = new Set<string>();
 
 function kosong(nilai: string | null | undefined): string {
   const teks = (nilai ?? "").trim();
@@ -119,6 +122,7 @@ function jadiBaris(titik: Titik): Baris {
     id: titik.properties.id,
     jenis: labelJenis(titik.properties.jenis),
     status: STATUS_LABEL[titik.properties.status] ?? titik.properties.status,
+    survei: sudahSurvei.has(titik.properties.id) ? "Sudah disurvei" : "—",
     kab: kosong(titik.properties.wadmkk_tampil),
     kecamatan: kosong(titik.properties.wadmkc),
     desa: kosong(titik.properties.wadmkd),
@@ -132,7 +136,7 @@ function jadiBaris(titik: Titik): Baris {
 
 function cocok(baris: Baris, kata: string): boolean {
   if (!kata) return true;
-  const haystack = [baris.id, baris.jenis, baris.status, baris.kab, baris.kecamatan, baris.desa, baris.lokasi, formatDerajat(baris.lon), formatDerajat(baris.lat), baris.das, baris.subDas]
+  const haystack = [baris.id, baris.jenis, baris.status, baris.survei, baris.kab, baris.kecamatan, baris.desa, baris.lokasi, formatDerajat(baris.lon), formatDerajat(baris.lat), baris.das, baris.subDas]
     .join(" ")
     .toLocaleLowerCase("id");
   return haystack.includes(kata);
@@ -157,6 +161,7 @@ function sel(baris: Baris): string {
     id: baris.id,
     jenis: baris.jenis,
     status: baris.status,
+    survei: baris.survei,
     kab: baris.kab,
     kecamatan: baris.kecamatan,
     desa: baris.desa,
@@ -169,6 +174,9 @@ function sel(baris: Baris): string {
   return KOLOM.map(([kunci]) => {
     if (kunci === "id" && baris.titik.properties.cek_wilayah) {
       return `<td>${escapeHtml(nilai.id)} <span class="cek" title="Nama pada poligon COD-AB berbeda dari Excel">cek</span></td>`;
+    }
+    if (kunci === "survei" && baris.survei === "Sudah disurvei") {
+      return `<td><span class="lencana-survei">Sudah disurvei</span></td>`;
     }
     return `<td>${escapeHtml(nilai[kunci])}</td>`;
   }).join("");
@@ -291,6 +299,12 @@ function pilihBaris(id: string) {
   const gulung = bungkus?.scrollTop ?? 0;
   gambar();
   if (bungkus) bungkus.scrollTop = gulung;
+}
+
+export function aturTandaSurvei(id: string[]) {
+  sudahSurvei.clear();
+  for (const item of id) sudahSurvei.add(item);
+  gambar();
 }
 
 export function gambarTabel(titik: Titik[]) {

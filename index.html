@@ -187,6 +187,12 @@
                 <div id="ikon-legenda" class="matriks" aria-label="Legenda jenis dan status"></div>
                 <p class="hint">Belum ditentukan memakai pin asli: sirine merah, sensor biru.</p>
                 <label class="switch"><input id="tog-usulan" type="checkbox" checked /> Titik usulan</label>
+                <label class="switch"><input id="tog-survei" type="checkbox" checked /> Hasil Survei</label>
+                <ul class="kelas">
+                  <li><i class="titik-survei titik-layak"></i> Layak</li>
+                  <li><i class="titik-survei titik-catatan"></i> Dengan catatan</li>
+                  <li><i class="titik-survei titik-tidak"></i> Tidak layak</li>
+                </ul>
                 <ul class="kelas legenda-usulan">
                   <li><img src="./icons/usulan_baru_sirine.png" alt="" /> Usulan baru, sirine</li>
                   <li><img src="./icons/usulan_baru_sensor.png" alt="" /> Usulan baru, sensor</li>
@@ -399,6 +405,15 @@
                   <td id="status-appwrite"><span class="pil pil-tunggu">Memeriksa…</span></td>
                 </tr>
                 <tr>
+                  <td>KoboToolbox — hasil survei</td>
+                  <td>KoboToolbox</td>
+                  <td>Layanan berjalan</td>
+                  <td>Formulir Survei Lokasi EWS Sumatera Utara. Token hanya di GitHub Actions, tidak di peramban.</td>
+                  <td><a href="https://kf.kobotoolbox.org/">kf.kobotoolbox.org</a></td>
+                  <td id="kobo-terakhir">KoboToolbox (sinkron tiap 30 menit), terakhir: belum ada</td>
+                  <td><span class="pil">sinkron</span></td>
+                </tr>
+                <tr>
                   <td>OpenFreeMap — gaya Liberty</td>
                   <td>OpenFreeMap</td>
                   <td>Layanan berjalan</td>
@@ -413,6 +428,10 @@
         </section>
       </div>
     </div>
+    <dialog id="foto-dialog">
+      <form method="dialog"><button type="submit" class="v3-muat">Tutup</button></form>
+      <img id="foto-besar" alt="" />
+    </dialog>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
