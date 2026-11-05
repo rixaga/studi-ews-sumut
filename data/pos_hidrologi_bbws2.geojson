@@ -1,0 +1,1621 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.69004,
+          3.552234
+        ]
+      },
+      "properties": {
+        "nama": "PKL Kampung Baru",
+        "kode": "PKL",
+        "jenis": "Klimatologi",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.798106,
+          3.272213
+        ]
+      },
+      "properties": {
+        "nama": "PKL Silinda",
+        "kode": "PKL",
+        "jenis": "Klimatologi",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.332509,
+          3.831835
+        ]
+      },
+      "properties": {
+        "nama": "PKL Batang Serangan",
+        "kode": "PKL",
+        "jenis": "Klimatologi",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.511927,
+          3.171379
+        ]
+      },
+      "properties": {
+        "nama": "PKL Kuta Gadung",
+        "kode": "PKL",
+        "jenis": "Klimatologi",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.564431,
+          0.732154
+        ]
+      },
+      "properties": {
+        "nama": "PKL Hayu Raja",
+        "kode": "PKL",
+        "jenis": "Klimatologi",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.57186,
+          0.811652
+        ]
+      },
+      "properties": {
+        "nama": "PKL Panyabungan",
+        "kode": "PKL",
+        "jenis": "Klimatologi",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.571664,
+          3.088101
+        ]
+      },
+      "properties": {
+        "nama": "PKL Sukaramai",
+        "kode": "PKL",
+        "jenis": "Klimatologi",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.771449,
+          3.505393
+        ]
+      },
+      "properties": {
+        "nama": "PCH Tanjung Morowa",
+        "kode": "PCH",
+        "jenis": "Curah Hujan",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.670054,
+          1.895346
+        ]
+      },
+      "properties": {
+        "nama": "PCH Kolang",
+        "kode": "PCH",
+        "jenis": "Curah Hujan",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.344208,
+          0.404794
+        ]
+      },
+      "properties": {
+        "nama": "PCH Batu Sondat",
+        "kode": "PCH",
+        "jenis": "Curah Hujan",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.775162,
+          1.743385
+        ]
+      },
+      "properties": {
+        "nama": "PCH Sibolga",
+        "kode": "PCH",
+        "jenis": "Curah Hujan",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.873746,
+          1.594871
+        ]
+      },
+      "properties": {
+        "nama": "PCH Huta Balang",
+        "kode": "PCH",
+        "jenis": "Curah Hujan",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.713592,
+          3.308588
+        ]
+      },
+      "properties": {
+        "nama": "PCH Kota Jurung",
+        "kode": "PCH",
+        "jenis": "Curah Hujan",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.196321,
+          1.628549
+        ]
+      },
+      "properties": {
+        "nama": "PCH Pengkolan",
+        "kode": "PCH",
+        "jenis": "Curah Hujan",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.344027,
+          1.244833
+        ]
+      },
+      "properties": {
+        "nama": "PCH Pintu Padang",
+        "kode": "PCH",
+        "jenis": "Curah Hujan",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.921322,
+          3.386186
+        ]
+      },
+      "properties": {
+        "nama": "PCH Pulo Tagor",
+        "kode": "PCH",
+        "jenis": "Curah Hujan",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.855423,
+          0.618881
+        ]
+      },
+      "properties": {
+        "nama": "PCH Muara Sipongi",
+        "kode": "PCH",
+        "jenis": "Curah Hujan",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.112274,
+          1.785693
+        ]
+      },
+      "properties": {
+        "nama": "PCH Sarulla -Pahae Jae",
+        "kode": "PCH",
+        "jenis": "Curah Hujan",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.429507,
+          1.146939
+        ]
+      },
+      "properties": {
+        "nama": "PCH Sayur Matinggi",
+        "kode": "PCH",
+        "jenis": "Curah Hujan",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.50099,
+          1.013435
+        ]
+      },
+      "properties": {
+        "nama": "PCH Siabu",
+        "kode": "PCH",
+        "jenis": "Curah Hujan",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          100.091041,
+          1.900032
+        ]
+      },
+      "properties": {
+        "nama": "PCH Kota Pinang",
+        "kode": "PCH",
+        "jenis": "Curah Hujan",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.54633,
+          3.271199
+        ]
+      },
+      "properties": {
+        "nama": "PCH Sibolangit",
+        "kode": "PCH",
+        "jenis": "Curah Hujan",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          100.070197,
+          2.306221
+        ]
+      },
+      "properties": {
+        "nama": "PCH Negeri Lama",
+        "kode": "PCH",
+        "jenis": "Curah Hujan",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.562397,
+          2.875359
+        ]
+      },
+      "properties": {
+        "nama": "PCH Terusan Tengah",
+        "kode": "PCH",
+        "jenis": "Curah Hujan",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.71258,
+          2.922132
+        ]
+      },
+      "properties": {
+        "nama": "PCH Simpang Kawat",
+        "kode": "PCH",
+        "jenis": "Curah Hujan",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.108191,
+          3.232232
+        ]
+      },
+      "properties": {
+        "nama": "PCH Pabatu",
+        "kode": "PCH",
+        "jenis": "Curah Hujan",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.934266,
+          3.119698
+        ]
+      },
+      "properties": {
+        "nama": "PCH Sinda Raya",
+        "kode": "PCH",
+        "jenis": "Curah Hujan",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.528424,
+          2.813428
+        ]
+      },
+      "properties": {
+        "nama": "PCH Ujung Seribu",
+        "kode": "PCH",
+        "jenis": "Curah Hujan",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.498861,
+          0.704947
+        ]
+      },
+      "properties": {
+        "nama": "PCH Sopotinjak",
+        "kode": "PCH",
+        "jenis": "Curah Hujan",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.06789,
+          3.408762
+        ]
+      },
+      "properties": {
+        "nama": "PCH Sinar Kasih",
+        "kode": "PCH",
+        "jenis": "Curah Hujan",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.613907,
+          2.78009
+        ]
+      },
+      "properties": {
+        "nama": "PCH Kuala Kemuning",
+        "kode": "PCH",
+        "jenis": "Curah Hujan",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.715514,
+          3.378935
+        ]
+      },
+      "properties": {
+        "nama": "PCH Telun Kenas",
+        "kode": "PCH",
+        "jenis": "Curah Hujan",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.139389,
+          0.576019
+        ]
+      },
+      "properties": {
+        "nama": "PCH Kampung Sawah",
+        "kode": "PCH",
+        "jenis": "Curah Hujan",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.609892,
+          3.55345
+        ]
+      },
+      "properties": {
+        "nama": "PCH Asam Kumbang",
+        "kode": "PCH",
+        "jenis": "Curah Hujan",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.707819,
+          2.385033
+        ]
+      },
+      "properties": {
+        "nama": "PCH Huta Julu",
+        "kode": "PCH",
+        "jenis": "Curah Hujan",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.943156,
+          2.663745
+        ]
+      },
+      "properties": {
+        "nama": "PCH Girsang",
+        "kode": "PCH",
+        "jenis": "Curah Hujan",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.603314,
+          3.350522
+        ]
+      },
+      "properties": {
+        "nama": "PCH Kuala",
+        "kode": "PCH",
+        "jenis": "Curah Hujan",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.647786,
+          2.578782
+        ]
+      },
+      "properties": {
+        "nama": "PCH Aek Sipitudai",
+        "kode": "PCH",
+        "jenis": "Curah Hujan",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.644885,
+          2.511725
+        ]
+      },
+      "properties": {
+        "nama": "PCH Partungko Naginjang",
+        "kode": "PCH",
+        "jenis": "Curah Hujan",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.149239,
+          2.435165
+        ]
+      },
+      "properties": {
+        "nama": "PCH Parparehan II",
+        "kode": "PCH",
+        "jenis": "Curah Hujan",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.034492,
+          3.170103
+        ]
+      },
+      "properties": {
+        "nama": "PCH Sibarau",
+        "kode": "PCH",
+        "jenis": "Curah Hujan",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.832156,
+          2.265777
+        ]
+      },
+      "properties": {
+        "nama": "PDA Merbau - Simpang Empat",
+        "kode": "PDA",
+        "jenis": "Duga Air",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.568914,
+          2.901027
+        ]
+      },
+      "properties": {
+        "nama": "PDA Piasa – Tinggi Raja",
+        "kode": "PDA",
+        "jenis": "Duga Air",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.491997,
+          3.621554
+        ]
+      },
+      "properties": {
+        "nama": "PDA Bingai – Kampung Pahlawan",
+        "kode": "PDA",
+        "jenis": "Duga Air",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.153731,
+          2.961725
+        ]
+      },
+      "properties": {
+        "nama": "PDA Bah Bolon - Batu Gajah",
+        "kode": "PDA",
+        "jenis": "Duga Air",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.325679,
+          3.132594
+        ]
+      },
+      "properties": {
+        "nama": "PDA Bah Bolon - Nagori Bandar",
+        "kode": "PDA",
+        "jenis": "Duga Air",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.562196,
+          2.538791
+        ]
+      },
+      "properties": {
+        "nama": "PDA Kualuh – Pulo Dogom",
+        "kode": "PDA",
+        "jenis": "Duga Air",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.719493,
+          2.343782
+        ]
+      },
+      "properties": {
+        "nama": "PDA Aek Natas - Bandar Durian",
+        "kode": "PDA",
+        "jenis": "Duga Air",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.149384,
+          2.435441
+        ]
+      },
+      "properties": {
+        "nama": "PDA Asahan - Parparean II",
+        "kode": "PDA",
+        "jenis": "Duga Air",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.626853,
+          2.705103
+        ]
+      },
+      "properties": {
+        "nama": "PDA Asahan - Pulau Raja",
+        "kode": "PDA",
+        "jenis": "Duga Air",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.775404,
+          2.868654
+        ]
+      },
+      "properties": {
+        "nama": "PDA Asahan - Jembatan Rihol",
+        "kode": "PDA",
+        "jenis": "Duga Air",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.140768,
+          3.481224
+        ]
+      },
+      "properties": {
+        "nama": "PDA Belutu - Rampah",
+        "kode": "PDA",
+        "jenis": "Duga Air",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.566113,
+          2.920649
+        ]
+      },
+      "properties": {
+        "nama": "PDA Silau Buntu Pane",
+        "kode": "PDA",
+        "jenis": "Duga Air",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.953036,
+          3.278331
+        ]
+      },
+      "properties": {
+        "nama": "PDA Belutu - Silau Dunia",
+        "kode": "PDA",
+        "jenis": "Duga Air",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.302023,
+          0.627683
+        ]
+      },
+      "properties": {
+        "nama": "PDA Batang Natal - Ranto Sore",
+        "kode": "PDA",
+        "jenis": "Duga Air",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.785082,
+          3.52235
+        ]
+      },
+      "properties": {
+        "nama": "PDA Belumai - Tanjung Morawa",
+        "kode": "PDA",
+        "jenis": "Duga Air",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.410385,
+          1.167551
+        ]
+      },
+      "properties": {
+        "nama": "PDA Batang Angkola - Silaiya",
+        "kode": "PDA",
+        "jenis": "Duga Air",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.62769,
+          2.97347
+        ]
+      },
+      "properties": {
+        "nama": "PDA Silau – Kisaran Naga",
+        "kode": "PDA",
+        "jenis": "Duga Air",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.653076,
+          2.576204
+        ]
+      },
+      "properties": {
+        "nama": "PDA Aek Kanopan - Jembatan Kanopan",
+        "kode": "PDA",
+        "jenis": "Duga Air",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.664343,
+          2.527975
+        ]
+      },
+      "properties": {
+        "nama": "PDA Kualuh – Gunting Saga",
+        "kode": "PDA",
+        "jenis": "Duga Air",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.837857,
+          2.103494
+        ]
+      },
+      "properties": {
+        "nama": "PDA Bilah - Kampung Sibuaya",
+        "kode": "PDA",
+        "jenis": "Duga Air",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.331432,
+          3.138582
+        ]
+      },
+      "properties": {
+        "nama": "PDA Bah Tongguran - Tembaan",
+        "kode": "PDA",
+        "jenis": "Duga Air",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.640993,
+          0.726536
+        ]
+      },
+      "properties": {
+        "nama": "PDA Batang Gadis - Maga",
+        "kode": "PDA",
+        "jenis": "Duga Air",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.051374,
+          1.468077
+        ]
+      },
+      "properties": {
+        "nama": "PDA Batang Toru - Hapesong Baru",
+        "kode": "PDA",
+        "jenis": "Duga Air",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          100.101408,
+          1.891235
+        ]
+      },
+      "properties": {
+        "nama": "PDA Barumun - Kota Pinang",
+        "kode": "PDA",
+        "jenis": "Duga Air",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.720222,
+          2.272563
+        ]
+      },
+      "properties": {
+        "nama": "PDA Aek Sibundong - Silagalaga",
+        "kode": "PDA",
+        "jenis": "Duga Air",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.962443,
+          1.729046
+        ]
+      },
+      "properties": {
+        "nama": "PDA Kanan – Langga Payung",
+        "kode": "PDA",
+        "jenis": "Duga Air",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.630225,
+          1.517934
+        ]
+      },
+      "properties": {
+        "nama": "PDA Batang Pane - Gunung Tua",
+        "kode": "PDA",
+        "jenis": "Duga Air",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.138162,
+          1.759796
+        ]
+      },
+      "properties": {
+        "nama": "PDA Aek Puli - Suka Maju",
+        "kode": "PDA",
+        "jenis": "Duga Air",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.795964,
+          3.286778
+        ]
+      },
+      "properties": {
+        "nama": "PDA Buaya – Buaya Dagang Buluh",
+        "kode": "PDA",
+        "jenis": "Duga Air",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.945557,
+          2.063112
+        ]
+      },
+      "properties": {
+        "nama": "PDA Aek Sigeaon - Pasar Sirongit",
+        "kode": "PDA",
+        "jenis": "Duga Air",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.970599,
+          2.005674
+        ]
+      },
+      "properties": {
+        "nama": "PDA Aek Sigeaon - Saitnihuta",
+        "kode": "PDA",
+        "jenis": "Duga Air",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.921416,
+          3.383181
+        ]
+      },
+      "properties": {
+        "nama": "PDA Ular – Pulo Tagor",
+        "kode": "PDA",
+        "jenis": "Duga Air",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.649735,
+          3.413132
+        ]
+      },
+      "properties": {
+        "nama": "PDA Deli-Tangkahan",
+        "kode": "PDA",
+        "jenis": "Duga Air",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.163961,
+          1.676229
+        ]
+      },
+      "properties": {
+        "nama": "PDA Batang Toru - Kampung Sipetang",
+        "kode": "PDA",
+        "jenis": "Duga Air",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.834105,
+          3.617368
+        ]
+      },
+      "properties": {
+        "nama": "PDA Serdang – Kampung Serdang",
+        "kode": "PDA",
+        "jenis": "Duga Air",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.849963,
+          3.552749
+        ]
+      },
+      "properties": {
+        "nama": "PDA Batu Gingging - Perkapahan",
+        "kode": "PDA",
+        "jenis": "Duga Air",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.791592,
+          3.607504
+        ]
+      },
+      "properties": {
+        "nama": "PDA Batang Kuis - Sei Rotan",
+        "kode": "PDA",
+        "jenis": "Duga Air",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.494002,
+          3.611853
+        ]
+      },
+      "properties": {
+        "nama": "PDA Mencirim - Binjai",
+        "kode": "PDA",
+        "jenis": "Duga Air",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.060177,
+          3.203981
+        ]
+      },
+      "properties": {
+        "nama": "PDA Padang – Tanjung Selamat",
+        "kode": "PDA",
+        "jenis": "Duga Air",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.143969,
+          3.335095
+        ]
+      },
+      "properties": {
+        "nama": "PDA – Padang Brohol",
+        "kode": "PDA",
+        "jenis": "Duga Air",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.170783,
+          3.34225
+        ]
+      },
+      "properties": {
+        "nama": "PDA Padang-Tebing Tinggi",
+        "kode": "PDA",
+        "jenis": "Duga Air",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          100.070437,
+          2.307779
+        ]
+      },
+      "properties": {
+        "nama": "PDA Bilah - Negeri Lama",
+        "kode": "PDA",
+        "jenis": "Duga Air",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.112955,
+          3.297804
+        ]
+      },
+      "properties": {
+        "nama": "PDA Padang – Bah Sumbu",
+        "kode": "PDA",
+        "jenis": "Duga Air",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.662032,
+          1.890724
+        ]
+      },
+      "properties": {
+        "nama": "PDA Aek Kolang - Kampung Kolang",
+        "kode": "PDA",
+        "jenis": "Duga Air",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.980863,
+          2.012112
+        ]
+      },
+      "properties": {
+        "nama": "PDA Aek Situmandi - Kampung Hutagalung",
+        "kode": "PDA",
+        "jenis": "Duga Air",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.449641,
+          3.763561
+        ]
+      },
+      "properties": {
+        "nama": "PDA Wampu-Stabat",
+        "kode": "PDA",
+        "jenis": "Duga Air",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.664865,
+          3.627571
+        ]
+      },
+      "properties": {
+        "nama": "PDA Deli-Helvetia",
+        "kode": "PDA",
+        "jenis": "Duga Air",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.609891,
+          3.55345
+        ]
+      },
+      "properties": {
+        "nama": "PDA Belawan - Asam Kumbang",
+        "kode": "PDA",
+        "jenis": "Duga Air",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.60522,
+          3.599617
+        ]
+      },
+      "properties": {
+        "nama": "PDA Belawan - Kampung Lalang",
+        "kode": "PDA",
+        "jenis": "Duga Air",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.673537,
+          3.502618
+        ]
+      },
+      "properties": {
+        "nama": "PDA Deli – Jembatan Sejarah",
+        "kode": "PDA",
+        "jenis": "Duga Air",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.661289,
+          3.541554
+        ]
+      },
+      "properties": {
+        "nama": "PDA Babura - Jembatan Kwala Bekala",
+        "kode": "PDA",
+        "jenis": "Duga Air",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.730539,
+          2.313402
+        ]
+      },
+      "properties": {
+        "nama": "PDA Aek Silang - Marade",
+        "kode": "PDA",
+        "jenis": "Duga Air",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.343753,
+          0.40535
+        ]
+      },
+      "properties": {
+        "nama": "PDA Batu Sondat - Batang Batahan",
+        "kode": "PDA",
+        "jenis": "Duga Air",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.433436,
+          0.667622
+        ]
+      },
+      "properties": {
+        "nama": "PDA Aek Nangali – Batang Natal",
+        "kode": "PDA",
+        "jenis": "Duga Air",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.124361,
+          2.52425
+        ]
+      },
+      "properties": {
+        "nama": "PDA Aek Mandosi- Silombu",
+        "kode": "PDA",
+        "jenis": "Duga Air",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.483689,
+          0.406667
+        ]
+      },
+      "properties": {
+        "nama": "PDA Batang Batahan – Paraman Sawah",
+        "kode": "PDA",
+        "jenis": "Duga Air",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.744324,
+          3.596268
+        ]
+      },
+      "properties": {
+        "nama": "PDA Percut - Tembung",
+        "kode": "PDA",
+        "jenis": "Duga Air",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.070936,
+          3.285477
+        ]
+      },
+      "properties": {
+        "nama": "PDA Sibarau – Dolok Masihul",
+        "kode": "PDA",
+        "jenis": "Duga Air",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.150602,
+          3.312093
+        ]
+      },
+      "properties": {
+        "nama": "PDA Bahilang – Tebing Tinggi",
+        "kode": "PDA",
+        "jenis": "Duga Air",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.684029,
+          2.645965
+        ]
+      },
+      "properties": {
+        "nama": "PDA Samosir",
+        "kode": "PDA",
+        "jenis": "Duga Air",
+        "sumber": "BBWS Sumatera II (Google My Maps)"
+      }
+    }
+  ]
+}

@@ -191,6 +191,10 @@ input[type="range"] { width: 100%; accent-color: #1c1c1f; }
 .garis-lain { border-top: 2px solid #9e9e9e !important; }
 .kotak-sungai { background: rgba(79, 163, 224, 0.6); box-shadow: inset 0 0 0 1px #1f6fb2; }
 .kotak-danau { background: rgba(151, 219, 242, 0.85); box-shadow: inset 0 0 0 1px #2a9bb8; }
+.kelas i.titik-pos { width: 12px; height: 12px; border: 2px solid #fff; box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25); }
+.titik-pkl { background: #e65100; border-radius: 2px; transform: rotate(45deg); }
+.titik-pch { background: #1565c0; border-radius: 50%; }
+.titik-pda { background: #00897b; border-radius: 0; clip-path: polygon(50% 0, 100% 100%, 0 100%); }
 .kotak-air { width: 14px; height: 10px; border-radius: 3px; background: #7eb6d6; display: inline-block; }
 .tetap { margin: 8px 0 0; font-weight: 700; }
 .cek { display: inline-block; margin-left: 4px; padding: 1px 6px; border-radius: 999px; background: #fef3c7; color: #b45309; font-size: 11px; font-weight: 700; }

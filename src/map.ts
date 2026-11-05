@@ -13,7 +13,8 @@ export type RasterKind =
   | "batas-desa"
   | "jalan-rtrw"
   | "sungai-rtrw"
-  | "danau-rtrw";
+  | "danau-rtrw"
+  | "pos-hidro";
 export type BatasJenis = "das" | "kab" | "kec" | "desa";
 export type RasterState = "off" | "loading" | "ready" | "error" | "partial";
 export type DasarPeta = "jalan" | "satelit" | "satelit-label";
@@ -56,6 +57,7 @@ export type StudyMap = {
   setJalanRtrw(nyala: boolean): Promise<void>;
   setSungaiRtrw(nyala: boolean): Promise<void>;
   setDanauRtrw(nyala: boolean): Promise<void>;
+  setPosHidro(nyala: boolean): Promise<void>;
   setUsulan(fitur: GeoJSON.Feature[], tampil: boolean): void;
   setSurvei(fitur: GeoJSON.Feature[], tampil: boolean): void;
   aturIndeksSurvei(id: string[]): void;
@@ -628,9 +630,9 @@ export async function createStudyMap(
   let penanda: maplibregl.Marker | null = null;
   map.on("click", (event) => {
     if (!modeTambah || !onKlikKosong) return;
-    const kena = map.queryRenderedFeatures(event.point, {
-      layers: ["titik-sirine", "titik-sensor", "titik-clusters", "titik-label", "usulan-titik", "usulan-label"],
-    });
+    const lapisanKlik = ["titik-sirine", "titik-sensor", "titik-clusters", "titik-label", "usulan-titik", "usulan-label"];
+    if (map.getLayer("pos-hidro")) lapisanKlik.push("pos-hidro");
+    const kena = map.queryRenderedFeatures(event.point, { layers: lapisanKlik });
     if (kena.length) return;
     onKlikKosong(event.lngLat.lng, event.lngLat.lat);
   });
@@ -952,6 +954,103 @@ export async function createStudyMap(
     };
   }
 
+  let genPos = 0;
+  let popupPos: maplibregl.Popup | null = null;
+  let klikPos = false;
+  const ikonPos = (bentuk: "lingkaran" | "wajik" | "segitiga", warna: string) => {
+    const ukuran = 40;
+    const kanvas = document.createElement("canvas");
+    kanvas.width = ukuran;
+    kanvas.height = ukuran;
+    const g = kanvas.getContext("2d");
+    if (!g) throw new Error("kanvas pos");
+    g.translate(ukuran / 2, ukuran / 2);
+    g.fillStyle = warna;
+    g.strokeStyle = "#ffffff";
+    g.lineWidth = 4;
+    g.beginPath();
+    if (bentuk === "lingkaran") g.arc(0, 0, 11, 0, Math.PI * 2);
+    else if (bentuk === "wajik") {
+      g.moveTo(0, -13);
+      g.lineTo(13, 0);
+      g.lineTo(0, 13);
+      g.lineTo(-13, 0);
+      g.closePath();
+    } else {
+      g.moveTo(0, -13);
+      g.lineTo(13, 11);
+      g.lineTo(-13, 11);
+      g.closePath();
+    }
+    g.fill();
+    g.stroke();
+    return g.getImageData(0, 0, ukuran, ukuran);
+  };
+  const pasangPosHidro = async (nyala: boolean) => {
+    if (!nyala) {
+      genPos += 1;
+      if (map.getLayer("pos-hidro")) map.removeLayer("pos-hidro");
+      if (map.getSource("pos-hidro")) map.removeSource("pos-hidro");
+      onRaster("pos-hidro", "off");
+      return;
+    }
+    const gen = ++genPos;
+    onRaster("pos-hidro", "loading");
+    try {
+      const data = await ambilVektor("data/pos_hidrologi_bbws2.geojson");
+      if (gen !== genPos) return;
+      if (!map.hasImage("pos-pkl")) map.addImage("pos-pkl", ikonPos("wajik", "#E65100"), { pixelRatio: 2 });
+      if (!map.hasImage("pos-pch")) map.addImage("pos-pch", ikonPos("lingkaran", "#1565C0"), { pixelRatio: 2 });
+      if (!map.hasImage("pos-pda")) map.addImage("pos-pda", ikonPos("segitiga", "#00897B"), { pixelRatio: 2 });
+      if (map.getLayer("pos-hidro")) map.removeLayer("pos-hidro");
+      if (map.getSource("pos-hidro")) map.removeSource("pos-hidro");
+      map.addSource("pos-hidro", {
+        type: "geojson",
+        data,
+        attribution: "Pos hidrologi © BBWS Sumatera II (Google My Maps)",
+      });
+      map.addLayer(
+        {
+          id: "pos-hidro",
+          type: "symbol",
+          source: "pos-hidro",
+          layout: {
+            "icon-image": ["match", ["get", "jenis"], "Klimatologi", "pos-pkl", "Curah Hujan", "pos-pch", "Duga Air", "pos-pda", "pos-pda"],
+            "icon-allow-overlap": true,
+            "icon-ignore-placement": true,
+          },
+        },
+        "titik-clusters",
+      );
+      if (!klikPos) {
+        klikPos = true;
+        map.on("click", "pos-hidro", (event) => {
+          const props = (event.features?.[0]?.properties ?? {}) as Record<string, unknown>;
+          const nama = String(props.nama ?? "Pos hidrologi");
+          const jenis = String(props.jenis ?? "—");
+          const kode = String(props.kode ?? "").trim();
+          const sumber = String(props.sumber || "BBWS Sumatera II (Google My Maps)");
+          popupPos?.remove();
+          popupPos = new maplibregl.Popup({ maxWidth: "280px", className: "ews-popup" })
+            .setLngLat(event.lngLat)
+            .setHTML(
+              `<h3>${escapeHtml(nama)}</h3><p class="popup-catatan">Pos statis. Tidak ada nilai waktu nyata.</p><table><tr><th>Jenis</th><td>${escapeHtml(kode ? `${jenis} (${kode})` : jenis)}</td></tr><tr><th>Sumber</th><td>${escapeHtml(sumber)}</td></tr></table>`,
+            )
+            .addTo(map);
+        });
+        map.on("mouseenter", "pos-hidro", () => {
+          map.getCanvas().style.cursor = "pointer";
+        });
+        map.on("mouseleave", "pos-hidro", () => {
+          map.getCanvas().style.cursor = "";
+        });
+      }
+      onRaster("pos-hidro", "ready");
+    } catch {
+      if (gen === genPos) onRaster("pos-hidro", "error");
+    }
+  };
+
   function pasangRaster(
   kind: RasterKind,
   sourceId: string,
@@ -1030,6 +1129,7 @@ export async function createStudyMap(
     setJalanRtrw: pasangJalanRtrw,
     setSungaiRtrw: pasangSungaiRtrw,
     setDanauRtrw: pasangDanauRtrw,
+    setPosHidro: pasangPosHidro,
     aturAksiUsulan(admin, sunting, hapus) {
       adminUsulan = admin;
       onSuntingUsulan = sunting;
