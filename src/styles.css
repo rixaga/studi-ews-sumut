@@ -184,6 +184,13 @@ input[type="range"] { width: 100%; accent-color: #1c1c1f; }
 .garis-kab { border-top: 3px solid #111 !important; box-shadow: 0 0 0 1px #fff; }
 .garis-kec { border-top: 2px solid #5b2a86 !important; opacity: 0.9; }
 .garis-desa { border-top: 1px dashed #9e9e9e !important; opacity: 0.7; }
+.garis-arteri { border-top: 3px solid #ff5100 !important; }
+.garis-kolektor { border-top: 2px solid #ff8c00 !important; }
+.garis-ka { border-top: 2px dashed #111 !important; }
+.garis-lokal { border-top: 2px solid #9b5aff !important; }
+.garis-lain { border-top: 2px solid #9e9e9e !important; }
+.kotak-sungai { background: rgba(79, 163, 224, 0.6); box-shadow: inset 0 0 0 1px #1f6fb2; }
+.kotak-danau { background: rgba(151, 219, 242, 0.85); box-shadow: inset 0 0 0 1px #2a9bb8; }
 .kotak-air { width: 14px; height: 10px; border-radius: 3px; background: #7eb6d6; display: inline-block; }
 .tetap { margin: 8px 0 0; font-weight: 700; }
 .cek { display: inline-block; margin-left: 4px; padding: 1px 6px; border-radius: 999px; background: #fef3c7; color: #b45309; font-size: 11px; font-weight: 700; }
@@ -444,6 +451,8 @@ input[type="range"] { width: 100%; accent-color: #1c1c1f; }
 }
 #tabel-titik tbody tr[data-id] { cursor: pointer; }
 #tabel-titik tbody tr[data-id]:hover, #tabel-titik tbody tr.terpilih { background: #f6f7fb; }
+#tabel-titik tr.grup th,
+#tabel-titik tr.subgrup th { padding: 0; }
 #tabel-titik tr.grup th {
   background: #1c1c1f;
   color: #fff;
@@ -455,6 +464,32 @@ input[type="range"] { width: 100%; accent-color: #1c1c1f; }
   color: var(--v3-tinta);
   border-radius: 10px;
 }
+#tabel-titik .grup-tombol {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-weight: 700;
+  text-align: left;
+  padding: 8px 10px;
+  cursor: pointer;
+}
+#tabel-titik .grup-nama { margin-right: auto; }
+#tabel-titik .grup-tanda {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.16);
+  flex: none;
+}
+#tabel-titik tr.subgrup .grup-tanda { background: #e5e7eb; color: #1c1c1f; }
 #tabel-titik .hitung { font-weight: 600; opacity: 0.8; margin-left: 8px; }
 .map-status, .banner {
   position: absolute;
