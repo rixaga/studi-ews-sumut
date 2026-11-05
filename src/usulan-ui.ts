@@ -79,6 +79,8 @@ function gambarAkun() {
     if (formLupa) formLupa.hidden = true;
     if (akunMasuk) akunMasuk.hidden = true;
     if (panelAdmin) panelAdmin.hidden = true;
+    if (alatAdmin) alatAdmin.hidden = true;
+    matikanAlat();
     return;
   }
   const masuk = Boolean(pengguna);
@@ -373,6 +375,11 @@ export function pasangUsulan(petaAktif: StudyMap) {
     });
   };
   modeKlik?.addEventListener("change", () => mulaiTambah(Boolean(modeKlik.checked)));
+  window.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape") return;
+    if (!pengguna?.admin) return;
+    matikanAlat();
+  });
   alatTambah?.addEventListener("click", () => mulaiTambah(alatTambah.getAttribute("aria-pressed") !== "true"));
   alatHapus?.addEventListener("click", () => {
     if (!pengguna?.admin) return;
