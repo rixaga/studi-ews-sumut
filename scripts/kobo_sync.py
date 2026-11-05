@@ -41,6 +41,67 @@ def peringatan(teks: str) -> None:
     print(f"peringatan: {teks}", file=sys.stderr)
 
 
+PILIHAN = {
+    "existing": "Verifikasi titik existing",
+    "baru": "Usulan titik baru",
+    "sirine": "Sirine",
+    "sensor": "Sensor",
+    "ya": "Ya",
+    "tidak": "Tidak",
+    "lahan_kosong": "Lahan kosong",
+    "halaman_bangunan": "Halaman bangunan",
+    "atap_bangunan": "Atap bangunan",
+    "lainnya": "Lainnya",
+    "pemerintah": "Pemerintah",
+    "sekolah": "Sekolah",
+    "desa": "Desa",
+    "swasta": "Swasta",
+    "none": "None",
+    "2g": "2G",
+    "3g": "3G",
+    "4g": "4G",
+    "mobil": "Mobil",
+    "motor_saja": "Motor saja",
+    "jalan_kaki": "Jalan kaki",
+    "sulit_tidak_ada": "Sulit/tidak ada",
+    "jembatan": "Jembatan",
+    "tanggul": "Tanggul",
+    "bendung": "Bendung",
+    "batu": "Batu",
+    "kerikil": "Kerikil",
+    "pasir": "Pasir",
+    "lumpur": "Lumpur",
+    "beton": "Beton",
+    "deli_serdang": "Deli Serdang",
+    "humbang_hasundutan": "Humbang Hasundutan",
+    "kota_binjai": "Kota Binjai",
+    "kota_medan": "Kota Medan",
+    "kota_padangsidimpuan": "Kota Padangsidimpuan",
+    "kota_sibolga": "Kota Sibolga",
+    "kota_tebing_tinggi": "Kota Tebing Tinggi",
+    "langkat": "Langkat",
+    "serdang_bedagai": "Serdang Bedagai",
+    "tapanuli_selatan": "Tapanuli Selatan",
+    "tapanuli_tengah": "Tapanuli Tengah",
+    "tapanuli_utara": "Tapanuli Utara",
+}
+
+
+def ratakan(baris: dict) -> dict:
+    hasil: dict = {}
+
+    def jalan(obj: dict, awalan: str) -> None:
+        for kunci, nilai in obj.items():
+            nama = f"{awalan}/{kunci}" if awalan else str(kunci)
+            if isinstance(nilai, dict) and not ({"lat", "lon", "lng"} & set(nilai)):
+                jalan(nilai, nama)
+            else:
+                hasil[nama] = nilai
+
+    jalan(baris, "")
+    return hasil
+
+
 def nilai_bidang(baris: dict, nama: str):
     if nama in baris and baris[nama] not in (None, ""):
         return baris[nama]
@@ -74,17 +135,22 @@ def norm_id(nilai: str) -> str:
 
 
 def kelayakan(nilai: str) -> tuple[str, str]:
-    mentah = teks(nilai, 80).lower().replace("_", " ").replace("-", " ")
-    mentah = re.sub(r"\s+", " ", mentah)
-    if mentah in {"layak", "ya", "sesuai"}:
-        return "layak", "Layak"
-    if "tidak" in mentah:
+    mentah = teks(nilai, 80).lower().replace("-", " ").replace("_", " ")
+    mentah = re.sub(r"\s+", " ", mentah).strip()
+    if mentah in {"layak dengan catatan", "dengan catatan"}:
+        return "layak_dengan_catatan", "Layak dengan catatan"
+    if mentah in {"tidak layak", "tidak"}:
         return "tidak_layak", "Tidak layak"
-    if "catatan" in mentah or mentah in {"bersyarat", "perlu catatan"}:
-        return "dengan_catatan", "Dengan catatan"
+    if mentah == "layak":
+        return "layak", "Layak"
     if not mentah:
         return "", ""
-    return "dengan_catatan", teks(nilai, 80)
+    return "layak_dengan_catatan", teks(nilai, 80)
+
+
+def label_pilihan(nilai: str) -> str:
+    token = teks(nilai, 80)
+    return PILIHAN.get(token, token)
 
 
 def parse_lokasi(nilai) -> tuple[float, float, float | None, float | None] | None:
@@ -125,7 +191,8 @@ def muat_json(url: str, token: str) -> dict:
 
 
 def tarik(token: str) -> list[dict]:
-    url = f"{SERVER}/api/v2/assets/{ASET}/data/?format=json"
+    uid = os.environ.get("KOBO_ASSET_UID", "").strip() or ASET
+    url = f"{SERVER}/api/v2/assets/{uid}/data/?format=json"
     semua: list[dict] = []
     while url:
         muatan = muat_json(url, token)
@@ -195,9 +262,15 @@ def foto_dari(baris: dict, nama_bidang: str, token: str, folder: Path, urut: int
     return f"survei_foto/{tujuan.name}"
 
 
+def isi(properti: dict, kunci: str, nilai: str) -> None:
+    if nilai:
+        properti[kunci] = nilai
+
+
 def jadi_fitur(baris: dict, token: str, folder: Path) -> dict | None:
     if not isinstance(baris, dict):
         return None
+    baris = ratakan(baris)
     titik = parse_lokasi(nilai_bidang(baris, "lokasi"))
     if not titik:
         peringatan(f"lewati kiriman tanpa geopoint: {baris.get('_uuid') or baris.get('_id')}")
@@ -211,21 +284,67 @@ def jadi_fitur(baris: dict, token: str, folder: Path) -> dict | None:
         jalur = foto_dari(baris, bidang, token, folder, indeks, identitas)
         if jalur:
             foto.append(jalur)
+    titik_id = norm_id(teks(nilai_bidang(baris, "titik_id")))
+    jenis = teks(nilai_bidang(baris, "jenis"), 40).lower()
+    if jenis not in {"sirine", "sensor"}:
+        if titik_id.startswith("SRN"):
+            jenis = "sirine"
+        elif titik_id.startswith("SNS"):
+            jenis = "sensor"
+        else:
+            jenis = ""
     properti = {
         "id": identitas,
-        "titik_id": norm_id(teks(nilai_bidang(baris, "titik_id"))),
-        "tipe_survei": teks(nilai_bidang(baris, "tipe_survei"), 80),
-        "jenis": teks(nilai_bidang(baris, "jenis"), 40).lower(),
+        "titik_id": titik_id,
+        "tipe_survei": teks(nilai_bidang(baris, "tipe_survei"), 40),
+        "tipe_survei_label": label_pilihan(teks(nilai_bidang(baris, "tipe_survei"), 40)),
+        "jenis": jenis,
         "nama_lokasi": teks(nilai_bidang(baris, "nama_lokasi"), 255),
         "surveyor": teks(nilai_bidang(baris, "surveyor"), 120),
         "kelayakan": kode,
         "kelayakan_label": label,
         "alasan": teks(nilai_bidang(baris, "alasan"), 2000),
-        "waktu": teks(baris.get("_submission_time") or baris.get("end"), 40),
+        "tanggal": teks(nilai_bidang(baris, "tanggal"), 40),
+        "waktu": teks(baris.get("_submission_time") or nilai_bidang(baris, "end"), 40),
         "foto_1": foto[0] if len(foto) > 0 else "",
         "foto_2": foto[1] if len(foto) > 1 else "",
         "foto_3": foto[2] if len(foto) > 2 else "",
     }
+    for kunci in (
+        "filter_kab",
+        "kabupaten",
+        "kecamatan",
+        "desa",
+        "kondisi_lahan",
+        "kepemilikan",
+        "kepemilikan_lain",
+        "listrik_pln",
+        "sinyal",
+        "jangkauan_m",
+        "akses_kendaraan",
+        "tinggi_bangunan",
+        "nama_sungai",
+        "tipe_struktur",
+        "struktur_lain",
+        "lebar_sungai",
+        "tinggi_jembatan",
+        "riwayat_banjir",
+        "tahun_banjir",
+        "tinggi_genangan",
+        "material_dasar",
+        "akses_pemeliharaan",
+        "ket_foto_1",
+        "ket_foto_2",
+        "ket_foto_3",
+        "kontak_nama",
+        "kontak_jabatan",
+        "kontak_hp",
+        "catatan",
+    ):
+        isi(properti, kunci, label_pilihan(teks(nilai_bidang(baris, kunci), 500)))
+    geser = parse_lokasi(nilai_bidang(baris, "lokasi_geser"))
+    if geser:
+        properti["lokasi_geser"] = f"{geser[0]} {geser[1]}"
     if alt is not None:
         properti["altitude"] = alt
     if acc is not None:

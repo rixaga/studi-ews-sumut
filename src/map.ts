@@ -246,16 +246,49 @@ function fotoSurvei(properties: Record<string, unknown>): string {
 }
 
 function popupSurvei(properties: Record<string, unknown>): string {
-  const baris: Array<[string, string]> = [
-    ["Titik terkait", String(properties.titik_id || "—")],
-    ["Tipe survei", String(properties.tipe_survei || "—")],
-    ["Jenis", String(properties.jenis || "—")],
-    ["Nama lokasi", String(properties.nama_lokasi || "—")],
-    ["Surveyor", String(properties.surveyor || "—")],
-    ["Kelayakan", String(properties.kelayakan_label || properties.kelayakan || "—")],
-    ["Alasan", String(properties.alasan || "—")],
-    ["Waktu", String(properties.waktu || "—")],
+  const urutan: Array<[string, string]> = [
+    ["titik_id", "Titik terkait"],
+    ["tipe_survei_label", "Tipe survei"],
+    ["jenis", "Jenis"],
+    ["nama_lokasi", "Nama lokasi"],
+    ["kabupaten", "Kabupaten/kota"],
+    ["kecamatan", "Kecamatan"],
+    ["desa", "Desa/kelurahan"],
+    ["surveyor", "Surveyor"],
+    ["kelayakan_label", "Kelayakan"],
+    ["alasan", "Alasan"],
+    ["kondisi_lahan", "Kondisi lahan"],
+    ["kepemilikan", "Kepemilikan"],
+    ["kepemilikan_lain", "Kepemilikan lain"],
+    ["listrik_pln", "Listrik PLN"],
+    ["sinyal", "Sinyal"],
+    ["jangkauan_m", "Jangkauan (m)"],
+    ["akses_kendaraan", "Akses kendaraan"],
+    ["tinggi_bangunan", "Tinggi bangunan (m)"],
+    ["nama_sungai", "Nama sungai"],
+    ["tipe_struktur", "Tipe struktur"],
+    ["struktur_lain", "Struktur lain"],
+    ["lebar_sungai", "Lebar sungai (m)"],
+    ["tinggi_jembatan", "Tinggi ke muka air (m)"],
+    ["riwayat_banjir", "Riwayat banjir"],
+    ["tahun_banjir", "Tahun banjir"],
+    ["tinggi_genangan", "Tinggi genangan (cm)"],
+    ["material_dasar", "Material dasar"],
+    ["akses_pemeliharaan", "Akses pemeliharaan"],
+    ["lokasi_geser", "Lokasi pengganti"],
+    ["kontak_nama", "Narahubung"],
+    ["kontak_jabatan", "Jabatan"],
+    ["kontak_hp", "No HP"],
+    ["catatan", "Catatan"],
+    ["tanggal", "Tanggal"],
+    ["waktu", "Waktu kirim"],
   ];
+  const baris = urutan
+    .map(([kunci, label]) => [label, String(properties[kunci] ?? "").trim()] as [string, string])
+    .filter(([, value]) => value);
+  if (!baris.some(([label]) => label === "Kelayakan") && properties.kelayakan) {
+    baris.push(["Kelayakan", String(properties.kelayakan)]);
+  }
   if (properties.akurasi_m != null && properties.akurasi_m !== "") baris.push(["Akurasi (m)", String(properties.akurasi_m)]);
   const isi = baris.map(([label, value]) => `<tr><th>${escapeHtml(label)}</th><td>${escapeHtml(value)}</td></tr>`).join("");
   const nama = String(properties.nama_lokasi || properties.titik_id || "Hasil survei");
@@ -476,6 +509,8 @@ export async function createStudyMap(
         ["get", "kelayakan"],
         "layak",
         "#2E7D32",
+        "layak_dengan_catatan",
+        "#F9A825",
         "dengan_catatan",
         "#F9A825",
         "tidak_layak",
