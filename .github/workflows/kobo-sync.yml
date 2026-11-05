@@ -27,6 +27,7 @@ jobs:
       - name: Tarik kiriman
         env:
           KOBO_TOKEN: ${{ secrets.KOBO_TOKEN }}
+          KOBO_ASSET_UID: ${{ secrets.KOBO_ASSET_UID }}
         run: python scripts/kobo_sync.py
       - name: Commit bila berubah
         run: |

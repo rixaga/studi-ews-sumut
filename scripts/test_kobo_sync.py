@@ -35,21 +35,21 @@ def main() -> int:
                 {
                     "_uuid": "uji-layak",
                     "_submission_time": "2026-11-01T08:00:00+00:00",
-                    "lokasi": "3.611376 98.803491 12 4.5",
-                    "titik_id": "SRN-001",
-                    "tipe_survei": "titik_lama",
-                    "jenis": "sirine",
-                    "nama_lokasi": "Kantor uji",
                     "surveyor": "Penguji",
-                    "kelayakan": "Layak",
-                    "alasan": "Akses baik",
+                    "tipe_survei": "existing",
+                    "g_exist": {"filter_kab": "deli_serdang", "titik_id": "SRN-DS-001"},
+                    "lokasi": "3.611376 98.803491 12 4.5",
+                    "kelayakan": "layak_dengan_catatan",
+                    "alasan": "Perlu pagar",
+                    "g_sirine": {"kondisi_lahan": "halaman_bangunan", "sinyal": "4g"},
                     "foto_1": "uji.jpg",
+                    "ket_foto_1": "Tampak depan",
                     "_attachments": [{"filename": "uji.jpg", "local_path": str(foto)}],
                 },
                 {
                     "_uuid": "uji/tidak",
                     "grup/lokasi": "3.70 98.90 0 8",
-                    "grup/kelayakan": "tidak layak",
+                    "grup/kelayakan": "tidak_layak",
                     "nama_lokasi": "Lokasi baru uji",
                     "jenis": "sensor",
                     "alasan": "Tergenang",
@@ -77,7 +77,14 @@ def main() -> int:
         if pertama["properties"]["titik_id"] != "SRN-DS-001":
             print("id", pertama["properties"]["titik_id"])
             return 1
-        if pertama["properties"]["kelayakan"] != "layak":
+        if pertama["properties"]["kelayakan"] != "layak_dengan_catatan":
+            print("kelayakan", pertama["properties"]["kelayakan"])
+            return 1
+        if pertama["properties"]["jenis"] != "sirine" or pertama["properties"]["kondisi_lahan"] != "Halaman bangunan":
+            print(pertama["properties"])
+            return 1
+        if pertama["properties"]["filter_kab"] != "Deli Serdang" or pertama["properties"]["sinyal"] != "4G":
+            print(pertama["properties"])
             return 1
         if pertama["geometry"]["coordinates"] != [98.803491, 3.611376]:
             print(pertama["geometry"])
