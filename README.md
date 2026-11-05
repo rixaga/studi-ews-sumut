@@ -188,6 +188,14 @@ npm run dev
 
 `npm run dev` memakai basis `/`. `npm run build` memakai basis `/studi-ews-sumut/` agar cocok dengan GitHub Pages proyek. Perintah build menyalin GeoJSON dan JSON yang dibutuhkan ke `dist/data/`.
 
+## Hasil survei Kobo
+
+Workflow `.github/workflows/kobo-sync.yml` berjalan tiap 30 menit dan bisa dijalankan manual. Ia membaca `KOBO_TOKEN`. Jika secret itu belum ada, skrip selesai dengan peringatan dan tidak mengubah berkas. Jika ada token, hasil disimpan di `data/survei.geojson` dan foto di `data/survei_foto/`, lalu commit ke `main` memicu Deploy ke GitHub Pages. Tanpa kiriman, berkasnya FeatureCollection kosong.
+
+Token tidak masuk ke peramban. Tambahkan di GitHub: **Settings → Secrets and variables → Actions → New repository secret**, nama `KOBO_TOKEN`, untuk repositori `rixaga/studi-ews-sumut`.
+
+Uji parser tanpa jaringan: `python scripts/test_kobo_sync.py`.
+
 ## GitHub Pages
 
 Alamat yang diharapkan setelah terbit:

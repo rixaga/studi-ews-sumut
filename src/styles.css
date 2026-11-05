@@ -313,6 +313,17 @@ input[type="range"] { width: 100%; accent-color: #1c1c1f; }
 .alat-admin button:hover::after,
 .alat-admin button:focus-visible::after { opacity: 1; }
 .popup-dihapus { margin: 8px 0; padding: 8px 10px; border-radius: 12px; background: #ffebee; color: #b71c1c; }
+.lencana-survei { display: inline-block; margin: 4px 0; padding: 2px 8px; border-radius: 999px; background: #e8f5e9; color: #1b5e20; font-size: 12px; font-weight: 700; }
+.titik-survei { width: 12px; height: 12px; border-radius: 50%; border: 2px solid #fff; box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25); display: inline-block; }
+.titik-layak { background: #2e7d32; }
+.titik-catatan { background: #f9a825; }
+.titik-tidak { background: #c62828; }
+.survei-foto-baris { display: flex; gap: 6px; margin: 6px 0; }
+.survei-foto { border: 0; padding: 0; background: none; cursor: pointer; }
+.survei-foto img { width: 72px; height: 54px; object-fit: cover; border-radius: 8px; display: block; }
+#foto-dialog { border: 0; border-radius: 16px; padding: 12px; max-width: min(920px, 92vw); }
+#foto-dialog img { max-width: 100%; height: auto; display: block; }
+#foto-dialog::backdrop { background: rgba(17, 17, 20, 0.55); }
 .lapisan-peta {
   position: absolute;
   z-index: 3;

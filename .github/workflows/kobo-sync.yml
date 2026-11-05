@@ -1,0 +1,41 @@
+name: Sinkron Kobo
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: kobo-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Pasang Pillow
+        run: pip install -r scripts/requirements.txt
+      - name: Uji parser dengan berkas lokal
+        run: python scripts/test_kobo_sync.py
+      - name: Tarik kiriman
+        env:
+          KOBO_TOKEN: ${{ secrets.KOBO_TOKEN }}
+        run: python scripts/kobo_sync.py
+      - name: Commit bila berubah
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/survei.geojson data/survei_foto
+          if git diff --cached --quiet; then
+            echo "Tidak ada perubahan survei."
+          else
+            git commit -m "Perbarui hasil survei Kobo"
+            git push
+          fi

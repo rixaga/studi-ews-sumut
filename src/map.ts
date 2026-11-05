@@ -43,6 +43,8 @@ export type StudyMap = {
   setDas(nyala: boolean): Promise<void>;
   setBatas(jenis: BatasJenis, nyala: boolean): Promise<void>;
   setUsulan(fitur: GeoJSON.Feature[], tampil: boolean): void;
+  setSurvei(fitur: GeoJSON.Feature[], tampil: boolean): void;
+  aturIndeksSurvei(id: string[]): void;
   aturAksiUsulan(admin: boolean, sunting: (id: string) => void, hapus: (id: string) => void): void;
   aturModeTambah(nyala: boolean, onKlik: ((lon: number, lat: number) => void) | null): void;
   aturModeHapus(nyala: boolean, onTandai: ((info: { id: string; sumber: "asli" | "usulan"; nama: string }) => void) | null): void;
@@ -237,7 +239,50 @@ function popupHtml(properties: Record<string, unknown>, coordinates: [number, nu
   const cek = properties.cek_wilayah
     ? `<p class="popup-catatan">Cek wilayah: nama pada poligon HDX COD-AB berbeda dari teks Excel. Nama Excel tidak diubah.</p>`
     : "";
-  return `<h3>${escapeHtml(judulTitik(properties))}</h3><p class="popup-catatan">Status bukan kolom Excel. Koordinat WGS84 dari teks DMS.</p>${cek}${blokDihapus(properties, aksiTanda?.admin === true)}<table>${isi}</table>`;
+  const lencana = indeksSurvei[normIdSurvei(String(properties.id ?? ""))]
+    ? `<p class="lencana-survei">Sudah disurvei</p>`
+    : "";
+  return `<h3>${escapeHtml(judulTitik(properties))}</h3>${lencana}<p class="popup-catatan">Status bukan kolom Excel. Koordinat WGS84 dari teks DMS.</p>${cek}${blokDihapus(properties, aksiTanda?.admin === true)}<table>${isi}</table>`;
+}
+
+const indeksSurvei: Record<string, true> = {};
+
+function normIdSurvei(nilai: string): string {
+  const token = nilai.trim().toUpperCase().replace(/\s+/g, "");
+  const pendek = /^(SRN|SNS)-(\d+)$/.exec(token);
+  if (pendek) return `${pendek[1]}-DS-${pendek[2].padStart(3, "0")}`;
+  const panjang = /^(SRN|SNS)-DS-(\d+)$/.exec(token);
+  if (panjang) return `${panjang[1]}-DS-${panjang[2].padStart(3, "0")}`;
+  return token;
+}
+
+function fotoSurvei(properties: Record<string, unknown>): string {
+  const jalur = [properties.foto_1, properties.foto_2, properties.foto_3].map((item) => String(item ?? "").trim()).filter(Boolean);
+  if (!jalur.length) return "";
+  const tombol = jalur
+    .map((item) => {
+      const src = asset(item.startsWith("data/") ? item : `data/${item}`);
+      return `<button type="button" class="survei-foto" data-foto="${escapeHtml(src)}"><img src="${escapeHtml(src)}" alt="Foto survei" /></button>`;
+    })
+    .join("");
+  return `<div class="survei-foto-baris">${tombol}</div>`;
+}
+
+function popupSurvei(properties: Record<string, unknown>): string {
+  const baris: Array<[string, string]> = [
+    ["Titik terkait", String(properties.titik_id || "—")],
+    ["Tipe survei", String(properties.tipe_survei || "—")],
+    ["Jenis", String(properties.jenis || "—")],
+    ["Nama lokasi", String(properties.nama_lokasi || "—")],
+    ["Surveyor", String(properties.surveyor || "—")],
+    ["Kelayakan", String(properties.kelayakan_label || properties.kelayakan || "—")],
+    ["Alasan", String(properties.alasan || "—")],
+    ["Waktu", String(properties.waktu || "—")],
+  ];
+  if (properties.akurasi_m != null && properties.akurasi_m !== "") baris.push(["Akurasi (m)", String(properties.akurasi_m)]);
+  const isi = baris.map(([label, value]) => `<tr><th>${escapeHtml(label)}</th><td>${escapeHtml(value)}</td></tr>`).join("");
+  const nama = String(properties.nama_lokasi || properties.titik_id || "Hasil survei");
+  return `<h3>${escapeHtml(nama)}</h3><p class="popup-catatan">Hasil survei KoboToolbox.</p>${fotoSurvei(properties)}<table>${isi}</table>`;
 }
 
 function formatWaktu(iso: string): string {
@@ -467,6 +512,28 @@ export async function createStudyMap(
     filter: ["==", ["get", "tanda"], "dihapus"],
     layout: { ...tataSilang, visibility: "none" },
   });
+  map.addSource("survei", { type: "geojson", data: { type: "FeatureCollection", features: [] } });
+  map.addLayer({
+    id: "survei-titik",
+    type: "circle",
+    source: "survei",
+    paint: {
+      "circle-radius": 7,
+      "circle-color": [
+        "match",
+        ["get", "kelayakan"],
+        "layak",
+        "#2E7D32",
+        "dengan_catatan",
+        "#F9A825",
+        "tidak_layak",
+        "#C62828",
+        "#6b7280",
+      ],
+      "circle-stroke-width": 2,
+      "circle-stroke-color": "#ffffff",
+    },
+  });
   map.addLayer({
     id: "usulan-label",
     type: "symbol",
@@ -518,6 +585,21 @@ export async function createStudyMap(
     map.getCanvas().style.cursor = "pointer";
   });
   map.on("mouseleave", "usulan-titik", () => {
+    map.getCanvas().style.cursor = "";
+  });
+  map.on("click", "survei-titik", (event) => {
+    const feature = event.features?.[0];
+    if (!feature || feature.geometry.type !== "Point") return;
+    popupKlaster?.remove();
+    new maplibregl.Popup({ maxWidth: "320px", className: "ews-popup" })
+      .setLngLat(feature.geometry.coordinates as [number, number])
+      .setHTML(popupSurvei((feature.properties ?? {}) as Record<string, unknown>))
+      .addTo(map);
+  });
+  map.on("mouseenter", "survei-titik", () => {
+    map.getCanvas().style.cursor = "pointer";
+  });
+  map.on("mouseleave", "survei-titik", () => {
     map.getCanvas().style.cursor = "";
   });
   map.on("click", "titik-clusters", (event) => bukaKlaster(map, event));
@@ -667,6 +749,14 @@ export async function createStudyMap(
       adminUsulan = admin;
       onSuntingUsulan = sunting;
       onHapusUsulan = hapus;
+    },
+    setSurvei(fitur, tampil) {
+      (map.getSource("survei") as GeoJSONSource).setData({ type: "FeatureCollection", features: fitur });
+      if (map.getLayer("survei-titik")) map.setLayoutProperty("survei-titik", "visibility", tampil ? "visible" : "none");
+    },
+    aturIndeksSurvei(id) {
+      for (const kunci of Object.keys(indeksSurvei)) delete indeksSurvei[kunci];
+      for (const item of id) indeksSurvei[normIdSurvei(item)] = true;
     },
     setUsulan(fitur, tampil) {
       (map.getSource("usulan") as GeoJSONSource).setData({ type: "FeatureCollection", features: fitur });

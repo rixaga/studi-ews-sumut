@@ -15,6 +15,7 @@ const files = [
   "wilayah/adm2_kab.geojson",
   "wilayah/adm3_kec.geojson",
   "wilayah/adm4_desa.geojson",
+  "survei.geojson",
 ];
 
 for (const rel of files) {
@@ -26,4 +27,11 @@ for (const rel of files) {
   }
   mkdirSync(dirname(to), { recursive: true });
   cpSync(from, to);
+}
+
+const fotoDari = resolve("data", "survei_foto");
+const fotoKe = resolve("public/data", "survei_foto");
+if (existsSync(fotoDari)) {
+  mkdirSync(fotoKe, { recursive: true });
+  cpSync(fotoDari, fotoKe, { recursive: true });
 }
