@@ -5,8 +5,6 @@ import { asset, escapeHtml, formatDerajat, labelStatusSumber, STATUS_LABEL } fro
 export type RasterKind =
   | "bahaya"
   | "proxy"
-  | "sungai"
-  | "das"
   | "batas-das"
   | "batas-kab"
   | "batas-kec"
@@ -51,8 +49,6 @@ export type StudyMap = {
   setVisible(lapisan: "sirine" | "sensor", nyala: boolean): void;
   setBahaya(nyala: boolean, opasitas: number, klasifikasi: boolean): void;
   setProxy(nyala: boolean, opasitas: number): void;
-  setSungai(nyala: boolean): Promise<void>;
-  setDas(nyala: boolean): Promise<void>;
   setBatas(jenis: BatasJenis, nyala: boolean): Promise<void>;
   setJalanRtrw(nyala: boolean): Promise<void>;
   setSungaiRtrw(nyala: boolean): Promise<void>;
@@ -404,6 +400,13 @@ export async function createStudyMap(
     }
     map.setLayoutProperty("citra", "visibility", jalan ? "none" : "visible");
     map.setLayoutProperty("citra-label", "visibility", mode === "satelit-label" ? "visible" : "none");
+    aturSelubungBatas(!jalan);
+  };
+  const aturSelubungBatas = (satelit: boolean) => {
+    const tampak = satelit ? "visible" : "none";
+    for (const id of ["batas-kec-casing", "batas-desa-casing"]) {
+      if (map.getLayer(id)) map.setLayoutProperty(id, "visibility", tampak);
+    }
   };
   terapkanDasar(dasarAwal);
 
@@ -1110,19 +1113,6 @@ export async function createStudyMap(
       }
       map.setPaintProperty("proxy", "raster-opacity", opasitas);
     },
-    async setSungai(nyala) {
-      await pasangVektor(map, onRaster, "sungai", nyala, "data/hidro/rivers_sumut.geojson", {
-        id: "sungai",
-        type: "line",
-        source: "sungai",
-        filter: ["any", [">=", ["zoom"], 9], [">=", ["get", "ORD_STRA"], 3]],
-        paint: {
-          "line-color": "#0277bd",
-          "line-width": ["interpolate", ["linear"], ["get", "ORD_STRA"], 1, 0.3, 6, 3],
-          "line-opacity": 0.9,
-        },
-      }, "© WWF HydroSHEDS (Lehner & Grill 2013)");
-    },
     async setBatas(jenis, nyala) {
       await pasangBatas(map, onRaster, jenis, nyala);
     },
@@ -1182,18 +1172,6 @@ export async function createStudyMap(
     hapusPenanda() {
       penanda?.remove();
       penanda = null;
-    },
-    async setDas(nyala) {
-      await pasangVektor(map, onRaster, "das", nyala, "data/hidro/das_sumut_hydrobasins_l7.geojson", {
-        id: "das",
-        type: "line",
-        source: "das",
-        paint: {
-          "line-color": "#4338ca",
-          "line-width": 1.4,
-          "line-dasharray": [2, 1.4],
-        },
-      }, "© WWF HydroSHEDS (Lehner & Grill 2013)");
     },
     fokusTitik(titik) {
       const coordinates = titik.geometry.coordinates;
@@ -1428,45 +1406,6 @@ function awasi(map: Map, sourceId: string, laporkan: (state: RasterState) => voi
 }
 
 const vektorCache: Record<string, GeoJSON.FeatureCollection | undefined> = {};
-const vektorGen: Partial<Record<"sungai" | "das", number>> = {};
-
-async function pasangVektor(
-  map: Map,
-  onRaster: (kind: RasterKind, state: RasterState) => void,
-  kind: "sungai" | "das",
-  nyala: boolean,
-  path: string,
-  layer: maplibregl.LineLayerSpecification,
-  attribution: string,
-): Promise<void> {
-  const gen = (vektorGen[kind] ?? 0) + 1;
-  vektorGen[kind] = gen;
-  if (!nyala) {
-    if (map.getLayer(kind)) map.removeLayer(kind);
-    if (map.getSource(kind)) map.removeSource(kind);
-    onRaster(kind, "off");
-    return;
-  }
-  onRaster(kind, "loading");
-  try {
-    let data = vektorCache[path];
-    if (!data) {
-      const response = await fetch(asset(path));
-      if (!response.ok) throw new Error(path);
-      data = (await response.json()) as GeoJSON.FeatureCollection;
-      vektorCache[path] = data;
-    }
-    if (vektorGen[kind] !== gen) return;
-    if (!map.getSource(kind)) {
-      map.addSource(kind, { type: "geojson", data, attribution });
-    }
-    if (!map.getLayer(kind)) map.addLayer(layer, "titik-clusters");
-    onRaster(kind, "ready");
-  } catch {
-    if (vektorGen[kind] !== gen) return;
-    onRaster(kind, "error");
-  }
-}
 
 function matikan(
   map: Map,
@@ -1486,8 +1425,8 @@ const batasGen: Partial<Record<BatasJenis, number>> = {};
 const batasLayer: Record<BatasJenis, string[]> = {
   das: ["batas-das-garis", "batas-das-label"],
   kab: ["batas-toba", "batas-toba-label", "batas-kab-casing", "batas-kab-garis", "batas-kab-label"],
-  kec: ["batas-kec-garis"],
-  desa: ["batas-desa-garis"],
+  kec: ["batas-kec-casing", "batas-kec-garis"],
+  desa: ["batas-desa-casing", "batas-desa-garis"],
 };
 const batasSource: Record<BatasJenis, string[]> = {
   das: ["batas-das"],
@@ -1664,15 +1603,36 @@ async function pasangBatas(
         data,
         attribution: "Batas wilayah © HDX COD-AB Indonesia v01 (2020), CC BY-IGO",
       });
+      const satelit = map.getLayoutProperty("citra", "visibility") === "visible";
       map.addLayer(
         {
           id: "batas-kec-garis",
           type: "line",
           source: "batas-kec",
           layout: { "line-join": "round", "line-cap": "butt" },
-          paint: { "line-color": "#37474F", "line-width": 1.4, "line-opacity": 0.9, "line-dasharray": [4, 2] },
+          paint: {
+            "line-color": "#37474F",
+            "line-width": ["interpolate", ["linear"], ["zoom"], 9, 1.5, 13, 2.5],
+            "line-opacity": 0.9,
+            "line-dasharray": [4, 3],
+          },
         },
         sebelumGarisBatas(map, ["batas-kab-casing", "batas-kab-garis", "titik-clusters"]),
+      );
+      map.addLayer(
+        {
+          id: "batas-kec-casing",
+          type: "line",
+          source: "batas-kec",
+          layout: { "line-join": "round", "line-cap": "butt", visibility: satelit ? "visible" : "none" },
+          paint: {
+            "line-color": "#ffffff",
+            "line-width": ["interpolate", ["linear"], ["zoom"], 9, 3, 13, 4.2],
+            "line-opacity": 0.9,
+            "line-dasharray": [2.2, 1.65],
+          },
+        },
+        "batas-kec-garis",
       );
     } else {
       map.addSource("batas-desa", {
@@ -1680,20 +1640,38 @@ async function pasangBatas(
         data,
         attribution: "Batas wilayah © HDX COD-AB Indonesia v01 (2020), CC BY-IGO",
       });
+      const satelit = map.getLayoutProperty("citra", "visibility") === "visible";
       map.addLayer(
         {
           id: "batas-desa-garis",
           type: "line",
           source: "batas-desa",
           minzoom: 10,
+          layout: { "line-join": "round", "line-cap": "butt" },
           paint: {
-            "line-color": "#BDBDBD",
-            "line-width": ["interpolate", ["linear"], ["zoom"], 10, 0.6, 13, 0.9],
-            "line-opacity": 0.7,
-            "line-dasharray": [1, 1],
+            "line-color": "#757575",
+            "line-width": ["interpolate", ["linear"], ["zoom"], 10, 1, 13, 1.8],
+            "line-opacity": 0.9,
+            "line-dasharray": [3, 2],
           },
         },
-        sebelumGarisBatas(map, ["batas-kec-garis", "batas-kab-casing", "batas-kab-garis", "titik-clusters"]),
+        sebelumGarisBatas(map, ["batas-kec-casing", "batas-kec-garis", "batas-kab-casing", "batas-kab-garis", "titik-clusters"]),
+      );
+      map.addLayer(
+        {
+          id: "batas-desa-casing",
+          type: "line",
+          source: "batas-desa",
+          minzoom: 10,
+          layout: { "line-join": "round", "line-cap": "butt", visibility: satelit ? "visible" : "none" },
+          paint: {
+            "line-color": "#ffffff",
+            "line-width": ["interpolate", ["linear"], ["zoom"], 10, 2.4, 13, 3.4],
+            "line-opacity": 0.95,
+            "line-dasharray": [1.4, 0.95],
+          },
+        },
+        "batas-desa-garis",
       );
     }
     onRaster(kind, "ready");

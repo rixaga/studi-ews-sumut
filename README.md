@@ -23,8 +23,6 @@ Tampilan mengikuti bahasa visual [Pantau Bencana v0.3](https://pantau-bencana.gi
 | `data/risk_proxy_sumut_class_cog.tif`, `data/risk_proxy_sumut_f32_cog.tif` | Raster sumber proksi (tidak diminta browser). |
 | `public/data/risk_proxy_tiles/` | 1.118 petak PNG, z5–z12, sampai lintang −0,8°. Snapshot 4 November 2026. |
 | `public/icons/` | Pin sirine dan sensor, termasuk tiga warna status. |
-| `data/hidro/rivers_sumut.geojson` | HydroRIVERS v1, 9.574 ruas, dipotong ke Sumut. |
-| `data/hidro/das_sumut_hydrobasins_l7.geojson` | 40 sub-DAS HydroBASINS level 7. |
 
 ### Asal koordinat titik
 
@@ -55,7 +53,7 @@ Untuk mengubah status nanti: sunting kolom `status` pada ID yang bersangkutan, l
 
 ### Batas wilayah
 
-Batas kabupaten/kota dari HDX COD-AB selalu tampil, beserta nama `adm2_name`. Garisnya hitam `#111`, tebal sekitar 2,2 di bawah zoom 9 dan 3 mulai zoom 11, dengan selubung putih tipis supaya terbaca di citra satelit. Kecamatan ungu tua `#5b2a86` (tebal 1,4, opasitas 0,9). Desa abu-abu muda putus-putus `#9e9e9e` mulai zoom 10 (tebal 0,6–0,9, opasitas 0,7). Urutan gambar: desa di bawah kecamatan, kecamatan di bawah kabupaten, semuanya di bawah titik. Tidak ada isian poligon admin. Fitur `Danau Toba` pada berkas adm2 digambar sebagai air, bukan sebagai kabupaten. Batas kecamatan, desa, dan DAS (garis plus `nama_das`) mati sampai dinyalakan.
+Batas kabupaten/kota dari HDX COD-AB selalu tampil, beserta nama `adm2_name`. Garisnya hitam `#111`, tebal sekitar 2,2 di bawah zoom 9 dan 3 mulai zoom 11, dengan selubung putih tipis supaya terbaca di citra satelit. Kecamatan `#37474F`, putus-putus `[4, 3]`, tebal 1,5–2,5, opasitas 0,9. Desa `#757575`, putus-putus lebih rapat `[3, 2]`, tebal 1–1,8, opasitas 0,9, mulai zoom 10. Pada peta satelit keduanya mendapat selubung putih putus-putus. Urutan gambar: desa di bawah kecamatan, kecamatan di bawah kabupaten, semuanya di bawah titik. Tidak ada isian poligon admin. Fitur `Danau Toba` pada berkas adm2 digambar sebagai air, bukan sebagai kabupaten. Batas kecamatan, desa, dan DAS (garis plus `nama_das`) mati sampai dinyalakan.
 
 Klaster peta memakai satu sumber untuk sirine dan sensor sekaligus. Angka pada lingkaran adalah jumlah seluruh titik di dalamnya. Mengarahkan kursor menampilkan rincian sirine, sensor, dan status. Beberapa titik berjarak kurang dari 40 m; ikonnya digeser sedikit hanya pada zoom 14 ke atas supaya tidak bertumpuk. Koordinat di tabel dan popup tetap koordinat sumber.
 
@@ -99,15 +97,9 @@ Pemilih di kiri bawah peta punya tiga pilihan. **Peta jalan** adalah gaya Libert
 
 Atribusi citra: Tiles © Esri — Source: Esri, Maxar, Earthstar Geographics, and the GIS User Community.
 
-### Aliran sungai dan sub-DAS
+### Sungai dan DAS
 
-Dua lapisan vektor, keduanya **mati sampai dinyalakan**. Legenda hanya muncul saat lapisan menyala. Berkas ada di `data/hidro/` dan tidak diubah.
-
-**Aliran Sungai (HydroRIVERS).** `rivers_sumut.geojson`: HydroRIVERS v1 yang dipotong ke Sumatera Utara, 9.574 ruas `LineString`. Atribut `ORD_STRA` 1–6 (orde Strahler). Tidak ada nama sungai. Garis biru; tebal garis `['interpolate',['linear'],['get','ORD_STRA'],1,0.3,6,3]`. Pada zoom di bawah 9 hanya orde 3 ke atas yang digambar. Atribusi: © WWF HydroSHEDS (Lehner & Grill 2013).
-
-**Sub-DAS (HydroBASINS L7, proksi, bukan DAS resmi KLHK).** `das_sumut_hydrobasins_l7.geojson`: 40 poligon HydroBASINS level 7. Hanya garis tepi, tanpa isian.
-
-Catatan produk HydroSHEDS yang menyertai berkas ini: elevasi dasarnya sekitar 500 m, sungai yang disertakan hanya yang daerah tangkapannya sekurang-kurangnya 10 km², dan geometri tidak teliti pada skala besar. Sub-DAS ini proksi hidrologi, bukan peta DAS resmi KLHK.
+HydroRIVERS dan HydroBASINS tidak dipakai. Sungai pada peta adalah lapisan **Sungai Induk (RTRW Sumut)** dari SiPintar. Garis DAS dan nama pada peta, serta kelompok DAS di daftar titik, memakai Batas DAS KLHK (`data/wilayah/das_sumut.geojson` dan `data/points_das.csv`), bukan sub-DAS HydroBASINS.
 
 ### Indeks Bahaya Banjir (InaRISK)
 
@@ -222,5 +214,4 @@ Sebelum langkah itu, URL di atas belum menayangkan dasbor.
 - Remark sumber tidak unik (`Jembatan` 30 kali, `Kantor Urusan Agama` 2 kali, `Jembatan Jl. Binjai- Stabat` 2 kali). Teks remark tidak diubah.
 - Status warna adalah keputusan tampilan lewat CSV, bukan atribut survei pada Excel.
 - Proksi risiko bukan indeks risiko resmi dan dapat menandai tubuh air sebagai tinggi.
-- Sungai HydroRIVERS dan sub-DAS HydroBASINS kasar (DEM sekitar 500 m, sungai dengan daerah tangkapan sekurang-kurangnya 10 km²) dan bukan batas DAS resmi.
 - Lapisan bahaya InaRISK bergantung pada ketersediaan server BNPB saat pengguna membuka peta.

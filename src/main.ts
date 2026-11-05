@@ -32,10 +32,6 @@ const togSirine = wajib(document.querySelector<HTMLInputElement>("#tog-sirine"),
 const togSensor = wajib(document.querySelector<HTMLInputElement>("#tog-sensor"), "sensor");
 const togBahaya = wajib(document.querySelector<HTMLInputElement>("#tog-bahaya"), "bahaya");
 const togProxy = wajib(document.querySelector<HTMLInputElement>("#tog-proxy"), "proxy");
-const togSungai = wajib(document.querySelector<HTMLInputElement>("#tog-sungai"), "sungai");
-const togDas = wajib(document.querySelector<HTMLInputElement>("#tog-das"), "das");
-const sungaiDetail = wajib(document.querySelector<HTMLElement>("#sungai-detail"), "detail sungai");
-const dasDetail = wajib(document.querySelector<HTMLElement>("#das-detail"), "detail das");
 const bahayaOpacity = wajib(document.querySelector<HTMLInputElement>("#bahaya-opacity"), "opasitas bahaya");
 const bahayaKelas = wajib(document.querySelector<HTMLInputElement>("#bahaya-kelas"), "kelas bahaya");
 const proxyOpacity = wajib(document.querySelector<HTMLInputElement>("#proxy-opacity"), "opasitas proksi");
@@ -76,8 +72,6 @@ const panelInfo = wajib(document.querySelector<HTMLElement>("#panel-info"), "pan
 const rasterState: Record<RasterKind, RasterState> = {
   bahaya: "off",
   proxy: "off",
-  sungai: "off",
-  das: "off",
   "batas-das": "off",
   "batas-kab": "off",
   "batas-kec": "off",
@@ -89,8 +83,6 @@ const rasterState: Record<RasterKind, RasterState> = {
 };
 const batasNyala: Record<Exclude<BatasJenis, "kab">, boolean> = { das: false, kec: false, desa: false };
 let peta: StudyMap | null = null;
-let sungaiNyala = false;
-let dasNyala = false;
 let jalanRtrwNyala = false;
 let sungaiRtrwNyala = false;
 let danauRtrwNyala = false;
@@ -237,8 +229,6 @@ function perbaruiStatus() {
   const pasangan: Array<[RasterKind, string]> = [
     ["bahaya", "bahaya-status"],
     ["proxy", "proxy-status"],
-    ["sungai", "sungai-status"],
-    ["das", "das-status"],
     ["batas-das", "batas-das-status"],
     ["batas-kab", "batas-kab-status"],
     ["batas-kec", "batas-kec-status"],
@@ -266,8 +256,6 @@ function terapkan(geserPeta: boolean) {
   peta?.setVisible("sensor", togSensor.checked);
   bahayaDetail.hidden = !togBahaya.checked;
   proxyDetail.hidden = !togProxy.checked;
-  sungaiDetail.hidden = !togSungai.checked;
-  dasDetail.hidden = !togDas.checked;
   batasDasDetail.hidden = !togBatasDas.checked;
   batasKecDetail.hidden = !togBatasKec.checked;
   batasDesaDetail.hidden = !togBatasDesa.checked;
@@ -282,14 +270,6 @@ function terapkan(geserPeta: boolean) {
   if (togProxy.checked) gambarLegendaProxy();
   peta?.setBahaya(togBahaya.checked, Number(bahayaOpacity.value) / 100, bahayaKelas.checked);
   peta?.setProxy(togProxy.checked, Number(proxyOpacity.value) / 100);
-  if (togSungai.checked !== sungaiNyala) {
-    sungaiNyala = togSungai.checked;
-    void peta?.setSungai(sungaiNyala);
-  }
-  if (togDas.checked !== dasNyala) {
-    dasNyala = togDas.checked;
-    void peta?.setDas(dasNyala);
-  }
   if (togJalanRtrw.checked !== jalanRtrwNyala) {
     jalanRtrwNyala = togJalanRtrw.checked;
     void peta?.setJalanRtrw(jalanRtrwNyala);
@@ -439,7 +419,7 @@ function pasangLapisan() {
 function pasangMenu() {
   menuBtn.addEventListener("click", () => menu(!sidebar.classList.contains("terbuka")));
   scrim.addEventListener("click", () => menu(false));
-  for (const elemen of [kabSelect, statusSelect, togSirine, togSensor, togBahaya, togProxy, bahayaKelas, togSungai, togDas, togBatasDas, togBatasKec, togBatasDesa, togJalanRtrw, togSungaiRtrw, togDanauRtrw, togPosHidro]) {
+  for (const elemen of [kabSelect, statusSelect, togSirine, togSensor, togBahaya, togProxy, bahayaKelas, togBatasDas, togBatasKec, togBatasDesa, togJalanRtrw, togSungaiRtrw, togDanauRtrw, togPosHidro]) {
     elemen.addEventListener("change", () => {
       const geser = elemen === kabSelect || elemen === statusSelect;
       terapkan(geser);

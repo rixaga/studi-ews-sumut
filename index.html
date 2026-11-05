@@ -217,12 +217,12 @@
                 <p id="batas-kab-status" class="hint"></p>
                 <label class="switch"><input id="tog-batas-kec" type="checkbox" /> Batas Kecamatan</label>
                 <div id="batas-kec-detail" class="layer-detail" hidden>
-                  <ul class="kelas"><li><i class="garis garis-kec"></i> Kecamatan, abu tua putus-putus</li></ul>
+                  <ul class="kelas"><li><i class="garis garis-kec"></i> Kecamatan, abu tua putus-putus. Pada satelit ada selubung putih.</li></ul>
                   <p id="batas-kec-status" class="hint"></p>
                 </div>
                 <label class="switch"><input id="tog-batas-desa" type="checkbox" /> Batas Desa</label>
                 <div id="batas-desa-detail" class="layer-detail" hidden>
-                  <ul class="kelas"><li><i class="garis garis-desa"></i> Desa/kelurahan, abu muda putus rapat, mulai zoom 10</li></ul>
+                  <ul class="kelas"><li><i class="garis garis-desa"></i> Desa/kelurahan, abu #757575, mulai zoom 10. Pada satelit ada selubung putih.</li></ul>
                   <p id="batas-desa-status" class="hint"></p>
                 </div>
                 <label class="switch"><input id="tog-jalan-rtrw" type="checkbox" /> Jalan (RTRW Sumut)</label>
@@ -240,21 +240,6 @@
               </section>
               <section>
                 <p class="label-grup">Hidrologi</p>
-                <label class="switch"><input id="tog-sungai" type="checkbox" /> Aliran Sungai (HydroRIVERS)</label>
-                <div id="sungai-detail" class="layer-detail" hidden>
-                  <ul class="kelas">
-                    <li><i class="garis garis-tipis"></i> Orde 1, garis tipis</li>
-                    <li><i class="garis garis-tebal"></i> Orde 6, garis tebal</li>
-                  </ul>
-                  <p class="hint">Di bawah zoom 9 hanya orde Strahler 3 ke atas. Tidak ada nama sungai. © WWF HydroSHEDS (Lehner &amp; Grill 2013).</p>
-                  <p id="sungai-status" class="hint"></p>
-                </div>
-                <label class="switch"><input id="tog-das" type="checkbox" /> Sub-DAS (HydroBASINS L7, proksi, bukan DAS resmi KLHK)</label>
-                <div id="das-detail" class="layer-detail" hidden>
-                  <ul class="kelas"><li><i class="garis garis-putus"></i> Garis batas sub-DAS</li></ul>
-                  <p class="hint">40 poligon level 7. Garis saja, bukan DAS resmi KLHK. © WWF HydroSHEDS (Lehner &amp; Grill 2013).</p>
-                  <p id="das-status" class="hint"></p>
-                </div>
                 <label class="switch"><input id="tog-sungai-rtrw" type="checkbox" /> Sungai Induk (RTRW Sumut)</label>
                 <div id="sungai-rtrw-detail" class="layer-detail" hidden>
                   <ul class="kelas"><li><i class="kotak-sungai"></i> Area sungai induk</li></ul>
@@ -391,15 +376,6 @@
                   <td>Tidak dinyatakan</td>
                   <td>—</td>
                   <td>√(bahaya × kerentanan), 100 m, tanpa komponen kapasitas. 1.118 petak, bounds [97, −0,8, 100,5, 4,5]. Danau Toba dapat tampil tinggi.</td>
-                  <td><span class="pil">statis</span></td>
-                </tr>
-                <tr>
-                  <td>HydroRIVERS dan HydroBASINS</td>
-                  <td>WWF HydroSHEDS (Lehner &amp; Grill 2013)</td>
-                  <td>2013</td>
-                  <td>Atribusi pada ketentuan HydroSHEDS</td>
-                  <td><a href="https://www.hydrosheds.org/">hydrosheds.org</a></td>
-                  <td>HydroRIVERS v1, 9.574 ruas, tanpa nama. HydroBASINS L7, 40 sub-DAS, proksi bukan DAS KLHK. DEM sekitar 500 m; sungai dengan daerah tangkapan sekurang-kurangnya 10 km².</td>
                   <td><span class="pil">statis</span></td>
                 </tr>
                 <tr>
