@@ -2,7 +2,18 @@ import maplibregl, { type GeoJSONSource, type Map } from "maplibre-gl";
 import type { BatasProvinsi, Titik } from "./model";
 import { asset, escapeHtml, formatDerajat, labelStatusSumber, STATUS_LABEL } from "./model";
 
-export type RasterKind = "bahaya" | "proxy" | "sungai" | "das" | "batas-das" | "batas-kab" | "batas-kec" | "batas-desa";
+export type RasterKind =
+  | "bahaya"
+  | "proxy"
+  | "sungai"
+  | "das"
+  | "batas-das"
+  | "batas-kab"
+  | "batas-kec"
+  | "batas-desa"
+  | "jalan-rtrw"
+  | "sungai-rtrw"
+  | "danau-rtrw";
 export type BatasJenis = "das" | "kab" | "kec" | "desa";
 export type RasterState = "off" | "loading" | "ready" | "error" | "partial";
 export type DasarPeta = "jalan" | "satelit" | "satelit-label";
@@ -42,6 +53,9 @@ export type StudyMap = {
   setSungai(nyala: boolean): Promise<void>;
   setDas(nyala: boolean): Promise<void>;
   setBatas(jenis: BatasJenis, nyala: boolean): Promise<void>;
+  setJalanRtrw(nyala: boolean): Promise<void>;
+  setSungaiRtrw(nyala: boolean): Promise<void>;
+  setDanauRtrw(nyala: boolean): Promise<void>;
   setUsulan(fitur: GeoJSON.Feature[], tampil: boolean): void;
   setSurvei(fitur: GeoJSON.Feature[], tampil: boolean): void;
   aturIndeksSurvei(id: string[]): void;
@@ -646,6 +660,287 @@ export async function createStudyMap(
 
   lihatSumut(false);
   void pasangBatas(map, onRaster, "kab", true);
+
+  const ATRIBUSI_SIPINTAR = "SiPintar Sumut – Perda No. 2/2017 RTRW Provinsi Sumatera Utara";
+  const tumpukSipintar = [
+    "titik-clusters",
+    "batas-kab-casing",
+    "batas-kec-garis",
+    "batas-desa-garis",
+    "sumut-garis",
+    "jalan-utama-garis",
+    "jalan-ka-garis",
+    "jalan-lokal-garis",
+    "sungai-rtrw-label",
+    "sungai-rtrw-garis",
+    "sungai-rtrw-isi",
+    "danau-rtrw-label",
+    "danau-rtrw-garis",
+    "danau-rtrw-isi",
+  ];
+  const sebelumSipintar = (id: string) => {
+    const atas = tumpukSipintar.slice(0, Math.max(tumpukSipintar.indexOf(id), 0));
+    for (let i = atas.length - 1; i >= 0; i -= 1) {
+      if (map.getLayer(atas[i])) return atas[i];
+    }
+    return "titik-clusters";
+  };
+  const lepasLapisan = (lapisan: string[], sumber: string) => {
+    for (const id of lapisan) {
+      if (map.getLayer(id)) map.removeLayer(id);
+    }
+    if (map.getSource(sumber)) map.removeSource(sumber);
+  };
+  const ambilVektor = async (path: string) => {
+    const ada = vektorCache[path];
+    if (ada) return ada;
+    const response = await fetch(asset(path));
+    if (!response.ok) throw new Error(path);
+    const data = (await response.json()) as GeoJSON.FeatureCollection;
+    vektorCache[path] = data;
+    return data;
+  };
+  let popupAir: maplibregl.Popup | null = null;
+  const klikAir = (jenis: string) => (event: maplibregl.MapLayerMouseEvent) => {
+    const nama = String(event.features?.[0]?.properties?.nama ?? "").trim();
+    popupAir?.remove();
+    popupKlaster?.remove();
+    const judul = nama || jenis;
+    const barisNama = nama ? `<tr><th>Nama</th><td>${escapeHtml(nama)}</td></tr>` : "";
+    popupAir = new maplibregl.Popup({ maxWidth: "280px", className: "ews-popup" })
+      .setLngLat(event.lngLat)
+      .setHTML(
+        `<h3>${escapeHtml(judul)}</h3><p class="popup-catatan">SiPintar Sumut, RTRW Provinsi Sumatera Utara (Perda No. 2/2017).</p><table>${barisNama}<tr><th>Lapisan</th><td>${escapeHtml(jenis)}</td></tr></table>`,
+      )
+      .addTo(map);
+  };
+  const klikAirTerpasang = new Set<string>();
+  const pasangKlikAir = (id: string, jenis: string) => {
+    if (klikAirTerpasang.has(id)) return;
+    klikAirTerpasang.add(id);
+    map.on("click", id, klikAir(jenis));
+    map.on("mouseenter", id, () => {
+      map.getCanvas().style.cursor = "pointer";
+    });
+    map.on("mouseleave", id, () => {
+      map.getCanvas().style.cursor = "";
+    });
+  };
+  let genJalan = 0;
+  let genLokal = 0;
+  let genSungaiRtrw = 0;
+  let genDanauRtrw = 0;
+  let jalanRtrwNyala = false;
+  const pasangJalanLokal = async () => {
+    if (!jalanRtrwNyala || map.getZoom() < 11 || map.getSource("jalan-lokal")) return;
+    const gen = ++genLokal;
+    try {
+      const data = await ambilVektor("data/sipintar/jalan_lokal.geojson");
+      if (gen !== genLokal || !jalanRtrwNyala || map.getZoom() < 11 || map.getSource("jalan-lokal")) return;
+      map.addSource("jalan-lokal", { type: "geojson", data, attribution: ATRIBUSI_SIPINTAR });
+      map.addLayer(
+        {
+          id: "jalan-lokal-garis",
+          type: "line",
+          source: "jalan-lokal",
+          minzoom: 11,
+          layout: { "line-join": "round", "line-cap": "round" },
+          paint: {
+            "line-color": ["match", ["get", "kelas"], "Jalan Lokal", "#9b5aff", "Jalan Lain", "#9e9e9e", "#9e9e9e"],
+            "line-width": 0.6,
+            "line-opacity": 0.9,
+          },
+        },
+        sebelumSipintar("jalan-lokal-garis"),
+      );
+    } catch {
+      if (gen === genLokal && jalanRtrwNyala) onRaster("jalan-rtrw", "error");
+    }
+  };
+  map.on("zoomend", () => {
+    if (jalanRtrwNyala && map.getZoom() >= 11) void pasangJalanLokal();
+  });
+  const pasangJalanRtrw = async (nyala: boolean) => {
+    if (!nyala) {
+      genJalan += 1;
+      genLokal += 1;
+      jalanRtrwNyala = false;
+      lepasLapisan(["jalan-utama-garis", "jalan-ka-garis"], "jalan-utama");
+      lepasLapisan(["jalan-lokal-garis"], "jalan-lokal");
+      onRaster("jalan-rtrw", "off");
+      return;
+    }
+    const gen = ++genJalan;
+    jalanRtrwNyala = true;
+    onRaster("jalan-rtrw", "loading");
+    try {
+      const data = await ambilVektor("data/sipintar/jalan_utama.geojson");
+      if (gen !== genJalan || !jalanRtrwNyala) return;
+      lepasLapisan(["jalan-utama-garis", "jalan-ka-garis"], "jalan-utama");
+      map.addSource("jalan-utama", { type: "geojson", data, attribution: ATRIBUSI_SIPINTAR });
+      map.addLayer(
+        {
+          id: "jalan-utama-garis",
+          type: "line",
+          source: "jalan-utama",
+          filter: ["!=", ["get", "kelas"], "Jalan Kereta Api Jalur Tunggal"],
+          layout: { "line-join": "round", "line-cap": "round" },
+          paint: {
+            "line-color": [
+              "match",
+              ["get", "kelas"],
+              "Jalan Arteri",
+              "#ff5100",
+              "Jalan Tol",
+              "#ff5100",
+              "Jalan Kolektor",
+              "#ff8c00",
+              "Landas Pacu Internasional",
+              "#616161",
+              "#ff8c00",
+            ],
+            "line-width": [
+              "match",
+              ["get", "kelas"],
+              "Jalan Arteri",
+              2,
+              "Jalan Tol",
+              2.2,
+              "Jalan Kolektor",
+              1.4,
+              "Landas Pacu Internasional",
+              1.6,
+              1.4,
+            ],
+          },
+        },
+        sebelumSipintar("jalan-utama-garis"),
+      );
+      map.addLayer(
+        {
+          id: "jalan-ka-garis",
+          type: "line",
+          source: "jalan-utama",
+          filter: ["==", ["get", "kelas"], "Jalan Kereta Api Jalur Tunggal"],
+          paint: { "line-color": "#111111", "line-width": 1.3, "line-dasharray": [2, 2] },
+        },
+        sebelumSipintar("jalan-ka-garis"),
+      );
+      onRaster("jalan-rtrw", "ready");
+      void pasangJalanLokal();
+    } catch {
+      if (gen === genJalan) onRaster("jalan-rtrw", "error");
+    }
+  };
+  const pasangSungaiRtrw = async (nyala: boolean) => {
+    if (!nyala) {
+      genSungaiRtrw += 1;
+      lepasLapisan(["sungai-rtrw-isi", "sungai-rtrw-garis", "sungai-rtrw-label"], "sungai-rtrw");
+      onRaster("sungai-rtrw", "off");
+      return;
+    }
+    const gen = ++genSungaiRtrw;
+    onRaster("sungai-rtrw", "loading");
+    try {
+      const data = await ambilVektor("data/sipintar/sungai_induk.geojson");
+      if (gen !== genSungaiRtrw) return;
+      lepasLapisan(["sungai-rtrw-isi", "sungai-rtrw-garis", "sungai-rtrw-label"], "sungai-rtrw");
+      map.addSource("sungai-rtrw", { type: "geojson", data, attribution: ATRIBUSI_SIPINTAR });
+      map.addLayer(
+        {
+          id: "sungai-rtrw-isi",
+          type: "fill",
+          source: "sungai-rtrw",
+          paint: { "fill-color": "#4fa3e0", "fill-opacity": 0.6 },
+        },
+        sebelumSipintar("sungai-rtrw-isi"),
+      );
+      map.addLayer(
+        {
+          id: "sungai-rtrw-garis",
+          type: "line",
+          source: "sungai-rtrw",
+          paint: { "line-color": "#1f6fb2", "line-width": 0.5 },
+        },
+        sebelumSipintar("sungai-rtrw-garis"),
+      );
+      map.addLayer(
+        {
+          id: "sungai-rtrw-label",
+          type: "symbol",
+          source: "sungai-rtrw",
+          minzoom: 9,
+          filter: ["!=", ["coalesce", ["get", "nama"], ""], ""],
+          layout: {
+            "text-field": ["get", "nama"],
+            "text-font": ["Noto Sans Regular"],
+            "text-size": 11,
+            "text-max-width": 8,
+          },
+          paint: { "text-color": "#0d47a1", "text-halo-color": "#ffffff", "text-halo-width": 1.2 },
+        },
+        sebelumSipintar("sungai-rtrw-label"),
+      );
+      pasangKlikAir("sungai-rtrw-isi", "Sungai induk");
+      onRaster("sungai-rtrw", "ready");
+    } catch {
+      if (gen === genSungaiRtrw) onRaster("sungai-rtrw", "error");
+    }
+  };
+  const pasangDanauRtrw = async (nyala: boolean) => {
+    if (!nyala) {
+      genDanauRtrw += 1;
+      lepasLapisan(["danau-rtrw-isi", "danau-rtrw-garis", "danau-rtrw-label"], "danau-rtrw");
+      onRaster("danau-rtrw", "off");
+      return;
+    }
+    const gen = ++genDanauRtrw;
+    onRaster("danau-rtrw", "loading");
+    try {
+      const data = await ambilVektor("data/sipintar/danau.geojson");
+      if (gen !== genDanauRtrw) return;
+      lepasLapisan(["danau-rtrw-isi", "danau-rtrw-garis", "danau-rtrw-label"], "danau-rtrw");
+      map.addSource("danau-rtrw", { type: "geojson", data, attribution: ATRIBUSI_SIPINTAR });
+      map.addLayer(
+        {
+          id: "danau-rtrw-isi",
+          type: "fill",
+          source: "danau-rtrw",
+          paint: { "fill-color": "#97dbf2", "fill-opacity": 0.7 },
+        },
+        sebelumSipintar("danau-rtrw-isi"),
+      );
+      map.addLayer(
+        {
+          id: "danau-rtrw-garis",
+          type: "line",
+          source: "danau-rtrw",
+          paint: { "line-color": "#2a9bb8", "line-width": 1 },
+        },
+        sebelumSipintar("danau-rtrw-garis"),
+      );
+      map.addLayer(
+        {
+          id: "danau-rtrw-label",
+          type: "symbol",
+          source: "danau-rtrw",
+          minzoom: 9,
+          filter: ["!=", ["coalesce", ["get", "nama"], ""], ""],
+          layout: {
+            "text-field": ["get", "nama"],
+            "text-font": ["Noto Sans Regular"],
+            "text-size": 11,
+          },
+          paint: { "text-color": "#01579b", "text-halo-color": "#ffffff", "text-halo-width": 1.2 },
+        },
+        sebelumSipintar("danau-rtrw-label"),
+      );
+      pasangKlikAir("danau-rtrw-isi", "Danau");
+      onRaster("danau-rtrw", "ready");
+    } catch {
+      if (gen === genDanauRtrw) onRaster("danau-rtrw", "error");
+    }
+  };
   if (new URLSearchParams(window.location.search).has("uji")) {
     const uji = window as unknown as {
       __studiPeta?: maplibregl.Map;
@@ -732,6 +1027,9 @@ export async function createStudyMap(
     async setBatas(jenis, nyala) {
       await pasangBatas(map, onRaster, jenis, nyala);
     },
+    setJalanRtrw: pasangJalanRtrw,
+    setSungaiRtrw: pasangSungaiRtrw,
+    setDanauRtrw: pasangDanauRtrw,
     aturAksiUsulan(admin, sunting, hapus) {
       adminUsulan = admin;
       onSuntingUsulan = sunting;

@@ -201,7 +201,7 @@
                 <p id="usulan-status" class="hint">Memuat titik usulan…</p>
               </section>
               <section>
-                <p class="label-grup">Batas wilayah</p>
+                <p class="label-grup">Batas wilayah &amp; infrastruktur</p>
                 <label class="switch"><input id="tog-batas-das" type="checkbox" /> Batas DAS</label>
                 <div id="batas-das-detail" class="layer-detail" hidden>
                   <ul class="kelas"><li><i class="garis garis-das"></i> Garis dan nama DAS</li></ul>
@@ -225,6 +225,18 @@
                   <ul class="kelas"><li><i class="garis garis-desa"></i> Desa/kelurahan, mulai zoom 10</li></ul>
                   <p id="batas-desa-status" class="hint"></p>
                 </div>
+                <label class="switch"><input id="tog-jalan-rtrw" type="checkbox" /> Jalan (RTRW Sumut)</label>
+                <div id="jalan-rtrw-detail" class="layer-detail" hidden>
+                  <ul class="kelas">
+                    <li><i class="garis garis-arteri"></i> Jalan arteri</li>
+                    <li><i class="garis garis-kolektor"></i> Jalan kolektor</li>
+                    <li><i class="garis garis-ka"></i> Kereta api</li>
+                    <li><i class="garis garis-lokal"></i> Jalan lokal, mulai zoom 11</li>
+                    <li><i class="garis garis-lain"></i> Jalan lain, mulai zoom 11</li>
+                  </ul>
+                  <p class="hint">SiPintar Sumut – Perda No. 2/2017 RTRW Provinsi Sumatera Utara. Jalan lokal dimuat saat lapisan dinyalakan dan zoom 11 atau lebih dekat.</p>
+                  <p id="jalan-rtrw-status" class="hint"></p>
+                </div>
               </section>
               <section>
                 <p class="label-grup">Hidrologi</p>
@@ -242,6 +254,18 @@
                   <ul class="kelas"><li><i class="garis garis-putus"></i> Garis batas sub-DAS</li></ul>
                   <p class="hint">40 poligon level 7. Garis saja, bukan DAS resmi KLHK. © WWF HydroSHEDS (Lehner &amp; Grill 2013).</p>
                   <p id="das-status" class="hint"></p>
+                </div>
+                <label class="switch"><input id="tog-sungai-rtrw" type="checkbox" /> Sungai Induk (RTRW Sumut)</label>
+                <div id="sungai-rtrw-detail" class="layer-detail" hidden>
+                  <ul class="kelas"><li><i class="kotak-sungai"></i> Area sungai induk</li></ul>
+                  <p class="hint">SiPintar Sumut – Perda No. 2/2017 RTRW Provinsi Sumatera Utara. Nama muncul bila diisi.</p>
+                  <p id="sungai-rtrw-status" class="hint"></p>
+                </div>
+                <label class="switch"><input id="tog-danau-rtrw" type="checkbox" /> Danau (RTRW Sumut)</label>
+                <div id="danau-rtrw-detail" class="layer-detail" hidden>
+                  <ul class="kelas"><li><i class="kotak-danau"></i> Danau</li></ul>
+                  <p class="hint">SiPintar Sumut – Perda No. 2/2017 RTRW Provinsi Sumatera Utara. Nama muncul bila diisi.</p>
+                  <p id="danau-rtrw-status" class="hint"></p>
                 </div>
               </section>
               <section>
@@ -366,6 +390,15 @@
                   <td>Atribusi pada ketentuan HydroSHEDS</td>
                   <td><a href="https://www.hydrosheds.org/">hydrosheds.org</a></td>
                   <td>HydroRIVERS v1, 9.574 ruas, tanpa nama. HydroBASINS L7, 40 sub-DAS, proksi bukan DAS KLHK. DEM sekitar 500 m; sungai dengan daerah tangkapan sekurang-kurangnya 10 km².</td>
+                  <td><span class="pil">statis</span></td>
+                </tr>
+                <tr>
+                  <td>SiPintar Sumut — RTRW</td>
+                  <td>SiPintar Sumut</td>
+                  <td>Perda No. 2/2017</td>
+                  <td>Tidak dinyatakan pada berkas</td>
+                  <td>—</td>
+                  <td>Jalan utama (arteri, kolektor, tol, kereta api), jalan lokal, area sungai induk, dan danau. EPSG:4326. Jalan lokal mulai zoom 11. Atribusi: SiPintar Sumut – Perda No. 2/2017 RTRW Provinsi Sumatera Utara.</td>
                   <td><span class="pil">statis</span></td>
                 </tr>
                 <tr>

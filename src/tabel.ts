@@ -48,6 +48,9 @@ let dasIndeks = new Map<string, { das: string; subDas: string }>();
 let kelompok: Kelompok = "kab";
 let urut: { kunci: Kunci; arah: "naik" | "turun" } = { kunci: "id", arah: "naik" };
 let terpilih = "";
+let kataTerakhir = "";
+const terbuka = new Set<string>();
+const ditutupSaatCari = new Set<string>();
 let onPilih: (titik: Titik) => void = () => undefined;
 const sudahSurvei = new Set<string>();
 
@@ -187,8 +190,37 @@ function barisHtml(baris: Baris): string {
   return `<tr class="${aktif.trim()}" data-id="${escapeHtml(baris.id)}" tabindex="0">${sel(baris)}</tr>`;
 }
 
-function kepalaGrup(teks: string, jumlah: number, kelas: string): string {
-  return `<tr class="${kelas}"><th colspan="${KOLOM.length}">${escapeHtml(teks)}<span class="hitung">${jumlah.toLocaleString("id-ID")} titik</span></th></tr>`;
+function hitungJenis(daftar: Baris[]): { sirine: number; sensor: number } {
+  let sirine = 0;
+  let sensor = 0;
+  for (const item of daftar) {
+    if (item.jenis === "Sirine") sirine += 1;
+    else if (item.jenis === "Sensor") sensor += 1;
+  }
+  return { sirine, sensor };
+}
+
+function grupTerbuka(kunci: string): boolean {
+  if (kataTerakhir) return !ditutupSaatCari.has(kunci);
+  return terbuka.has(kunci);
+}
+
+function balikGrup(kunci: string) {
+  const buka = grupTerbuka(kunci);
+  if (kataTerakhir) {
+    if (buka) ditutupSaatCari.add(kunci);
+    else ditutupSaatCari.delete(kunci);
+  }
+  if (buka) terbuka.delete(kunci);
+  else terbuka.add(kunci);
+  gambar();
+}
+
+function kepalaGrup(teks: string, daftar: Baris[], kelas: string, kunci: string, buka: boolean): string {
+  const { sirine, sensor } = hitungJenis(daftar);
+  const hitung = `${sirine.toLocaleString("id-ID")} sirine · ${sensor.toLocaleString("id-ID")} sensor`;
+  const label = buka ? `Tutup ${teks}` : `Buka ${teks}`;
+  return `<tr class="${kelas}${buka ? " terbuka" : ""}"><th colspan="${KOLOM.length}"><button type="button" class="grup-tombol" data-grup="${escapeHtml(kunci)}" aria-expanded="${buka}" aria-label="${escapeHtml(label)}"><span class="grup-nama">${escapeHtml(teks)}</span><span class="hitung">${hitung}</span><span class="grup-tanda" aria-hidden="true">${buka ? "−" : "+"}</span></button></th></tr>`;
 }
 
 function gambarKepala() {
@@ -211,7 +243,9 @@ function kelompokkan(baris: Baris[]): string {
     return urutGrup([...peta.keys()])
       .map((kab) => {
         const daftar = peta.get(kab) ?? [];
-        return kepalaGrup(kab, daftar.length, "grup") + daftar.map(barisHtml).join("");
+        const kunci = `kab:${kab}`;
+        const buka = grupTerbuka(kunci);
+        return kepalaGrup(kab, daftar, "grup", kunci, buka) + (buka ? daftar.map(barisHtml).join("") : "");
       })
       .join("");
   }
@@ -226,21 +260,31 @@ function kelompokkan(baris: Baris[]): string {
   return urutGrup([...peta.keys()])
     .map((das) => {
       const dalam = peta.get(das) ?? new Map<string, Baris[]>();
-      const jumlah = [...dalam.values()].reduce((total, daftar) => total + daftar.length, 0);
-      const kabHtml = [...dalam.keys()]
-        .sort((a, b) => a.localeCompare(b, "id", { numeric: true, sensitivity: "base" }))
-        .map((kab) => {
-          const daftar = dalam.get(kab) ?? [];
-          return kepalaGrup(kab, daftar.length, "subgrup") + daftar.map(barisHtml).join("");
-        })
-        .join("");
-      return kepalaGrup(das, jumlah, "grup") + kabHtml;
+      const semua = [...dalam.values()].flat();
+      const kunciDas = `das:${das}`;
+      const bukaDas = grupTerbuka(kunciDas);
+      const kabHtml = bukaDas
+        ? [...dalam.keys()]
+            .sort((a, b) => a.localeCompare(b, "id", { numeric: true, sensitivity: "base" }))
+            .map((kab) => {
+              const daftar = dalam.get(kab) ?? [];
+              const kunci = `das:${das}|kab:${kab}`;
+              const buka = grupTerbuka(kunci);
+              return kepalaGrup(kab, daftar, "subgrup", kunci, buka) + (buka ? daftar.map(barisHtml).join("") : "");
+            })
+            .join("")
+        : "";
+      return kepalaGrup(das, semua, "grup", kunciDas, bukaDas) + kabHtml;
     })
     .join("");
 }
 
 function gambar() {
   const kata = (cari?.value ?? "").trim().toLocaleLowerCase("id");
+  if (kata !== kataTerakhir) {
+    ditutupSaatCari.clear();
+    kataTerakhir = kata;
+  }
   const baris = [...sumber, ...tambahan].map(jadiBaris).filter((item) => cocok(item, kata)).sort(banding);
   if (meta) {
     const adaSub = [...dasIndeks.values()].some((item) => item.subDas);
@@ -278,6 +322,11 @@ export function pasangTabel(pilih: (titik: Titik) => void) {
     gambar();
   });
   isi?.addEventListener("click", (event) => {
+    const tombol = (event.target as HTMLElement).closest<HTMLButtonElement>("button[data-grup]");
+    if (tombol?.dataset.grup) {
+      balikGrup(tombol.dataset.grup);
+      return;
+    }
     const baris = (event.target as HTMLElement).closest<HTMLTableRowElement>("tr[data-id]");
     if (!baris?.dataset.id) return;
     pilihBaris(baris.dataset.id);
