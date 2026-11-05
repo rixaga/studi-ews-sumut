@@ -1010,7 +1010,7 @@ function matikan(
 const batasGen: Partial<Record<BatasJenis, number>> = {};
 const batasLayer: Record<BatasJenis, string[]> = {
   das: ["batas-das-garis", "batas-das-label"],
-  kab: ["batas-toba", "batas-toba-label", "batas-kab-garis", "batas-kab-label"],
+  kab: ["batas-toba", "batas-toba-label", "batas-kab-casing", "batas-kab-garis", "batas-kab-label"],
   kec: ["batas-kec-garis"],
   desa: ["batas-desa-garis"],
 };
@@ -1020,6 +1020,13 @@ const batasSource: Record<BatasJenis, string[]> = {
   kec: ["batas-kec"],
   desa: ["batas-desa"],
 };
+
+function sebelumGarisBatas(map: Map, urutan: string[]): string {
+  for (const id of urutan) {
+    if (map.getLayer(id)) return id;
+  }
+  return "titik-clusters";
+}
 
 function hapusBatas(map: Map, jenis: BatasJenis) {
   for (const id of batasLayer[jenis]) {
@@ -1129,12 +1136,30 @@ async function pasangBatas(
       );
       map.addLayer(
         {
+          id: "batas-kab-casing",
+          type: "line",
+          source: "batas-kab",
+          layout: { "line-join": "round", "line-cap": "round" },
+          paint: {
+            "line-color": "#ffffff",
+            "line-width": ["interpolate", ["linear"], ["zoom"], 9, 3.8, 11, 4.8],
+            "line-opacity": 0.9,
+          },
+        },
+        sebelumGarisBatas(map, ["titik-clusters"]),
+      );
+      map.addLayer(
+        {
           id: "batas-kab-garis",
           type: "line",
           source: "batas-kab",
-          paint: { "line-color": "#1c1c1f", "line-width": 1.5 },
+          layout: { "line-join": "round", "line-cap": "round" },
+          paint: {
+            "line-color": "#111111",
+            "line-width": ["interpolate", ["linear"], ["zoom"], 9, 2.2, 11, 3],
+          },
         },
-        "titik-clusters",
+        sebelumGarisBatas(map, ["titik-clusters"]),
       );
       map.addLayer(
         {
@@ -1169,9 +1194,10 @@ async function pasangBatas(
           id: "batas-kec-garis",
           type: "line",
           source: "batas-kec",
-          paint: { "line-color": "#6b7280", "line-width": 1 },
+          layout: { "line-join": "round", "line-cap": "round" },
+          paint: { "line-color": "#5b2a86", "line-width": 1.4, "line-opacity": 0.9 },
         },
-        "titik-clusters",
+        sebelumGarisBatas(map, ["batas-kab-casing", "batas-kab-garis", "titik-clusters"]),
       );
     } else {
       map.addSource("batas-desa", {
@@ -1185,9 +1211,14 @@ async function pasangBatas(
           type: "line",
           source: "batas-desa",
           minzoom: 10,
-          paint: { "line-color": "#9aa0ab", "line-width": 0.7 },
+          paint: {
+            "line-color": "#9e9e9e",
+            "line-width": ["interpolate", ["linear"], ["zoom"], 10, 0.6, 13, 0.9],
+            "line-opacity": 0.7,
+            "line-dasharray": [2, 2],
+          },
         },
-        "titik-clusters",
+        sebelumGarisBatas(map, ["batas-kec-garis", "batas-kab-casing", "batas-kab-garis", "titik-clusters"]),
       );
     }
     onRaster(kind, "ready");

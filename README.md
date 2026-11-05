@@ -55,7 +55,7 @@ Untuk mengubah status nanti: sunting kolom `status` pada ID yang bersangkutan, l
 
 ### Batas wilayah
 
-Batas kabupaten/kota dari HDX COD-AB selalu tampil, beserta nama `adm2_name`. Fitur `Danau Toba` pada berkas adm2 digambar sebagai air, bukan sebagai kabupaten. Batas kecamatan, desa (mulai zoom 10), dan DAS (garis plus `nama_das`) mati sampai dinyalakan.
+Batas kabupaten/kota dari HDX COD-AB selalu tampil, beserta nama `adm2_name`. Garisnya hitam `#111`, tebal sekitar 2,2 di bawah zoom 9 dan 3 mulai zoom 11, dengan selubung putih tipis supaya terbaca di citra satelit. Kecamatan ungu tua `#5b2a86` (tebal 1,4, opasitas 0,9). Desa abu-abu muda putus-putus `#9e9e9e` mulai zoom 10 (tebal 0,6–0,9, opasitas 0,7). Urutan gambar: desa di bawah kecamatan, kecamatan di bawah kabupaten, semuanya di bawah titik. Tidak ada isian poligon admin. Fitur `Danau Toba` pada berkas adm2 digambar sebagai air, bukan sebagai kabupaten. Batas kecamatan, desa, dan DAS (garis plus `nama_das`) mati sampai dinyalakan.
 
 Klaster peta memakai satu sumber untuk sirine dan sensor sekaligus. Angka pada lingkaran adalah jumlah seluruh titik di dalamnya. Mengarahkan kursor menampilkan rincian sirine, sensor, dan status. Beberapa titik berjarak kurang dari 40 m; ikonnya digeser sedikit hanya pada zoom 14 ke atas supaya tidak bertumpuk. Koordinat di tabel dan popup tetap koordinat sumber.
 
