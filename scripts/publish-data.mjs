@@ -7,8 +7,6 @@ const files = [
   "penduduk_terpapar.json",
   "alternatif_lokasi.json",
   "batas/sumatera_utara_adm1.geojson",
-  "hidro/rivers_sumut.geojson",
-  "hidro/das_sumut_hydrobasins_l7.geojson",
   "points_das.csv",
   "mismatch_points.csv",
   "wilayah/das_sumut.geojson",

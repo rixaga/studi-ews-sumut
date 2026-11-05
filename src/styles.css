@@ -177,20 +177,17 @@ input[type="range"] { width: 100%; accent-color: #1c1c1f; }
 .kelas li { display: flex; align-items: center; gap: 6px; }
 .kelas i { width: 14px; height: 10px; border-radius: 3px; border: 1px solid rgba(0, 0, 0, 0.12); display: inline-block; }
 .kelas i.garis { width: 28px; height: 0; border: 0; border-radius: 0; background: none; }
-.garis-tipis { border-top: 1px solid #0277bd !important; }
-.garis-tebal { border-top: 3px solid #0277bd !important; }
-.garis-putus { border-top: 2px dashed #4338ca !important; }
 .garis-das { border-top: 3px solid #8d5524 !important; }
 .garis-kab { border-top: 4px solid #111 !important; box-shadow: 0 0 0 1px #fff; }
 .kelas i.garis-kec {
-  height: 2px;
+  height: 3px;
   border: 0 !important;
-  background: repeating-linear-gradient(90deg, #37474f 0 7px, transparent 7px 11px);
+  background: repeating-linear-gradient(90deg, #37474f 0 8px, transparent 8px 14px);
 }
 .kelas i.garis-desa {
-  height: 1px;
+  height: 2px;
   border: 0 !important;
-  background: repeating-linear-gradient(90deg, #bdbdbd 0 2px, transparent 2px 4px);
+  background: repeating-linear-gradient(90deg, #757575 0 6px, transparent 6px 10px);
 }
 .garis-arteri { border-top: 3px solid #ff5100 !important; }
 .garis-kolektor { border-top: 2px solid #ff8c00 !important; }
