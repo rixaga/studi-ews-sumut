@@ -1554,7 +1554,7 @@ async function pasangBatas(
           id: "batas-das-garis",
           type: "line",
           source: "batas-das",
-          paint: { "line-color": "#0f766e", "line-width": 1.6 },
+          paint: { "line-color": "#8D5524", "line-width": 1.5 },
         },
         "titik-clusters",
       );
@@ -1569,7 +1569,7 @@ async function pasangBatas(
             "text-size": 11,
             "text-max-width": 10,
           },
-          paint: { "text-color": "#0f766e", "text-halo-color": "#ffffff", "text-halo-width": 1.2 },
+          paint: { "text-color": "#8D5524", "text-halo-color": "#ffffff", "text-halo-width": 1.2 },
         },
         "titik-clusters",
       );
@@ -1669,8 +1669,8 @@ async function pasangBatas(
           id: "batas-kec-garis",
           type: "line",
           source: "batas-kec",
-          layout: { "line-join": "round", "line-cap": "round" },
-          paint: { "line-color": "#5b2a86", "line-width": 1.4, "line-opacity": 0.9 },
+          layout: { "line-join": "round", "line-cap": "butt" },
+          paint: { "line-color": "#37474F", "line-width": 1.4, "line-opacity": 0.9, "line-dasharray": [4, 2] },
         },
         sebelumGarisBatas(map, ["batas-kab-casing", "batas-kab-garis", "titik-clusters"]),
       );
@@ -1687,10 +1687,10 @@ async function pasangBatas(
           source: "batas-desa",
           minzoom: 10,
           paint: {
-            "line-color": "#9e9e9e",
+            "line-color": "#BDBDBD",
             "line-width": ["interpolate", ["linear"], ["zoom"], 10, 0.6, 13, 0.9],
             "line-opacity": 0.7,
-            "line-dasharray": [2, 2],
+            "line-dasharray": [1, 1],
           },
         },
         sebelumGarisBatas(map, ["batas-kec-garis", "batas-kab-casing", "batas-kab-garis", "titik-clusters"]),
