@@ -1,6 +1,6 @@
 import "maplibre-gl/dist/maplibre-gl.css";
 import "./styles.css";
-import { createStudyMap, type BatasJenis, type RasterKind, type RasterState, type StudyMap } from "./map";
+import { createStudyMap, type BatasJenis, type DasarPeta, type RasterKind, type RasterState, type StudyMap } from "./map";
 import {
   type BarisAlternatif,
   type BatasProvinsi,
@@ -436,9 +436,21 @@ async function mulai() {
     await pasangCekWilayah([...sirine, ...sensor]);
     const mapNode = document.querySelector<HTMLElement>("#map");
     if (!mapNode) throw new Error("Peta tidak ditemukan");
+    const pilihDasar = wajib(document.querySelector<HTMLSelectElement>("#peta-dasar"), "peta dasar");
+    const dasarAwal = bacaDasar();
+    pilihDasar.value = dasarAwal;
     peta = await createStudyMap(mapNode, batas, (kind, state) => {
       rasterState[kind] = state;
       perbaruiStatus();
+    }, dasarAwal);
+    pilihDasar.addEventListener("change", () => {
+      const mode = sebagaiDasar(pilihDasar.value);
+      peta?.aturDasar(mode);
+      try {
+        localStorage.setItem(KUNCI_DASAR, mode);
+      } catch {
+        // Penyimpanan bisa ditolak. Pilihan tetap berlaku untuk sesi ini.
+      }
     });
     saatTandaBerubah(() => terapkan(false));
     pasangUsulan(peta);
@@ -446,6 +458,21 @@ async function mulai() {
   } catch (error) {
     loadError.hidden = false;
     loadError.textContent = `Data peta gagal dimuat. ${error instanceof Error ? error.message : ""}`;
+  }
+}
+
+const KUNCI_DASAR = "studi-ews-basemap";
+
+function sebagaiDasar(nilai: string): DasarPeta {
+  if (nilai === "satelit" || nilai === "satelit-label") return nilai;
+  return "jalan";
+}
+
+function bacaDasar(): DasarPeta {
+  try {
+    return sebagaiDasar(localStorage.getItem(KUNCI_DASAR) ?? "");
+  } catch {
+    return "jalan";
   }
 }
 

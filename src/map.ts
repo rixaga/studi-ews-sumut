@@ -5,6 +5,7 @@ import { asset, escapeHtml, formatDerajat, labelStatusSumber, STATUS_LABEL } fro
 export type RasterKind = "bahaya" | "proxy" | "sungai" | "das" | "batas-das" | "batas-kab" | "batas-kec" | "batas-desa";
 export type BatasJenis = "das" | "kab" | "kec" | "desa";
 export type RasterState = "off" | "loading" | "ready" | "error" | "partial";
+export type DasarPeta = "jalan" | "satelit" | "satelit-label";
 
 const BAHAYA_URL =
   "https://gis.bnpb.go.id/server/rest/services/inarisk/INDEKS_BAHAYA_BANJIR/ImageServer/exportImage?bbox={bbox-epsg-3857}&bboxSR=3857&imageSR=3857&size=256,256&format=png32&transparent=true&f=image";
@@ -46,6 +47,7 @@ export type StudyMap = {
   aturModeTambah(nyala: boolean, onKlik: ((lon: number, lat: number) => void) | null): void;
   aturModeHapus(nyala: boolean, onTandai: ((info: { id: string; sumber: "asli" | "usulan"; nama: string }) => void) | null): void;
   aturAksiTanda(aksi: { admin: boolean; pulihkan: (id: string, sumber: "asli" | "usulan") => void } | null): void;
+  aturDasar(mode: DasarPeta): void;
   taruhPenanda(lon: number, lat: number): void;
   hapusPenanda(): void;
   fokusTitik(titik: Titik): void;
@@ -266,10 +268,16 @@ function pasangPulihkan(popup: maplibregl.Popup, id: string, sumber: "asli" | "u
   });
 }
 
+const CITRA_URL = "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}";
+const CITRA_LABEL_URL =
+  "https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}";
+const CITRA_ATRIBUSI = "Tiles © Esri — Source: Esri, Maxar, Earthstar Geographics, and the GIS User Community";
+
 export async function createStudyMap(
   container: HTMLElement,
   batas: BatasProvinsi,
   onRaster: (kind: RasterKind, state: RasterState) => void,
+  dasarAwal: DasarPeta = "jalan",
 ): Promise<StudyMap> {
   const geometry = batas.features[0]?.geometry;
   if (!geometry) throw new Error("Batas provinsi kosong");
@@ -301,7 +309,7 @@ export async function createStudyMap(
     center: [(west + east) / 2, (south + north) / 2],
     zoom: 6,
     minZoom: 5,
-    maxZoom: 18,
+    maxZoom: 19,
     maxBounds: padded,
     renderWorldCopies: false,
     attributionControl: { compact: true },
@@ -314,6 +322,37 @@ export async function createStudyMap(
   await new Promise<void>((resolve) => {
     map.once("load", () => resolve());
   });
+
+  const tampakJalan: Record<string, "visible" | "none"> = {};
+  for (const layer of map.getStyle().layers) {
+    tampakJalan[layer.id] = map.getLayoutProperty(layer.id, "visibility") === "none" ? "none" : "visible";
+  }
+  map.addSource("citra", {
+    type: "raster",
+    tiles: [CITRA_URL],
+    tileSize: 256,
+    maxzoom: 19,
+    attribution: CITRA_ATRIBUSI,
+  });
+  map.addSource("citra-label", {
+    type: "raster",
+    tiles: [CITRA_LABEL_URL],
+    tileSize: 256,
+    maxzoom: 19,
+    attribution: "Boundaries and places © Esri",
+  });
+  const lapisanPertama = map.getStyle().layers[0]?.id;
+  map.addLayer({ id: "citra-label", type: "raster", source: "citra-label", layout: { visibility: "none" } }, lapisanPertama);
+  map.addLayer({ id: "citra", type: "raster", source: "citra", layout: { visibility: "none" } }, "citra-label");
+  const terapkanDasar = (mode: DasarPeta) => {
+    const jalan = mode === "jalan";
+    for (const [id, tampak] of Object.entries(tampakJalan)) {
+      if (map.getLayer(id)) map.setLayoutProperty(id, "visibility", jalan ? tampak : "none");
+    }
+    map.setLayoutProperty("citra", "visibility", jalan ? "none" : "visible");
+    map.setLayoutProperty("citra-label", "visibility", mode === "satelit-label" ? "visible" : "none");
+  };
+  terapkanDasar(dasarAwal);
 
   for (const [name, file] of IKON) {
     const image = await map.loadImage(asset(`icons/${file}`));
@@ -656,6 +695,9 @@ export async function createStudyMap(
     },
     aturAksiTanda(aksi) {
       aksiTanda = aksi;
+    },
+    aturDasar(mode) {
+      terapkanDasar(mode);
     },
     taruhPenanda(lon, lat) {
       penanda?.remove();
