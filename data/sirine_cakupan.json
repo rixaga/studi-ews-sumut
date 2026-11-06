@@ -1,0 +1,2030 @@
+{
+  "metode": "Penduduk Terpapar desa dibagi rata ke piksel InaRISK INDEKS_BAHAYA_BANJIR (EPSG:4326, sekitar 111 m) di dalam poligon desa HDX yang indeksnya >= 0,01. Radius 1 km dihitung di UTM zona 47N, lalu dikembalikan ke WGS84. Kelas adalah klasifikasi tampilan, bukan kelas resmi BNPB: rendah 0,01–0,333; sedang >0,333–0,666; tinggi >0,666–1. Penduduk pada piksel < 0,01 tidak dihitung.",
+  "desa": {
+    "positif": 2214,
+    "tepat": 1740,
+    "fuzzy_kecamatan": 245,
+    "fuzzy_kabupaten": 171,
+    "gagal": 58,
+    "penduduk_cocok": 4904789.387404004,
+    "penduduk_gagal": 145787.12553699999
+  },
+  "per_sirine": {
+    "SRN-DS-001": {
+      "rendah": 208.8,
+      "sedang": 1981.1,
+      "tinggi": 237.8,
+      "total": 2427.7,
+      "tercover": 2427.7
+    },
+    "SRN-DS-002": {
+      "rendah": 193.1,
+      "sedang": 1810.1,
+      "tinggi": 445.4,
+      "total": 2448.7,
+      "tercover": 2448.7
+    },
+    "SRN-DS-003": {
+      "rendah": 124.7,
+      "sedang": 1378.8,
+      "tinggi": 787.2,
+      "total": 2290.7,
+      "tercover": 2290.7
+    },
+    "SRN-DS-004": {
+      "rendah": 113.0,
+      "sedang": 2912.5,
+      "tinggi": 1647.7,
+      "total": 4673.2,
+      "tercover": 4673.2
+    },
+    "SRN-DS-005": {
+      "rendah": 104.5,
+      "sedang": 1685.5,
+      "tinggi": 572.8,
+      "total": 2362.8,
+      "tercover": 2362.8
+    },
+    "SRN-DS-006": {
+      "rendah": 73.0,
+      "sedang": 1766.7,
+      "tinggi": 2135.1,
+      "total": 3974.8,
+      "tercover": 3974.8
+    },
+    "SRN-DS-007": {
+      "rendah": 83.5,
+      "sedang": 762.8,
+      "tinggi": 395.3,
+      "total": 1241.6,
+      "tercover": 1241.6
+    },
+    "SRN-DS-008": {
+      "rendah": 39.0,
+      "sedang": 601.3,
+      "tinggi": 345.2,
+      "total": 985.5,
+      "tercover": 985.5
+    },
+    "SRN-DS-009": {
+      "rendah": 22.3,
+      "sedang": 673.7,
+      "tinggi": 512.2,
+      "total": 1208.2,
+      "tercover": 1208.2
+    },
+    "SRN-DS-210": {
+      "rendah": 267.5,
+      "sedang": 5349.9,
+      "tinggi": 668.7,
+      "total": 6286.1,
+      "tercover": 6286.1
+    },
+    "SRN-DS-211": {
+      "rendah": 256.1,
+      "sedang": 768.2,
+      "tinggi": 565.1,
+      "total": 1589.4,
+      "tercover": 1589.4
+    },
+    "SRN-DS-212": {
+      "rendah": 0.0,
+      "sedang": 5480.9,
+      "tinggi": 5482.5,
+      "total": 10963.4,
+      "tercover": 10963.4
+    },
+    "SRN-DS-010": {
+      "rendah": 8.6,
+      "sedang": 1278.9,
+      "tinggi": 104.6,
+      "total": 1392.1,
+      "tercover": 1392.1
+    },
+    "SRN-DS-011": {
+      "rendah": 435.7,
+      "sedang": 910.1,
+      "tinggi": 551.7,
+      "total": 1897.5,
+      "tercover": 1897.5
+    },
+    "SRN-DS-012": {
+      "rendah": 8.6,
+      "sedang": 811.7,
+      "tinggi": 319.5,
+      "total": 1139.8,
+      "tercover": 1139.8
+    },
+    "SRN-DS-013": {
+      "rendah": 0.0,
+      "sedang": 2454.8,
+      "tinggi": 1198.5,
+      "total": 3653.3,
+      "tercover": 3653.3
+    },
+    "SRN-DS-014": {
+      "rendah": 0.0,
+      "sedang": 2122.7,
+      "tinggi": 1574.0,
+      "total": 3696.6,
+      "tercover": 3696.6
+    },
+    "SRN-DS-213": {
+      "rendah": 0.0,
+      "sedang": 860.0,
+      "tinggi": 1690.1,
+      "total": 2550.1,
+      "tercover": 2550.1
+    },
+    "SRN-DS-214": {
+      "rendah": 0.0,
+      "sedang": 1734.8,
+      "tinggi": 2738.4,
+      "total": 4473.2,
+      "tercover": 4473.2
+    },
+    "SRN-DS-015": {
+      "rendah": 28.6,
+      "sedang": 5675.2,
+      "tinggi": 9046.0,
+      "total": 14749.8,
+      "tercover": 14749.8
+    },
+    "SRN-DS-016": {
+      "rendah": 0.0,
+      "sedang": 3355.1,
+      "tinggi": 4275.7,
+      "total": 7630.8,
+      "tercover": 7630.8
+    },
+    "SRN-DS-017": {
+      "rendah": 322.5,
+      "sedang": 5910.4,
+      "tinggi": 8865.3,
+      "total": 15098.3,
+      "tercover": 15098.3
+    },
+    "SRN-DS-215": {
+      "rendah": 0.0,
+      "sedang": 676.7,
+      "tinggi": 56.3,
+      "total": 733.0,
+      "tercover": 733.0
+    },
+    "SRN-DS-216": {
+      "rendah": 0.0,
+      "sedang": 3483.7,
+      "tinggi": 4102.7,
+      "total": 7586.3,
+      "tercover": 7586.3
+    },
+    "SRN-DS-217": {
+      "rendah": 0.0,
+      "sedang": 1301.4,
+      "tinggi": 3490.9,
+      "total": 4792.3,
+      "tercover": 4792.3
+    },
+    "SRN-DS-018": {
+      "rendah": 134.6,
+      "sedang": 1690.7,
+      "tinggi": 1045.0,
+      "total": 2870.3,
+      "tercover": 2870.3
+    },
+    "SRN-DS-019": {
+      "rendah": 0.0,
+      "sedang": 1951.8,
+      "tinggi": 928.0,
+      "total": 2879.8,
+      "tercover": 2879.8
+    },
+    "SRN-DS-020": {
+      "rendah": 0.0,
+      "sedang": 1383.9,
+      "tinggi": 849.8,
+      "total": 2233.7,
+      "tercover": 2233.7
+    },
+    "SRN-DS-021": {
+      "rendah": 0.0,
+      "sedang": 156.5,
+      "tinggi": 26.1,
+      "total": 182.5,
+      "tercover": 182.5
+    },
+    "SRN-DS-022": {
+      "rendah": 0.0,
+      "sedang": 0.0,
+      "tinggi": 0.0,
+      "total": 0.0,
+      "tercover": 0.0
+    },
+    "SRN-DS-023": {
+      "rendah": 456.5,
+      "sedang": 6959.0,
+      "tinggi": 2120.1,
+      "total": 9535.7,
+      "tercover": 9535.7
+    },
+    "SRN-DS-218": {
+      "rendah": 753.0,
+      "sedang": 3629.4,
+      "tinggi": 731.2,
+      "total": 5113.6,
+      "tercover": 5113.6
+    },
+    "SRN-DS-219": {
+      "rendah": 418.2,
+      "sedang": 2161.0,
+      "tinggi": 55.3,
+      "total": 2634.6,
+      "tercover": 2634.6
+    },
+    "SRN-DS-220": {
+      "rendah": 189.9,
+      "sedang": 2241.0,
+      "tinggi": 384.0,
+      "total": 2814.9,
+      "tercover": 2814.9
+    },
+    "SRN-DS-024": {
+      "rendah": 1062.7,
+      "sedang": 23109.8,
+      "tinggi": 10757.5,
+      "total": 34930.0,
+      "tercover": 34930.0
+    },
+    "SRN-DS-025": {
+      "rendah": 6642.4,
+      "sedang": 20376.6,
+      "tinggi": 5813.1,
+      "total": 32832.2,
+      "tercover": 32832.2
+    },
+    "SRN-DS-026": {
+      "rendah": 6642.4,
+      "sedang": 13282.1,
+      "tinggi": 8321.8,
+      "total": 28246.3,
+      "tercover": 28246.3
+    },
+    "SRN-DS-027": {
+      "rendah": 6642.4,
+      "sedang": 21158.8,
+      "tinggi": 3606.2,
+      "total": 31407.4,
+      "tercover": 31407.4
+    },
+    "SRN-DS-028": {
+      "rendah": 1062.7,
+      "sedang": 21427.5,
+      "tinggi": 12234.3,
+      "total": 34724.5,
+      "tercover": 34724.5
+    },
+    "SRN-DS-221": {
+      "rendah": 478.2,
+      "sedang": 6076.7,
+      "tinggi": 1917.5,
+      "total": 8472.4,
+      "tercover": 8472.4
+    },
+    "SRN-DS-222": {
+      "rendah": 445.2,
+      "sedang": 2011.7,
+      "tinggi": 1698.4,
+      "total": 4155.4,
+      "tercover": 4155.4
+    },
+    "SRN-DS-223": {
+      "rendah": 790.2,
+      "sedang": 5646.9,
+      "tinggi": 2107.6,
+      "total": 8544.7,
+      "tercover": 8544.7
+    },
+    "SRN-DS-029": {
+      "rendah": 2487.6,
+      "sedang": 4196.0,
+      "tinggi": 3081.5,
+      "total": 9765.0,
+      "tercover": 9765.0
+    },
+    "SRN-DS-030": {
+      "rendah": 1468.6,
+      "sedang": 4180.0,
+      "tinggi": 385.3,
+      "total": 6033.8,
+      "tercover": 6033.8
+    },
+    "SRN-DS-031": {
+      "rendah": 2523.6,
+      "sedang": 5161.3,
+      "tinggi": 3773.4,
+      "total": 11458.3,
+      "tercover": 11458.3
+    },
+    "SRN-DS-032": {
+      "rendah": 158.8,
+      "sedang": 1342.9,
+      "tinggi": 1060.6,
+      "total": 2562.3,
+      "tercover": 2562.3
+    },
+    "SRN-DS-033": {
+      "rendah": 202.2,
+      "sedang": 1501.8,
+      "tinggi": 837.5,
+      "total": 2541.4,
+      "tercover": 2541.4
+    },
+    "SRN-DS-034": {
+      "rendah": 57.8,
+      "sedang": 1570.8,
+      "tinggi": 2182.8,
+      "total": 3811.4,
+      "tercover": 3811.4
+    },
+    "SRN-DS-035": {
+      "rendah": 0.0,
+      "sedang": 0.0,
+      "tinggi": 0.0,
+      "total": 0.0,
+      "tercover": 0.0
+    },
+    "SRN-DS-036": {
+      "rendah": 48.1,
+      "sedang": 260.9,
+      "tinggi": 1412.6,
+      "total": 1721.6,
+      "tercover": 1721.6
+    },
+    "SRN-DS-037": {
+      "rendah": 48.1,
+      "sedang": 252.1,
+      "tinggi": 1286.8,
+      "total": 1587.1,
+      "tercover": 1587.1
+    },
+    "SRN-DS-038": {
+      "rendah": 1108.4,
+      "sedang": 2768.0,
+      "tinggi": 2013.8,
+      "total": 5890.2,
+      "tercover": 5890.2
+    },
+    "SRN-DS-039": {
+      "rendah": 81.1,
+      "sedang": 2540.8,
+      "tinggi": 2169.9,
+      "total": 4791.8,
+      "tercover": 4791.8
+    },
+    "SRN-DS-040": {
+      "rendah": 1051.4,
+      "sedang": 5580.3,
+      "tinggi": 3454.9,
+      "total": 10086.7,
+      "tercover": 10086.7
+    },
+    "SRN-DS-041": {
+      "rendah": 0.0,
+      "sedang": 0.0,
+      "tinggi": 0.0,
+      "total": 0.0,
+      "tercover": 0.0
+    },
+    "SRN-DS-042": {
+      "rendah": 0.0,
+      "sedang": 0.0,
+      "tinggi": 0.0,
+      "total": 0.0,
+      "tercover": 0.0
+    },
+    "SRN-DS-043": {
+      "rendah": 99.4,
+      "sedang": 524.6,
+      "tinggi": 63.9,
+      "total": 687.9,
+      "tercover": 687.9
+    },
+    "SRN-DS-044": {
+      "rendah": 443.9,
+      "sedang": 3568.3,
+      "tinggi": 4187.6,
+      "total": 8199.8,
+      "tercover": 8199.8
+    },
+    "SRN-DS-045": {
+      "rendah": 0.0,
+      "sedang": 84.8,
+      "tinggi": 127.1,
+      "total": 211.9,
+      "tercover": 211.9
+    },
+    "SRN-DS-046": {
+      "rendah": 0.0,
+      "sedang": 3103.1,
+      "tinggi": 865.5,
+      "total": 3968.6,
+      "tercover": 3968.6
+    },
+    "SRN-DS-047": {
+      "rendah": 0.0,
+      "sedang": 1000.3,
+      "tinggi": 0.0,
+      "total": 1000.3,
+      "tercover": 1000.3
+    },
+    "SRN-DS-048": {
+      "rendah": 0.0,
+      "sedang": 596.2,
+      "tinggi": 0.0,
+      "total": 596.2,
+      "tercover": 596.2
+    },
+    "SRN-DS-049": {
+      "rendah": 0.0,
+      "sedang": 0.0,
+      "tinggi": 0.0,
+      "total": 0.0,
+      "tercover": 0.0
+    },
+    "SRN-DS-050": {
+      "rendah": 0.0,
+      "sedang": 0.0,
+      "tinggi": 0.0,
+      "total": 0.0,
+      "tercover": 0.0
+    },
+    "SRN-DS-051": {
+      "rendah": 0.0,
+      "sedang": 0.0,
+      "tinggi": 0.0,
+      "total": 0.0,
+      "tercover": 0.0
+    },
+    "SRN-DS-052": {
+      "rendah": 0.0,
+      "sedang": 0.0,
+      "tinggi": 0.0,
+      "total": 0.0,
+      "tercover": 0.0
+    },
+    "SRN-DS-053": {
+      "rendah": 0.0,
+      "sedang": 0.0,
+      "tinggi": 0.0,
+      "total": 0.0,
+      "tercover": 0.0
+    },
+    "SRN-DS-054": {
+      "rendah": 0.0,
+      "sedang": 0.0,
+      "tinggi": 0.0,
+      "total": 0.0,
+      "tercover": 0.0
+    },
+    "SRN-DS-055": {
+      "rendah": 0.0,
+      "sedang": 0.0,
+      "tinggi": 0.0,
+      "total": 0.0,
+      "tercover": 0.0
+    },
+    "SRN-DS-056": {
+      "rendah": 0.0,
+      "sedang": 34.2,
+      "tinggi": 171.1,
+      "total": 205.3,
+      "tercover": 205.3
+    },
+    "SRN-DS-057": {
+      "rendah": 0.0,
+      "sedang": 2860.3,
+      "tinggi": 723.7,
+      "total": 3584.0,
+      "tercover": 3584.0
+    },
+    "SRN-DS-058": {
+      "rendah": 0.0,
+      "sedang": 2426.0,
+      "tinggi": 511.7,
+      "total": 2937.7,
+      "tercover": 2937.7
+    },
+    "SRN-DS-059": {
+      "rendah": 0.0,
+      "sedang": 3801.0,
+      "tinggi": 903.0,
+      "total": 4704.0,
+      "tercover": 4704.0
+    },
+    "SRN-DS-060": {
+      "rendah": 0.0,
+      "sedang": 4233.4,
+      "tinggi": 441.6,
+      "total": 4675.1,
+      "tercover": 4675.1
+    },
+    "SRN-DS-061": {
+      "rendah": 0.0,
+      "sedang": 2601.4,
+      "tinggi": 124.1,
+      "total": 2725.4,
+      "tercover": 2725.4
+    },
+    "SRN-DS-062": {
+      "rendah": 0.0,
+      "sedang": 5683.9,
+      "tinggi": 1480.5,
+      "total": 7164.4,
+      "tercover": 7164.4
+    },
+    "SRN-DS-063": {
+      "rendah": 244.8,
+      "sedang": 2843.8,
+      "tinggi": 1051.0,
+      "total": 4139.6,
+      "tercover": 4139.6
+    },
+    "SRN-DS-064": {
+      "rendah": 489.5,
+      "sedang": 3369.2,
+      "tinggi": 735.0,
+      "total": 4593.6,
+      "tercover": 4593.6
+    },
+    "SRN-DS-065": {
+      "rendah": 260.8,
+      "sedang": 3018.2,
+      "tinggi": 750.2,
+      "total": 4029.2,
+      "tercover": 4029.2
+    },
+    "SRN-DS-224": {
+      "rendah": 500.8,
+      "sedang": 5058.3,
+      "tinggi": 487.3,
+      "total": 6046.4,
+      "tercover": 6046.4
+    },
+    "SRN-DS-066": {
+      "rendah": 2410.1,
+      "sedang": 3622.2,
+      "tinggi": 522.3,
+      "total": 6554.5,
+      "tercover": 6554.5
+    },
+    "SRN-DS-067": {
+      "rendah": 125.2,
+      "sedang": 5268.5,
+      "tinggi": 133.4,
+      "total": 5527.1,
+      "tercover": 5527.1
+    },
+    "SRN-DS-068": {
+      "rendah": 118.7,
+      "sedang": 2018.0,
+      "tinggi": 979.3,
+      "total": 3116.0,
+      "tercover": 3116.0
+    },
+    "SRN-DS-069": {
+      "rendah": 142.8,
+      "sedang": 6193.7,
+      "tinggi": 1440.2,
+      "total": 7776.7,
+      "tercover": 7776.7
+    },
+    "SRN-DS-070": {
+      "rendah": 118.7,
+      "sedang": 2938.0,
+      "tinggi": 1187.1,
+      "total": 4243.7,
+      "tercover": 4243.7
+    },
+    "SRN-DS-071": {
+      "rendah": 181.9,
+      "sedang": 14370.6,
+      "tinggi": 11808.3,
+      "total": 26360.8,
+      "tercover": 26360.8
+    },
+    "SRN-DS-072": {
+      "rendah": 397.8,
+      "sedang": 13551.9,
+      "tinggi": 6485.2,
+      "total": 20434.9,
+      "tercover": 20434.9
+    },
+    "SRN-DS-073": {
+      "rendah": 0.0,
+      "sedang": 10325.4,
+      "tinggi": 13820.7,
+      "total": 24146.1,
+      "tercover": 24146.1
+    },
+    "SRN-DS-074": {
+      "rendah": 8417.8,
+      "sedang": 11215.2,
+      "tinggi": 0.0,
+      "total": 19633.1,
+      "tercover": 19633.1
+    },
+    "SRN-DS-075": {
+      "rendah": 4032.2,
+      "sedang": 10912.1,
+      "tinggi": 149.8,
+      "total": 15094.1,
+      "tercover": 15094.1
+    },
+    "SRN-DS-076": {
+      "rendah": 267.5,
+      "sedang": 15303.4,
+      "tinggi": 3061.0,
+      "total": 18631.9,
+      "tercover": 18631.9
+    },
+    "SRN-DS-077": {
+      "rendah": 267.5,
+      "sedang": 7757.3,
+      "tinggi": 2808.7,
+      "total": 10833.5,
+      "tercover": 10833.5
+    },
+    "SRN-DS-078": {
+      "rendah": 267.5,
+      "sedang": 10298.5,
+      "tinggi": 1496.7,
+      "total": 12062.7,
+      "tercover": 12062.7
+    },
+    "SRN-DS-079": {
+      "rendah": 206.2,
+      "sedang": 17323.9,
+      "tinggi": 6300.7,
+      "total": 23830.8,
+      "tercover": 23830.8
+    },
+    "SRN-DS-080": {
+      "rendah": 309.3,
+      "sedang": 13192.3,
+      "tinggi": 8399.7,
+      "total": 21901.3,
+      "tercover": 21901.3
+    },
+    "SRN-DS-081": {
+      "rendah": 412.4,
+      "sedang": 17269.1,
+      "tinggi": 6974.9,
+      "total": 24656.4,
+      "tercover": 24656.4
+    },
+    "SRN-DS-082": {
+      "rendah": 0.0,
+      "sedang": 9076.9,
+      "tinggi": 5477.7,
+      "total": 14554.6,
+      "tercover": 14554.6
+    },
+    "SRN-DS-083": {
+      "rendah": 0.0,
+      "sedang": 12048.2,
+      "tinggi": 5296.5,
+      "total": 17344.7,
+      "tercover": 17344.7
+    },
+    "SRN-DS-084": {
+      "rendah": 0.0,
+      "sedang": 12752.1,
+      "tinggi": 4760.8,
+      "total": 17512.9,
+      "tercover": 17512.9
+    },
+    "SRN-DS-085": {
+      "rendah": 993.4,
+      "sedang": 10077.0,
+      "tinggi": 7323.1,
+      "total": 18393.5,
+      "tercover": 18393.5
+    },
+    "SRN-DS-086": {
+      "rendah": 1023.7,
+      "sedang": 15355.6,
+      "tinggi": 6838.8,
+      "total": 23218.1,
+      "tercover": 23218.1
+    },
+    "SRN-DS-087": {
+      "rendah": 1582.2,
+      "sedang": 17082.4,
+      "tinggi": 4501.1,
+      "total": 23165.7,
+      "tercover": 23165.7
+    },
+    "SRN-DS-088": {
+      "rendah": 183.7,
+      "sedang": 3663.5,
+      "tinggi": 3954.7,
+      "total": 7802.0,
+      "tercover": 7802.0
+    },
+    "SRN-DS-089": {
+      "rendah": 0.0,
+      "sedang": 11781.7,
+      "tinggi": 11161.3,
+      "total": 22943.0,
+      "tercover": 22943.0
+    },
+    "SRN-DS-090": {
+      "rendah": 0.0,
+      "sedang": 5231.2,
+      "tinggi": 16112.5,
+      "total": 21343.7,
+      "tercover": 21343.7
+    },
+    "SRN-DS-091": {
+      "rendah": 3352.9,
+      "sedang": 18111.5,
+      "tinggi": 3121.1,
+      "total": 24585.5,
+      "tercover": 24585.5
+    },
+    "SRN-DS-092": {
+      "rendah": 0.0,
+      "sedang": 26910.7,
+      "tinggi": 7085.1,
+      "total": 33995.8,
+      "tercover": 33995.8
+    },
+    "SRN-DS-093": {
+      "rendah": 0.0,
+      "sedang": 16341.1,
+      "tinggi": 9638.4,
+      "total": 25979.5,
+      "tercover": 25979.5
+    },
+    "SRN-DS-094": {
+      "rendah": 6642.4,
+      "sedang": 29214.9,
+      "tinggi": 2636.9,
+      "total": 38494.1,
+      "tercover": 38494.1
+    },
+    "SRN-DS-095": {
+      "rendah": 5403.1,
+      "sedang": 21225.9,
+      "tinggi": 2563.6,
+      "total": 29192.6,
+      "tercover": 29192.6
+    },
+    "SRN-DS-096": {
+      "rendah": 2036.6,
+      "sedang": 42107.1,
+      "tinggi": 3677.9,
+      "total": 47821.6,
+      "tercover": 47821.6
+    },
+    "SRN-DS-225": {
+      "rendah": 0.0,
+      "sedang": 10.7,
+      "tinggi": 32.2,
+      "total": 42.9,
+      "tercover": 42.9
+    },
+    "SRN-DS-226": {
+      "rendah": 0.0,
+      "sedang": 14.3,
+      "tinggi": 44.7,
+      "total": 59.1,
+      "tercover": 59.1
+    },
+    "SRN-DS-227": {
+      "rendah": 0.0,
+      "sedang": 12.5,
+      "tinggi": 42.9,
+      "total": 55.5,
+      "tercover": 55.5
+    },
+    "SRN-DS-097": {
+      "rendah": 3.1,
+      "sedang": 236.4,
+      "tinggi": 112.4,
+      "total": 351.9,
+      "tercover": 351.9
+    },
+    "SRN-DS-098": {
+      "rendah": 3.1,
+      "sedang": 252.5,
+      "tinggi": 155.0,
+      "total": 410.6,
+      "tercover": 410.6
+    },
+    "SRN-DS-099": {
+      "rendah": 3.1,
+      "sedang": 227.5,
+      "tinggi": 160.0,
+      "total": 390.6,
+      "tercover": 390.6
+    },
+    "SRN-DS-100": {
+      "rendah": 3.1,
+      "sedang": 311.4,
+      "tinggi": 300.5,
+      "total": 615.1,
+      "tercover": 615.1
+    },
+    "SRN-DS-228": {
+      "rendah": 0.0,
+      "sedang": 152.3,
+      "tinggi": 111.7,
+      "total": 264.0,
+      "tercover": 264.0
+    },
+    "SRN-DS-229": {
+      "rendah": 3.1,
+      "sedang": 202.9,
+      "tinggi": 140.6,
+      "total": 346.6,
+      "tercover": 346.6
+    },
+    "SRN-DS-101": {
+      "rendah": 0.0,
+      "sedang": 11991.6,
+      "tinggi": 3295.3,
+      "total": 15286.9,
+      "tercover": 15286.9
+    },
+    "SRN-DS-102": {
+      "rendah": 0.0,
+      "sedang": 10918.9,
+      "tinggi": 2876.0,
+      "total": 13795.0,
+      "tercover": 13795.0
+    },
+    "SRN-DS-103": {
+      "rendah": 0.0,
+      "sedang": 11204.4,
+      "tinggi": 3627.1,
+      "total": 14831.5,
+      "tercover": 14831.5
+    },
+    "SRN-DS-104": {
+      "rendah": 0.0,
+      "sedang": 12583.5,
+      "tinggi": 3295.3,
+      "total": 15878.7,
+      "tercover": 15878.7
+    },
+    "SRN-DS-105": {
+      "rendah": 0.0,
+      "sedang": 13794.8,
+      "tinggi": 3933.1,
+      "total": 17727.9,
+      "tercover": 17727.9
+    },
+    "SRN-DS-106": {
+      "rendah": 0.0,
+      "sedang": 0.0,
+      "tinggi": 0.0,
+      "total": 0.0,
+      "tercover": 0.0
+    },
+    "SRN-DS-107": {
+      "rendah": 0.0,
+      "sedang": 0.0,
+      "tinggi": 0.0,
+      "total": 0.0,
+      "tercover": 0.0
+    },
+    "SRN-DS-108": {
+      "rendah": 0.0,
+      "sedang": 0.0,
+      "tinggi": 0.0,
+      "total": 0.0,
+      "tercover": 0.0
+    },
+    "SRN-DS-109": {
+      "rendah": 0.0,
+      "sedang": 0.0,
+      "tinggi": 0.0,
+      "total": 0.0,
+      "tercover": 0.0
+    },
+    "SRN-DS-110": {
+      "rendah": 0.0,
+      "sedang": 0.0,
+      "tinggi": 0.0,
+      "total": 0.0,
+      "tercover": 0.0
+    },
+    "SRN-DS-111": {
+      "rendah": 0.0,
+      "sedang": 3678.1,
+      "tinggi": 4311.2,
+      "total": 7989.3,
+      "tercover": 7989.3
+    },
+    "SRN-DS-112": {
+      "rendah": 0.0,
+      "sedang": 4171.6,
+      "tinggi": 4832.4,
+      "total": 9004.1,
+      "tercover": 9004.1
+    },
+    "SRN-DS-113": {
+      "rendah": 2111.1,
+      "sedang": 8737.8,
+      "tinggi": 4488.2,
+      "total": 15337.1,
+      "tercover": 15337.1
+    },
+    "SRN-DS-114": {
+      "rendah": 1959.2,
+      "sedang": 11065.8,
+      "tinggi": 3745.5,
+      "total": 16770.4,
+      "tercover": 16770.4
+    },
+    "SRN-DS-115": {
+      "rendah": 620.1,
+      "sedang": 14531.4,
+      "tinggi": 11363.6,
+      "total": 26515.0,
+      "tercover": 26515.0
+    },
+    "SRN-DS-116": {
+      "rendah": 0.0,
+      "sedang": 8056.3,
+      "tinggi": 9828.4,
+      "total": 17884.7,
+      "tercover": 17884.7
+    },
+    "SRN-DS-117": {
+      "rendah": 0.0,
+      "sedang": 5089.4,
+      "tinggi": 2558.6,
+      "total": 7648.0,
+      "tercover": 7648.0
+    },
+    "SRN-DS-118": {
+      "rendah": 217.8,
+      "sedang": 5923.1,
+      "tinggi": 2482.2,
+      "total": 8623.1,
+      "tercover": 8623.1
+    },
+    "SRN-DS-119": {
+      "rendah": 0.0,
+      "sedang": 4359.7,
+      "tinggi": 3488.2,
+      "total": 7847.9,
+      "tercover": 7847.9
+    },
+    "SRN-DS-120": {
+      "rendah": 0.0,
+      "sedang": 8536.9,
+      "tinggi": 5721.2,
+      "total": 14258.1,
+      "tercover": 14258.1
+    },
+    "SRN-DS-121": {
+      "rendah": 0.0,
+      "sedang": 5372.2,
+      "tinggi": 3622.3,
+      "total": 8994.5,
+      "tercover": 8994.5
+    },
+    "SRN-DS-122": {
+      "rendah": 0.0,
+      "sedang": 4595.0,
+      "tinggi": 4100.7,
+      "total": 8695.7,
+      "tercover": 8695.7
+    },
+    "SRN-DS-123": {
+      "rendah": 0.0,
+      "sedang": 2848.2,
+      "tinggi": 2130.8,
+      "total": 4979.0,
+      "tercover": 4979.0
+    },
+    "SRN-DS-124": {
+      "rendah": 1203.6,
+      "sedang": 5504.8,
+      "tinggi": 905.7,
+      "total": 7614.1,
+      "tercover": 7614.1
+    },
+    "SRN-DS-125": {
+      "rendah": 0.0,
+      "sedang": 1945.4,
+      "tinggi": 2380.5,
+      "total": 4325.9,
+      "tercover": 4325.9
+    },
+    "SRN-DS-126": {
+      "rendah": 4.5,
+      "sedang": 390.4,
+      "tinggi": 934.8,
+      "total": 1329.7,
+      "tercover": 1329.7
+    },
+    "SRN-DS-127": {
+      "rendah": 40.4,
+      "sedang": 374.0,
+      "tinggi": 1078.2,
+      "total": 1492.6,
+      "tercover": 1492.6
+    },
+    "SRN-DS-128": {
+      "rendah": 32.3,
+      "sedang": 1207.9,
+      "tinggi": 321.8,
+      "total": 1562.0,
+      "tercover": 1562.0
+    },
+    "SRN-DS-129": {
+      "rendah": 0.0,
+      "sedang": 1437.7,
+      "tinggi": 2498.9,
+      "total": 3936.6,
+      "tercover": 3936.6
+    },
+    "SRN-DS-130": {
+      "rendah": 32.3,
+      "sedang": 1257.7,
+      "tinggi": 1317.0,
+      "total": 2607.1,
+      "tercover": 2607.1
+    },
+    "SRN-DS-131": {
+      "rendah": 0.0,
+      "sedang": 936.7,
+      "tinggi": 2310.0,
+      "total": 3246.7,
+      "tercover": 3246.7
+    },
+    "SRN-DS-132": {
+      "rendah": 477.0,
+      "sedang": 628.4,
+      "tinggi": 78.0,
+      "total": 1183.3,
+      "tercover": 1183.3
+    },
+    "SRN-DS-133": {
+      "rendah": 54.9,
+      "sedang": 1302.7,
+      "tinggi": 1557.0,
+      "total": 2914.6,
+      "tercover": 2914.6
+    },
+    "SRN-DS-134": {
+      "rendah": 201.8,
+      "sedang": 792.4,
+      "tinggi": 177.5,
+      "total": 1171.7,
+      "tercover": 1171.7
+    },
+    "SRN-DS-135": {
+      "rendah": 154.3,
+      "sedang": 1908.1,
+      "tinggi": 589.3,
+      "total": 2651.6,
+      "tercover": 2651.6
+    },
+    "SRN-DS-136": {
+      "rendah": 154.3,
+      "sedang": 1917.4,
+      "tinggi": 575.2,
+      "total": 2647.0,
+      "tercover": 2647.0
+    },
+    "SRN-DS-137": {
+      "rendah": 238.5,
+      "sedang": 3144.4,
+      "tinggi": 1346.7,
+      "total": 4729.6,
+      "tercover": 4729.6
+    },
+    "SRN-DS-138": {
+      "rendah": 0.0,
+      "sedang": 310.8,
+      "tinggi": 1105.8,
+      "total": 1416.6,
+      "tercover": 1416.6
+    },
+    "SRN-DS-139": {
+      "rendah": 827.4,
+      "sedang": 1861.6,
+      "tinggi": 1140.1,
+      "total": 3829.1,
+      "tercover": 3829.1
+    },
+    "SRN-DS-230": {
+      "rendah": 112.6,
+      "sedang": 368.6,
+      "tinggi": 542.9,
+      "total": 1024.1,
+      "tercover": 1024.1
+    },
+    "SRN-DS-231": {
+      "rendah": 8.8,
+      "sedang": 228.6,
+      "tinggi": 207.5,
+      "total": 444.9,
+      "tercover": 444.9
+    },
+    "SRN-DS-232": {
+      "rendah": 87.9,
+      "sedang": 158.3,
+      "tinggi": 181.1,
+      "total": 427.4,
+      "tercover": 427.4
+    },
+    "SRN-DS-140": {
+      "rendah": 267.4,
+      "sedang": 919.7,
+      "tinggi": 1133.4,
+      "total": 2320.5,
+      "tercover": 2320.5
+    },
+    "SRN-DS-141": {
+      "rendah": 0.0,
+      "sedang": 927.5,
+      "tinggi": 2226.7,
+      "total": 3154.2,
+      "tercover": 3154.2
+    },
+    "SRN-DS-142": {
+      "rendah": 64.5,
+      "sedang": 1382.0,
+      "tinggi": 944.6,
+      "total": 2391.0,
+      "tercover": 2391.0
+    },
+    "SRN-DS-233": {
+      "rendah": 7.7,
+      "sedang": 362.6,
+      "tinggi": 445.6,
+      "total": 816.0,
+      "tercover": 816.0
+    },
+    "SRN-DS-234": {
+      "rendah": 54.0,
+      "sedang": 420.9,
+      "tinggi": 401.2,
+      "total": 876.1,
+      "tercover": 876.1
+    },
+    "SRN-DS-235": {
+      "rendah": 88.6,
+      "sedang": 335.1,
+      "tinggi": 521.0,
+      "total": 944.7,
+      "tercover": 944.7
+    },
+    "SRN-DS-236": {
+      "rendah": 0.0,
+      "sedang": 777.9,
+      "tinggi": 1650.7,
+      "total": 2428.6,
+      "tercover": 2428.6
+    },
+    "SRN-DS-237": {
+      "rendah": 29.3,
+      "sedang": 1035.8,
+      "tinggi": 1379.5,
+      "total": 2444.7,
+      "tercover": 2444.7
+    },
+    "SRN-DS-238": {
+      "rendah": 51.0,
+      "sedang": 867.9,
+      "tinggi": 1611.5,
+      "total": 2530.3,
+      "tercover": 2530.3
+    },
+    "SRN-DS-143": {
+      "rendah": 1.4,
+      "sedang": 567.9,
+      "tinggi": 64.2,
+      "total": 633.4,
+      "tercover": 633.4
+    },
+    "SRN-DS-144": {
+      "rendah": 0.0,
+      "sedang": 539.0,
+      "tinggi": 1245.8,
+      "total": 1784.8,
+      "tercover": 1784.8
+    },
+    "SRN-DS-145": {
+      "rendah": 0.0,
+      "sedang": 1003.0,
+      "tinggi": 977.6,
+      "total": 1980.6,
+      "tercover": 1980.6
+    },
+    "SRN-DS-146": {
+      "rendah": 1583.9,
+      "sedang": 4782.1,
+      "tinggi": 2294.5,
+      "total": 8660.5,
+      "tercover": 8660.5
+    },
+    "SRN-DS-147": {
+      "rendah": 615.4,
+      "sedang": 4247.3,
+      "tinggi": 2834.6,
+      "total": 7697.2,
+      "tercover": 7697.2
+    },
+    "SRN-DS-148": {
+      "rendah": 31.1,
+      "sedang": 820.7,
+      "tinggi": 512.8,
+      "total": 1364.6,
+      "tercover": 1364.6
+    },
+    "SRN-DS-149": {
+      "rendah": 456.6,
+      "sedang": 1490.9,
+      "tinggi": 920.4,
+      "total": 2868.0,
+      "tercover": 2868.0
+    },
+    "SRN-DS-150": {
+      "rendah": 283.7,
+      "sedang": 1969.4,
+      "tinggi": 599.0,
+      "total": 2852.1,
+      "tercover": 2852.1
+    },
+    "SRN-DS-151": {
+      "rendah": 122.0,
+      "sedang": 2312.5,
+      "tinggi": 1475.6,
+      "total": 3910.1,
+      "tercover": 3910.1
+    },
+    "SRN-DS-152": {
+      "rendah": 173.4,
+      "sedang": 2239.7,
+      "tinggi": 1330.5,
+      "total": 3743.5,
+      "tercover": 3743.5
+    },
+    "SRN-DS-153": {
+      "rendah": 173.4,
+      "sedang": 1367.2,
+      "tinggi": 684.5,
+      "total": 2225.1,
+      "tercover": 2225.1
+    },
+    "SRN-DS-154": {
+      "rendah": 54.6,
+      "sedang": 1316.4,
+      "tinggi": 2630.4,
+      "total": 4001.5,
+      "tercover": 4001.5
+    },
+    "SRN-DS-155": {
+      "rendah": 0.0,
+      "sedang": 1068.6,
+      "tinggi": 2802.4,
+      "total": 3871.0,
+      "tercover": 3871.0
+    },
+    "SRN-DS-156": {
+      "rendah": 360.9,
+      "sedang": 3999.0,
+      "tinggi": 3751.0,
+      "total": 8110.8,
+      "tercover": 8110.8
+    },
+    "SRN-DS-157": {
+      "rendah": 316.8,
+      "sedang": 3801.6,
+      "tinggi": 3247.6,
+      "total": 7366.0,
+      "tercover": 7366.0
+    },
+    "SRN-DS-158": {
+      "rendah": 51.4,
+      "sedang": 5151.1,
+      "tinggi": 1729.0,
+      "total": 6931.4,
+      "tercover": 6931.4
+    },
+    "SRN-DS-239": {
+      "rendah": 83.5,
+      "sedang": 2294.0,
+      "tinggi": 2747.9,
+      "total": 5125.4,
+      "tercover": 5125.4
+    },
+    "SRN-DS-240": {
+      "rendah": 120.2,
+      "sedang": 2247.6,
+      "tinggi": 2870.1,
+      "total": 5237.9,
+      "tercover": 5237.9
+    },
+    "SRN-DS-241": {
+      "rendah": 21.9,
+      "sedang": 2820.3,
+      "tinggi": 3081.2,
+      "total": 5923.4,
+      "tercover": 5923.4
+    },
+    "SRN-DS-159": {
+      "rendah": 70.8,
+      "sedang": 333.5,
+      "tinggi": 104.0,
+      "total": 508.4,
+      "tercover": 508.4
+    },
+    "SRN-DS-242": {
+      "rendah": 74.0,
+      "sedang": 473.4,
+      "tinggi": 30.1,
+      "total": 577.5,
+      "tercover": 577.5
+    },
+    "SRN-DS-243": {
+      "rendah": 240.7,
+      "sedang": 1031.8,
+      "tinggi": 376.4,
+      "total": 1648.9,
+      "tercover": 1648.9
+    },
+    "SRN-DS-244": {
+      "rendah": 252.4,
+      "sedang": 942.5,
+      "tinggi": 111.1,
+      "total": 1306.1,
+      "tercover": 1306.1
+    },
+    "SRN-DS-245": {
+      "rendah": 355.3,
+      "sedang": 1335.5,
+      "tinggi": 39.8,
+      "total": 1730.5,
+      "tercover": 1730.5
+    },
+    "SRN-DS-160": {
+      "rendah": 0.0,
+      "sedang": 3826.7,
+      "tinggi": 8081.2,
+      "total": 11907.9,
+      "tercover": 11907.9
+    },
+    "SRN-DS-161": {
+      "rendah": 0.0,
+      "sedang": 4215.6,
+      "tinggi": 8079.6,
+      "total": 12295.2,
+      "tercover": 12295.2
+    },
+    "SRN-DS-162": {
+      "rendah": 18.3,
+      "sedang": 3658.1,
+      "tinggi": 7948.9,
+      "total": 11625.2,
+      "tercover": 11625.2
+    },
+    "SRN-DS-163": {
+      "rendah": 20.6,
+      "sedang": 465.1,
+      "tinggi": 435.7,
+      "total": 921.4,
+      "tercover": 921.4
+    },
+    "SRN-DS-164": {
+      "rendah": 41.2,
+      "sedang": 568.0,
+      "tinggi": 197.6,
+      "total": 806.8,
+      "tercover": 806.8
+    },
+    "SRN-DS-165": {
+      "rendah": 0.0,
+      "sedang": 0.0,
+      "tinggi": 0.0,
+      "total": 0.0,
+      "tercover": 0.0
+    },
+    "SRN-DS-166": {
+      "rendah": 0.0,
+      "sedang": 10.7,
+      "tinggi": 4.2,
+      "total": 14.8,
+      "tercover": 14.8
+    },
+    "SRN-DS-167": {
+      "rendah": 0.0,
+      "sedang": 261.3,
+      "tinggi": 385.1,
+      "total": 646.4,
+      "tercover": 646.4
+    },
+    "SRN-DS-168": {
+      "rendah": 0.0,
+      "sedang": 729.9,
+      "tinggi": 1463.1,
+      "total": 2193.1,
+      "tercover": 2193.1
+    },
+    "SRN-DS-169": {
+      "rendah": 0.0,
+      "sedang": 623.8,
+      "tinggi": 1208.9,
+      "total": 1832.7,
+      "tercover": 1832.7
+    },
+    "SRN-DS-170": {
+      "rendah": 259.5,
+      "sedang": 818.5,
+      "tinggi": 678.5,
+      "total": 1756.5,
+      "tercover": 1756.5
+    },
+    "SRN-DS-171": {
+      "rendah": 59.2,
+      "sedang": 1475.1,
+      "tinggi": 1940.4,
+      "total": 3474.7,
+      "tercover": 3474.7
+    },
+    "SRN-DS-172": {
+      "rendah": 27.6,
+      "sedang": 2991.5,
+      "tinggi": 1718.6,
+      "total": 4737.7,
+      "tercover": 4737.7
+    },
+    "SRN-DS-173": {
+      "rendah": 26.6,
+      "sedang": 1761.9,
+      "tinggi": 2165.5,
+      "total": 3954.0,
+      "tercover": 3954.0
+    },
+    "SRN-DS-174": {
+      "rendah": 17.5,
+      "sedang": 3048.2,
+      "tinggi": 5450.2,
+      "total": 8515.9,
+      "tercover": 8515.9
+    },
+    "SRN-DS-175": {
+      "rendah": 11.7,
+      "sedang": 2158.2,
+      "tinggi": 7138.6,
+      "total": 9308.5,
+      "tercover": 9308.5
+    },
+    "SRN-DS-176": {
+      "rendah": 61.9,
+      "sedang": 3748.7,
+      "tinggi": 3756.5,
+      "total": 7567.2,
+      "tercover": 7567.2
+    },
+    "SRN-DS-177": {
+      "rendah": 45.0,
+      "sedang": 1400.9,
+      "tinggi": 764.1,
+      "total": 2210.0,
+      "tercover": 2210.0
+    },
+    "SRN-DS-178": {
+      "rendah": 483.9,
+      "sedang": 884.3,
+      "tinggi": 495.4,
+      "total": 1863.6,
+      "tercover": 1863.6
+    },
+    "SRN-DS-179": {
+      "rendah": 0.0,
+      "sedang": 664.3,
+      "tinggi": 1567.2,
+      "total": 2231.4,
+      "tercover": 2231.4
+    },
+    "SRN-DS-180": {
+      "rendah": 185.9,
+      "sedang": 1722.4,
+      "tinggi": 597.9,
+      "total": 2506.2,
+      "tercover": 2506.2
+    },
+    "SRN-DS-181": {
+      "rendah": 0.0,
+      "sedang": 1831.3,
+      "tinggi": 2141.5,
+      "total": 3972.8,
+      "tercover": 3972.8
+    },
+    "SRN-DS-182": {
+      "rendah": 0.0,
+      "sedang": 1809.1,
+      "tinggi": 2035.9,
+      "total": 3845.0,
+      "tercover": 3845.0
+    },
+    "SRN-DS-183": {
+      "rendah": 0.0,
+      "sedang": 118.0,
+      "tinggi": 3.8,
+      "total": 121.8,
+      "tercover": 121.8
+    },
+    "SRN-DS-184": {
+      "rendah": 0.0,
+      "sedang": 0.0,
+      "tinggi": 0.0,
+      "total": 0.0,
+      "tercover": 0.0
+    },
+    "SRN-DS-185": {
+      "rendah": 0.0,
+      "sedang": 304.6,
+      "tinggi": 121.8,
+      "total": 426.4,
+      "tercover": 426.4
+    },
+    "SRN-DS-246": {
+      "rendah": 0.0,
+      "sedang": 888.1,
+      "tinggi": 217.5,
+      "total": 1105.6,
+      "tercover": 1105.6
+    },
+    "SRN-DS-247": {
+      "rendah": 0.0,
+      "sedang": 549.0,
+      "tinggi": 226.8,
+      "total": 775.8,
+      "tercover": 775.8
+    },
+    "SRN-DS-186": {
+      "rendah": 1.0,
+      "sedang": 33.8,
+      "tinggi": 9.5,
+      "total": 44.3,
+      "tercover": 44.3
+    },
+    "SRN-DS-187": {
+      "rendah": 1.3,
+      "sedang": 39.0,
+      "tinggi": 8.9,
+      "total": 49.2,
+      "tercover": 49.2
+    },
+    "SRN-DS-248": {
+      "rendah": 11.8,
+      "sedang": 54.8,
+      "tinggi": 15.4,
+      "total": 82.0,
+      "tercover": 82.0
+    },
+    "SRN-DS-249": {
+      "rendah": 9.2,
+      "sedang": 45.6,
+      "tinggi": 16.4,
+      "total": 71.2,
+      "tercover": 71.2
+    },
+    "SRN-DS-250": {
+      "rendah": 1.6,
+      "sedang": 54.1,
+      "tinggi": 18.7,
+      "total": 74.4,
+      "tercover": 74.4
+    },
+    "SRN-DS-251": {
+      "rendah": 7.5,
+      "sedang": 29.8,
+      "tinggi": 27.5,
+      "total": 64.9,
+      "tercover": 64.9
+    },
+    "SRN-DS-252": {
+      "rendah": 1.3,
+      "sedang": 66.6,
+      "tinggi": 65.7,
+      "total": 133.6,
+      "tercover": 133.6
+    },
+    "SRN-DS-253": {
+      "rendah": 1.6,
+      "sedang": 46.4,
+      "tinggi": 25.0,
+      "total": 73.0,
+      "tercover": 73.0
+    },
+    "SRN-DS-254": {
+      "rendah": 2.3,
+      "sedang": 56.1,
+      "tinggi": 39.3,
+      "total": 97.6,
+      "tercover": 97.6
+    },
+    "SRN-DS-255": {
+      "rendah": 0.0,
+      "sedang": 2501.1,
+      "tinggi": 924.1,
+      "total": 3425.2,
+      "tercover": 3425.2
+    },
+    "SRN-DS-256": {
+      "rendah": 0.0,
+      "sedang": 1958.9,
+      "tinggi": 788.5,
+      "total": 2747.4,
+      "tercover": 2747.4
+    },
+    "SRN-DS-188": {
+      "rendah": 0.0,
+      "sedang": 3992.1,
+      "tinggi": 1195.2,
+      "total": 5187.2,
+      "tercover": 5187.2
+    },
+    "SRN-DS-189": {
+      "rendah": 0.0,
+      "sedang": 2772.2,
+      "tinggi": 991.8,
+      "total": 3764.0,
+      "tercover": 3764.0
+    },
+    "SRN-DS-190": {
+      "rendah": 0.0,
+      "sedang": 3185.3,
+      "tinggi": 881.0,
+      "total": 4066.4,
+      "tercover": 4066.4
+    },
+    "SRN-DS-257": {
+      "rendah": 0.0,
+      "sedang": 247.7,
+      "tinggi": 45.0,
+      "total": 292.8,
+      "tercover": 292.8
+    },
+    "SRN-DS-258": {
+      "rendah": 107.2,
+      "sedang": 1315.5,
+      "tinggi": 806.0,
+      "total": 2228.7,
+      "tercover": 2228.7
+    },
+    "SRN-DS-259": {
+      "rendah": 22.0,
+      "sedang": 203.9,
+      "tinggi": 138.1,
+      "total": 364.0,
+      "tercover": 364.0
+    },
+    "SRN-DS-260": {
+      "rendah": 56.7,
+      "sedang": 1076.4,
+      "tinggi": 588.6,
+      "total": 1721.8,
+      "tercover": 1721.8
+    },
+    "SRN-DS-261": {
+      "rendah": 0.0,
+      "sedang": 1233.2,
+      "tinggi": 942.5,
+      "total": 2175.7,
+      "tercover": 2175.7
+    },
+    "SRN-DS-262": {
+      "rendah": 0.0,
+      "sedang": 1935.5,
+      "tinggi": 1129.2,
+      "total": 3064.7,
+      "tercover": 3064.7
+    },
+    "SRN-DS-191": {
+      "rendah": 0.0,
+      "sedang": 4189.0,
+      "tinggi": 3176.6,
+      "total": 7365.5,
+      "tercover": 7365.5
+    },
+    "SRN-DS-192": {
+      "rendah": 175.3,
+      "sedang": 4526.2,
+      "tinggi": 2080.2,
+      "total": 6781.7,
+      "tercover": 6781.7
+    },
+    "SRN-DS-193": {
+      "rendah": 175.3,
+      "sedang": 5925.0,
+      "tinggi": 1040.7,
+      "total": 7141.0,
+      "tercover": 7141.0
+    },
+    "SRN-DS-194": {
+      "rendah": 2385.4,
+      "sedang": 10859.9,
+      "tinggi": 567.4,
+      "total": 13812.7,
+      "tercover": 13812.7
+    },
+    "SRN-DS-195": {
+      "rendah": 1192.9,
+      "sedang": 9959.6,
+      "tinggi": 152.9,
+      "total": 11305.5,
+      "tercover": 11305.5
+    },
+    "SRN-DS-196": {
+      "rendah": 821.1,
+      "sedang": 10303.4,
+      "tinggi": 152.9,
+      "total": 11277.4,
+      "tercover": 11277.4
+    },
+    "SRN-DS-263": {
+      "rendah": 70.4,
+      "sedang": 3289.8,
+      "tinggi": 810.1,
+      "total": 4170.3,
+      "tercover": 4170.3
+    },
+    "SRN-DS-264": {
+      "rendah": 70.4,
+      "sedang": 4040.6,
+      "tinggi": 933.8,
+      "total": 5044.8,
+      "tercover": 5044.8
+    },
+    "SRN-DS-265": {
+      "rendah": 2657.4,
+      "sedang": 8081.6,
+      "tinggi": 331.3,
+      "total": 11070.3,
+      "tercover": 11070.3
+    },
+    "SRN-DS-266": {
+      "rendah": 0.0,
+      "sedang": 14988.5,
+      "tinggi": 3933.1,
+      "total": 18921.6,
+      "tercover": 18921.6
+    },
+    "SRN-DS-267": {
+      "rendah": 0.0,
+      "sedang": 13941.6,
+      "tinggi": 3958.9,
+      "total": 17900.5,
+      "tercover": 17900.5
+    },
+    "SRN-DS-268": {
+      "rendah": 0.0,
+      "sedang": 14553.2,
+      "tinggi": 3933.1,
+      "total": 18486.3,
+      "tercover": 18486.3
+    },
+    "SRN-DS-269": {
+      "rendah": 0.0,
+      "sedang": 13572.1,
+      "tinggi": 4115.8,
+      "total": 17687.8,
+      "tercover": 17687.8
+    },
+    "SRN-DS-270": {
+      "rendah": 0.0,
+      "sedang": 13291.6,
+      "tinggi": 3961.5,
+      "total": 17253.0,
+      "tercover": 17253.0
+    },
+    "SRN-DS-197": {
+      "rendah": 0.0,
+      "sedang": 8829.0,
+      "tinggi": 709.9,
+      "total": 9538.9,
+      "tercover": 9538.9
+    },
+    "SRN-DS-198": {
+      "rendah": 0.0,
+      "sedang": 7853.1,
+      "tinggi": 447.6,
+      "total": 8300.7,
+      "tercover": 8300.7
+    },
+    "SRN-DS-199": {
+      "rendah": 0.0,
+      "sedang": 6719.1,
+      "tinggi": 447.6,
+      "total": 7166.7,
+      "tercover": 7166.7
+    },
+    "SRN-DS-271": {
+      "rendah": 0.0,
+      "sedang": 532.9,
+      "tinggi": 1061.4,
+      "total": 1594.4,
+      "tercover": 1594.4
+    },
+    "SRN-DS-272": {
+      "rendah": 0.0,
+      "sedang": 359.6,
+      "tinggi": 822.9,
+      "total": 1182.6,
+      "tercover": 1182.6
+    },
+    "SRN-DS-273": {
+      "rendah": 0.0,
+      "sedang": 0.0,
+      "tinggi": 0.0,
+      "total": 0.0,
+      "tercover": 0.0
+    },
+    "SRN-DS-274": {
+      "rendah": 0.0,
+      "sedang": 0.0,
+      "tinggi": 0.0,
+      "total": 0.0,
+      "tercover": 0.0
+    },
+    "SRN-DS-275": {
+      "rendah": 0.0,
+      "sedang": 0.0,
+      "tinggi": 0.0,
+      "total": 0.0,
+      "tercover": 0.0
+    },
+    "SRN-DS-276": {
+      "rendah": 0.0,
+      "sedang": 1808.7,
+      "tinggi": 4613.2,
+      "total": 6421.8,
+      "tercover": 6421.8
+    },
+    "SRN-DS-277": {
+      "rendah": 0.0,
+      "sedang": 0.0,
+      "tinggi": 2563.3,
+      "total": 2563.3,
+      "tercover": 2563.3
+    },
+    "SRN-DS-278": {
+      "rendah": 0.0,
+      "sedang": 0.0,
+      "tinggi": 939.5,
+      "total": 939.5,
+      "tercover": 939.5
+    },
+    "SRN-DS-279": {
+      "rendah": 0.0,
+      "sedang": 21.2,
+      "tinggi": 19.0,
+      "total": 40.2,
+      "tercover": 40.2
+    },
+    "SRN-DS-280": {
+      "rendah": 0.0,
+      "sedang": 19.3,
+      "tinggi": 53.5,
+      "total": 72.8,
+      "tercover": 72.8
+    },
+    "SRN-DS-281": {
+      "rendah": 0.0,
+      "sedang": 14.6,
+      "tinggi": 27.9,
+      "total": 42.5,
+      "tercover": 42.5
+    },
+    "SRN-DS-200": {
+      "rendah": 0.0,
+      "sedang": 3.4,
+      "tinggi": 546.0,
+      "total": 549.4,
+      "tercover": 549.4
+    },
+    "SRN-DS-201": {
+      "rendah": 0.0,
+      "sedang": 1076.4,
+      "tinggi": 783.3,
+      "total": 1859.7,
+      "tercover": 1859.7
+    },
+    "SRN-DS-202": {
+      "rendah": 0.0,
+      "sedang": 1360.9,
+      "tinggi": 658.0,
+      "total": 2018.9,
+      "tercover": 2018.9
+    },
+    "SRN-DS-203": {
+      "rendah": 22.1,
+      "sedang": 2150.4,
+      "tinggi": 572.0,
+      "total": 2744.6,
+      "tercover": 2744.6
+    },
+    "SRN-DS-204": {
+      "rendah": 0.0,
+      "sedang": 217.8,
+      "tinggi": 331.4,
+      "total": 549.2,
+      "tercover": 549.2
+    },
+    "SRN-DS-205": {
+      "rendah": 0.0,
+      "sedang": 231.5,
+      "tinggi": 1065.4,
+      "total": 1297.0,
+      "tercover": 1297.0
+    },
+    "SRN-DS-206": {
+      "rendah": 0.0,
+      "sedang": 151.5,
+      "tinggi": 284.4,
+      "total": 435.9,
+      "tercover": 435.9
+    },
+    "SRN-DS-282": {
+      "rendah": 0.0,
+      "sedang": 628.2,
+      "tinggi": 755.0,
+      "total": 1383.2,
+      "tercover": 1383.2
+    },
+    "SRN-DS-283": {
+      "rendah": 0.0,
+      "sedang": 113.6,
+      "tinggi": 148.2,
+      "total": 261.8,
+      "tercover": 261.8
+    },
+    "SRN-DS-284": {
+      "rendah": 22.1,
+      "sedang": 5979.6,
+      "tinggi": 870.5,
+      "total": 6872.3,
+      "tercover": 6872.3
+    },
+    "SRN-DS-285": {
+      "rendah": 22.1,
+      "sedang": 4678.8,
+      "tinggi": 615.5,
+      "total": 5316.4,
+      "tercover": 5316.4
+    },
+    "SRN-DS-286": {
+      "rendah": 22.1,
+      "sedang": 6000.3,
+      "tinggi": 1080.1,
+      "total": 7102.5,
+      "tercover": 7102.5
+    },
+    "SRN-DS-207": {
+      "rendah": 0.0,
+      "sedang": 1097.7,
+      "tinggi": 1126.8,
+      "total": 2224.4,
+      "tercover": 2224.4
+    },
+    "SRN-DS-208": {
+      "rendah": 0.0,
+      "sedang": 1186.1,
+      "tinggi": 1234.4,
+      "total": 2420.5,
+      "tercover": 2420.5
+    },
+    "SRN-DS-209": {
+      "rendah": 0.0,
+      "sedang": 1124.4,
+      "tinggi": 1252.6,
+      "total": 2377.0,
+      "tercover": 2377.0
+    }
+  },
+  "jumlah_baris": {
+    "rendah": 101855.8,
+    "sedang": 1150513.5,
+    "tinggi": 564886.0,
+    "total": 1817255.3
+  },
+  "gabungan": {
+    "rendah": 50210.6,
+    "sedang": 541063.2,
+    "tinggi": 321118.6,
+    "total": 912392.4,
+    "tercover": 912392.4
+  },
+  "sirine": 286
+}

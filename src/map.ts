@@ -1,6 +1,6 @@
 import maplibregl, { type GeoJSONSource, type Map } from "maplibre-gl";
 import type { BatasProvinsi, Titik } from "./model";
-import { asset, escapeHtml, formatDerajat, labelStatusSumber, STATUS_LABEL } from "./model";
+import { asset, escapeHtml, formatBulat, formatDerajat, labelStatusSumber, STATUS_LABEL } from "./model";
 
 export type RasterKind =
   | "bahaya"
@@ -47,6 +47,7 @@ type Stop = () => void;
 export type StudyMap = {
   setTitik(sirine: Titik[], sensor: Titik[]): void;
   setVisible(lapisan: "sirine" | "sensor", nyala: boolean): void;
+  setRadius(nyala: boolean, idSirine: string[]): void;
   setBahaya(nyala: boolean, opasitas: number, klasifikasi: boolean): void;
   setProxy(nyala: boolean, opasitas: number): void;
   setBatas(jenis: BatasJenis, nyala: boolean): Promise<void>;
@@ -243,6 +244,15 @@ function popupHtml(properties: Record<string, unknown>, coordinates: [number, nu
     ["Lintang", formatDerajat(coordinates[1])],
     ["Baris Excel", String(properties.baris_excel ?? "—")],
   ];
+  if (properties.jenis === "sirine" && properties.cakupan_total != null) {
+    baris.push(
+      ["Penduduk tercover", formatBulat(Number(properties.cakupan_tercover))],
+      ["Bahaya tinggi", formatBulat(Number(properties.cakupan_tinggi))],
+      ["Bahaya sedang", formatBulat(Number(properties.cakupan_sedang))],
+      ["Bahaya rendah", formatBulat(Number(properties.cakupan_rendah))],
+      ["Total", formatBulat(Number(properties.cakupan_total))],
+    );
+  }
   if (properties.cek_wilayah) {
     const beda: Array<[string, unknown]> = [
       ["Kabupaten/kota pada poligon", properties.cek_adm2_name],
@@ -263,7 +273,11 @@ function popupHtml(properties: Record<string, unknown>, coordinates: [number, nu
   const lencana = indeksSurvei[normIdSurvei(String(properties.id ?? ""))]
     ? `<p class="lencana-survei">Sudah disurvei</p>`
     : "";
-  return `<h3>${escapeHtml(judulTitik(properties))}</h3>${lencana}<p class="popup-catatan">Status bukan kolom Excel. Koordinat WGS84 dari teks DMS.</p>${cek}${blokDihapus(properties, aksiTanda?.admin === true)}<table>${isi}</table>`;
+  const catatanRadius =
+    properties.jenis === "sirine" && properties.cakupan_total != null
+      ? `<p class="popup-catatan">Radius sirine 1 km. Angka per sirine bisa saling tumpang tindih. Kelas adalah klasifikasi tampilan, bukan kelas resmi BNPB.</p>`
+      : "";
+  return `<h3>${escapeHtml(judulTitik(properties))}</h3>${lencana}<p class="popup-catatan">Status bukan kolom Excel. Koordinat WGS84 dari teks DMS.</p>${cek}${catatanRadius}${blokDihapus(properties, aksiTanda?.admin === true)}<table>${isi}</table>`;
 }
 
 const indeksSurvei: Record<string, true> = {};
@@ -475,6 +489,18 @@ export async function createStudyMap(
     source: "sumut",
     paint: { "line-color": "#1c1c1f", "line-width": 1.75 },
   });
+  map.addSource("buffer-sirine", { type: "geojson", data: { type: "FeatureCollection", features: [] } });
+  map.addLayer({
+    id: "buffer-sirine-garis",
+    type: "line",
+    source: "buffer-sirine",
+    layout: { "line-cap": "round", "line-join": "round" },
+    paint: {
+      "line-color": "#00E676",
+      "line-width": ["interpolate", ["linear"], ["zoom"], 9, 1.6, 14, 2.6],
+      "line-dasharray": [2, 1.4],
+    },
+  });
   tambahKlaster(map);
   const tataIkon = {
     "icon-anchor": "bottom" as const,
@@ -651,6 +677,15 @@ export async function createStudyMap(
   let simpanSensor: Titik[] = [];
   let lihatSirine = true;
   let lihatSensor = true;
+  let lihatRadius = true;
+  let bufferSemua: GeoJSON.Feature[] = [];
+  let idRadius = new Set<string>();
+  const tulisRadius = () => {
+    const fitur = lihatRadius ? bufferSemua.filter((item) => idRadius.has(String(item.properties?.id ?? ""))) : [];
+    (map.getSource("buffer-sirine") as GeoJSONSource).setData({ type: "FeatureCollection", features: fitur });
+    const tampak = lihatRadius && fitur.length ? "visible" : "none";
+    if (map.getLayer("buffer-sirine-garis")) map.setLayoutProperty("buffer-sirine-garis", "visibility", tampak);
+  };
   let adminUsulan = false;
   let onSuntingUsulan: ((id: string) => void) | null = null;
   let onHapusUsulan: ((id: string) => void) | null = null;
@@ -1104,6 +1139,17 @@ export async function createStudyMap(
     lepas[kind] = awasi(map, sourceId, (state) => onRaster(kind, state));
   }
 
+  try {
+    const respons = await fetch(asset("data/sirine_buffer_1km.geojson"));
+    if (respons.ok) {
+      const data = (await respons.json()) as GeoJSON.FeatureCollection;
+      bufferSemua = data.features ?? [];
+      tulisRadius();
+    }
+  } catch {
+    // Radius tetap kosong jika berkas belum tersedia.
+  }
+
   return {
     setTitik(sirine, sensor) {
       simpanSirine = sirine;
@@ -1114,6 +1160,11 @@ export async function createStudyMap(
       if (lapisan === "sirine") lihatSirine = nyala;
       else lihatSensor = nyala;
       tulisTitik();
+    },
+    setRadius(nyala, idSirine) {
+      lihatRadius = nyala;
+      idRadius = new Set(idSirine);
+      tulisRadius();
     },
     setBahaya(nyala, opasitas, klasifikasi) {
       if (!nyala) {

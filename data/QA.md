@@ -218,3 +218,12 @@ Semua teks koordinat sumber yang terbaca berakhiran `E` (kolom X, bujur) dan `N`
 ## CRS
 
 EPSG:4326 (WGS84), derajat desimal, urutan GeoJSON `[bujur, lintang]`.
+
+
+## Radius sirine 1 km
+
+Penduduk Terpapar desa dibagi rata ke piksel InaRISK INDEKS_BAHAYA_BANJIR (EPSG:4326, sekitar 111 m) di dalam poligon desa HDX yang indeksnya >= 0,01. Radius 1 km dihitung di UTM zona 47N, lalu dikembalikan ke WGS84. Kelas adalah klasifikasi tampilan, bukan kelas resmi BNPB: rendah 0,01–0,333; sedang >0,333–0,666; tinggi >0,666–1. Penduduk pada piksel < 0,01 tidak dihitung.
+Desa bernilai positif 2214: cocok tepat 1740, fuzzy kecamatan 245, fuzzy kabupaten 171, gagal 58. Penduduk cocok 4904789.4; penduduk tanpa poligon 145787.1.
+Sirine berangka 286. Jumlah tiap baris, boleh tumpang tindih: tinggi 564886.0, sedang 1150513.5, rendah 101855.8, total 1817255.3.
+Gabungan tanpa hitung ganda: tinggi 321118.6, sedang 541063.2, rendah 50210.6, total 912392.4.
+Sensor tidak punya radius. Kelas adalah klasifikasi tampilan, bukan kelas resmi BNPB.
