@@ -17,8 +17,7 @@ type Kunci =
   | "tercover"
   | "tinggi"
   | "sedang"
-  | "rendah"
-  | "total";
+  | "rendah";
 type Kelompok = "kab" | "das";
 
 type Baris = {
@@ -39,7 +38,6 @@ type Baris = {
   tinggi: number | null;
   sedang: number | null;
   rendah: number | null;
-  total: number | null;
 };
 
 type AngkaCakupan = {
@@ -72,7 +70,6 @@ const KOLOM: Array<[Kunci, string]> = [
   ["tinggi", "Bahaya tinggi"],
   ["sedang", "Bahaya sedang"],
   ["rendah", "Bahaya rendah"],
-  ["total", "Total"],
 ];
 
 const kepala = document.querySelector<HTMLTableRowElement>("#tabel-kepala");
@@ -95,7 +92,7 @@ const ditutupSaatCari = new Set<string>();
 let onPilih: (titik: Titik) => void = () => undefined;
 const sudahSurvei = new Set<string>();
 let cakupan: BerkasCakupan | null = null;
-const ANGKA: Kunci[] = ["tercover", "tinggi", "sedang", "rendah", "total"];
+const ANGKA: Kunci[] = ["tercover", "tinggi", "sedang", "rendah"];
 
 function teksAngka(nilai: number | null): string {
   return nilai == null ? "-" : formatBulat(nilai);
@@ -187,7 +184,6 @@ function jadiBaris(titik: Titik): Baris {
     tinggi: titik.properties.jenis === "sirine" ? (titik.properties.cakupan_tinggi ?? null) : null,
     sedang: titik.properties.jenis === "sirine" ? (titik.properties.cakupan_sedang ?? null) : null,
     rendah: titik.properties.jenis === "sirine" ? (titik.properties.cakupan_rendah ?? null) : null,
-    total: titik.properties.jenis === "sirine" ? (titik.properties.cakupan_total ?? null) : null,
   };
 }
 
@@ -210,7 +206,6 @@ function cocok(baris: Baris, kata: string): boolean {
     teksAngka(baris.tinggi),
     teksAngka(baris.sedang),
     teksAngka(baris.rendah),
-    teksAngka(baris.total),
   ]
     .join(" ")
     .toLocaleLowerCase("id");
@@ -256,7 +251,6 @@ function sel(baris: Baris): string {
     tinggi: teksAngka(baris.tinggi),
     sedang: teksAngka(baris.sedang),
     rendah: teksAngka(baris.rendah),
-    total: teksAngka(baris.total),
   };
   return KOLOM.map(([kunci]) => {
     if (kunci === "id" && baris.titik.properties.cek_wilayah) {
@@ -380,7 +374,7 @@ function gambar() {
     const gabungan = cakupan?.gabungan;
     const desa = cakupan?.desa;
     cakupanMeta.textContent = gabungan
-      ? `Radius sirine 1 km. Angka per baris boleh saling tumpang tindih. Total gabungan tanpa hitung ganda: penduduk tercover ${formatBulat(gabungan.tercover)}, bahaya tinggi ${formatBulat(gabungan.tinggi)}, sedang ${formatBulat(gabungan.sedang)}, rendah ${formatBulat(gabungan.rendah)}, total ${formatBulat(gabungan.total)}. Kelas adalah klasifikasi tampilan InaRISK (bukan kelas resmi BNPB). Penduduk pada piksel indeks di bawah 0,01 tidak dihitung.${desa ? ` Desa positif yang tidak ketemu poligon: ${desa.gagal.toLocaleString("id-ID")} dari ${desa.positif.toLocaleString("id-ID")}.` : ""}`
+      ? `Radius sirine 1 km. Angka per baris boleh saling tumpang tindih. Gabungan tanpa hitung ganda: penduduk tercover ${formatBulat(gabungan.tercover)}, bahaya tinggi ${formatBulat(gabungan.tinggi)}, sedang ${formatBulat(gabungan.sedang)}, rendah ${formatBulat(gabungan.rendah)}. Kelas adalah klasifikasi tampilan InaRISK (bukan kelas resmi BNPB). Penduduk pada piksel indeks di bawah 0,01 tidak dihitung.${desa ? ` Desa positif yang tidak ketemu poligon: ${desa.gagal.toLocaleString("id-ID")} dari ${desa.positif.toLocaleString("id-ID")}.` : ""}`
       : "";
   }
   gambarKepala();

@@ -178,7 +178,9 @@ input[type="range"] { width: 100%; accent-color: #1c1c1f; }
 .kelas li { display: flex; align-items: center; gap: 6px; }
 .kelas i { width: 14px; height: 10px; border-radius: 3px; border: 1px solid rgba(0, 0, 0, 0.12); display: inline-block; }
 .kelas i.garis { width: 28px; height: 0; border: 0; border-radius: 0; background: none; }
-.garis-das { border-top: 4px solid #00b0ff !important; }
+.garis-das { border-top: 3px dashed #ff6d00 !important; }
+.garis-sungai { border-top: 3px solid #00b0ff !important; }
+.garis-anak { border-top: 2px solid #00b0ff !important; }
 .garis-radius { border-top: 2.5px dashed #00e676 !important; }
 .garis-kab { border-top: 4px solid #111 !important; box-shadow: 0 0 0 1px #fff; }
 .kelas i.garis-kec {
@@ -196,7 +198,7 @@ input[type="range"] { width: 100%; accent-color: #1c1c1f; }
 .garis-ka { border-top: 2px dashed #111 !important; }
 .garis-lokal { border-top: 2px solid #9b5aff !important; }
 .garis-lain { border-top: 2px solid #9e9e9e !important; }
-.kotak-sungai { background: rgba(79, 163, 224, 0.6); box-shadow: inset 0 0 0 1px #1f6fb2; }
+.kotak-sungai { background: rgba(0, 176, 255, 0.45); box-shadow: inset 0 0 0 2px #00b0ff; }
 .kotak-danau { background: rgba(151, 219, 242, 0.85); box-shadow: inset 0 0 0 1px #2a9bb8; }
 .kelas i.titik-pos { width: 12px; height: 12px; border: 2px solid #fff; box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25); }
 .kelas i.titik-sensor-rencana {

@@ -55,6 +55,7 @@ const togSurvei = wajib(document.querySelector<HTMLInputElement>("#tog-survei"),
 const togBatasKec = wajib(document.querySelector<HTMLInputElement>("#tog-batas-kec"), "batas kecamatan");
 const togBatasDesa = wajib(document.querySelector<HTMLInputElement>("#tog-batas-desa"), "batas desa");
 const togJalanRtrw = wajib(document.querySelector<HTMLInputElement>("#tog-jalan-rtrw"), "jalan rtrw");
+const togSungaiOsm = wajib(document.querySelector<HTMLInputElement>("#tog-sungai-osm"), "sungai osm");
 const togSungaiRtrw = wajib(document.querySelector<HTMLInputElement>("#tog-sungai-rtrw"), "sungai rtrw");
 const togDanauRtrw = wajib(document.querySelector<HTMLInputElement>("#tog-danau-rtrw"), "danau rtrw");
 const togPosHidro = wajib(document.querySelector<HTMLInputElement>("#tog-pos-hidro"), "pos hidrologi");
@@ -62,6 +63,7 @@ const batasDasDetail = wajib(document.querySelector<HTMLElement>("#batas-das-det
 const batasKecDetail = wajib(document.querySelector<HTMLElement>("#batas-kec-detail"), "detail batas kecamatan");
 const batasDesaDetail = wajib(document.querySelector<HTMLElement>("#batas-desa-detail"), "detail batas desa");
 const jalanRtrwDetail = wajib(document.querySelector<HTMLElement>("#jalan-rtrw-detail"), "detail jalan rtrw");
+const sungaiOsmDetail = wajib(document.querySelector<HTMLElement>("#sungai-osm-detail"), "detail sungai osm");
 const sungaiRtrwDetail = wajib(document.querySelector<HTMLElement>("#sungai-rtrw-detail"), "detail sungai rtrw");
 const danauRtrwDetail = wajib(document.querySelector<HTMLElement>("#danau-rtrw-detail"), "detail danau rtrw");
 const posHidroDetail = wajib(document.querySelector<HTMLElement>("#pos-hidro-detail"), "detail pos hidrologi");
@@ -78,6 +80,7 @@ const rasterState: Record<RasterKind, RasterState> = {
   "batas-kec": "off",
   "batas-desa": "off",
   "jalan-rtrw": "off",
+  "sungai-osm": "off",
   "sungai-rtrw": "off",
   "danau-rtrw": "off",
   "pos-hidro": "off",
@@ -85,6 +88,7 @@ const rasterState: Record<RasterKind, RasterState> = {
 const batasNyala: Record<Exclude<BatasJenis, "kab">, boolean> = { das: false, kec: false, desa: false };
 let peta: StudyMap | null = null;
 let jalanRtrwNyala = false;
+let sungaiOsmNyala = false;
 let sungaiRtrwNyala = false;
 let danauRtrwNyala = false;
 let posHidroNyala = false;
@@ -231,6 +235,7 @@ function perbaruiStatus() {
     ["batas-kec", "batas-kec-status"],
     ["batas-desa", "batas-desa-status"],
     ["jalan-rtrw", "jalan-rtrw-status"],
+    ["sungai-osm", "sungai-osm-status"],
     ["sungai-rtrw", "sungai-rtrw-status"],
     ["danau-rtrw", "danau-rtrw-status"],
     ["pos-hidro", "pos-hidro-status"],
@@ -258,6 +263,7 @@ function terapkan(geserPeta: boolean) {
   batasKecDetail.hidden = !togBatasKec.checked;
   batasDesaDetail.hidden = !togBatasDesa.checked;
   jalanRtrwDetail.hidden = !togJalanRtrw.checked;
+  sungaiOsmDetail.hidden = !togSungaiOsm.checked;
   sungaiRtrwDetail.hidden = !togSungaiRtrw.checked;
   danauRtrwDetail.hidden = !togDanauRtrw.checked;
   posHidroDetail.hidden = !togPosHidro.checked;
@@ -271,6 +277,10 @@ function terapkan(geserPeta: boolean) {
   if (togJalanRtrw.checked !== jalanRtrwNyala) {
     jalanRtrwNyala = togJalanRtrw.checked;
     void peta?.setJalanRtrw(jalanRtrwNyala);
+  }
+  if (togSungaiOsm.checked !== sungaiOsmNyala) {
+    sungaiOsmNyala = togSungaiOsm.checked;
+    void peta?.setSungaiOsm(sungaiOsmNyala);
   }
   if (togSungaiRtrw.checked !== sungaiRtrwNyala) {
     sungaiRtrwNyala = togSungaiRtrw.checked;
@@ -423,7 +433,7 @@ function pasangLapisan() {
 function pasangMenu() {
   menuBtn.addEventListener("click", () => menu(!sidebar.classList.contains("terbuka")));
   scrim.addEventListener("click", () => menu(false));
-  for (const elemen of [kabSelect, statusSelect, togSirine, togSensor, togRadius, togBahaya, togProxy, bahayaKelas, togBatasDas, togBatasKec, togBatasDesa, togJalanRtrw, togSungaiRtrw, togDanauRtrw, togPosHidro]) {
+  for (const elemen of [kabSelect, statusSelect, togSirine, togSensor, togRadius, togBahaya, togProxy, bahayaKelas, togBatasDas, togBatasKec, togBatasDesa, togJalanRtrw, togSungaiOsm, togSungaiRtrw, togDanauRtrw, togPosHidro]) {
     elemen.addEventListener("change", () => {
       const geser = elemen === kabSelect || elemen === statusSelect;
       terapkan(geser);
