@@ -89,6 +89,7 @@ let danauRtrwNyala = false;
 let posHidroNyala = false;
 let sirine: Titik[] = [];
 let sensor: Titik[] = [];
+let posHitung = { pda: 0, pch: 0, pkl: 0 };
 let desa: DesaTerpapar[] = [];
 let alternatif: BerkasAlternatif | null = null;
 
@@ -290,12 +291,12 @@ function terapkan(geserPeta: boolean) {
   const nPop = document.querySelector("#n-pop");
   if (nSirine) nSirine.textContent = sirineSaring.length.toLocaleString("id-ID");
   if (nSensor) nSensor.textContent = sensorSaring.length.toLocaleString("id-ID");
-  const catatanSensor = document.querySelector("#n-sensor-catatan");
-  if (catatanSensor) {
-    const existing = sensorSaring.filter((titik) => titik.properties.keterangan === "Eksisting").length;
-    const rencana = sensorSaring.filter((titik) => titik.properties.keterangan === "Rencana").length;
-    catatanSensor.textContent = `Sensor · ${existing.toLocaleString("id-ID")} existing, ${rencana.toLocaleString("id-ID")} rencana`;
-  }
+  const nPda = document.querySelector("#n-pda");
+  const nPch = document.querySelector("#n-pch");
+  const nPkl = document.querySelector("#n-pkl");
+  if (nPda) nPda.textContent = posHitung.pda.toLocaleString("id-ID");
+  if (nPch) nPch.textContent = posHitung.pch.toLocaleString("id-ID");
+  if (nPkl) nPkl.textContent = posHitung.pkl.toLocaleString("id-ID");
   if (nDesa) nDesa.textContent = jumlahPositif.toLocaleString("id-ID");
   if (nPop) nPop.textContent = formatBulat(jumlahPenduduk);
   gambarDesa();
@@ -444,15 +445,24 @@ async function mulai() {
   pasangMenu();
   void periksaUlang();
   try {
-    const [sirineData, sensorData, penduduk, alternatifData, batas] = await Promise.all([
+    const [sirineData, sensorData, penduduk, alternatifData, batas, posData] = await Promise.all([
       muat<KoleksiTitik>("data/sirine.geojson"),
       muat<KoleksiTitik>("data/sensor.geojson"),
       muat<BerkasTerpapar>("data/penduduk_terpapar.json"),
       muat<BerkasAlternatif>("data/alternatif_lokasi.json"),
       muat<BatasProvinsi>("data/batas/sumatera_utara_adm1.geojson"),
+      muat<{ features: Array<{ properties?: { jenis?: string; kode?: string } }> }>("data/pos_hidrologi_bbws2.geojson"),
     ]);
     sirine = sirineData.features;
-    sensor = sensorData.features;
+    sensor = sensorData.features.filter((titik) => titik.properties.keterangan !== "Eksisting");
+    posHitung = { pda: 0, pch: 0, pkl: 0 };
+    for (const fitur of posData.features) {
+      const jenis = fitur.properties?.jenis;
+      const kode = fitur.properties?.kode;
+      if (jenis === "Duga Air" && kode === "PDA") posHitung.pda += 1;
+      else if (jenis === "Curah Hujan" && kode === "PCH") posHitung.pch += 1;
+      else if (jenis === "Klimatologi" && kode === "PKL") posHitung.pkl += 1;
+    }
     desa = penduduk.baris;
     alternatif = alternatifData;
     isiKabupaten();

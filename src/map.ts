@@ -1377,7 +1377,7 @@ function bukaPopupUsulanDari(
   const isi = baris.map(([label, value]) => `<tr><th>${escapeHtml(label)}</th><td>${escapeHtml(value)}</td></tr>`).join("");
   const popup = new maplibregl.Popup({ maxWidth: "320px", className: "ews-popup" })
     .setLngLat(coordinates)
-    .setHTML(`<h3>${escapeHtml(nama)}</h3><p class="popup-catatan">Titik usulan dari Appwrite. Bukan bagian dari 327 titik studi.</p>${blokDihapus(properties, aksi.admin)}<table>${isi}</table>${tombol}`)
+    .setHTML(`<h3>${escapeHtml(nama)}</h3><p class="popup-catatan">Titik usulan dari Appwrite. Bukan bagian dari 294 titik studi.</p>${blokDihapus(properties, aksi.admin)}<table>${isi}</table>${tombol}`)
     .addTo(map);
   popup.getElement()?.querySelector("[data-sunting]")?.addEventListener("click", () => aksi.sunting?.(id));
   pasangPulihkan(popup, id, "usulan");

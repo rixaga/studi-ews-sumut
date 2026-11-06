@@ -14,7 +14,8 @@ Dihasilkan oleh `scripts/convert_data.py`. Berkas mentah di `data/raw/` tidak di
 | Lapisan | Jumlah | Keterangan |
 | --- | --- | --- |
 | Sirine | 286 | diharapkan 286 |
-| Sensor | 41 | diharapkan 41 (33 Eksisting, 8 Rencana) |
+| Sensor digambar | 8 | hanya Rencana; diharapkan 8 |
+| Sensor Eksisting tidak digambar | 33 | diharapkan 33, sama dengan PDA BBWS |
 | Kabupaten/kota pada titik | 12 | diharapkan 12 |
 | Desa lembar Terpapar | 3039 | |
 | Desa lembar Terdampak | 3039 | identik dengan Terpapar: True |
@@ -45,20 +46,22 @@ Baris `Grand Total` pada lembar SIRINE dan SENSOR dibuang (bukan titik).
 
 ## Sensor per kabupaten/kota
 
-| Kabupaten/kota | Eksisting | Rencana |
+| Kabupaten/kota | Eksisting (tidak digambar) | Rencana (digambar) |
 | --- | --- | --- |
 | Deli Serdang | 9 | 0 |
-| Serdang Bedagai | 6 | 0 |
-| Langkat | 1 | 4 |
-| Tapanuli Utara | 5 | 0 |
-| Kota Tebing Tinggi | 3 | 0 |
-| Tapanuli Selatan | 2 | 1 |
 | Humbang Hasundutan | 2 | 0 |
 | Kota Binjai | 2 | 0 |
 | Kota Medan | 2 | 0 |
-| Tapanuli Tengah | 1 | 1 |
 | Kota Padangsidimpuan | 0 | 1 |
 | Kota Sibolga | 0 | 1 |
+| Kota Tebing Tinggi | 3 | 0 |
+| Langkat | 1 | 4 |
+| Serdang Bedagai | 6 | 0 |
+| Tapanuli Selatan | 2 | 1 |
+| Tapanuli Tengah | 1 | 1 |
+| Tapanuli Utara | 5 | 0 |
+
+ID Rencana yang digambar: SNS-DS-033, SNS-DS-081, SNS-DS-085, SNS-DS-086, SNS-DS-087, SNS-DS-088, SNS-DS-059, SNS-DS-099.
 
 ## ID
 
@@ -210,7 +213,7 @@ Semua teks koordinat sumber yang terbaca berakhiran `E` (kolom X, bujur) dan `N`
 7. Metode dan sumber penduduk tidak ada di berkas. Tidak diperkirakan di laporan ini.
 8. Tidak ada poligon desa pada masukan. Peta tidak mengarang batas desa.
 9. Ejaan teks remark (contoh pada sumber: "Hampaaran", "Percuit", "Padang Sidempuan") dibiarkan apa adanya.
-10. Excel tidak memuat kolom status. Properti status bukan kolom pada Excel. Lembar sirine tidak punya kolom KETERANGAN. Lembar sensor menyimpan KETERANGAN sebagai Eksisting atau Rencana, dan nama pos pada kolom Name. Nilai awal semua titik adalah usulan_studi sesuai keputusan tampilan, dibaca dari data/status_override.csv (bukan inferensi lokasi). ID baru ditambahkan sebagai usulan_studi. ID yang hilang dari sumber dibuang dari berkas itu. Nilai belum_ditentukan memakai ikon pin asli tanpa warna status. Ringkasan status saat konversi: usulan_studi=327. Catatan berkas override: tidak ada.
+10. Excel tidak memuat kolom status. Properti status bukan kolom pada Excel. Lembar sirine tidak punya kolom KETERANGAN. Lembar sensor menyimpan KETERANGAN sebagai Eksisting atau Rencana, dan nama pos pada kolom Name. Nilai awal semua titik adalah usulan_studi sesuai keputusan tampilan, dibaca dari data/status_override.csv (bukan inferensi lokasi). ID baru ditambahkan sebagai usulan_studi. ID yang hilang dari sumber dibuang dari berkas itu. Nilai belum_ditentukan memakai ikon pin asli tanpa warna status. Ringkasan status saat konversi: usulan_studi=294. Catatan berkas override: tidak ada.
 
 ## CRS
 

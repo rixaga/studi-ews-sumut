@@ -608,6 +608,12 @@ def main() -> int:
     padang_penduduk = sorted({row["kab_kota"] for row in terpapar + sumut if row["kab_kota"] and "PADANGSIDIMPUAN" in row["kab_kota"].upper().replace(" ", "")})
 
     status_overrides, status_issues = load_status_overrides(STATUS_PATH)
+    sensor_lembar = list(sensor_gj["features"])
+    sensor_gj["features"] = [fitur for fitur in sensor_lembar if fitur["properties"]["keterangan"] == "Rencana"]
+    sensor_gj["catatan_lapisan"] = (
+        "Hanya baris Excel KETERANGAN=Rencana. Baris Eksisting tidak ditulis ke lapisan ini "
+        "karena koordinatnya sama dengan pos PDA pada data/pos_hidrologi_bbws2.geojson."
+    )
     semua_fitur = sirine_gj["features"] + sensor_gj["features"]
     tulis_status(STATUS_PATH, semua_fitur, status_overrides)
     known_ids = {feature["properties"]["id"] for feature in semua_fitur}
@@ -717,7 +723,8 @@ Dihasilkan oleh `scripts/convert_data.py`. Berkas mentah di `data/raw/` tidak di
 | Lapisan | Jumlah | Keterangan |
 | --- | --- | --- |
 | Sirine | {len(sirine_gj["features"])} | diharapkan {EXPECT_SIRINE} |
-| Sensor | {len(sensor_gj["features"])} | diharapkan {EXPECT_SENSOR} (33 Eksisting, 8 Rencana) |
+| Sensor digambar | {len(sensor_gj["features"])} | hanya Rencana; diharapkan 8 |
+| Sensor Eksisting tidak digambar | {sum(1 for f in sensor_lembar if f["properties"]["keterangan"] == "Eksisting")} | diharapkan 33, sama dengan PDA BBWS |
 | Kabupaten/kota pada titik | {len(titik_kab)} | diharapkan 12 |
 | Desa lembar Terpapar | {len(terpapar)} | |
 | Desa lembar Terdampak | {len(terdampak)} | identik dengan Terpapar: {identik} |
@@ -735,14 +742,16 @@ Baris `Grand Total` pada lembar SIRINE dan SENSOR dibuang (bukan titik).
 
 ## Sensor per kabupaten/kota
 
-{md_table(["Kabupaten/kota", "Eksisting", "Rencana"], [
+{md_table(["Kabupaten/kota", "Eksisting (tidak digambar)", "Rencana (digambar)"], [
     [
         name,
-        sum(1 for f in sensor_gj["features"] if f["properties"]["wadmkk"] == name and f["properties"]["keterangan"] == "Eksisting"),
-        sum(1 for f in sensor_gj["features"] if f["properties"]["wadmkk"] == name and f["properties"]["keterangan"] == "Rencana"),
+        sum(1 for f in sensor_lembar if f["properties"]["wadmkk"] == name and f["properties"]["keterangan"] == "Eksisting"),
+        sum(1 for f in sensor_lembar if f["properties"]["wadmkk"] == name and f["properties"]["keterangan"] == "Rencana"),
     ]
-    for name, _count in kab_sensor
+    for name in sorted({f["properties"]["wadmkk"] for f in sensor_lembar})
 ])}
+
+ID Rencana yang digambar: {", ".join(f["properties"]["id"] for f in sensor_gj["features"])}.
 
 ## ID
 
@@ -857,10 +866,11 @@ EPSG:4326 (WGS84), derajat desimal, urutan GeoJSON `[bujur, lintang]`.
     print(f"sirine {len(sirine_gj['features'])} sensor {len(sensor_gj['features'])} kab {len(titik_kab)}")
     print(f"terpapar {len(terpapar)} terdampak identik {identik} sumut {len(sumut)}")
     print(f"luar poligon sirine {len(sirine_out)} sensor {len(sensor_out)}")
-    ket_sensor = Counter(f["properties"]["keterangan"] for f in sensor_gj["features"])
+    ket_sensor = Counter(f["properties"]["keterangan"] for f in sensor_lembar)
     if (
         len(sirine_gj["features"]) != EXPECT_SIRINE
-        or len(sensor_gj["features"]) != EXPECT_SENSOR
+        or len(sensor_lembar) != EXPECT_SENSOR
+        or len(sensor_gj["features"]) != 8
         or len(titik_kab) != 12
         or ket_sensor.get("Eksisting") != 33
         or ket_sensor.get("Rencana") != 8
