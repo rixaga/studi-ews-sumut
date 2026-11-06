@@ -1,5 +1,5 @@
 {
-  "sumber_berkas": "Olah Penduduk Terpapar.xlsx",
+  "sumber_berkas": "20261105_Olah_Penduduk_Terpapar3.xlsx",
   "sumber_lembar": "Terdampak",
   "isu": "Multiset (kab/kota, kecamatan, desa, penduduk) identik dengan lembar Terpapar. Urutan baris berbeda. Header kolom nilai tetap 'Penduduk Terpapar'. Kemungkinan salinan. Lembar dipertahankan dan tidak dipakai sebagai angka terpisah di peta.",
   "identik_dengan_terpapar": true,

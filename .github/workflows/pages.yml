@@ -28,7 +28,7 @@ jobs:
       - name: Konversi ulang dan bandingkan
         run: |
           python scripts/convert_data.py
-          git diff --exit-code -- data/sirine.geojson data/sensor.geojson data/penduduk_terpapar.csv data/penduduk_terpapar.json data/penduduk_terdampak.json data/penduduk_sumut.json data/alternatif_lokasi.json data/QA.md
+          git diff --exit-code -- data/sirine.geojson data/sensor.geojson data/penduduk_terpapar.csv data/penduduk_terpapar.json data/penduduk_terdampak.json data/penduduk_sumut.json data/alternatif_lokasi.json data/tidak_disurvei.json data/points_das.csv data/status_override.csv data/QA.md
       - name: Uji parser Kobo dengan berkas lokal
         run: python scripts/test_kobo_sync.py
 

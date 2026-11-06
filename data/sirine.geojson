@@ -13,7 +13,7 @@
         "wadmkk_tampil": "Deli Serdang",
         "wadmkc": "Batang Kuis",
         "wadmkd": "Tanjung Sari",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Kantor Kecamatan Batang Kuis",
         "x_dms": "98° 48' 12.568\" E",
         "y_dms": "3° 36' 40.954\" N",
@@ -39,7 +39,7 @@
         "wadmkk_tampil": "Deli Serdang",
         "wadmkc": "Batang Kuis",
         "wadmkd": "Tanjung Sari",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "PTPN IV Regional 2 Bandar Klippa",
         "x_dms": "98° 48' 29.375\" E",
         "y_dms": "3° 36' 41.391\" N",
@@ -65,7 +65,7 @@
         "wadmkk_tampil": "Deli Serdang",
         "wadmkc": "Batang Kuis",
         "wadmkd": "Tanjung Sari",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 104230 Batang Kuis",
         "x_dms": "98° 48' 37.157\" E",
         "y_dms": "3° 36' 26.668\" N",
@@ -91,7 +91,7 @@
         "wadmkk_tampil": "Deli Serdang",
         "wadmkc": "Beringin",
         "wadmkd": "Sidodadi Ramunia",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Lapangan Bola Said A Hamzah",
         "x_dms": "98° 53' 16.763\" E",
         "y_dms": "3° 35' 43.197\" N",
@@ -117,7 +117,7 @@
         "wadmkk_tampil": "Deli Serdang",
         "wadmkc": "Beringin",
         "wadmkd": "Sidodadi Ramunia",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Rumah Perlindungan Sosial Deli Serdang",
         "x_dms": "98° 53' 52.613\" E",
         "y_dms": "3° 36' 10.322\" N",
@@ -143,7 +143,7 @@
         "wadmkk_tampil": "Deli Serdang",
         "wadmkc": "Beringin",
         "wadmkd": "Sidodadi Ramunia",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 106830",
         "x_dms": "98° 52' 37.587\" E",
         "y_dms": "3° 36' 19.018\" N",
@@ -169,7 +169,7 @@
         "wadmkk_tampil": "Deli Serdang",
         "wadmkc": "Hamparan Perak",
         "wadmkd": "Hamparan Perak",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Kantor Kepala Desa Hampaaran Perak",
         "x_dms": "98° 36' 58.849\" E",
         "y_dms": "3° 43' 4.351\" N",
@@ -195,7 +195,7 @@
         "wadmkk_tampil": "Deli Serdang",
         "wadmkc": "Hamparan Perak",
         "wadmkd": "Hamparan Perak",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 105277 Hamparan Perak",
         "x_dms": "98° 37' 12.277\" E",
         "y_dms": "3° 43' 28.402\" N",
@@ -221,7 +221,7 @@
         "wadmkk_tampil": "Deli Serdang",
         "wadmkc": "Hamparan Perak",
         "wadmkd": "Hamparan Perak",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 106800 Hamparan Perak",
         "x_dms": "98° 37' 24.974\" E",
         "y_dms": "3° 44' 1.662\" N",
@@ -239,6 +239,84 @@
     },
     {
       "type": "Feature",
+      "id": "SRN-DS-210",
+      "properties": {
+        "id": "SRN-DS-210",
+        "jenis": "sirine",
+        "wadmkk": "Deli Serdang",
+        "wadmkk_tampil": "Deli Serdang",
+        "wadmkc": "Hamparan Perak",
+        "wadmkd": "Klambir Lima Kebun",
+        "keterangan": "",
+        "remark": "LAPAS Tanjung Gusta Medan",
+        "x_dms": "98° 36' 29.425\" E",
+        "y_dms": "3° 37' 6.004\" N",
+        "baris_excel": 14,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.60817361,
+          3.61833444
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SRN-DS-211",
+      "properties": {
+        "id": "SRN-DS-211",
+        "jenis": "sirine",
+        "wadmkk": "Deli Serdang",
+        "wadmkk_tampil": "Deli Serdang",
+        "wadmkc": "Hamparan Perak",
+        "wadmkd": "Klambir Lima Kebun",
+        "keterangan": "",
+        "remark": "SDN 106153 Klambir V",
+        "x_dms": "98° 35' 53.293\" E",
+        "y_dms": "3° 38' 37.646\" N",
+        "baris_excel": 15,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.59813694,
+          3.64379056
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SRN-DS-212",
+      "properties": {
+        "id": "SRN-DS-212",
+        "jenis": "sirine",
+        "wadmkk": "Deli Serdang",
+        "wadmkk_tampil": "Deli Serdang",
+        "wadmkc": "Hamparan Perak",
+        "wadmkd": "Klambir Lima Kebun",
+        "keterangan": "",
+        "remark": "SDN 106789 Tanjunggusta",
+        "x_dms": "98° 37' 24.920\" E",
+        "y_dms": "3° 36' 49.062\" N",
+        "baris_excel": 16,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.62358889,
+          3.61362833
+        ]
+      }
+    },
+    {
+      "type": "Feature",
       "id": "SRN-DS-010",
       "properties": {
         "id": "SRN-DS-010",
@@ -247,11 +325,11 @@
         "wadmkk_tampil": "Deli Serdang",
         "wadmkc": "Hamparan Perak",
         "wadmkd": "Klumpang Kebun",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Lapangan Bola Sepak Bola Klumpang",
         "x_dms": "98° 35' 52.627\" E",
         "y_dms": "3° 39' 48.478\" N",
-        "baris_excel": 14,
+        "baris_excel": 17,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -273,11 +351,11 @@
         "wadmkk_tampil": "Deli Serdang",
         "wadmkc": "Hamparan Perak",
         "wadmkd": "Klumpang Kebun",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Lapangan Bola Sidomulyo Pasar 2 Timur",
         "x_dms": "98° 36' 59.035\" E",
         "y_dms": "3° 40' 26.550\" N",
-        "baris_excel": 15,
+        "baris_excel": 18,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -299,11 +377,11 @@
         "wadmkk_tampil": "Deli Serdang",
         "wadmkc": "Hamparan Perak",
         "wadmkd": "Klumpang Kebun",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 106156 Klumpang",
         "x_dms": "98° 35' 48.937\" E",
         "y_dms": "3° 40' 20.726\" N",
-        "baris_excel": 16,
+        "baris_excel": 19,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -325,11 +403,11 @@
         "wadmkk_tampil": "Deli Serdang",
         "wadmkc": "Labuhan Deli",
         "wadmkd": "Pematang Johar",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Kantor Kepala Desa Pematang Johar",
         "x_dms": "98° 43' 13.446\" E",
         "y_dms": "3° 40' 3.161\" N",
-        "baris_excel": 17,
+        "baris_excel": 20,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -351,11 +429,11 @@
         "wadmkk_tampil": "Deli Serdang",
         "wadmkc": "Labuhan Deli",
         "wadmkd": "Pematang Johar",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Kantor Urusan Agama",
         "x_dms": "98° 43' 19.421\" E",
         "y_dms": "3° 39' 50.549\" N",
-        "baris_excel": 18,
+        "baris_excel": 21,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -369,6 +447,58 @@
     },
     {
       "type": "Feature",
+      "id": "SRN-DS-213",
+      "properties": {
+        "id": "SRN-DS-213",
+        "jenis": "sirine",
+        "wadmkk": "Deli Serdang",
+        "wadmkk_tampil": "Deli Serdang",
+        "wadmkc": "Lubuk Pakam",
+        "wadmkd": "Bakaran Batu",
+        "keterangan": "",
+        "remark": "Dinas Tenaga Kerja dan Transmigrasi",
+        "x_dms": "98° 51' 28.014\" E",
+        "y_dms": "3° 34' 24.847\" N",
+        "baris_excel": 22,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.85778167,
+          3.57356861
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SRN-DS-214",
+      "properties": {
+        "id": "SRN-DS-214",
+        "jenis": "sirine",
+        "wadmkk": "Deli Serdang",
+        "wadmkk_tampil": "Deli Serdang",
+        "wadmkc": "Lubuk Pakam",
+        "wadmkd": "Bakaran Batu",
+        "keterangan": "",
+        "remark": "SDN 1050020 Bakaran Batu",
+        "x_dms": "98° 51' 50.445\" E",
+        "y_dms": "3° 34' 21.051\" N",
+        "baris_excel": 23,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.8640125,
+          3.57251417
+        ]
+      }
+    },
+    {
+      "type": "Feature",
       "id": "SRN-DS-015",
       "properties": {
         "id": "SRN-DS-015",
@@ -377,11 +507,11 @@
         "wadmkk_tampil": "Deli Serdang",
         "wadmkc": "Lubuk Pakam",
         "wadmkd": "Sekip",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Kantor Desa Sekip",
         "x_dms": "98° 52' 58.590\" E",
         "y_dms": "3° 34' 1.233\" N",
-        "baris_excel": 19,
+        "baris_excel": 24,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -403,11 +533,11 @@
         "wadmkk_tampil": "Deli Serdang",
         "wadmkc": "Lubuk Pakam",
         "wadmkd": "Sekip",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 104257 Sekip",
         "x_dms": "98° 54' 4.285\" E",
         "y_dms": "3° 34' 10.162\" N",
-        "baris_excel": 20,
+        "baris_excel": 25,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -429,11 +559,11 @@
         "wadmkk_tampil": "Deli Serdang",
         "wadmkc": "Lubuk Pakam",
         "wadmkd": "Sekip",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SMPN 4 Lubuk Pakam",
         "x_dms": "98° 52' 55.965\" E",
         "y_dms": "3° 34' 4.106\" N",
-        "baris_excel": 21,
+        "baris_excel": 26,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -447,6 +577,84 @@
     },
     {
       "type": "Feature",
+      "id": "SRN-DS-215",
+      "properties": {
+        "id": "SRN-DS-215",
+        "jenis": "sirine",
+        "wadmkk": "Deli Serdang",
+        "wadmkk_tampil": "Deli Serdang",
+        "wadmkc": "Patumbak",
+        "wadmkd": "Patumbak Kampung",
+        "keterangan": "",
+        "remark": "Kantor Urusan Agama",
+        "x_dms": "98° 43' 3.234\" E",
+        "y_dms": "3° 30' 44.424\" N",
+        "baris_excel": 27,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.717565,
+          3.51234
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SRN-DS-216",
+      "properties": {
+        "id": "SRN-DS-216",
+        "jenis": "sirine",
+        "wadmkk": "Deli Serdang",
+        "wadmkk_tampil": "Deli Serdang",
+        "wadmkc": "Patumbak",
+        "wadmkd": "Patumbak Kampung",
+        "keterangan": "",
+        "remark": "Lapangan PERSIREPA Patumbak",
+        "x_dms": "98° 42' 54.660\" E",
+        "y_dms": "3° 31' 8.404\" N",
+        "baris_excel": 28,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.71518333,
+          3.51900111
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SRN-DS-217",
+      "properties": {
+        "id": "SRN-DS-217",
+        "jenis": "sirine",
+        "wadmkk": "Deli Serdang",
+        "wadmkk_tampil": "Deli Serdang",
+        "wadmkc": "Patumbak",
+        "wadmkd": "Patumbak Kampung",
+        "keterangan": "",
+        "remark": "Madrasah Aliyah Negeri 3 Medan",
+        "x_dms": "98° 43' 7.621\" E",
+        "y_dms": "3° 30' 55.503\" N",
+        "baris_excel": 29,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.71878361,
+          3.5154175
+        ]
+      }
+    },
+    {
+      "type": "Feature",
       "id": "SRN-DS-018",
       "properties": {
         "id": "SRN-DS-018",
@@ -455,11 +663,11 @@
         "wadmkk_tampil": "Deli Serdang",
         "wadmkc": "Percut Sei Tuan",
         "wadmkd": "Bandar Khalipah",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Alun- Alun Bandar Khalipah",
         "x_dms": "98° 45' 9.738\" E",
         "y_dms": "3° 36' 51.024\" N",
-        "baris_excel": 22,
+        "baris_excel": 30,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -481,11 +689,11 @@
         "wadmkk_tampil": "Deli Serdang",
         "wadmkc": "Percut Sei Tuan",
         "wadmkd": "Bandar Khalipah",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Kantor Desa Bandar Khalipah",
         "x_dms": "98° 45' 0.000\" E",
         "y_dms": "3° 36' 28.041\" N",
-        "baris_excel": 23,
+        "baris_excel": 31,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -507,11 +715,11 @@
         "wadmkk_tampil": "Deli Serdang",
         "wadmkc": "Percut Sei Tuan",
         "wadmkd": "Bandar Khalipah",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Puskesmas Bandar Khalipah",
         "x_dms": "98° 45' 9.135\" E",
         "y_dms": "3° 36' 32.204\" N",
-        "baris_excel": 24,
+        "baris_excel": 32,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -533,11 +741,11 @@
         "wadmkk_tampil": "Deli Serdang",
         "wadmkc": "Percut Sei Tuan",
         "wadmkd": "Bandar Klippa",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Lapangan Bola Reformasi",
         "x_dms": "98° 45' 25.739\" E",
         "y_dms": "3° 35' 58.867\" N",
-        "baris_excel": 25,
+        "baris_excel": 33,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -559,11 +767,11 @@
         "wadmkk_tampil": "Deli Serdang",
         "wadmkc": "Percut Sei Tuan",
         "wadmkd": "Bandar Klippa",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SMPN 2 Percuit Sei Tuan",
         "x_dms": "98° 45' 49.658\" E",
         "y_dms": "3° 35' 51.118\" N",
-        "baris_excel": 26,
+        "baris_excel": 34,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -585,11 +793,11 @@
         "wadmkk_tampil": "Deli Serdang",
         "wadmkc": "Percut Sei Tuan",
         "wadmkd": "Bandar Klippa",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SMPN 8 Percuit Sei Tuan",
         "x_dms": "98° 46' 34.983\" E",
         "y_dms": "3° 37' 21.230\" N",
-        "baris_excel": 27,
+        "baris_excel": 35,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -603,6 +811,84 @@
     },
     {
       "type": "Feature",
+      "id": "SRN-DS-218",
+      "properties": {
+        "id": "SRN-DS-218",
+        "jenis": "sirine",
+        "wadmkk": "Deli Serdang",
+        "wadmkk_tampil": "Deli Serdang",
+        "wadmkc": "Percut Sei Tuan",
+        "wadmkd": "Cinta Rakyat",
+        "keterangan": "",
+        "remark": "Kantor Desa Cinta Rakyat",
+        "x_dms": "98° 45' 10.131\" E",
+        "y_dms": "3° 40' 44.905\" N",
+        "baris_excel": 36,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.75281417,
+          3.67914028
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SRN-DS-219",
+      "properties": {
+        "id": "SRN-DS-219",
+        "jenis": "sirine",
+        "wadmkk": "Deli Serdang",
+        "wadmkk_tampil": "Deli Serdang",
+        "wadmkc": "Percut Sei Tuan",
+        "wadmkd": "Cinta Rakyat",
+        "keterangan": "",
+        "remark": "SDN 104208",
+        "x_dms": "98° 45' 16.063\" E",
+        "y_dms": "3° 40' 18.692\" N",
+        "baris_excel": 37,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.75446194,
+          3.67185889
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SRN-DS-220",
+      "properties": {
+        "id": "SRN-DS-220",
+        "jenis": "sirine",
+        "wadmkk": "Deli Serdang",
+        "wadmkk_tampil": "Deli Serdang",
+        "wadmkc": "Percut Sei Tuan",
+        "wadmkd": "Cinta Rakyat",
+        "keterangan": "",
+        "remark": "SDN 106806 Cinta Rakyat",
+        "x_dms": "98° 45' 19.673\" E",
+        "y_dms": "3° 40' 7.887\" N",
+        "baris_excel": 38,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.75546472,
+          3.6688575
+        ]
+      }
+    },
+    {
+      "type": "Feature",
       "id": "SRN-DS-024",
       "properties": {
         "id": "SRN-DS-024",
@@ -611,11 +897,11 @@
         "wadmkk_tampil": "Deli Serdang",
         "wadmkc": "Percut Sei Tuan",
         "wadmkd": "Kenangan Baru",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Kantor Lurah Kenanganbaru",
         "x_dms": "98° 43' 15.878\" E",
         "y_dms": "3° 35' 6.843\" N",
-        "baris_excel": 28,
+        "baris_excel": 39,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -637,11 +923,11 @@
         "wadmkk_tampil": "Deli Serdang",
         "wadmkc": "Percut Sei Tuan",
         "wadmkd": "Kenangan Baru",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Masjid Raya Asy Syahadah",
         "x_dms": "98° 43' 54.019\" E",
         "y_dms": "3° 35' 19.899\" N",
-        "baris_excel": 29,
+        "baris_excel": 40,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -663,11 +949,11 @@
         "wadmkk_tampil": "Deli Serdang",
         "wadmkc": "Percut Sei Tuan",
         "wadmkd": "Kenangan Baru",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "PDAM Tirtanadi",
         "x_dms": "98° 43' 54.719\" E",
         "y_dms": "3° 35' 11.061\" N",
-        "baris_excel": 30,
+        "baris_excel": 41,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -689,11 +975,11 @@
         "wadmkk_tampil": "Deli Serdang",
         "wadmkc": "Percut Sei Tuan",
         "wadmkd": "Kenangan Baru",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SD Negri 066664 Kenangan",
         "x_dms": "98° 44' 0.381\" E",
         "y_dms": "3° 35' 24.226\" N",
-        "baris_excel": 31,
+        "baris_excel": 42,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -715,11 +1001,11 @@
         "wadmkk_tampil": "Deli Serdang",
         "wadmkc": "Percut Sei Tuan",
         "wadmkd": "Kenangan Baru",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SMPN 5 Percut Sei Tuan",
         "x_dms": "98° 43' 17.452\" E",
         "y_dms": "3° 35' 5.264\" N",
-        "baris_excel": 32,
+        "baris_excel": 43,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -733,6 +1019,84 @@
     },
     {
       "type": "Feature",
+      "id": "SRN-DS-221",
+      "properties": {
+        "id": "SRN-DS-221",
+        "jenis": "sirine",
+        "wadmkk": "Deli Serdang",
+        "wadmkk_tampil": "Deli Serdang",
+        "wadmkc": "Percut Sei Tuan",
+        "wadmkd": "Kolam",
+        "keterangan": "",
+        "remark": "Kantor Desa Kolam",
+        "x_dms": "98° 46' 36.032\" E",
+        "y_dms": "3° 37' 54.692\" N",
+        "baris_excel": 44,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.77667556,
+          3.63185889
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SRN-DS-222",
+      "properties": {
+        "id": "SRN-DS-222",
+        "jenis": "sirine",
+        "wadmkk": "Deli Serdang",
+        "wadmkk_tampil": "Deli Serdang",
+        "wadmkc": "Percut Sei Tuan",
+        "wadmkd": "Kolam",
+        "keterangan": "",
+        "remark": "SDN 101773 Kolam",
+        "x_dms": "98° 46' 36.297\" E",
+        "y_dms": "3° 38' 26.702\" N",
+        "baris_excel": 45,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.77674917,
+          3.64075056
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SRN-DS-223",
+      "properties": {
+        "id": "SRN-DS-223",
+        "jenis": "sirine",
+        "wadmkk": "Deli Serdang",
+        "wadmkk_tampil": "Deli Serdang",
+        "wadmkc": "Percut Sei Tuan",
+        "wadmkd": "Kolam",
+        "keterangan": "",
+        "remark": "SDN 104201 Kolam",
+        "x_dms": "98° 46' 51.310\" E",
+        "y_dms": "3° 37' 59.191\" N",
+        "baris_excel": 46,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.78091944,
+          3.63310861
+        ]
+      }
+    },
+    {
+      "type": "Feature",
       "id": "SRN-DS-029",
       "properties": {
         "id": "SRN-DS-029",
@@ -741,11 +1105,11 @@
         "wadmkk_tampil": "Deli Serdang",
         "wadmkc": "Percut Sei Tuan",
         "wadmkd": "Percut",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Kantor Kepala Desa Percut",
         "x_dms": "98° 45' 54.035\" E",
         "y_dms": "3° 41' 15.157\" N",
-        "baris_excel": 33,
+        "baris_excel": 47,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -767,11 +1131,11 @@
         "wadmkk_tampil": "Deli Serdang",
         "wadmkc": "Percut Sei Tuan",
         "wadmkd": "Percut",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SMPN 3 Percut Sei Tuan",
         "x_dms": "98° 45' 25.736\" E",
         "y_dms": "3° 40' 41.656\" N",
-        "baris_excel": 34,
+        "baris_excel": 48,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -793,11 +1157,11 @@
         "wadmkk_tampil": "Deli Serdang",
         "wadmkc": "Percut Sei Tuan",
         "wadmkd": "Percut",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SMPN Percut Sei Tuan",
         "x_dms": "98° 45' 47.036\" E",
         "y_dms": "3° 41' 15.654\" N",
-        "baris_excel": 35,
+        "baris_excel": 49,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -819,11 +1183,11 @@
         "wadmkk_tampil": "Deli Serdang",
         "wadmkc": "Percut Sei Tuan",
         "wadmkd": "Saentis",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Kantor Kecamatan Sei Tuan",
         "x_dms": "98° 44' 56.271\" E",
         "y_dms": "3° 39' 39.520\" N",
-        "baris_excel": 36,
+        "baris_excel": 50,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -845,11 +1209,11 @@
         "wadmkk_tampil": "Deli Serdang",
         "wadmkc": "Percut Sei Tuan",
         "wadmkd": "Saentis",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 104209 Saentis",
         "x_dms": "98° 44' 46.995\" E",
         "y_dms": "3° 39' 48.964\" N",
-        "baris_excel": 37,
+        "baris_excel": 51,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -871,11 +1235,11 @@
         "wadmkk_tampil": "Deli Serdang",
         "wadmkc": "Percut Sei Tuan",
         "wadmkd": "Saentis",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "TPU Desa Saentis",
         "x_dms": "98° 45' 4.504\" E",
         "y_dms": "3° 39' 31.781\" N",
-        "baris_excel": 38,
+        "baris_excel": 52,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -897,11 +1261,11 @@
         "wadmkk_tampil": "Deli Serdang",
         "wadmkc": "Percut Sei Tuan",
         "wadmkd": "Sambirejo Timur",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Kantor Kepala Desa Sambirejo Timur",
         "x_dms": "98° 45' 53.462\" E",
         "y_dms": "3° 35' 28.522\" N",
-        "baris_excel": 39,
+        "baris_excel": 53,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -923,11 +1287,11 @@
         "wadmkk_tampil": "Deli Serdang",
         "wadmkc": "Percut Sei Tuan",
         "wadmkd": "Sambirejo Timur",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Masjid Miftahul Jannah",
         "x_dms": "98° 46' 53.654\" E",
         "y_dms": "3° 35' 19.735\" N",
-        "baris_excel": 40,
+        "baris_excel": 54,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -949,11 +1313,11 @@
         "wadmkk_tampil": "Deli Serdang",
         "wadmkc": "Percut Sei Tuan",
         "wadmkd": "Sambirejo Timur",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Masjid Saidatul Aqmal",
         "x_dms": "98° 46' 49.248\" E",
         "y_dms": "3° 35' 17.808\" N",
-        "baris_excel": 41,
+        "baris_excel": 55,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -975,11 +1339,11 @@
         "wadmkk_tampil": "Deli Serdang",
         "wadmkc": "Percut Sei Tuan",
         "wadmkd": "Sampali",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "PDAM Tirtanadi Booster Cemara",
         "x_dms": "98° 42' 27.062\" E",
         "y_dms": "3° 38' 4.953\" N",
-        "baris_excel": 42,
+        "baris_excel": 56,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -1001,11 +1365,11 @@
         "wadmkk_tampil": "Deli Serdang",
         "wadmkc": "Percut Sei Tuan",
         "wadmkd": "Sampali",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 106810",
         "x_dms": "98° 43' 4.304\" E",
         "y_dms": "3° 39' 0.676\" N",
-        "baris_excel": 43,
+        "baris_excel": 57,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -1027,11 +1391,11 @@
         "wadmkk_tampil": "Deli Serdang",
         "wadmkc": "Percut Sei Tuan",
         "wadmkd": "Sampali",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SMK PAB 8 Sampali",
         "x_dms": "98° 42' 46.999\" E",
         "y_dms": "3° 37' 40.463\" N",
-        "baris_excel": 44,
+        "baris_excel": 58,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -1053,11 +1417,11 @@
         "wadmkk_tampil": "Deli Serdang",
         "wadmkc": "Percut Sei Tuan",
         "wadmkd": "Sei Rotan",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Kantor Balai Desa Sei Rotan",
         "x_dms": "98° 46' 43.859\" E",
         "y_dms": "3° 36' 14.277\" N",
-        "baris_excel": 45,
+        "baris_excel": 59,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -1079,11 +1443,11 @@
         "wadmkk_tampil": "Deli Serdang",
         "wadmkc": "Percut Sei Tuan",
         "wadmkd": "Sei Rotan",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 105288",
         "x_dms": "98° 46' 44.643\" E",
         "y_dms": "3° 36' 8.863\" N",
-        "baris_excel": 46,
+        "baris_excel": 60,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -1105,11 +1469,11 @@
         "wadmkk_tampil": "Deli Serdang",
         "wadmkc": "Percut Sei Tuan",
         "wadmkd": "Sei Rotan",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Yayasan Perguruan Indonesia Membangun",
         "x_dms": "98° 47' 23.289\" E",
         "y_dms": "3° 36' 31.280\" N",
-        "baris_excel": 47,
+        "baris_excel": 61,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -1131,11 +1495,11 @@
         "wadmkk_tampil": "Deli Serdang",
         "wadmkc": "Percut Sei Tuan",
         "wadmkd": "Tembung",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Lapangan Sepak Bola Pasar 3 Tembung",
         "x_dms": "98° 44' 20.210\" E",
         "y_dms": "3° 34' 50.405\" N",
-        "baris_excel": 48,
+        "baris_excel": 62,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -1157,11 +1521,11 @@
         "wadmkk_tampil": "Deli Serdang",
         "wadmkc": "Percut Sei Tuan",
         "wadmkd": "Tembung",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SAMSAT Tembung",
         "x_dms": "98° 45' 0.768\" E",
         "y_dms": "3° 35' 6.968\" N",
-        "baris_excel": 49,
+        "baris_excel": 63,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -1183,11 +1547,11 @@
         "wadmkk_tampil": "Deli Serdang",
         "wadmkc": "Percut Sei Tuan",
         "wadmkd": "Tembung",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 101770",
         "x_dms": "98° 44' 49.715\" E",
         "y_dms": "3° 35' 44.026\" N",
-        "baris_excel": 50,
+        "baris_excel": 64,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -1209,11 +1573,11 @@
         "wadmkk_tampil": "Humbang Hasundutan",
         "wadmkc": "Baktiraja",
         "wadmkd": "Marbun Tonga Marbun Dolok",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Kantor Desa Marbundolok",
         "x_dms": "98° 48' 46.719\" E",
         "y_dms": "2° 18' 55.774\" N",
-        "baris_excel": 51,
+        "baris_excel": 65,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -1235,11 +1599,11 @@
         "wadmkk_tampil": "Humbang Hasundutan",
         "wadmkc": "Baktiraja",
         "wadmkd": "Marbun Tonga Marbun Dolok",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 173355 Baktiraja",
         "x_dms": "98° 48' 54.245\" E",
         "y_dms": "2° 19' 1.083\" N",
-        "baris_excel": 52,
+        "baris_excel": 66,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -1261,11 +1625,11 @@
         "wadmkk_tampil": "Humbang Hasundutan",
         "wadmkc": "Baktiraja",
         "wadmkd": "Marbun Toruan",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Kantor Desa Marbuntoruan",
         "x_dms": "98° 49' 15.165\" E",
         "y_dms": "2° 19' 23.977\" N",
-        "baris_excel": 53,
+        "baris_excel": 67,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -1287,11 +1651,11 @@
         "wadmkk_tampil": "Humbang Hasundutan",
         "wadmkc": "Baktiraja",
         "wadmkd": "Marbun Toruan",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Pelabuhan Baktiraja",
         "x_dms": "98° 49' 19.068\" E",
         "y_dms": "2° 19' 38.760\" N",
-        "baris_excel": 54,
+        "baris_excel": 68,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -1313,11 +1677,11 @@
         "wadmkk_tampil": "Humbang Hasundutan",
         "wadmkc": "Baktiraja",
         "wadmkd": "Sinambela",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 173360 Baktiraja",
         "x_dms": "98° 49' 21.917\" E",
         "y_dms": "2° 19' 17.235\" N",
-        "baris_excel": 55,
+        "baris_excel": 69,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -1339,11 +1703,11 @@
         "wadmkk_tampil": "Humbang Hasundutan",
         "wadmkc": "Baktiraja",
         "wadmkd": "Sinambela",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 176356 Simanulang Baktiraja",
         "x_dms": "98° 49' 13.437\" E",
         "y_dms": "2° 18' 48.386\" N",
-        "baris_excel": 56,
+        "baris_excel": 70,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -1365,11 +1729,11 @@
         "wadmkk_tampil": "Humbang Hasundutan",
         "wadmkc": "Baktiraja",
         "wadmkd": "Sinambela",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SMAN 1 Baktiraja",
         "x_dms": "98° 49' 24.051\" E",
         "y_dms": "2° 19' 23.831\" N",
-        "baris_excel": 57,
+        "baris_excel": 71,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -1391,11 +1755,11 @@
         "wadmkk_tampil": "Humbang Hasundutan",
         "wadmkc": "Baktiraja",
         "wadmkd": "Tipang",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 173357 Tipang",
         "x_dms": "98° 48' 51.942\" E",
         "y_dms": "2° 21' 27.519\" N",
-        "baris_excel": 58,
+        "baris_excel": 72,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -1417,11 +1781,11 @@
         "wadmkk_tampil": "Humbang Hasundutan",
         "wadmkc": "Baktiraja",
         "wadmkd": "Tipang",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 174538 Tipang Baktiraja",
         "x_dms": "98° 49' 34.628\" E",
         "y_dms": "2° 21' 21.310\" N",
-        "baris_excel": 59,
+        "baris_excel": 73,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -1443,11 +1807,11 @@
         "wadmkk_tampil": "Humbang Hasundutan",
         "wadmkc": "Lintong Nihuta",
         "wadmkd": "Pargaulan",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Jembatan 173333",
         "x_dms": "98° 51' 41.534\" E",
         "y_dms": "2° 15' 42.702\" N",
-        "baris_excel": 60,
+        "baris_excel": 74,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -1469,11 +1833,11 @@
         "wadmkk_tampil": "Kota Binjai",
         "wadmkc": "Binjai Barat",
         "wadmkd": "Paya Roba",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Kantor Kelurahan Payaroba",
         "x_dms": "98° 28' 51.352\" E",
         "y_dms": "3° 37' 20.766\" N",
-        "baris_excel": 61,
+        "baris_excel": 75,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -1495,11 +1859,11 @@
         "wadmkk_tampil": "Kota Binjai",
         "wadmkc": "Binjai Barat",
         "wadmkd": "Paya Roba",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 026606",
         "x_dms": "98° 27' 55.821\" E",
         "y_dms": "3° 38' 47.905\" N",
-        "baris_excel": 62,
+        "baris_excel": 76,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -1521,11 +1885,11 @@
         "wadmkk_tampil": "Kota Binjai",
         "wadmkc": "Binjai Barat",
         "wadmkd": "Paya Roba",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SMPN 15 Islam Terpadu Binjai",
         "x_dms": "98° 28' 59.964\" E",
         "y_dms": "3° 37' 47.282\" N",
-        "baris_excel": 63,
+        "baris_excel": 77,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -1547,11 +1911,11 @@
         "wadmkk_tampil": "Kota Binjai",
         "wadmkc": "Binjai Kota",
         "wadmkd": "Berngam",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Kantor Urusan Agama",
         "x_dms": "98° 28' 31.965\" E",
         "y_dms": "3° 35' 47.792\" N",
-        "baris_excel": 64,
+        "baris_excel": 78,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -1573,11 +1937,11 @@
         "wadmkk_tampil": "Kota Binjai",
         "wadmkc": "Binjai Kota",
         "wadmkd": "Berngam",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 023972",
         "x_dms": "98° 28' 37.029\" E",
         "y_dms": "3° 35' 38.549\" N",
-        "baris_excel": 65,
+        "baris_excel": 79,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -1599,11 +1963,11 @@
         "wadmkk_tampil": "Kota Binjai",
         "wadmkc": "Binjai Kota",
         "wadmkd": "Berngam",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN Impres 95/96",
         "x_dms": "98° 28' 11.964\" E",
         "y_dms": "3° 35' 53.068\" N",
-        "baris_excel": 66,
+        "baris_excel": 80,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -1625,11 +1989,11 @@
         "wadmkk_tampil": "Kota Binjai",
         "wadmkc": "Binjai Utara",
         "wadmkd": "Cengkeh Turi",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Kantor Kelurahan Cengkeh Turi",
         "x_dms": "98° 28' 45.714\" E",
         "y_dms": "3° 38' 49.018\" N",
-        "baris_excel": 67,
+        "baris_excel": 81,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -1651,11 +2015,11 @@
         "wadmkk_tampil": "Kota Binjai",
         "wadmkc": "Binjai Utara",
         "wadmkd": "Cengkeh Turi",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Taman Binara",
         "x_dms": "98° 28' 54.525\" E",
         "y_dms": "3° 38' 26.124\" N",
-        "baris_excel": 68,
+        "baris_excel": 82,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -1677,11 +2041,11 @@
         "wadmkk_tampil": "Kota Binjai",
         "wadmkc": "Binjai Utara",
         "wadmkd": "Cengkeh Turi",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "UPTD Pelayanan Sosial Lanjut Usia",
         "x_dms": "98° 28' 33.723\" E",
         "y_dms": "3° 38' 52.827\" N",
-        "baris_excel": 69,
+        "baris_excel": 83,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -1695,6 +2059,32 @@
     },
     {
       "type": "Feature",
+      "id": "SRN-DS-224",
+      "properties": {
+        "id": "SRN-DS-224",
+        "jenis": "sirine",
+        "wadmkk": "Kota Binjai",
+        "wadmkk_tampil": "Kota Binjai",
+        "wadmkc": "Binjai Utara",
+        "wadmkd": "Jati Karya",
+        "keterangan": "",
+        "remark": "Puskesmas Jati Karya",
+        "x_dms": "98° 30' 34.890\" E",
+        "y_dms": "3° 38' 36.342\" N",
+        "baris_excel": 84,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.50969167,
+          3.64342833
+        ]
+      }
+    },
+    {
+      "type": "Feature",
       "id": "SRN-DS-066",
       "properties": {
         "id": "SRN-DS-066",
@@ -1703,11 +2093,11 @@
         "wadmkk_tampil": "Kota Binjai",
         "wadmkc": "Binjai Utara",
         "wadmkd": "Jati Karya",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 027701 Binjai",
         "x_dms": "98° 29' 51.219\" E",
         "y_dms": "3° 38' 21.028\" N",
-        "baris_excel": 70,
+        "baris_excel": 85,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -1729,11 +2119,11 @@
         "wadmkk_tampil": "Kota Binjai",
         "wadmkc": "Binjai Utara",
         "wadmkd": "Jati Karya",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 028230",
         "x_dms": "98° 30' 37.945\" E",
         "y_dms": "3° 38' 46.512\" N",
-        "baris_excel": 71,
+        "baris_excel": 86,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -1755,11 +2145,11 @@
         "wadmkk_tampil": "Kota Binjai",
         "wadmkc": "Binjai Utara",
         "wadmkd": "Jati Utomo",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Puskesmas Jatiutomo",
         "x_dms": "98° 30' 35.594\" E",
         "y_dms": "3° 40' 7.071\" N",
-        "baris_excel": 72,
+        "baris_excel": 87,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -1781,11 +2171,11 @@
         "wadmkk_tampil": "Kota Binjai",
         "wadmkc": "Binjai Utara",
         "wadmkd": "Jati Utomo",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 025282",
         "x_dms": "98° 30' 16.244\" E",
         "y_dms": "3° 39' 15.715\" N",
-        "baris_excel": 73,
+        "baris_excel": 88,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -1807,11 +2197,11 @@
         "wadmkk_tampil": "Kota Binjai",
         "wadmkc": "Binjai Utara",
         "wadmkd": "Jati Utomo",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 028066",
         "x_dms": "98° 30' 31.758\" E",
         "y_dms": "3° 39' 53.553\" N",
-        "baris_excel": 74,
+        "baris_excel": 89,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -1833,11 +2223,11 @@
         "wadmkk_tampil": "Kota Medan",
         "wadmkc": "Medan Deli",
         "wadmkd": "Mabar Hilir",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Lapangan Bola Sriwijaya",
         "x_dms": "98° 41' 18.016\" E",
         "y_dms": "3° 39' 0.072\" N",
-        "baris_excel": 75,
+        "baris_excel": 90,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -1859,11 +2249,11 @@
         "wadmkk_tampil": "Kota Medan",
         "wadmkc": "Medan Deli",
         "wadmkd": "Mabar Hilir",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Pustu Mabar Hilir",
         "x_dms": "98° 41' 40.218\" E",
         "y_dms": "3° 38' 57.123\" N",
-        "baris_excel": 76,
+        "baris_excel": 91,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -1885,11 +2275,11 @@
         "wadmkk_tampil": "Kota Medan",
         "wadmkc": "Medan Deli",
         "wadmkd": "Mabar Hilir",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 067250",
         "x_dms": "98° 41' 2.384\" E",
         "y_dms": "3° 39' 14.969\" N",
-        "baris_excel": 77,
+        "baris_excel": 92,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -1911,11 +2301,11 @@
         "wadmkk_tampil": "Kota Medan",
         "wadmkc": "Medan Deli",
         "wadmkd": "Tanjung Mulya",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 060947",
         "x_dms": "98° 39' 47.885\" E",
         "y_dms": "3° 38' 19.056\" N",
-        "baris_excel": 78,
+        "baris_excel": 93,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -1937,11 +2327,11 @@
         "wadmkk_tampil": "Kota Medan",
         "wadmkc": "Medan Deli",
         "wadmkd": "Tanjung Mulya",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 067255",
         "x_dms": "98° 39' 33.853\" E",
         "y_dms": "3° 39' 45.250\" N",
-        "baris_excel": 79,
+        "baris_excel": 94,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -1963,11 +2353,11 @@
         "wadmkk_tampil": "Kota Medan",
         "wadmkc": "Medan Helvetia",
         "wadmkd": "Tanjung Gusta",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Kantor Kelurahan Tanjung Gusta",
         "x_dms": "98° 36' 33.491\" E",
         "y_dms": "3° 36' 33.304\" N",
-        "baris_excel": 80,
+        "baris_excel": 95,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -1989,11 +2379,11 @@
         "wadmkk_tampil": "Kota Medan",
         "wadmkc": "Medan Helvetia",
         "wadmkd": "Tanjung Gusta",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Lapas Perempuan Kelas IIA Medan",
         "x_dms": "98° 36' 42.347\" E",
         "y_dms": "3° 36' 57.206\" N",
-        "baris_excel": 81,
+        "baris_excel": 96,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -2015,11 +2405,11 @@
         "wadmkk_tampil": "Kota Medan",
         "wadmkc": "Medan Helvetia",
         "wadmkd": "Tanjung Gusta",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 065854",
         "x_dms": "98° 36' 21.545\" E",
         "y_dms": "3° 36' 44.049\" N",
-        "baris_excel": 82,
+        "baris_excel": 97,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -2041,11 +2431,11 @@
         "wadmkk_tampil": "Kota Medan",
         "wadmkc": "Medan Labuhan",
         "wadmkd": "Besar",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Lapangan Sepak Bola Ladon",
         "x_dms": "98° 41' 26.815\" E",
         "y_dms": "3° 41' 34.682\" N",
-        "baris_excel": 83,
+        "baris_excel": 98,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -2067,11 +2457,11 @@
         "wadmkk_tampil": "Kota Medan",
         "wadmkc": "Medan Labuhan",
         "wadmkd": "Besar",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 068474",
         "x_dms": "98° 41' 12.480\" E",
         "y_dms": "3° 41' 55.703\" N",
-        "baris_excel": 84,
+        "baris_excel": 99,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -2093,11 +2483,11 @@
         "wadmkk_tampil": "Kota Medan",
         "wadmkc": "Medan Labuhan",
         "wadmkd": "Besar",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SMPN 45 Medan",
         "x_dms": "98° 41' 11.828\" E",
         "y_dms": "3° 41' 40.060\" N",
-        "baris_excel": 85,
+        "baris_excel": 100,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -2119,11 +2509,11 @@
         "wadmkk_tampil": "Kota Medan",
         "wadmkc": "Medan Labuhan",
         "wadmkd": "Tangkahan",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Kantor Lurah Tangkahan",
         "x_dms": "98° 42' 11.860\" E",
         "y_dms": "3° 41' 20.950\" N",
-        "baris_excel": 86,
+        "baris_excel": 101,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -2145,11 +2535,11 @@
         "wadmkk_tampil": "Kota Medan",
         "wadmkc": "Medan Labuhan",
         "wadmkd": "Tangkahan",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 064005",
         "x_dms": "98° 41' 55.308\" E",
         "y_dms": "3° 41' 19.955\" N",
-        "baris_excel": 87,
+        "baris_excel": 102,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -2171,11 +2561,11 @@
         "wadmkk_tampil": "Kota Medan",
         "wadmkc": "Medan Labuhan",
         "wadmkd": "Tangkahan",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 067692",
         "x_dms": "98° 41' 38.387\" E",
         "y_dms": "3° 41' 6.227\" N",
-        "baris_excel": 88,
+        "baris_excel": 103,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -2197,11 +2587,11 @@
         "wadmkk_tampil": "Kota Medan",
         "wadmkc": "Medan Marelan",
         "wadmkd": "Rengas Pulau",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Kantor Lurah Rengas Pulau",
         "x_dms": "98° 39' 36.252\" E",
         "y_dms": "3° 42' 36.452\" N",
-        "baris_excel": 89,
+        "baris_excel": 104,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -2223,11 +2613,11 @@
         "wadmkk_tampil": "Kota Medan",
         "wadmkc": "Medan Marelan",
         "wadmkd": "Rengas Pulau",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Puskesmas Rengas Pulau",
         "x_dms": "98° 39' 3.976\" E",
         "y_dms": "3° 41' 50.570\" N",
-        "baris_excel": 90,
+        "baris_excel": 105,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -2249,11 +2639,11 @@
         "wadmkk_tampil": "Kota Medan",
         "wadmkc": "Medan Marelan",
         "wadmkd": "Rengas Pulau",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 064006",
         "x_dms": "98° 39' 25.619\" E",
         "y_dms": "3° 41' 49.895\" N",
-        "baris_excel": 91,
+        "baris_excel": 106,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -2275,11 +2665,11 @@
         "wadmkk_tampil": "Kota Medan",
         "wadmkc": "Medan Marelan",
         "wadmkd": "Terjun",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 064996",
         "x_dms": "98° 37' 25.323\" E",
         "y_dms": "3° 42' 30.989\" N",
-        "baris_excel": 92,
+        "baris_excel": 107,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -2301,11 +2691,11 @@
         "wadmkk_tampil": "Kota Medan",
         "wadmkc": "Medan Marelan",
         "wadmkd": "Terjun",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 065004",
         "x_dms": "98° 38' 30.587\" E",
         "y_dms": "3° 41' 52.873\" N",
-        "baris_excel": 93,
+        "baris_excel": 108,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -2327,11 +2717,11 @@
         "wadmkk_tampil": "Kota Medan",
         "wadmkc": "Medan Marelan",
         "wadmkd": "Terjun",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SMAN 16 Medan",
         "x_dms": "98° 38' 33.719\" E",
         "y_dms": "3° 42' 42.606\" N",
-        "baris_excel": 94,
+        "baris_excel": 109,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -2353,11 +2743,11 @@
         "wadmkk_tampil": "Kota Medan",
         "wadmkc": "Medan Sunggal",
         "wadmkd": "Tanjung Rejo",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Pemakaman Komplek Tasbih 1",
         "x_dms": "98° 38' 16.337\" E",
         "y_dms": "3° 34' 5.353\" N",
-        "baris_excel": 95,
+        "baris_excel": 110,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -2379,11 +2769,11 @@
         "wadmkk_tampil": "Kota Medan",
         "wadmkc": "Medan Sunggal",
         "wadmkd": "Tanjung Rejo",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SD Kodam Sunggal",
         "x_dms": "98° 38' 6.332\" E",
         "y_dms": "3° 34' 43.576\" N",
-        "baris_excel": 96,
+        "baris_excel": 111,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -2405,11 +2795,11 @@
         "wadmkk_tampil": "Kota Medan",
         "wadmkc": "Medan Sunggal",
         "wadmkd": "Tanjung Rejo",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 067099",
         "x_dms": "98° 38' 30.600\" E",
         "y_dms": "3° 35' 1.474\" N",
-        "baris_excel": 97,
+        "baris_excel": 112,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -2431,11 +2821,11 @@
         "wadmkk_tampil": "Kota Medan",
         "wadmkc": "Medan Tembung",
         "wadmkd": "Bantan",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Kantor Kelurahan Bantan",
         "x_dms": "98° 43' 57.601\" E",
         "y_dms": "3° 35' 35.467\" N",
-        "baris_excel": 98,
+        "baris_excel": 113,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -2457,11 +2847,11 @@
         "wadmkk_tampil": "Kota Medan",
         "wadmkc": "Medan Tembung",
         "wadmkd": "Bantan",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Puskesmas Pembantu Bantan",
         "x_dms": "98° 44' 9.594\" E",
         "y_dms": "3° 35' 36.434\" N",
-        "baris_excel": 99,
+        "baris_excel": 114,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -2483,11 +2873,11 @@
         "wadmkk_tampil": "Kota Medan",
         "wadmkc": "Medan Tembung",
         "wadmkd": "Bantan",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 060913",
         "x_dms": "98° 43' 24.452\" E",
         "y_dms": "3° 35' 35.302\" N",
-        "baris_excel": 100,
+        "baris_excel": 115,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -2501,6 +2891,84 @@
     },
     {
       "type": "Feature",
+      "id": "SRN-DS-225",
+      "properties": {
+        "id": "SRN-DS-225",
+        "jenis": "sirine",
+        "wadmkk": "Kota Padangsidimpuan",
+        "wadmkk_tampil": "Kota Padangsidimpuan",
+        "wadmkc": "Padangsidimpuan Batunadua",
+        "wadmkd": "Ujunggurap",
+        "keterangan": "",
+        "remark": "SDN 200305 Batunadua",
+        "x_dms": "99° 17' 58.907\" E",
+        "y_dms": "1° 24' 16.699\" N",
+        "baris_excel": 116,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.29969639,
+          1.40463861
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SRN-DS-226",
+      "properties": {
+        "id": "SRN-DS-226",
+        "jenis": "sirine",
+        "wadmkk": "Kota Padangsidimpuan",
+        "wadmkk_tampil": "Kota Padangsidimpuan",
+        "wadmkc": "Padangsidimpuan Batunadua",
+        "wadmkd": "Ujunggurap",
+        "keterangan": "",
+        "remark": "SMAN 7 Padang Sidempuan",
+        "x_dms": "99° 18' 18.023\" E",
+        "y_dms": "1° 23' 57.783\" N",
+        "baris_excel": 117,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.30500639,
+          1.39938417
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SRN-DS-227",
+      "properties": {
+        "id": "SRN-DS-227",
+        "jenis": "sirine",
+        "wadmkk": "Kota Padangsidimpuan",
+        "wadmkk_tampil": "Kota Padangsidimpuan",
+        "wadmkc": "Padangsidimpuan Batunadua",
+        "wadmkd": "Ujunggurap",
+        "keterangan": "",
+        "remark": "SMPN 10 Padang Sidempuan",
+        "x_dms": "99° 18' 11.285\" E",
+        "y_dms": "1° 24' 8.151\" N",
+        "baris_excel": 118,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.30313472,
+          1.40226417
+        ]
+      }
+    },
+    {
+      "type": "Feature",
       "id": "SRN-DS-097",
       "properties": {
         "id": "SRN-DS-097",
@@ -2509,11 +2977,11 @@
         "wadmkk_tampil": "Kota Padangsidimpuan",
         "wadmkc": "Padangsidimpuan Tenggara",
         "wadmkd": "Huta Lombang",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Kantor Desa Hutalombang",
         "x_dms": "99° 19' 23.372\" E",
         "y_dms": "1° 19' 45.670\" N",
-        "baris_excel": 101,
+        "baris_excel": 119,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -2535,11 +3003,11 @@
         "wadmkk_tampil": "Kota Padangsidimpuan",
         "wadmkc": "Padangsidimpuan Tenggara",
         "wadmkd": "Huta Lombang",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Kantor SDA DI Paya Sordang",
         "x_dms": "99° 19' 27.566\" E",
         "y_dms": "1° 19' 47.233\" N",
-        "baris_excel": 102,
+        "baris_excel": 120,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -2561,11 +3029,11 @@
         "wadmkk_tampil": "Kota Padangsidimpuan",
         "wadmkc": "Padangsidimpuan Tenggara",
         "wadmkd": "Manunggang Jae",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Kantor Desa Hutapadang",
         "x_dms": "99° 19' 36.103\" E",
         "y_dms": "1° 19' 56.036\" N",
-        "baris_excel": 103,
+        "baris_excel": 121,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -2587,11 +3055,11 @@
         "wadmkk_tampil": "Kota Padangsidimpuan",
         "wadmkc": "Padangsidimpuan Tenggara",
         "wadmkd": "Manunggang Jae",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 200506 Padang Sidempuan",
         "x_dms": "99° 19' 56.464\" E",
         "y_dms": "1° 19' 32.256\" N",
-        "baris_excel": 104,
+        "baris_excel": 122,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -2605,6 +3073,58 @@
     },
     {
       "type": "Feature",
+      "id": "SRN-DS-228",
+      "properties": {
+        "id": "SRN-DS-228",
+        "jenis": "sirine",
+        "wadmkk": "Kota Padangsidimpuan",
+        "wadmkk_tampil": "Kota Padangsidimpuan",
+        "wadmkc": "Padangsidimpuan Tenggara",
+        "wadmkd": "Perkebunan Pijor Koling",
+        "keterangan": "",
+        "remark": "SDN 200509 Pulobauk",
+        "x_dms": "99° 19' 40.385\" E",
+        "y_dms": "1° 20' 5.736\" N",
+        "baris_excel": 123,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.32788472,
+          1.33492667
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SRN-DS-229",
+      "properties": {
+        "id": "SRN-DS-229",
+        "jenis": "sirine",
+        "wadmkk": "Kota Padangsidimpuan",
+        "wadmkk_tampil": "Kota Padangsidimpuan",
+        "wadmkc": "Padangsidimpuan Tenggara",
+        "wadmkd": "Perkebunan Pijor Koling",
+        "keterangan": "",
+        "remark": "SMAN 8 Padang Sidempuan",
+        "x_dms": "99° 19' 38.007\" E",
+        "y_dms": "1° 19' 59.389\" N",
+        "baris_excel": 124,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.32722417,
+          1.33316361
+        ]
+      }
+    },
+    {
+      "type": "Feature",
       "id": "SRN-DS-101",
       "properties": {
         "id": "SRN-DS-101",
@@ -2613,11 +3133,11 @@
         "wadmkk_tampil": "Kota Sibolga",
         "wadmkc": "Sibolga Selatan",
         "wadmkd": "Aek Habil",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Dinas Sosial Kota Sibolga",
         "x_dms": "98° 47' 56.473\" E",
         "y_dms": "1° 43' 38.144\" N",
-        "baris_excel": 105,
+        "baris_excel": 125,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -2639,11 +3159,11 @@
         "wadmkk_tampil": "Kota Sibolga",
         "wadmkc": "Sibolga Selatan",
         "wadmkd": "Aek Habil",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Kantor Kecamatan Sibolga Selatan",
         "x_dms": "98° 47' 53.824\" E",
         "y_dms": "1° 43' 41.593\" N",
-        "baris_excel": 106,
+        "baris_excel": 126,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -2665,11 +3185,11 @@
         "wadmkk_tampil": "Kota Sibolga",
         "wadmkc": "Sibolga Selatan",
         "wadmkd": "Aek Habil",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 084080",
         "x_dms": "98° 47' 49.689\" E",
         "y_dms": "1° 43' 37.055\" N",
-        "baris_excel": 107,
+        "baris_excel": 127,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -2691,11 +3211,11 @@
         "wadmkk_tampil": "Kota Sibolga",
         "wadmkc": "Sibolga Selatan",
         "wadmkd": "Aek Muara Pinang",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Kodim 0211 Tapanuli Tengah",
         "x_dms": "98° 48' 2.068\" E",
         "y_dms": "1° 43' 37.668\" N",
-        "baris_excel": 108,
+        "baris_excel": 128,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -2717,11 +3237,11 @@
         "wadmkk_tampil": "Kota Sibolga",
         "wadmkc": "Sibolga Selatan",
         "wadmkd": "Aek Muara Pinang",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 081236",
         "x_dms": "98° 47' 57.802\" E",
         "y_dms": "1° 43' 29.005\" N",
-        "baris_excel": 109,
+        "baris_excel": 129,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -2743,11 +3263,11 @@
         "wadmkk_tampil": "Kota Sibolga",
         "wadmkc": "Sibolga Utara",
         "wadmkd": "Sibolga Ilir",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 081235 Sibolga",
         "x_dms": "98° 46' 14.632\" E",
         "y_dms": "1° 44' 57.542\" N",
-        "baris_excel": 110,
+        "baris_excel": 130,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -2769,11 +3289,11 @@
         "wadmkk_tampil": "Kota Sibolga",
         "wadmkc": "Sibolga Utara",
         "wadmkd": "Sibolga Ilir",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SMPN 4 Sibolga",
         "x_dms": "98° 46' 13.622\" E",
         "y_dms": "1° 44' 47.589\" N",
-        "baris_excel": 111,
+        "baris_excel": 131,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -2795,11 +3315,11 @@
         "wadmkk_tampil": "Kota Sibolga",
         "wadmkc": "Sibolga Utara",
         "wadmkd": "Simare-Mare",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Kantor Pelayanan Pajak Pratama Sibolga",
         "x_dms": "98° 46' 37.212\" E",
         "y_dms": "1° 44' 48.710\" N",
-        "baris_excel": 112,
+        "baris_excel": 132,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -2821,11 +3341,11 @@
         "wadmkk_tampil": "Kota Sibolga",
         "wadmkc": "Sibolga Utara",
         "wadmkd": "Simare-Mare",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Kantor Wali Kota Sibolga",
         "x_dms": "98° 46' 31.883\" E",
         "y_dms": "1° 44' 45.755\" N",
-        "baris_excel": 113,
+        "baris_excel": 133,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -2847,11 +3367,11 @@
         "wadmkk_tampil": "Kota Sibolga",
         "wadmkc": "Sibolga Utara",
         "wadmkd": "Simare-Mare",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN Sibolga",
         "x_dms": "98° 46' 27.029\" E",
         "y_dms": "1° 44' 41.576\" N",
-        "baris_excel": 114,
+        "baris_excel": 134,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -2873,11 +3393,11 @@
         "wadmkk_tampil": "Kota Tebing Tinggi",
         "wadmkc": "Bajenis",
         "wadmkd": "Bulian",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 164319",
         "x_dms": "99° 8' 19.145\" E",
         "y_dms": "3° 20' 0.747\" N",
-        "baris_excel": 115,
+        "baris_excel": 135,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -2899,11 +3419,11 @@
         "wadmkk_tampil": "Kota Tebing Tinggi",
         "wadmkc": "Bajenis",
         "wadmkd": "Bulian",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SMKN 1 Tebing Tinggi",
         "x_dms": "99° 8' 21.849\" E",
         "y_dms": "3° 19' 58.898\" N",
-        "baris_excel": 116,
+        "baris_excel": 136,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -2925,11 +3445,11 @@
         "wadmkk_tampil": "Kota Tebing Tinggi",
         "wadmkc": "Bajenis",
         "wadmkd": "Durian",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 165720",
         "x_dms": "99° 8' 40.875\" E",
         "y_dms": "3° 19' 21.072\" N",
-        "baris_excel": 117,
+        "baris_excel": 137,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -2951,11 +3471,11 @@
         "wadmkk_tampil": "Kota Tebing Tinggi",
         "wadmkc": "Bajenis",
         "wadmkd": "Durian",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 167648",
         "x_dms": "99° 8' 44.574\" E",
         "y_dms": "3° 19' 31.012\" N",
-        "baris_excel": 118,
+        "baris_excel": 138,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -2977,11 +3497,11 @@
         "wadmkk_tampil": "Kota Tebing Tinggi",
         "wadmkc": "Bajenis",
         "wadmkd": "Durian",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Stadion Kp. Durian",
         "x_dms": "99° 9' 15.294\" E",
         "y_dms": "3° 19' 33.516\" N",
-        "baris_excel": 119,
+        "baris_excel": 139,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -3003,11 +3523,11 @@
         "wadmkk_tampil": "Kota Tebing Tinggi",
         "wadmkc": "Rambutan",
         "wadmkd": "Karya Jaya",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 165735",
         "x_dms": "99° 9' 11.577\" E",
         "y_dms": "3° 20' 25.475\" N",
-        "baris_excel": 120,
+        "baris_excel": 140,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -3029,11 +3549,11 @@
         "wadmkk_tampil": "Kota Tebing Tinggi",
         "wadmkc": "Rambutan",
         "wadmkd": "Karya Jaya",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 167643",
         "x_dms": "99° 8' 47.388\" E",
         "y_dms": "3° 20' 48.797\" N",
-        "baris_excel": 121,
+        "baris_excel": 141,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -3055,11 +3575,11 @@
         "wadmkk_tampil": "Kota Tebing Tinggi",
         "wadmkc": "Rambutan",
         "wadmkd": "Lalang",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Kantor Mentrologi Tebing Tinggi",
         "x_dms": "99° 9' 36.910\" E",
         "y_dms": "3° 21' 46.609\" N",
-        "baris_excel": 122,
+        "baris_excel": 142,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -3081,11 +3601,11 @@
         "wadmkk_tampil": "Kota Tebing Tinggi",
         "wadmkc": "Rambutan",
         "wadmkd": "Lalang",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Polsek Tebing Tinggi",
         "x_dms": "99° 9' 59.583\" E",
         "y_dms": "3° 21' 19.273\" N",
-        "baris_excel": 123,
+        "baris_excel": 143,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -3107,11 +3627,11 @@
         "wadmkk_tampil": "Kota Tebing Tinggi",
         "wadmkc": "Rambutan",
         "wadmkd": "Tanjung Marulak",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 166492",
         "x_dms": "99° 9' 44.261\" E",
         "y_dms": "3° 20' 36.868\" N",
-        "baris_excel": 124,
+        "baris_excel": 144,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -3133,11 +3653,11 @@
         "wadmkk_tampil": "Kota Tebing Tinggi",
         "wadmkc": "Rambutan",
         "wadmkd": "Tanjung Marulak",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SMA",
         "x_dms": "99° 9' 57.732\" E",
         "y_dms": "3° 21' 9.636\" N",
-        "baris_excel": 125,
+        "baris_excel": 145,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -3159,11 +3679,11 @@
         "wadmkk_tampil": "Kota Tebing Tinggi",
         "wadmkc": "Rambutan",
         "wadmkd": "Tanjung Marulak",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SMKN 2 Tebing Tinggi",
         "x_dms": "99° 9' 36.718\" E",
         "y_dms": "3° 20' 54.767\" N",
-        "baris_excel": 126,
+        "baris_excel": 146,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -3185,11 +3705,11 @@
         "wadmkk_tampil": "Langkat",
         "wadmkc": "Babalan",
         "wadmkd": "Pelawi Utara",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Kantor Kecamatan Babalan",
         "x_dms": "98° 17' 39.559\" E",
         "y_dms": "4° 0' 20.232\" N",
-        "baris_excel": 127,
+        "baris_excel": 147,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -3211,11 +3731,11 @@
         "wadmkk_tampil": "Langkat",
         "wadmkc": "Babalan",
         "wadmkd": "Pelawi Utara",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 050747 P. Berandan",
         "x_dms": "98° 17' 18.439\" E",
         "y_dms": "4° 0' 47.004\" N",
-        "baris_excel": 128,
+        "baris_excel": 148,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -3237,11 +3757,11 @@
         "wadmkk_tampil": "Langkat",
         "wadmkc": "Babalan",
         "wadmkd": "Pelawi Utara",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 054939",
         "x_dms": "98° 17' 37.060\" E",
         "y_dms": "4° 0' 6.296\" N",
-        "baris_excel": 129,
+        "baris_excel": 149,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -3263,11 +3783,11 @@
         "wadmkk_tampil": "Langkat",
         "wadmkc": "Babalan",
         "wadmkd": "Securai Selatan",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Kantor Desa Securai Selatan",
         "x_dms": "98° 19' 38.429\" E",
         "y_dms": "4° 0' 12.926\" N",
-        "baris_excel": 130,
+        "baris_excel": 150,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -3289,11 +3809,11 @@
         "wadmkk_tampil": "Langkat",
         "wadmkc": "Babalan",
         "wadmkd": "Securai Selatan",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN -",
         "x_dms": "98° 19' 53.846\" E",
         "y_dms": "4° 1' 9.909\" N",
-        "baris_excel": 131,
+        "baris_excel": 151,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -3315,11 +3835,11 @@
         "wadmkk_tampil": "Langkat",
         "wadmkc": "Babalan",
         "wadmkd": "Securai Selatan",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 054937 Alur Rejo",
         "x_dms": "98° 19' 42.984\" E",
         "y_dms": "3° 59' 37.420\" N",
-        "baris_excel": 132,
+        "baris_excel": 152,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -3341,11 +3861,11 @@
         "wadmkk_tampil": "Langkat",
         "wadmkc": "Babalan",
         "wadmkd": "Securai Utara",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Kantor Desa Securai Utara",
         "x_dms": "98° 18' 51.592\" E",
         "y_dms": "3° 59' 49.472\" N",
-        "baris_excel": 133,
+        "baris_excel": 153,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -3367,11 +3887,11 @@
         "wadmkk_tampil": "Langkat",
         "wadmkc": "Babalan",
         "wadmkd": "Securai Utara",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Puskesmas Securai",
         "x_dms": "98° 19' 30.074\" E",
         "y_dms": "3° 59' 20.058\" N",
-        "baris_excel": 134,
+        "baris_excel": 154,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -3393,11 +3913,11 @@
         "wadmkk_tampil": "Langkat",
         "wadmkc": "Babalan",
         "wadmkd": "Securai Utara",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 057230 Bukit Satu",
         "x_dms": "98° 18' 51.636\" E",
         "y_dms": "3° 59' 7.095\" N",
-        "baris_excel": 135,
+        "baris_excel": 155,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -3419,11 +3939,11 @@
         "wadmkk_tampil": "Langkat",
         "wadmkc": "Babalan",
         "wadmkd": "Teluk Meku",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Kantor Desa Teluk Meku",
         "x_dms": "98° 19' 1.195\" E",
         "y_dms": "4° 1' 57.317\" N",
-        "baris_excel": 136,
+        "baris_excel": 156,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -3445,11 +3965,11 @@
         "wadmkk_tampil": "Langkat",
         "wadmkc": "Babalan",
         "wadmkd": "Teluk Meku",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SD Medan Dua",
         "x_dms": "98° 19' 15.160\" E",
         "y_dms": "4° 1' 11.813\" N",
-        "baris_excel": 137,
+        "baris_excel": 157,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -3471,11 +3991,11 @@
         "wadmkk_tampil": "Langkat",
         "wadmkc": "Babalan",
         "wadmkd": "Teluk Meku",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 053995 Teluk Meku",
         "x_dms": "98° 19' 29.749\" E",
         "y_dms": "4° 2' 19.267\" N",
-        "baris_excel": 138,
+        "baris_excel": 158,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -3497,11 +4017,11 @@
         "wadmkk_tampil": "Langkat",
         "wadmkc": "Binjai",
         "wadmkd": "Sambi Rejo",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Lapangan Bola Sambi Rejo",
         "x_dms": "98° 27' 24.833\" E",
         "y_dms": "3° 39' 53.287\" N",
-        "baris_excel": 139,
+        "baris_excel": 159,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -3523,11 +4043,11 @@
         "wadmkk_tampil": "Langkat",
         "wadmkc": "Binjai",
         "wadmkd": "Sambi Rejo",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 050594",
         "x_dms": "98° 27' 21.425\" E",
         "y_dms": "3° 39' 47.221\" N",
-        "baris_excel": 140,
+        "baris_excel": 160,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -3549,11 +4069,11 @@
         "wadmkk_tampil": "Langkat",
         "wadmkc": "Binjai",
         "wadmkd": "Sambi Rejo",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 054867 Sambirejo",
         "x_dms": "98° 26' 58.083\" E",
         "y_dms": "3° 40' 18.789\" N",
-        "baris_excel": 141,
+        "baris_excel": 161,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -3575,11 +4095,11 @@
         "wadmkk_tampil": "Langkat",
         "wadmkc": "Gebang",
         "wadmkd": "Air Hitam",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 057227 Kebun Kelapa",
         "x_dms": "98° 22' 32.015\" E",
         "y_dms": "3° 55' 25.816\" N",
-        "baris_excel": 142,
+        "baris_excel": 162,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -3601,11 +4121,11 @@
         "wadmkk_tampil": "Langkat",
         "wadmkc": "Gebang",
         "wadmkd": "Air Hitam",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SMPN 2 Gebang",
         "x_dms": "98° 23' 35.949\" E",
         "y_dms": "3° 55' 36.063\" N",
-        "baris_excel": 143,
+        "baris_excel": 163,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -3619,6 +4139,84 @@
     },
     {
       "type": "Feature",
+      "id": "SRN-DS-230",
+      "properties": {
+        "id": "SRN-DS-230",
+        "jenis": "sirine",
+        "wadmkk": "Langkat",
+        "wadmkk_tampil": "Langkat",
+        "wadmkc": "Gebang",
+        "wadmkd": "Pasar Rawa",
+        "keterangan": "",
+        "remark": "Kantor Desa Pasar Rawa",
+        "x_dms": "98° 21' 45.664\" E",
+        "y_dms": "3° 58' 46.764\" N",
+        "baris_excel": 164,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.36268444,
+          3.97965667
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SRN-DS-231",
+      "properties": {
+        "id": "SRN-DS-231",
+        "jenis": "sirine",
+        "wadmkk": "Langkat",
+        "wadmkk_tampil": "Langkat",
+        "wadmkc": "Gebang",
+        "wadmkd": "Pasar Rawa",
+        "keterangan": "",
+        "remark": "SDN 056026 Tangkahan Batak",
+        "x_dms": "98° 21' 57.424\" E",
+        "y_dms": "3° 59' 57.317\" N",
+        "baris_excel": 165,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.36595111,
+          3.99925472
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SRN-DS-232",
+      "properties": {
+        "id": "SRN-DS-232",
+        "jenis": "sirine",
+        "wadmkk": "Langkat",
+        "wadmkk_tampil": "Langkat",
+        "wadmkc": "Gebang",
+        "wadmkd": "Pasar Rawa",
+        "keterangan": "",
+        "remark": "SMPN 3 Satu Atap Gebang",
+        "x_dms": "98° 22' 27.602\" E",
+        "y_dms": "3° 59' 9.817\" N",
+        "baris_excel": 166,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.37433389,
+          3.98606028
+        ]
+      }
+    },
+    {
+      "type": "Feature",
       "id": "SRN-DS-140",
       "properties": {
         "id": "SRN-DS-140",
@@ -3627,11 +4225,11 @@
         "wadmkk_tampil": "Langkat",
         "wadmkc": "Hinai",
         "wadmkd": "Batu Malenggang",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Kantor Desa Batu Melenggang",
         "x_dms": "98° 25' 28.286\" E",
         "y_dms": "3° 51' 37.468\" N",
-        "baris_excel": 144,
+        "baris_excel": 167,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -3653,11 +4251,11 @@
         "wadmkk_tampil": "Langkat",
         "wadmkc": "Hinai",
         "wadmkd": "Batu Malenggang",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 056011 Batu Melenggang",
         "x_dms": "98° 25' 52.604\" E",
         "y_dms": "3° 51' 44.118\" N",
-        "baris_excel": 145,
+        "baris_excel": 168,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -3679,11 +4277,11 @@
         "wadmkk_tampil": "Langkat",
         "wadmkc": "Hinai",
         "wadmkd": "Batu Malenggang",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 070517 Cempa",
         "x_dms": "98° 25' 19.689\" E",
         "y_dms": "3° 52' 23.443\" N",
-        "baris_excel": 146,
+        "baris_excel": 169,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -3697,6 +4295,162 @@
     },
     {
       "type": "Feature",
+      "id": "SRN-DS-233",
+      "properties": {
+        "id": "SRN-DS-233",
+        "jenis": "sirine",
+        "wadmkk": "Langkat",
+        "wadmkk_tampil": "Langkat",
+        "wadmkc": "Secanggang",
+        "wadmkd": "Karang Gading",
+        "keterangan": "",
+        "remark": "Lapangan Sepak Bola Kacangan",
+        "x_dms": "98° 33' 7.005\" E",
+        "y_dms": "3° 50' 6.857\" N",
+        "baris_excel": 170,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.55194583,
+          3.83523806
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SRN-DS-234",
+      "properties": {
+        "id": "SRN-DS-234",
+        "jenis": "sirine",
+        "wadmkk": "Langkat",
+        "wadmkk_tampil": "Langkat",
+        "wadmkc": "Secanggang",
+        "wadmkd": "Karang Gading",
+        "keterangan": "",
+        "remark": "SDN 054919 Kacangan",
+        "x_dms": "98° 33' 23.338\" E",
+        "y_dms": "3° 49' 56.096\" N",
+        "baris_excel": 171,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.55648278,
+          3.83224889
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SRN-DS-235",
+      "properties": {
+        "id": "SRN-DS-235",
+        "jenis": "sirine",
+        "wadmkk": "Langkat",
+        "wadmkk_tampil": "Langkat",
+        "wadmkc": "Secanggang",
+        "wadmkd": "Karang Gading",
+        "keterangan": "",
+        "remark": "SDN 057209 Pematang Delik",
+        "x_dms": "98° 33' 33.827\" E",
+        "y_dms": "3° 49' 30.260\" N",
+        "baris_excel": 172,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.55939639,
+          3.82507222
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SRN-DS-236",
+      "properties": {
+        "id": "SRN-DS-236",
+        "jenis": "sirine",
+        "wadmkk": "Langkat",
+        "wadmkk_tampil": "Langkat",
+        "wadmkc": "Secanggang",
+        "wadmkd": "Kepala Sungai",
+        "keterangan": "",
+        "remark": "Kantor Desa Kepala Sungai",
+        "x_dms": "98° 29' 46.007\" E",
+        "y_dms": "3° 47' 41.698\" N",
+        "baris_excel": 173,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.49611306,
+          3.79491611
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SRN-DS-237",
+      "properties": {
+        "id": "SRN-DS-237",
+        "jenis": "sirine",
+        "wadmkk": "Langkat",
+        "wadmkk_tampil": "Langkat",
+        "wadmkc": "Secanggang",
+        "wadmkd": "Kepala Sungai",
+        "keterangan": "",
+        "remark": "SDN 053979 Kepala Sungai",
+        "x_dms": "98° 30' 18.383\" E",
+        "y_dms": "3° 47' 23.460\" N",
+        "baris_excel": 174,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.50510639,
+          3.78985
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SRN-DS-238",
+      "properties": {
+        "id": "SRN-DS-238",
+        "jenis": "sirine",
+        "wadmkk": "Langkat",
+        "wadmkk_tampil": "Langkat",
+        "wadmkc": "Secanggang",
+        "wadmkd": "Kepala Sungai",
+        "keterangan": "",
+        "remark": "SDN 057208 Sukaramai",
+        "x_dms": "98° 29' 41.451\" E",
+        "y_dms": "3° 47' 1.929\" N",
+        "baris_excel": 175,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.4948475,
+          3.78386917
+        ]
+      }
+    },
+    {
+      "type": "Feature",
       "id": "SRN-DS-143",
       "properties": {
         "id": "SRN-DS-143",
@@ -3705,11 +4459,11 @@
         "wadmkk_tampil": "Langkat",
         "wadmkc": "Secanggang",
         "wadmkd": "Secanggang",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 050700 Secanggang",
         "x_dms": "98° 32' 49.594\" E",
         "y_dms": "3° 52' 0.371\" N",
-        "baris_excel": 147,
+        "baris_excel": 176,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -3731,11 +4485,11 @@
         "wadmkk_tampil": "Langkat",
         "wadmkc": "Secanggang",
         "wadmkd": "Secanggang",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 054914 Karanggading",
         "x_dms": "98° 32' 13.550\" E",
         "y_dms": "3° 51' 1.290\" N",
-        "baris_excel": 148,
+        "baris_excel": 177,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -3757,11 +4511,11 @@
         "wadmkk_tampil": "Langkat",
         "wadmkc": "Secanggang",
         "wadmkd": "Secanggang",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SMAN 1 Secanggang",
         "x_dms": "98° 32' 20.477\" E",
         "y_dms": "3° 51' 54.543\" N",
-        "baris_excel": 149,
+        "baris_excel": 178,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -3783,11 +4537,11 @@
         "wadmkk_tampil": "Langkat",
         "wadmkc": "Sei Lepan",
         "wadmkd": "Sei Bilah",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Kantor Kelurahan Sei Bilah",
         "x_dms": "98° 17' 21.296\" E",
         "y_dms": "4° 1' 37.925\" N",
-        "baris_excel": 150,
+        "baris_excel": 179,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -3809,11 +4563,11 @@
         "wadmkk_tampil": "Langkat",
         "wadmkc": "Sei Lepan",
         "wadmkd": "Sei Bilah",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Polindes Sei Bilah",
         "x_dms": "98° 17' 38.112\" E",
         "y_dms": "4° 1' 52.155\" N",
-        "baris_excel": 151,
+        "baris_excel": 180,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -3835,11 +4589,11 @@
         "wadmkk_tampil": "Langkat",
         "wadmkc": "Stabat",
         "wadmkd": "Ara Condong",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 056000 Kampung Baru",
         "x_dms": "98° 29' 57.160\" E",
         "y_dms": "3° 45' 51.089\" N",
-        "baris_excel": 152,
+        "baris_excel": 181,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -3861,11 +4615,11 @@
         "wadmkk_tampil": "Langkat",
         "wadmkc": "Stabat",
         "wadmkd": "Ara Condong",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 057203 Ara Condong",
         "x_dms": "98° 28' 57.885\" E",
         "y_dms": "3° 46' 40.012\" N",
-        "baris_excel": 153,
+        "baris_excel": 182,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -3887,11 +4641,11 @@
         "wadmkk_tampil": "Langkat",
         "wadmkc": "Stabat",
         "wadmkd": "Ara Condong",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SMAN 2 Stabat",
         "x_dms": "98° 28' 16.830\" E",
         "y_dms": "3° 46' 37.709\" N",
-        "baris_excel": 154,
+        "baris_excel": 183,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -3913,11 +4667,11 @@
         "wadmkk_tampil": "Langkat",
         "wadmkc": "Stabat",
         "wadmkd": "Kwala Bingai",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Kantor Bupati Langkat",
         "x_dms": "98° 26' 50.196\" E",
         "y_dms": "3° 44' 34.505\" N",
-        "baris_excel": 155,
+        "baris_excel": 184,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -3939,11 +4693,11 @@
         "wadmkk_tampil": "Langkat",
         "wadmkc": "Stabat",
         "wadmkd": "Kwala Bingai",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 050657 Kualabingai",
         "x_dms": "98° 27' 2.644\" E",
         "y_dms": "3° 45' 5.963\" N",
-        "baris_excel": 156,
+        "baris_excel": 185,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -3965,11 +4719,11 @@
         "wadmkk_tampil": "Langkat",
         "wadmkc": "Stabat",
         "wadmkd": "Kwala Bingai",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SMKN 1 Stabat",
         "x_dms": "98° 27' 5.975\" E",
         "y_dms": "3° 44' 34.430\" N",
-        "baris_excel": 157,
+        "baris_excel": 186,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -3991,11 +4745,11 @@
         "wadmkk_tampil": "Langkat",
         "wadmkc": "Stabat",
         "wadmkd": "Pantai Gemi",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 054906 Tebasan Lama",
         "x_dms": "98° 26' 43.687\" E",
         "y_dms": "3° 45' 27.220\" N",
-        "baris_excel": 158,
+        "baris_excel": 187,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -4017,11 +4771,11 @@
         "wadmkk_tampil": "Langkat",
         "wadmkc": "Stabat",
         "wadmkd": "Pantai Gemi",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SMAN 1 Islam",
         "x_dms": "98° 26' 33.230\" E",
         "y_dms": "3° 45' 16.979\" N",
-        "baris_excel": 159,
+        "baris_excel": 188,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -4043,11 +4797,11 @@
         "wadmkk_tampil": "Langkat",
         "wadmkc": "Stabat",
         "wadmkd": "Perdamaian",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Kantor Kelurahan Perdamaian",
         "x_dms": "98° 28' 27.179\" E",
         "y_dms": "3° 45' 2.243\" N",
-        "baris_excel": 160,
+        "baris_excel": 189,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -4069,11 +4823,11 @@
         "wadmkk_tampil": "Langkat",
         "wadmkc": "Stabat",
         "wadmkd": "Perdamaian",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 050662 Perdamaian",
         "x_dms": "98° 28' 22.455\" E",
         "y_dms": "3° 44' 53.026\" N",
-        "baris_excel": 161,
+        "baris_excel": 190,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -4095,11 +4849,11 @@
         "wadmkk_tampil": "Langkat",
         "wadmkc": "Stabat",
         "wadmkd": "Perdamaian",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 054904 Bambuan",
         "x_dms": "98° 27' 38.506\" E",
         "y_dms": "3° 45' 15.922\" N",
-        "baris_excel": 162,
+        "baris_excel": 191,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -4113,6 +4867,84 @@
     },
     {
       "type": "Feature",
+      "id": "SRN-DS-239",
+      "properties": {
+        "id": "SRN-DS-239",
+        "jenis": "sirine",
+        "wadmkk": "Langkat",
+        "wadmkk_tampil": "Langkat",
+        "wadmkc": "Stabat",
+        "wadmkd": "Stabat Baru",
+        "keterangan": "",
+        "remark": "Kantor Kelurahan Stabat Baru",
+        "x_dms": "98° 27' 8.755\" E",
+        "y_dms": "3° 45' 21.761\" N",
+        "baris_excel": 192,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.45243194,
+          3.75604472
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SRN-DS-240",
+      "properties": {
+        "id": "SRN-DS-240",
+        "jenis": "sirine",
+        "wadmkk": "Langkat",
+        "wadmkk_tampil": "Langkat",
+        "wadmkc": "Stabat",
+        "wadmkd": "Stabat Baru",
+        "keterangan": "",
+        "remark": "Masjid Raya Stabat Baru",
+        "x_dms": "98° 27' 0.101\" E",
+        "y_dms": "3° 45' 45.243\" N",
+        "baris_excel": 193,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.45002806,
+          3.7625675
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SRN-DS-241",
+      "properties": {
+        "id": "SRN-DS-241",
+        "jenis": "sirine",
+        "wadmkk": "Langkat",
+        "wadmkk_tampil": "Langkat",
+        "wadmkc": "Stabat",
+        "wadmkd": "Stabat Baru",
+        "keterangan": "",
+        "remark": "SDN 050656",
+        "x_dms": "98° 27' 13.787\" E",
+        "y_dms": "3° 45' 40.449\" N",
+        "baris_excel": 194,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.45382972,
+          3.76123583
+        ]
+      }
+    },
+    {
+      "type": "Feature",
       "id": "SRN-DS-159",
       "properties": {
         "id": "SRN-DS-159",
@@ -4121,11 +4953,11 @@
         "wadmkk_tampil": "Langkat",
         "wadmkc": "Tanjung Pura",
         "wadmkd": "Kwala Serapuh",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Lapangan Bola Putra Jaya",
         "x_dms": "98° 26' 56.396\" E",
         "y_dms": "3° 59' 36.408\" N",
-        "baris_excel": 163,
+        "baris_excel": 195,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -4139,6 +4971,110 @@
     },
     {
       "type": "Feature",
+      "id": "SRN-DS-242",
+      "properties": {
+        "id": "SRN-DS-242",
+        "jenis": "sirine",
+        "wadmkk": "Langkat",
+        "wadmkk_tampil": "Langkat",
+        "wadmkc": "Tanjung Pura",
+        "wadmkd": "Kwala Serapuh",
+        "keterangan": "",
+        "remark": "SDN 056630 Kualaseparuh",
+        "x_dms": "98° 27' 4.147\" E",
+        "y_dms": "3° 59' 20.569\" N",
+        "baris_excel": 196,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.45115194,
+          3.98904694
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SRN-DS-243",
+      "properties": {
+        "id": "SRN-DS-243",
+        "jenis": "sirine",
+        "wadmkk": "Langkat",
+        "wadmkk_tampil": "Langkat",
+        "wadmkc": "Tanjung Pura",
+        "wadmkd": "Pantai Cermin",
+        "keterangan": "",
+        "remark": "SDN 056020 Pematang Rambai",
+        "x_dms": "98° 27' 25.456\" E",
+        "y_dms": "3° 54' 1.400\" N",
+        "baris_excel": 197,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.45707111,
+          3.90038889
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SRN-DS-244",
+      "properties": {
+        "id": "SRN-DS-244",
+        "jenis": "sirine",
+        "wadmkk": "Langkat",
+        "wadmkk_tampil": "Langkat",
+        "wadmkc": "Tanjung Pura",
+        "wadmkd": "Pantai Cermin",
+        "keterangan": "",
+        "remark": "SDN 0588119 Pantai Cermin",
+        "x_dms": "98° 29' 0.022\" E",
+        "y_dms": "3° 57' 47.083\" N",
+        "baris_excel": 198,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.48333944,
+          3.96307861
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SRN-DS-245",
+      "properties": {
+        "id": "SRN-DS-245",
+        "jenis": "sirine",
+        "wadmkk": "Langkat",
+        "wadmkk_tampil": "Langkat",
+        "wadmkc": "Tanjung Pura",
+        "wadmkd": "Pantai Cermin",
+        "keterangan": "",
+        "remark": "SMPN 4 Tanjung Pura",
+        "x_dms": "98° 29' 13.246\" E",
+        "y_dms": "3° 58' 3.275\" N",
+        "baris_excel": 199,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.48701278,
+          3.96757639
+        ]
+      }
+    },
+    {
+      "type": "Feature",
       "id": "SRN-DS-160",
       "properties": {
         "id": "SRN-DS-160",
@@ -4147,11 +5083,11 @@
         "wadmkk_tampil": "Langkat",
         "wadmkc": "Tanjung Pura",
         "wadmkd": "Pekan Tanjung Pura",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Kantor Kecamatan Tanjung Pura",
         "x_dms": "98° 25' 36.292\" E",
         "y_dms": "3° 54' 1.774\" N",
-        "baris_excel": 164,
+        "baris_excel": 200,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -4173,11 +5109,11 @@
         "wadmkk_tampil": "Langkat",
         "wadmkc": "Tanjung Pura",
         "wadmkd": "Pekan Tanjung Pura",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Koramil 11 Tanjung Pura",
         "x_dms": "98° 25' 22.705\" E",
         "y_dms": "3° 54' 3.989\" N",
-        "baris_excel": 165,
+        "baris_excel": 201,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -4199,11 +5135,11 @@
         "wadmkk_tampil": "Langkat",
         "wadmkc": "Tanjung Pura",
         "wadmkd": "Pekan Tanjung Pura",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SMKN 1 Tanjung Pura",
         "x_dms": "98° 25' 28.732\" E",
         "y_dms": "3° 53' 42.114\" N",
-        "baris_excel": 166,
+        "baris_excel": 202,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -4225,11 +5161,11 @@
         "wadmkk_tampil": "Langkat",
         "wadmkc": "Tanjung Pura",
         "wadmkd": "Pematang Cengal",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 053988 Pematangcengal",
         "x_dms": "98° 27' 28.573\" E",
         "y_dms": "3° 57' 8.603\" N",
-        "baris_excel": 167,
+        "baris_excel": 203,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -4251,11 +5187,11 @@
         "wadmkk_tampil": "Langkat",
         "wadmkc": "Tanjung Pura",
         "wadmkd": "Pematang Cengal",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 057224",
         "x_dms": "98° 28' 25.639\" E",
         "y_dms": "3° 57' 48.549\" N",
-        "baris_excel": 168,
+        "baris_excel": 204,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -4277,11 +5213,11 @@
         "wadmkk_tampil": "Serdang Bedagai",
         "wadmkc": "Perbaungan",
         "wadmkd": "Melati II",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Lapangan Sepak Bola Melati II",
         "x_dms": "98° 58' 22.606\" E",
         "y_dms": "3° 31' 5.777\" N",
-        "baris_excel": 169,
+        "baris_excel": 205,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -4303,11 +5239,11 @@
         "wadmkk_tampil": "Serdang Bedagai",
         "wadmkc": "Perbaungan",
         "wadmkd": "Melati II",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 101941",
         "x_dms": "98° 57' 41.716\" E",
         "y_dms": "3° 31' 5.657\" N",
-        "baris_excel": 170,
+        "baris_excel": 206,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -4329,11 +5265,11 @@
         "wadmkk_tampil": "Serdang Bedagai",
         "wadmkc": "Perbaungan",
         "wadmkd": "Melati II",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 105371 Sei Tontong",
         "x_dms": "98° 58' 39.898\" E",
         "y_dms": "3° 31' 7.206\" N",
-        "baris_excel": 171,
+        "baris_excel": 207,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -4355,11 +5291,11 @@
         "wadmkk_tampil": "Serdang Bedagai",
         "wadmkc": "Sei Bamban",
         "wadmkd": "Sei Bamban",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 102036 Penggalangan",
         "x_dms": "99° 8' 39.223\" E",
         "y_dms": "3° 26' 48.243\" N",
-        "baris_excel": 172,
+        "baris_excel": 208,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -4381,11 +5317,11 @@
         "wadmkk_tampil": "Serdang Bedagai",
         "wadmkc": "Sei Bamban",
         "wadmkd": "Sei Bamban",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 105415 Seimulya",
         "x_dms": "99° 10' 59.816\" E",
         "y_dms": "3° 27' 10.632\" N",
-        "baris_excel": 173,
+        "baris_excel": 209,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -4407,11 +5343,11 @@
         "wadmkk_tampil": "Serdang Bedagai",
         "wadmkc": "Sei Bamban",
         "wadmkd": "Sei Bamban",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 106855",
         "x_dms": "99° 9' 31.773\" E",
         "y_dms": "3° 25' 28.597\" N",
-        "baris_excel": 174,
+        "baris_excel": 210,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -4433,11 +5369,11 @@
         "wadmkk_tampil": "Serdang Bedagai",
         "wadmkc": "Sei Rampah",
         "wadmkd": "Sei Rampah",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Kantor Kepala Sei Rampah",
         "x_dms": "99° 8' 1.204\" E",
         "y_dms": "3° 29' 12.837\" N",
-        "baris_excel": 175,
+        "baris_excel": 211,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -4459,11 +5395,11 @@
         "wadmkk_tampil": "Serdang Bedagai",
         "wadmkc": "Sei Rampah",
         "wadmkd": "Sei Rampah",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Polsek Firdaus Petangganjang",
         "x_dms": "99° 8' 51.417\" E",
         "y_dms": "3° 28' 1.905\" N",
-        "baris_excel": 176,
+        "baris_excel": 212,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -4485,11 +5421,11 @@
         "wadmkk_tampil": "Serdang Bedagai",
         "wadmkc": "Sei Rampah",
         "wadmkd": "Sei Rampah",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 104303 Kampung Ibus",
         "x_dms": "99° 9' 54.066\" E",
         "y_dms": "3° 29' 7.939\" N",
-        "baris_excel": 177,
+        "baris_excel": 213,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -4511,11 +5447,11 @@
         "wadmkk_tampil": "Serdang Bedagai",
         "wadmkc": "Tanjung Beringin",
         "wadmkd": "Pekan Tanjung Beringin",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Kantor Camat Tanjung Beringin",
         "x_dms": "99° 11' 16.475\" E",
         "y_dms": "3° 29' 32.024\" N",
-        "baris_excel": 178,
+        "baris_excel": 214,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -4537,11 +5473,11 @@
         "wadmkk_tampil": "Serdang Bedagai",
         "wadmkc": "Tanjung Beringin",
         "wadmkd": "Pekan Tanjung Beringin",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Puskesmas Tanjung Beringin Kab. Serdang",
         "x_dms": "99° 11' 5.857\" E",
         "y_dms": "3° 29' 30.460\" N",
-        "baris_excel": 179,
+        "baris_excel": 215,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -4563,11 +5499,11 @@
         "wadmkk_tampil": "Serdang Bedagai",
         "wadmkc": "Tanjung Beringin",
         "wadmkd": "Pekan Tanjung Beringin",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 106217 Lorong Amalun",
         "x_dms": "99° 11' 32.049\" E",
         "y_dms": "3° 29' 31.828\" N",
-        "baris_excel": 180,
+        "baris_excel": 216,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -4589,11 +5525,11 @@
         "wadmkk_tampil": "Serdang Bedagai",
         "wadmkc": "Tebing Tinggi",
         "wadmkd": "Paya Lombang",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 104331 Langau",
         "x_dms": "99° 14' 5.344\" E",
         "y_dms": "3° 23' 54.059\" N",
-        "baris_excel": 181,
+        "baris_excel": 217,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -4615,11 +5551,11 @@
         "wadmkk_tampil": "Serdang Bedagai",
         "wadmkc": "Tebing Tinggi",
         "wadmkd": "Paya Lombang",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 105438 Paya Lambang",
         "x_dms": "99° 10' 50.688\" E",
         "y_dms": "3° 23' 29.644\" N",
-        "baris_excel": 182,
+        "baris_excel": 218,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -4641,11 +5577,11 @@
         "wadmkk_tampil": "Serdang Bedagai",
         "wadmkc": "Tebing Tinggi",
         "wadmkd": "Paya Lombang",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 107461 Payalombang",
         "x_dms": "99° 12' 42.521\" E",
         "y_dms": "3° 23' 19.418\" N",
-        "baris_excel": 183,
+        "baris_excel": 219,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -4667,11 +5603,11 @@
         "wadmkk_tampil": "Serdang Bedagai",
         "wadmkc": "Teluk Mengkudu",
         "wadmkd": "Sei Buluh",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 104297 Sei Buluh",
         "x_dms": "99° 4' 11.216\" E",
         "y_dms": "3° 32' 7.062\" N",
-        "baris_excel": 184,
+        "baris_excel": 220,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -4693,11 +5629,11 @@
         "wadmkk_tampil": "Serdang Bedagai",
         "wadmkc": "Teluk Mengkudu",
         "wadmkd": "Sei Buluh",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 105408 Suka Makmur",
         "x_dms": "99° 4' 4.431\" E",
         "y_dms": "3° 33' 3.410\" N",
-        "baris_excel": 185,
+        "baris_excel": 221,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -4719,11 +5655,11 @@
         "wadmkk_tampil": "Serdang Bedagai",
         "wadmkc": "Teluk Mengkudu",
         "wadmkd": "Sei Buluh",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 106207 Seibuluh",
         "x_dms": "99° 3' 37.819\" E",
         "y_dms": "3° 32' 49.764\" N",
-        "baris_excel": 186,
+        "baris_excel": 222,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -4745,11 +5681,11 @@
         "wadmkk_tampil": "Tapanuli Selatan",
         "wadmkc": "Angkola Selatan",
         "wadmkd": "Pardomuan",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Kantor Kelurahan Pardomuan",
         "x_dms": "99° 10' 26.972\" E",
         "y_dms": "1° 17' 51.951\" N",
-        "baris_excel": 187,
+        "baris_excel": 223,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -4771,11 +5707,11 @@
         "wadmkk_tampil": "Tapanuli Selatan",
         "wadmkc": "Angkola Selatan",
         "wadmkd": "Pardomuan",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 100218 Janji Matogu",
         "x_dms": "99° 7' 31.315\" E",
         "y_dms": "1° 13' 18.084\" N",
-        "baris_excel": 188,
+        "baris_excel": 224,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -4797,11 +5733,11 @@
         "wadmkk_tampil": "Tapanuli Selatan",
         "wadmkc": "Angkola Selatan",
         "wadmkd": "Pardomuan",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN Sirancitan Perdamaian",
         "x_dms": "99° 7' 30.129\" E",
         "y_dms": "1° 17' 17.150\" N",
-        "baris_excel": 189,
+        "baris_excel": 225,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -4815,6 +5751,58 @@
     },
     {
       "type": "Feature",
+      "id": "SRN-DS-246",
+      "properties": {
+        "id": "SRN-DS-246",
+        "jenis": "sirine",
+        "wadmkk": "Tapanuli Selatan",
+        "wadmkk_tampil": "Tapanuli Selatan",
+        "wadmkc": "Batang Toru",
+        "wadmkd": "Hapesong Baru",
+        "keterangan": "",
+        "remark": "Kantor Desa Hapesong Baru",
+        "x_dms": "99° 4' 3.111\" E",
+        "y_dms": "1° 28' 32.939\" N",
+        "baris_excel": 226,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.06753083,
+          1.47581639
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SRN-DS-247",
+      "properties": {
+        "id": "SRN-DS-247",
+        "jenis": "sirine",
+        "wadmkk": "Tapanuli Selatan",
+        "wadmkk_tampil": "Tapanuli Selatan",
+        "wadmkc": "Batang Toru",
+        "wadmkd": "Hapesong Baru",
+        "keterangan": "",
+        "remark": "SDN 101220 Hapesongbaru",
+        "x_dms": "99° 3' 41.164\" E",
+        "y_dms": "1° 28' 34.721\" N",
+        "baris_excel": 227,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.06143444,
+          1.47631139
+        ]
+      }
+    },
+    {
+      "type": "Feature",
       "id": "SRN-DS-186",
       "properties": {
         "id": "SRN-DS-186",
@@ -4823,11 +5811,11 @@
         "wadmkk_tampil": "Tapanuli Selatan",
         "wadmkc": "Muara Batang Toru",
         "wadmkd": "Muara Ampolu",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Pasar Ampolu",
         "x_dms": "98° 53' 48.709\" E",
         "y_dms": "1° 25' 55.034\" N",
-        "baris_excel": 190,
+        "baris_excel": 228,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -4849,11 +5837,11 @@
         "wadmkk_tampil": "Tapanuli Selatan",
         "wadmkc": "Muara Batang Toru",
         "wadmkd": "Muara Ampolu",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 100908 Sihadatuon",
         "x_dms": "98° 53' 41.781\" E",
         "y_dms": "1° 25' 41.643\" N",
-        "baris_excel": 191,
+        "baris_excel": 229,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -4867,6 +5855,240 @@
     },
     {
       "type": "Feature",
+      "id": "SRN-DS-248",
+      "properties": {
+        "id": "SRN-DS-248",
+        "jenis": "sirine",
+        "wadmkk": "Tapanuli Selatan",
+        "wadmkk_tampil": "Tapanuli Selatan",
+        "wadmkc": "Muara Batang Toru",
+        "wadmkd": "Muara Huta Raja",
+        "keterangan": "",
+        "remark": "Kantor Desa Mabangpasir",
+        "x_dms": "98° 59' 35.620\" E",
+        "y_dms": "1° 25' 8.830\" N",
+        "baris_excel": 230,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.99322778,
+          1.41911944
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SRN-DS-249",
+      "properties": {
+        "id": "SRN-DS-249",
+        "jenis": "sirine",
+        "wadmkk": "Tapanuli Selatan",
+        "wadmkk_tampil": "Tapanuli Selatan",
+        "wadmkc": "Muara Batang Toru",
+        "wadmkd": "Muara Huta Raja",
+        "keterangan": "",
+        "remark": "SDN 100904",
+        "x_dms": "98° 59' 37.863\" E",
+        "y_dms": "1° 26' 4.416\" N",
+        "baris_excel": 231,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.99385083,
+          1.43456
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SRN-DS-250",
+      "properties": {
+        "id": "SRN-DS-250",
+        "jenis": "sirine",
+        "wadmkk": "Tapanuli Selatan",
+        "wadmkk_tampil": "Tapanuli Selatan",
+        "wadmkc": "Muara Batang Toru",
+        "wadmkd": "Muara Manompas",
+        "keterangan": "",
+        "remark": "Kantor Desa Muarahutaraja",
+        "x_dms": "98° 56' 31.885\" E",
+        "y_dms": "1° 25' 36.565\" N",
+        "baris_excel": 232,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.94219028,
+          1.42682361
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SRN-DS-251",
+      "properties": {
+        "id": "SRN-DS-251",
+        "jenis": "sirine",
+        "wadmkk": "Tapanuli Selatan",
+        "wadmkk_tampil": "Tapanuli Selatan",
+        "wadmkc": "Muara Batang Toru",
+        "wadmkd": "Muara Manompas",
+        "keterangan": "",
+        "remark": "SMPN 1 Muara Batangtoru",
+        "x_dms": "98° 56' 57.980\" E",
+        "y_dms": "1° 25' 58.570\" N",
+        "baris_excel": 233,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.94943889,
+          1.43293611
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SRN-DS-252",
+      "properties": {
+        "id": "SRN-DS-252",
+        "jenis": "sirine",
+        "wadmkk": "Tapanuli Selatan",
+        "wadmkk_tampil": "Tapanuli Selatan",
+        "wadmkc": "Muara Batang Toru",
+        "wadmkd": "Tarapung Raya",
+        "keterangan": "",
+        "remark": "Kantor Desa Tarapung Raya",
+        "x_dms": "98° 58' 26.055\" E",
+        "y_dms": "1° 26' 21.075\" N",
+        "baris_excel": 234,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.97390417,
+          1.4391875
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SRN-DS-253",
+      "properties": {
+        "id": "SRN-DS-253",
+        "jenis": "sirine",
+        "wadmkk": "Tapanuli Selatan",
+        "wadmkk_tampil": "Tapanuli Selatan",
+        "wadmkc": "Muara Batang Toru",
+        "wadmkd": "Tarapung Raya",
+        "keterangan": "",
+        "remark": "Lapangan Bola Tarapung Raya",
+        "x_dms": "98° 58' 11.153\" E",
+        "y_dms": "1° 26' 2.535\" N",
+        "baris_excel": 235,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.96976472,
+          1.4340375
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SRN-DS-254",
+      "properties": {
+        "id": "SRN-DS-254",
+        "jenis": "sirine",
+        "wadmkk": "Tapanuli Selatan",
+        "wadmkk_tampil": "Tapanuli Selatan",
+        "wadmkc": "Muara Batang Toru",
+        "wadmkd": "Tarapung Raya",
+        "keterangan": "",
+        "remark": "SDN 100905 Tarapung Raya",
+        "x_dms": "98° 58' 22.333\" E",
+        "y_dms": "1° 26' 10.588\" N",
+        "baris_excel": 236,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.97287028,
+          1.43627444
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SRN-DS-255",
+      "properties": {
+        "id": "SRN-DS-255",
+        "jenis": "sirine",
+        "wadmkk": "Tapanuli Selatan",
+        "wadmkk_tampil": "Tapanuli Selatan",
+        "wadmkc": "Sayur Matinggi",
+        "wadmkd": "Aek Libung",
+        "keterangan": "",
+        "remark": "Kantor Desa Aeklubung",
+        "x_dms": "99° 25' 26.364\" E",
+        "y_dms": "1° 9' 1.368\" N",
+        "baris_excel": 237,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.42399,
+          1.15038
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SRN-DS-256",
+      "properties": {
+        "id": "SRN-DS-256",
+        "jenis": "sirine",
+        "wadmkk": "Tapanuli Selatan",
+        "wadmkk_tampil": "Tapanuli Selatan",
+        "wadmkc": "Sayur Matinggi",
+        "wadmkd": "Aek Libung",
+        "keterangan": "",
+        "remark": "SDN 101960 Aeklubung",
+        "x_dms": "99° 25' 20.673\" E",
+        "y_dms": "1° 9' 14.748\" N",
+        "baris_excel": 238,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.42240917,
+          1.15409667
+        ]
+      }
+    },
+    {
+      "type": "Feature",
       "id": "SRN-DS-188",
       "properties": {
         "id": "SRN-DS-188",
@@ -4875,11 +6097,11 @@
         "wadmkk_tampil": "Tapanuli Selatan",
         "wadmkc": "Sayur Matinggi",
         "wadmkd": "Sayur Matinggi",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Puskesmas Sayur Matinggi",
         "x_dms": "99° 25' 46.750\" E",
         "y_dms": "1° 8' 49.773\" N",
-        "baris_excel": 192,
+        "baris_excel": 239,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -4901,11 +6123,11 @@
         "wadmkk_tampil": "Tapanuli Selatan",
         "wadmkc": "Sayur Matinggi",
         "wadmkd": "Sayur Matinggi",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 101105 Sayur Matinggi",
         "x_dms": "99° 25' 34.539\" E",
         "y_dms": "1° 8' 58.126\" N",
-        "baris_excel": 193,
+        "baris_excel": 240,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -4927,11 +6149,11 @@
         "wadmkk_tampil": "Tapanuli Selatan",
         "wadmkc": "Sayur Matinggi",
         "wadmkd": "Sayur Matinggi",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 101118 Sayur Matinggi",
         "x_dms": "99° 25' 52.429\" E",
         "y_dms": "1° 8' 32.202\" N",
-        "baris_excel": 194,
+        "baris_excel": 241,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -4945,6 +6167,162 @@
     },
     {
       "type": "Feature",
+      "id": "SRN-DS-257",
+      "properties": {
+        "id": "SRN-DS-257",
+        "jenis": "sirine",
+        "wadmkk": "Tapanuli Selatan",
+        "wadmkk_tampil": "Tapanuli Selatan",
+        "wadmkc": "Sayur Matinggi",
+        "wadmkd": "Silaiya",
+        "keterangan": "",
+        "remark": "Kantor Desa Silaiya",
+        "x_dms": "99° 24' 38.047\" E",
+        "y_dms": "1° 9' 59.143\" N",
+        "baris_excel": 242,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.41056861,
+          1.16642861
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SRN-DS-258",
+      "properties": {
+        "id": "SRN-DS-258",
+        "jenis": "sirine",
+        "wadmkk": "Tapanuli Tengah",
+        "wadmkk_tampil": "Tapanuli Tengah",
+        "wadmkc": "Badiri",
+        "wadmkd": "Hutabalang",
+        "keterangan": "",
+        "remark": "SDN 153067 Hutabalang 2",
+        "x_dms": "98° 51' 59.512\" E",
+        "y_dms": "1° 36' 6.483\" N",
+        "baris_excel": 243,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.86653111,
+          1.60180083
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SRN-DS-259",
+      "properties": {
+        "id": "SRN-DS-259",
+        "jenis": "sirine",
+        "wadmkk": "Tapanuli Tengah",
+        "wadmkk_tampil": "Tapanuli Tengah",
+        "wadmkc": "Badiri",
+        "wadmkd": "Hutabalang",
+        "keterangan": "",
+        "remark": "SDN 157625 Hutabalang",
+        "x_dms": "98° 52' 26.296\" E",
+        "y_dms": "1° 35' 31.934\" N",
+        "baris_excel": 244,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.87397111,
+          1.59220389
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SRN-DS-260",
+      "properties": {
+        "id": "SRN-DS-260",
+        "jenis": "sirine",
+        "wadmkk": "Tapanuli Tengah",
+        "wadmkk_tampil": "Tapanuli Tengah",
+        "wadmkc": "Badiri",
+        "wadmkd": "Hutabalang",
+        "keterangan": "",
+        "remark": "SDN Hutabalang",
+        "x_dms": "98° 52' 8.545\" E",
+        "y_dms": "1° 35' 53.220\" N",
+        "baris_excel": 245,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.86904028,
+          1.59811667
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SRN-DS-261",
+      "properties": {
+        "id": "SRN-DS-261",
+        "jenis": "sirine",
+        "wadmkk": "Tapanuli Tengah",
+        "wadmkk_tampil": "Tapanuli Tengah",
+        "wadmkc": "Pandan",
+        "wadmkd": "Aek Sitio-tio",
+        "keterangan": "",
+        "remark": "Masjid Al- Kautsar",
+        "x_dms": "98° 50' 59.555\" E",
+        "y_dms": "1° 40' 28.628\" N",
+        "baris_excel": 246,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.84987639,
+          1.67461889
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SRN-DS-262",
+      "properties": {
+        "id": "SRN-DS-262",
+        "jenis": "sirine",
+        "wadmkk": "Tapanuli Tengah",
+        "wadmkk_tampil": "Tapanuli Tengah",
+        "wadmkc": "Pandan",
+        "wadmkd": "Aek Sitio-tio",
+        "keterangan": "",
+        "remark": "SDN 158490 Aek Tolang 2",
+        "x_dms": "98° 50' 44.447\" E",
+        "y_dms": "1° 40' 27.360\" N",
+        "baris_excel": 247,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.84567972,
+          1.67426667
+        ]
+      }
+    },
+    {
+      "type": "Feature",
       "id": "SRN-DS-191",
       "properties": {
         "id": "SRN-DS-191",
@@ -4953,11 +6331,11 @@
         "wadmkk_tampil": "Tapanuli Tengah",
         "wadmkc": "Pandan",
         "wadmkd": "Aek Tolang",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Kantor Kelurahan Aek Tolang",
         "x_dms": "98° 50' 9.074\" E",
         "y_dms": "1° 41' 29.202\" N",
-        "baris_excel": 195,
+        "baris_excel": 248,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -4979,11 +6357,11 @@
         "wadmkk_tampil": "Tapanuli Tengah",
         "wadmkc": "Pandan",
         "wadmkd": "Kalangan",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Puskesmas Kalangan",
         "x_dms": "98° 50' 15.125\" E",
         "y_dms": "1° 40' 4.461\" N",
-        "baris_excel": 196,
+        "baris_excel": 249,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -5005,11 +6383,11 @@
         "wadmkk_tampil": "Tapanuli Tengah",
         "wadmkc": "Pandan",
         "wadmkd": "Kalangan",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN Pandan",
         "x_dms": "98° 49' 54.046\" E",
         "y_dms": "1° 40' 10.696\" N",
-        "baris_excel": 197,
+        "baris_excel": 250,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -5031,11 +6409,11 @@
         "wadmkk_tampil": "Tapanuli Tengah",
         "wadmkc": "Pandan",
         "wadmkd": "Pandan",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Kantor Bupati Tapanuli Tengah",
         "x_dms": "98° 49' 40.041\" E",
         "y_dms": "1° 41' 4.307\" N",
-        "baris_excel": 198,
+        "baris_excel": 251,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -5057,11 +6435,11 @@
         "wadmkk_tampil": "Tapanuli Tengah",
         "wadmkc": "Pandan",
         "wadmkd": "Pandan",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 152979 Pandan 1",
         "x_dms": "98° 49' 32.700\" E",
         "y_dms": "1° 40' 47.567\" N",
-        "baris_excel": 199,
+        "baris_excel": 252,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -5083,11 +6461,11 @@
         "wadmkk_tampil": "Tapanuli Tengah",
         "wadmkc": "Pandan",
         "wadmkd": "Pandan",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 157610 Pandan 2",
         "x_dms": "98° 49' 36.022\" E",
         "y_dms": "1° 40' 45.115\" N",
-        "baris_excel": 200,
+        "baris_excel": 253,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -5101,6 +6479,214 @@
     },
     {
       "type": "Feature",
+      "id": "SRN-DS-263",
+      "properties": {
+        "id": "SRN-DS-263",
+        "jenis": "sirine",
+        "wadmkk": "Tapanuli Tengah",
+        "wadmkk_tampil": "Tapanuli Tengah",
+        "wadmkc": "Pandan",
+        "wadmkd": "Sibuluan Indah",
+        "keterangan": "",
+        "remark": "Pos SAR Sibolga",
+        "x_dms": "98° 49' 24.354\" E",
+        "y_dms": "1° 42' 7.540\" N",
+        "baris_excel": 254,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.82343167,
+          1.70209444
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SRN-DS-264",
+      "properties": {
+        "id": "SRN-DS-264",
+        "jenis": "sirine",
+        "wadmkk": "Tapanuli Tengah",
+        "wadmkk_tampil": "Tapanuli Tengah",
+        "wadmkc": "Pandan",
+        "wadmkd": "Sibuluan Indah",
+        "keterangan": "",
+        "remark": "SDN 152978 Sibuluan",
+        "x_dms": "98° 49' 12.167\" E",
+        "y_dms": "1° 42' 0.374\" N",
+        "baris_excel": 255,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.82004639,
+          1.70010389
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SRN-DS-265",
+      "properties": {
+        "id": "SRN-DS-265",
+        "jenis": "sirine",
+        "wadmkk": "Tapanuli Tengah",
+        "wadmkk_tampil": "Tapanuli Tengah",
+        "wadmkc": "Pandan",
+        "wadmkd": "Sibuluan Indah",
+        "keterangan": "",
+        "remark": "SMAN 1 Plus Matauli Pandan",
+        "x_dms": "98° 49' 31.235\" E",
+        "y_dms": "1° 41' 30.611\" N",
+        "baris_excel": 256,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.82534306,
+          1.69183639
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SRN-DS-266",
+      "properties": {
+        "id": "SRN-DS-266",
+        "jenis": "sirine",
+        "wadmkk": "Tapanuli Tengah",
+        "wadmkk_tampil": "Tapanuli Tengah",
+        "wadmkc": "Sarudik",
+        "wadmkd": "Pasir Bidang",
+        "keterangan": "",
+        "remark": "Kantor Kelurahan Pasir Bidang",
+        "x_dms": "98° 48' 4.051\" E",
+        "y_dms": "1° 43' 26.161\" N",
+        "baris_excel": 257,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.80112528,
+          1.72393361
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SRN-DS-267",
+      "properties": {
+        "id": "SRN-DS-267",
+        "jenis": "sirine",
+        "wadmkk": "Tapanuli Tengah",
+        "wadmkk_tampil": "Tapanuli Tengah",
+        "wadmkc": "Sarudik",
+        "wadmkd": "Pasir Bidang",
+        "keterangan": "",
+        "remark": "STIKES Nauli Husada",
+        "x_dms": "98° 48' 12.055\" E",
+        "y_dms": "1° 43' 30.557\" N",
+        "baris_excel": 258,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.80334861,
+          1.72515472
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SRN-DS-268",
+      "properties": {
+        "id": "SRN-DS-268",
+        "jenis": "sirine",
+        "wadmkk": "Tapanuli Tengah",
+        "wadmkk_tampil": "Tapanuli Tengah",
+        "wadmkc": "Sarudik",
+        "wadmkd": "Pondok Batu",
+        "keterangan": "",
+        "remark": "Kantor Dinas Kelautan Perikanan dan Peternakan Sibolga",
+        "x_dms": "98° 48' 3.274\" E",
+        "y_dms": "1° 43' 14.561\" N",
+        "baris_excel": 259,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.80090944,
+          1.72071139
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SRN-DS-269",
+      "properties": {
+        "id": "SRN-DS-269",
+        "jenis": "sirine",
+        "wadmkk": "Tapanuli Tengah",
+        "wadmkk_tampil": "Tapanuli Tengah",
+        "wadmkc": "Sarudik",
+        "wadmkd": "Pondok Batu",
+        "keterangan": "",
+        "remark": "Kantor Kelurahan Pondok Batu",
+        "x_dms": "98° 48' 16.290\" E",
+        "y_dms": "1° 43' 23.309\" N",
+        "baris_excel": 260,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.804525,
+          1.72314139
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SRN-DS-270",
+      "properties": {
+        "id": "SRN-DS-270",
+        "jenis": "sirine",
+        "wadmkk": "Tapanuli Tengah",
+        "wadmkk_tampil": "Tapanuli Tengah",
+        "wadmkc": "Sarudik",
+        "wadmkd": "Pondok Batu",
+        "keterangan": "",
+        "remark": "Pengadilan Negeri Sibolga Kelas IB",
+        "x_dms": "98° 48' 16.742\" E",
+        "y_dms": "1° 43' 27.591\" N",
+        "baris_excel": 261,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.80465056,
+          1.72433083
+        ]
+      }
+    },
+    {
+      "type": "Feature",
       "id": "SRN-DS-197",
       "properties": {
         "id": "SRN-DS-197",
@@ -5109,11 +6695,11 @@
         "wadmkk_tampil": "Tapanuli Tengah",
         "wadmkc": "Sarudik",
         "wadmkd": "Sarudik",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 152977 Sarudik 1",
         "x_dms": "98° 48' 32.078\" E",
         "y_dms": "1° 43' 7.948\" N",
-        "baris_excel": 201,
+        "baris_excel": 262,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -5135,11 +6721,11 @@
         "wadmkk_tampil": "Tapanuli Tengah",
         "wadmkc": "Sarudik",
         "wadmkd": "Sarudik",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 154499 Sarudik",
         "x_dms": "98° 48' 39.080\" E",
         "y_dms": "1° 43' 16.267\" N",
-        "baris_excel": 202,
+        "baris_excel": 263,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -5161,11 +6747,11 @@
         "wadmkk_tampil": "Tapanuli Tengah",
         "wadmkc": "Sarudik",
         "wadmkd": "Sarudik",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SMAN 2 Sibolga",
         "x_dms": "98° 48' 40.411\" E",
         "y_dms": "1° 43' 29.495\" N",
-        "baris_excel": 203,
+        "baris_excel": 264,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -5179,6 +6765,292 @@
     },
     {
       "type": "Feature",
+      "id": "SRN-DS-271",
+      "properties": {
+        "id": "SRN-DS-271",
+        "jenis": "sirine",
+        "wadmkk": "Tapanuli Tengah",
+        "wadmkk_tampil": "Tapanuli Tengah",
+        "wadmkc": "Tapian Nauli",
+        "wadmkd": "Tapian Nauli II",
+        "keterangan": "",
+        "remark": "SDN 156476 Tapian Nauli 2 A",
+        "x_dms": "98° 44' 15.905\" E",
+        "y_dms": "1° 47' 37.526\" N",
+        "baris_excel": 265,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.73775139,
+          1.79375722
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SRN-DS-272",
+      "properties": {
+        "id": "SRN-DS-272",
+        "jenis": "sirine",
+        "wadmkk": "Tapanuli Tengah",
+        "wadmkk_tampil": "Tapanuli Tengah",
+        "wadmkc": "Tapian Nauli",
+        "wadmkd": "Tapian Nauli II",
+        "keterangan": "",
+        "remark": "SMPN 1 Tapian Nauli",
+        "x_dms": "98° 43' 55.501\" E",
+        "y_dms": "1° 47' 16.275\" N",
+        "baris_excel": 266,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.73208361,
+          1.78785417
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SRN-DS-273",
+      "properties": {
+        "id": "SRN-DS-273",
+        "jenis": "sirine",
+        "wadmkk": "Tapanuli Utara",
+        "wadmkk_tampil": "Tapanuli Utara",
+        "wadmkc": "Muara",
+        "wadmkd": "Hutanagodang",
+        "keterangan": "",
+        "remark": "Kantor Desa Hutanagondang",
+        "x_dms": "98° 54' 32.770\" E",
+        "y_dms": "2° 19' 58.457\" N",
+        "baris_excel": 267,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.90910278,
+          2.33290472
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SRN-DS-274",
+      "properties": {
+        "id": "SRN-DS-274",
+        "jenis": "sirine",
+        "wadmkk": "Tapanuli Utara",
+        "wadmkk_tampil": "Tapanuli Utara",
+        "wadmkc": "Muara",
+        "wadmkd": "Hutanagodang",
+        "keterangan": "",
+        "remark": "Kantor Kecamatan Muara",
+        "x_dms": "98° 54' 17.935\" E",
+        "y_dms": "2° 20' 17.003\" N",
+        "baris_excel": 268,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.90498194,
+          2.33805639
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SRN-DS-275",
+      "properties": {
+        "id": "SRN-DS-275",
+        "jenis": "sirine",
+        "wadmkk": "Tapanuli Utara",
+        "wadmkk_tampil": "Tapanuli Utara",
+        "wadmkc": "Muara",
+        "wadmkd": "Hutanagodang",
+        "keterangan": "",
+        "remark": "SMAN 1 Muara",
+        "x_dms": "98° 54' 28.084\" E",
+        "y_dms": "2° 20' 4.908\" N",
+        "baris_excel": 269,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.90780111,
+          2.33469667
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SRN-DS-276",
+      "properties": {
+        "id": "SRN-DS-276",
+        "jenis": "sirine",
+        "wadmkk": "Tapanuli Utara",
+        "wadmkk_tampil": "Tapanuli Utara",
+        "wadmkc": "Siatas Barita",
+        "wadmkd": "Siraja Hutagalung",
+        "keterangan": "",
+        "remark": "Kantor Desa Sirajahutagalung",
+        "x_dms": "98° 58' 56.280\" E",
+        "y_dms": "2° 0' 46.170\" N",
+        "baris_excel": 270,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.9823,
+          2.012825
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SRN-DS-277",
+      "properties": {
+        "id": "SRN-DS-277",
+        "jenis": "sirine",
+        "wadmkk": "Tapanuli Utara",
+        "wadmkk_tampil": "Tapanuli Utara",
+        "wadmkc": "Siatas Barita",
+        "wadmkd": "Siraja Hutagalung",
+        "keterangan": "",
+        "remark": "SDN 173112 Hutagalung",
+        "x_dms": "98° 58' 57.734\" E",
+        "y_dms": "2° 0' 13.952\" N",
+        "baris_excel": 271,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.98270389,
+          2.00387556
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SRN-DS-278",
+      "properties": {
+        "id": "SRN-DS-278",
+        "jenis": "sirine",
+        "wadmkk": "Tapanuli Utara",
+        "wadmkk_tampil": "Tapanuli Utara",
+        "wadmkc": "Siatas Barita",
+        "wadmkd": "Siraja Hutagalung",
+        "keterangan": "",
+        "remark": "SDN Siatasbarita",
+        "x_dms": "98° 59' 13.661\" E",
+        "y_dms": "1° 59' 19.525\" N",
+        "baris_excel": 272,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.98712806,
+          1.98875694
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SRN-DS-279",
+      "properties": {
+        "id": "SRN-DS-279",
+        "jenis": "sirine",
+        "wadmkk": "Tapanuli Utara",
+        "wadmkk_tampil": "Tapanuli Utara",
+        "wadmkc": "Sipoholon",
+        "wadmkd": "Hutauruk",
+        "keterangan": "",
+        "remark": "Pengadilan Negeri Tarutung",
+        "x_dms": "98° 57' 9.374\" E",
+        "y_dms": "2° 3' 30.603\" N",
+        "baris_excel": 273,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.95260389,
+          2.05850083
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SRN-DS-280",
+      "properties": {
+        "id": "SRN-DS-280",
+        "jenis": "sirine",
+        "wadmkk": "Tapanuli Utara",
+        "wadmkk_tampil": "Tapanuli Utara",
+        "wadmkc": "Sipoholon",
+        "wadmkd": "Hutauruk",
+        "keterangan": "",
+        "remark": "Polsek Sipoholon",
+        "x_dms": "98° 56' 40.326\" E",
+        "y_dms": "2° 4' 2.679\" N",
+        "baris_excel": 274,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.944535,
+          2.06741083
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SRN-DS-281",
+      "properties": {
+        "id": "SRN-DS-281",
+        "jenis": "sirine",
+        "wadmkk": "Tapanuli Utara",
+        "wadmkk_tampil": "Tapanuli Utara",
+        "wadmkc": "Sipoholon",
+        "wadmkd": "Hutauruk",
+        "keterangan": "",
+        "remark": "SMPN 1 Sipoholon",
+        "x_dms": "98° 56' 46.482\" E",
+        "y_dms": "2° 3' 54.162\" N",
+        "baris_excel": 275,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.946245,
+          2.065045
+        ]
+      }
+    },
+    {
+      "type": "Feature",
       "id": "SRN-DS-200",
       "properties": {
         "id": "SRN-DS-200",
@@ -5187,11 +7059,11 @@
         "wadmkk_tampil": "Tapanuli Utara",
         "wadmkc": "Tarutung",
         "wadmkd": "Hutatoruan I",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Kantor Desa Hutatotoruan 1",
         "x_dms": "98° 58' 15.510\" E",
         "y_dms": "2° 0' 30.650\" N",
-        "baris_excel": 204,
+        "baris_excel": 276,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -5213,11 +7085,11 @@
         "wadmkk_tampil": "Tapanuli Utara",
         "wadmkc": "Tarutung",
         "wadmkd": "Hutatoruan VII",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Lapangan Serbaguna Tarutung",
         "x_dms": "98° 57' 57.506\" E",
         "y_dms": "2° 1' 23.763\" N",
-        "baris_excel": 205,
+        "baris_excel": 277,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -5239,11 +7111,11 @@
         "wadmkk_tampil": "Tapanuli Utara",
         "wadmkc": "Tarutung",
         "wadmkd": "Hutatoruan VII",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Puskesmas Hutabaginda",
         "x_dms": "98° 58' 8.851\" E",
         "y_dms": "2° 1' 9.408\" N",
-        "baris_excel": 206,
+        "baris_excel": 278,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -5265,11 +7137,11 @@
         "wadmkk_tampil": "Tapanuli Utara",
         "wadmkc": "Tarutung",
         "wadmkd": "Hutatoruan VII",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SDN 173105 Tarutung",
         "x_dms": "98° 58' 13.891\" E",
         "y_dms": "2° 1' 21.579\" N",
-        "baris_excel": 207,
+        "baris_excel": 279,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -5291,11 +7163,11 @@
         "wadmkk_tampil": "Tapanuli Utara",
         "wadmkc": "Tarutung",
         "wadmkd": "Hutatoruan X",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Kantor Bupati Tapanuli Utara",
         "x_dms": "98° 57' 41.729\" E",
         "y_dms": "2° 1' 18.412\" N",
-        "baris_excel": 208,
+        "baris_excel": 280,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -5317,11 +7189,11 @@
         "wadmkk_tampil": "Tapanuli Utara",
         "wadmkc": "Tarutung",
         "wadmkd": "Hutatoruan X",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "RSUD Tarutung",
         "x_dms": "98° 57' 37.955\" E",
         "y_dms": "2° 1' 36.104\" N",
-        "baris_excel": 209,
+        "baris_excel": 281,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -5343,11 +7215,11 @@
         "wadmkk_tampil": "Tapanuli Utara",
         "wadmkc": "Tarutung",
         "wadmkd": "Hutatoruan X",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "RUTAN Tarutung",
         "x_dms": "98° 57' 36.767\" E",
         "y_dms": "2° 1' 18.277\" N",
-        "baris_excel": 210,
+        "baris_excel": 282,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -5361,6 +7233,136 @@
     },
     {
       "type": "Feature",
+      "id": "SRN-DS-282",
+      "properties": {
+        "id": "SRN-DS-282",
+        "jenis": "sirine",
+        "wadmkk": "Tapanuli Utara",
+        "wadmkk_tampil": "Tapanuli Utara",
+        "wadmkc": "Tarutung",
+        "wadmkd": "Hutatoruan XI",
+        "keterangan": "",
+        "remark": "Kantor Desa Hutatoruan IX",
+        "x_dms": "98° 57' 50.150\" E",
+        "y_dms": "2° 1' 25.020\" N",
+        "baris_excel": 283,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.96393056,
+          2.02361667
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SRN-DS-283",
+      "properties": {
+        "id": "SRN-DS-283",
+        "jenis": "sirine",
+        "wadmkk": "Tapanuli Utara",
+        "wadmkk_tampil": "Tapanuli Utara",
+        "wadmkc": "Tarutung",
+        "wadmkd": "Hutatoruan XI",
+        "keterangan": "",
+        "remark": "TPU Akong",
+        "x_dms": "98° 57' 35.759\" E",
+        "y_dms": "2° 1' 9.241\" N",
+        "baris_excel": 284,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.95993306,
+          2.01923361
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SRN-DS-284",
+      "properties": {
+        "id": "SRN-DS-284",
+        "jenis": "sirine",
+        "wadmkk": "Tapanuli Utara",
+        "wadmkk_tampil": "Tapanuli Utara",
+        "wadmkc": "Tarutung",
+        "wadmkd": "Partoli Toruan",
+        "keterangan": "",
+        "remark": "Kejaksaan Negeri Tapanuli Utara",
+        "x_dms": "98° 58' 28.945\" E",
+        "y_dms": "2° 1' 39.757\" N",
+        "baris_excel": 285,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.97470694,
+          2.02771028
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SRN-DS-285",
+      "properties": {
+        "id": "SRN-DS-285",
+        "jenis": "sirine",
+        "wadmkk": "Tapanuli Utara",
+        "wadmkk_tampil": "Tapanuli Utara",
+        "wadmkc": "Tarutung",
+        "wadmkd": "Partoli Toruan",
+        "keterangan": "",
+        "remark": "SDN 176329 Hutabarat",
+        "x_dms": "98° 58' 46.760\" E",
+        "y_dms": "2° 1' 49.780\" N",
+        "baris_excel": 286,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.97965556,
+          2.03049444
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SRN-DS-286",
+      "properties": {
+        "id": "SRN-DS-286",
+        "jenis": "sirine",
+        "wadmkk": "Tapanuli Utara",
+        "wadmkk_tampil": "Tapanuli Utara",
+        "wadmkc": "Tarutung",
+        "wadmkd": "Partoli Toruan",
+        "keterangan": "",
+        "remark": "UPT Terminal Madya Tarutung",
+        "x_dms": "98° 58' 27.979\" E",
+        "y_dms": "2° 1' 34.285\" N",
+        "baris_excel": 287,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.97443861,
+          2.02619028
+        ]
+      }
+    },
+    {
+      "type": "Feature",
       "id": "SRN-DS-207",
       "properties": {
         "id": "SRN-DS-207",
@@ -5369,11 +7371,11 @@
         "wadmkk_tampil": "Tapanuli Utara",
         "wadmkc": "Tarutung",
         "wadmkd": "Simamora",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Dinas Perindustrian dan Perdagangan Tapanuli Utara",
         "x_dms": "98° 57' 52.109\" E",
         "y_dms": "2° 1' 38.281\" N",
-        "baris_excel": 211,
+        "baris_excel": 288,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -5395,11 +7397,11 @@
         "wadmkk_tampil": "Tapanuli Utara",
         "wadmkc": "Tarutung",
         "wadmkd": "Simamora",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "Dinas Pertanian Tapanuli Utara",
         "x_dms": "98° 57' 53.951\" E",
         "y_dms": "2° 1' 39.334\" N",
-        "baris_excel": 212,
+        "baris_excel": 289,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -5421,11 +7423,11 @@
         "wadmkk_tampil": "Tapanuli Utara",
         "wadmkc": "Tarutung",
         "wadmkd": "Simamora",
-        "keterangan": "Titik Penempatan Sirine Peringatan",
+        "keterangan": "",
         "remark": "SMAN 3 Tarutung",
         "x_dms": "98° 57' 52.569\" E",
         "y_dms": "2° 1' 41.598\" N",
-        "baris_excel": 213,
+        "baris_excel": 290,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -5438,5 +7440,5 @@
       }
     }
   ],
-  "status_catatan": "Properti status bukan kolom pada Excel. KETERANGAN sumber hanya 'Titik Penempatan Sirine Peringatan' atau 'Titik Sensor'. Nilai awal semua titik adalah usulan_studi sesuai keputusan tampilan, dibaca dari data/status_override.csv (bukan inferensi lokasi). ID yang tidak ada di berkas itu memakai bawaan usulan_studi. Nilai belum_ditentukan memakai ikon pin asli tanpa warna status."
+  "status_catatan": "Properti status bukan kolom pada Excel. Lembar sirine tidak punya kolom KETERANGAN. Lembar sensor menyimpan KETERANGAN sebagai Eksisting atau Rencana, dan nama pos pada kolom Name. Nilai awal semua titik adalah usulan_studi sesuai keputusan tampilan, dibaca dari data/status_override.csv (bukan inferensi lokasi). ID baru ditambahkan sebagai usulan_studi. ID yang hilang dari sumber dibuang dari berkas itu. Nilai belum_ditentukan memakai ikon pin asli tanpa warna status."
 }

@@ -6,6 +6,7 @@ const files = [
   "sensor.geojson",
   "penduduk_terpapar.json",
   "alternatif_lokasi.json",
+  "tidak_disurvei.json",
   "batas/sumatera_utara_adm1.geojson",
   "points_das.csv",
   "mismatch_points.csv",

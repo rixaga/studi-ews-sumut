@@ -197,6 +197,16 @@ input[type="range"] { width: 100%; accent-color: #1c1c1f; }
 .kotak-sungai { background: rgba(79, 163, 224, 0.6); box-shadow: inset 0 0 0 1px #1f6fb2; }
 .kotak-danau { background: rgba(151, 219, 242, 0.85); box-shadow: inset 0 0 0 1px #2a9bb8; }
 .kelas i.titik-pos { width: 12px; height: 12px; border: 2px solid #fff; box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25); }
+.kelas i.titik-sensor-rencana {
+  width: 0;
+  height: 0;
+  border: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-bottom: 12px solid #ef6c00;
+  border-radius: 0;
+  box-shadow: none;
+}
 .titik-pkl { background: #e65100; border-radius: 2px; transform: rotate(45deg); }
 .titik-pch { background: #1565c0; border-radius: 50%; }
 .titik-pda { background: #00897b; border-radius: 0; clip-path: polygon(50% 0, 100% 100%, 0 100%); }

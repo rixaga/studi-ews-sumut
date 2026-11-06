@@ -10,13 +10,15 @@ Tampilan mengikuti bahasa visual [Pantau Bencana v0.3](https://pantau-bencana.gi
 
 | Berkas | Isi |
 | --- | --- |
-| `data/raw/SEBARAN SIRINE DAN SENSOR.xlsx` | Lembar SIRINE dan SENSOR. Tidak diubah. |
-| `data/raw/Olah Penduduk Terpapar.xlsx` | Lembar Terpapar, Terdampak, Sumut, dan Alternatif Lokasi. Tidak diubah. |
-| `data/sirine.geojson`, `data/sensor.geojson` | 209 sirine dan 65 sensor. |
+| `data/raw/SEBARAN_SENSOR_DAN_SIREN.xlsx` | Lembar SEBARAN SIREN dan SENSOR. Tidak diubah. |
+| `data/raw/20261105_Olah_Penduduk_Terpapar3.xlsx` | Lembar penduduk 5 November 2026, termasuk Tidak disurvei. |
+| `data/raw/arsip/` | Berkas mentah sebelumnya, tidak dipakai konversi. |
+| `data/sirine.geojson`, `data/sensor.geojson` | 286 sirine dan 41 sensor (33 Eksisting, 8 Rencana). |
 | `data/penduduk_terpapar.csv`, `data/penduduk_terpapar.json` | 3.039 desa pada 20 kabupaten/kota. |
 | `data/penduduk_terdampak.json` | Salinan multiset lembar Terpapar. Lihat isu di bawah. |
 | `data/penduduk_sumut.json` | 4.700 desa pada 33 kabupaten/kota. |
-| `data/alternatif_lokasi.json` | Dua panel kandidat desa, tanpa geometri. |
+| `data/alternatif_lokasi.json` | Kandidat desa pada lembar Alternatif Lokasi, tanpa geometri. |
+| `data/tidak_disurvei.json` | 28 desa di 7 kabupaten/kota di luar set survei. |
 | `data/status_override.csv` | Status tiap titik. Sunting berkas ini untuk mengubah status. |
 | `data/QA.md` | Jumlah, kosong, duplikat, bbox, dan isu yang diketahui. |
 | `data/batas/sumatera_utara_adm1.geojson` | Batas provinsi. |
@@ -36,9 +38,9 @@ WGS 84, EPSG:4326. Tidak ada transformasi datum lain.
 
 ### Status titik
 
-Excel **tidak** punya kolom status. `KETERANGAN` hanya berisi `Titik Penempatan Sirine Peringatan` atau `Titik Sensor`.
+Excel **tidak** punya kolom status. Lembar sirine tidak punya `KETERANGAN`. Lembar sensor memakai `KETERANGAN` = `Eksisting` atau `Rencana`, dan nama pos pada kolom `Name`.
 
-Keputusan tampilan saat ini: **semua 209 sirine dan 65 sensor berstatus `usulan_studi`** (pin ungu `#7B1FA2`). Keputusan itu dicatat baris per baris di `data/status_override.csv`, bukan disimpulkan dari lokasi atau remark.
+Keputusan tampilan saat ini: **semua 286 sirine dan 41 sensor berstatus `usulan_studi`**. Sensor rencana memakai ikon segitiga oranye; sensor existing memakai pin ungu. Keputusan status dicatat baris per baris di `data/status_override.csv`.
 
 Nilai yang diterima:
 
@@ -61,7 +63,7 @@ Klaster peta memakai satu sumber untuk sirine dan sensor sekaligus. Angka pada l
 
 Di bawah peta ada tabel ID, jenis, kabupaten/kota, kecamatan, desa, lokasi (remark), bujur, lintang, DAS, dan sub-DAS. Judul kolom bisa diurutkan. Kotak cari menyaring baris. “Kelompokkan berdasarkan” memilih kabupaten/kota atau DAS. Satu DAS dapat meliputi beberapa kabupaten/kota, jadi kelompok DAS menampilkan kabupaten/kota di dalamnya. Mengklik baris membawa peta ke titik itu dan membuka popup.
 
-Nama DAS dibaca dari `data/points_das.csv` (kolom `id`, `das`, `sub_das`). Seluruh 274 titik punya nama DAS. Kolom `sub_das` kosong pada berkas, jadi tabel menampilkan `-`. Nama Excel tidak diubah.
+Nama DAS dibaca dari `data/points_das.csv` (kolom `id`, `das`, `sub_das`), diisi ulang dari poligon Batas DAS KLHK. Kolom `sub_das` kosong, jadi tabel menampilkan `-`. Nama Excel tidak diubah.
 
 `data/mismatch_points.csv` menandai titik yang nama kab/kec/desanya pada Excel berbeda dari poligon HDX COD-AB. ID pada berkas itu berbentuk `SRN-001` / `SNS-001`; dasbor mencocokkannya ke `SRN-DS-001` / `SNS-DS-001` karena nomor dan nama Excel-nya sama. Baris itu mendapat tanda “cek” dan catatan pada popup. Nama sumber tidak diganti.
 
@@ -147,7 +149,7 @@ Pencarian tempat memakai Nominatim, dibatasi ke kotak Sumatera Utara dan `countr
 
 Masuk admin memakai email dan kata sandi Appwrite. Tautan lupa password mengarah kembali ke `https://rixaga.github.io/studi-ews-sumut/`. Formulir kata sandi baru muncul jika URL memuat `userId` dan `secret`. Tombol tambah, ubah, dan hapus hanya tampil bila pengguna adalah anggota tim `admin`.
 
-Titik usulan disimpan di Appwrite (endpoint dan ID proyek ada di `src/appwrite-config.ts`, tanpa kunci API). Lapisan peta dan angkanya terpisah dari 274 titik studi. Kabupaten, kecamatan, desa, dan DAS diisi dari poligon yang sudah ada di repositori. Ikon usulan baru berwarna teal, bukan merah sirine atau biru sensor.
+Titik usulan disimpan di Appwrite (endpoint dan ID proyek ada di `src/appwrite-config.ts`, tanpa kunci API). Lapisan peta dan angkanya terpisah dari 327 titik studi. Kabupaten, kecamatan, desa, dan DAS diisi dari poligon yang sudah ada di repositori. Ikon usulan baru berwarna teal, bukan merah sirine atau biru sensor.
 
 Anggota tim `admin` hanya melihat dua ikon di tepi kiri peta, di bawah kotak cari: pensil untuk **Tambah lokasi** dan penghapus untuk **Hapus lokasi**. Formulir, petunjuk, dan panel admin tidak tampil sebelum ikon ditekan. Pensil lalu klik peta membuka formulir jenis (sirine atau sensor), nama, dan catatan. Penghapus lalu klik titik menandai hapus. Menekan ikon yang sama lagi, atau Esc, mematikan mode dan menutup formulir. Bilah itu hilang saat keluar. Status tersimpan sebagai `usulan_studi`. **Hapus lokasi** tidak menghapus geometri: klik titik (studi atau usulan) menandai baris di tabel `titik_tanda`. Ikon asli tetap, dengan silang merah di atasnya. Popup menampilkan Dihapus, id pembuat, dan waktu. Admin dapat memilih Pulihkan. Pengunjung tanpa login tetap melihat tanda silang.
 
@@ -160,7 +162,7 @@ Izin tabel: baca `any`, buat/ubah/hapus `team:admin`. `rowSecurity` false. Indek
 | key | jenis | wajib | catatan |
 | --- | --- | --- | --- |
 | titik_id | string 64 | ya | ID titik studi (`SRN-DS-…` / `SNS-DS-…`) atau `$id` baris usulan |
-| sumber | enum `asli`, `usulan` | ya | `asli` untuk 274 titik, `usulan` untuk `titik_usulan` |
+| sumber | enum `asli`, `usulan` | ya | `asli` untuk 327 titik, `usulan` untuk `titik_usulan` |
 | status | enum `dihapus` | ya | satu nilai |
 | dibuat_oleh | string 128 | tidak | `$id` pengguna Appwrite |
 | waktu | datetime | ya | ISO 8601, offset UTC (`…+00:00`) |

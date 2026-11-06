@@ -61,16 +61,15 @@ export type BarisAlternatif = {
   kecamatan: string | null;
   desa: string | null;
   nilai: number | null;
-  penanda_angka: number | null;
-  status: string | null;
-  catatan: string | null;
+  alt_sirine: number | null;
+  sensor_di_desa: string | null;
+  nama_desa_sensor: string | null;
+  sensor_beda_desa: string | null;
 };
 
 export type BerkasAlternatif = {
   catatan: string;
-  panel_kiri: BarisAlternatif[];
-  panel_kanan: BarisAlternatif[];
-  angka_penutup: number | null;
+  baris: BarisAlternatif[];
 };
 
 export type BatasProvinsi = {

@@ -104,7 +104,7 @@
           </div>
           <div class="angka-grid">
             <div><p class="v3-angka v3-angka-kecil" id="n-sirine">—</p><p class="v3-angka-catatan">Sirine</p></div>
-            <div><p class="v3-angka v3-angka-kecil" id="n-sensor">—</p><p class="v3-angka-catatan">Sensor</p></div>
+            <div><p class="v3-angka v3-angka-kecil" id="n-sensor">—</p><p class="v3-angka-catatan" id="n-sensor-catatan">Sensor</p></div>
             <div><p class="v3-angka v3-angka-kecil" id="n-desa">—</p><p class="v3-angka-catatan">Desa terpapar</p></div>
             <div><p class="v3-angka v3-angka-kecil" id="n-pop">—</p><p class="v3-angka-catatan">Penduduk, dibulatkan</p></div>
           </div>
@@ -184,6 +184,10 @@
                 <p class="label-grup">Titik</p>
                 <label class="switch"><input id="tog-sirine" type="checkbox" checked /> Sirine</label>
                 <label class="switch"><input id="tog-sensor" type="checkbox" checked /> Sensor</label>
+                <ul class="kelas">
+                  <li><img src="./icons/sensor_banjir_usulan_studi.png" alt="" /> Sensor existing</li>
+                  <li><i class="titik-sensor-rencana"></i> Sensor rencana</li>
+                </ul>
                 <div id="ikon-legenda" class="matriks" aria-label="Legenda jenis dan status"></div>
                 <p class="hint">Belum ditentukan memakai pin asli: sirine merah, sensor biru.</p>
                 <label class="switch"><input id="tog-usulan" type="checkbox" checked /> Titik usulan</label>
@@ -348,7 +352,16 @@
                   <td>Tidak tercantum</td>
                   <td>Tidak tercantum</td>
                   <td>—</td>
-                  <td>Excel studi, lembar SIRINE dan SENSOR. Koordinat teks DMS, WGS84.</td>
+                  <td>Excel studi, lembar SEBARAN SIREN (286) dan SENSOR (33 Eksisting, 8 Rencana). Koordinat teks DMS, WGS84. Nama sensor dari kolom Name.</td>
+                  <td><span class="pil">statis</span></td>
+                </tr>
+                <tr>
+                  <td>Tidak disurvei</td>
+                  <td>Tidak tercantum pada berkas</td>
+                  <td>5 November 2026</td>
+                  <td>Tidak tercantum</td>
+                  <td>—</td>
+                  <td>28 desa di luar set survei: Asahan, Batu Bara, Mandailing Natal, Nias, Nias Selatan, Nias Utara, dan Pakpak Bharat. Lembar Tidak disurvei.</td>
                   <td><span class="pil">statis</span></td>
                 </tr>
                 <tr>

@@ -150,7 +150,7 @@ function ikonSirine(): maplibregl.ExpressionSpecification {
 }
 
 function ikonSensor(): maplibregl.ExpressionSpecification {
-  return [
+  const menurutStatus: maplibregl.ExpressionSpecification = [
     "match",
     ["get", "status"],
     "usulan_studi",
@@ -161,6 +161,28 @@ function ikonSensor(): maplibregl.ExpressionSpecification {
     "sensor-hasil-survei",
     "sensor",
   ];
+  return ["case", ["==", ["get", "keterangan"], "Rencana"], "sensor-rencana", menurutStatus];
+}
+
+function gambarSensorRencana(): ImageData {
+  const ukuran = 64;
+  const kanvas = document.createElement("canvas");
+  kanvas.width = ukuran;
+  kanvas.height = ukuran;
+  const g = kanvas.getContext("2d");
+  if (!g) throw new Error("kanvas sensor rencana");
+  g.translate(32, 28);
+  g.fillStyle = "#EF6C00";
+  g.strokeStyle = "#ffffff";
+  g.lineWidth = 4;
+  g.beginPath();
+  g.moveTo(0, -16);
+  g.lineTo(14, 8);
+  g.lineTo(-14, 8);
+  g.closePath();
+  g.fill();
+  g.stroke();
+  return g.getImageData(0, 0, ukuran, ukuran);
 }
 
 const namaLokasi: maplibregl.ExpressionSpecification = [
@@ -185,6 +207,16 @@ const tataLabel = {
   "text-optional": true,
 };
 
+function jenisTitik(properties: Record<string, unknown>): string {
+  const jenis = String(properties.jenis ?? "");
+  const keterangan = String(properties.keterangan ?? "");
+  if (jenis === "sirine") return "Sirine";
+  if (jenis === "sensor" && keterangan === "Rencana") return "Sensor rencana";
+  if (jenis === "sensor" && keterangan === "Eksisting") return "Sensor existing";
+  if (jenis === "sensor") return "Sensor";
+  return jenis || "—";
+}
+
 function judulTitik(properties: Record<string, unknown>): string {
   const remark = String(properties.remark ?? "").trim();
   const nama = String(properties.nama ?? "").trim();
@@ -196,7 +228,7 @@ function popupHtml(properties: Record<string, unknown>, coordinates: [number, nu
   const statusLabel = STATUS_LABEL[status as keyof typeof STATUS_LABEL] ?? status;
   const baris: Array<[string, string]> = [
     ["ID", String(properties.id ?? "—")],
-    ["Jenis", String(properties.jenis ?? "—")],
+    ["Jenis", jenisTitik(properties)],
     ["Status", statusLabel],
     ["Sumber status", labelStatusSumber(String(properties.status_sumber ?? ""))],
     ["Kabupaten/kota (sumber)", String(properties.wadmkk ?? "—")],
@@ -414,6 +446,7 @@ export async function createStudyMap(
     const image = await map.loadImage(asset(`icons/${file}`));
     if (!map.hasImage(name)) map.addImage(name, image.data, { pixelRatio: 2 });
   }
+  if (!map.hasImage("sensor-rencana")) map.addImage("sensor-rencana", gambarSensorRencana(), { pixelRatio: 2 });
 
   map.addSource("sumut", {
     type: "geojson",
@@ -1344,7 +1377,7 @@ function bukaPopupUsulanDari(
   const isi = baris.map(([label, value]) => `<tr><th>${escapeHtml(label)}</th><td>${escapeHtml(value)}</td></tr>`).join("");
   const popup = new maplibregl.Popup({ maxWidth: "320px", className: "ews-popup" })
     .setLngLat(coordinates)
-    .setHTML(`<h3>${escapeHtml(nama)}</h3><p class="popup-catatan">Titik usulan dari Appwrite. Bukan bagian dari 274 titik studi.</p>${blokDihapus(properties, aksi.admin)}<table>${isi}</table>${tombol}`)
+    .setHTML(`<h3>${escapeHtml(nama)}</h3><p class="popup-catatan">Titik usulan dari Appwrite. Bukan bagian dari 327 titik studi.</p>${blokDihapus(properties, aksi.admin)}<table>${isi}</table>${tombol}`)
     .addTo(map);
   popup.getElement()?.querySelector("[data-sunting]")?.addEventListener("click", () => aksi.sunting?.(id));
   pasangPulihkan(popup, id, "usulan");
