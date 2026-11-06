@@ -214,7 +214,7 @@
                 <p class="label-grup">Batas wilayah &amp; infrastruktur</p>
                 <label class="switch"><input id="tog-batas-das" type="checkbox" /> Batas DAS</label>
                 <div id="batas-das-detail" class="layer-detail" hidden>
-                  <ul class="kelas"><li><i class="garis garis-das"></i> Garis DAS, biru terang utuh</li></ul>
+                  <ul class="kelas"><li><i class="garis garis-das"></i> Garis DAS, jingga putus-putus</li></ul>
                   <p class="hint">218 poligon. Cermin ArcGIS Online pklpengeo 2023, skema KLHK. Bukan pernyataan resmi KLHK. Lisensi tidak dinyatakan.</p>
                   <p id="batas-das-status" class="hint"></p>
                 </div>
@@ -250,9 +250,18 @@
               </section>
               <section>
                 <p class="label-grup">Hidrologi</p>
+                <label class="switch"><input id="tog-sungai-osm" type="checkbox" checked /> Sungai dan anak sungai</label>
+                <div id="sungai-osm-detail" class="layer-detail">
+                  <ul class="kelas">
+                    <li><i class="garis garis-sungai"></i> Sungai dan kanal, biru terang</li>
+                    <li><i class="garis garis-anak"></i> Anak sungai, biru terang, mulai zoom 9</li>
+                  </ul>
+                  <p class="hint">OpenStreetMap, waterway sungai, kanal, dan anak sungai, dipotong ke Sumatera Utara. Bukan HydroRIVERS dan bukan nilai waktu nyata.</p>
+                  <p id="sungai-osm-status" class="hint"></p>
+                </div>
                 <label class="switch"><input id="tog-sungai-rtrw" type="checkbox" /> Sungai Induk (RTRW Sumut)</label>
                 <div id="sungai-rtrw-detail" class="layer-detail" hidden>
-                  <ul class="kelas"><li><i class="kotak-sungai"></i> Area sungai induk</li></ul>
+                  <ul class="kelas"><li><i class="kotak-sungai"></i> Area sungai induk, biru terang</li></ul>
                   <p class="hint">SiPintar Sumut – Perda No. 2/2017 RTRW Provinsi Sumatera Utara. Nama muncul bila diisi.</p>
                   <p id="sungai-rtrw-status" class="hint"></p>
                 </div>
@@ -404,7 +413,16 @@
                   <td>Perda No. 2/2017</td>
                   <td>Tidak dinyatakan pada berkas</td>
                   <td>—</td>
-                  <td>Jalan utama (arteri, kolektor, tol, kereta api), jalan lokal, area sungai induk, dan danau. EPSG:4326. Jalan lokal mulai zoom 11. Atribusi: SiPintar Sumut – Perda No. 2/2017 RTRW Provinsi Sumatera Utara.</td>
+                  <td>Jalan utama (arteri, kolektor, tol, kereta api), jalan lokal, area sungai induk, dan danau. EPSG:4326. Jalan lokal mulai zoom 11. Sungai induk memakai garis biru terang. Atribusi: SiPintar Sumut – Perda No. 2/2017 RTRW Provinsi Sumatera Utara.</td>
+                  <td><span class="pil">statis</span></td>
+                </tr>
+                <tr>
+                  <td>Sungai dan anak sungai</td>
+                  <td>OpenStreetMap contributors</td>
+                  <td>Unduhan November 2026</td>
+                  <td>ODbL</td>
+                  <td><a href="https://www.openstreetmap.org/copyright">openstreetmap.org/copyright</a></td>
+                  <td>Way waterway=river, stream, dan canal, dipotong ke batas provinsi. Sungai dan kanal lebih tebal daripada anak sungai. Bukan HydroRIVERS dan tanpa nilai debit.</td>
                   <td><span class="pil">statis</span></td>
                 </tr>
                 <tr>

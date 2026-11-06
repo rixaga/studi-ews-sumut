@@ -105,7 +105,7 @@ Atribusi citra: Tiles © Esri — Source: Esri, Maxar, Earthstar Geographics, an
 
 ### Sungai dan DAS
 
-HydroRIVERS dan HydroBASINS tidak dipakai. Sungai pada peta adalah lapisan **Sungai Induk (RTRW Sumut)** dari SiPintar. Garis DAS dan nama pada peta, serta kelompok DAS di daftar titik, memakai Batas DAS KLHK (`data/wilayah/das_sumut.geojson` dan `data/points_das.csv`), bukan sub-DAS HydroBASINS.
+HydroRIVERS dan HydroBASINS tidak dipakai. **Sungai dan anak sungai** adalah way OpenStreetMap `waterway=river`, `stream`, dan `canal` yang dipotong ke batas provinsi (`data/osm/sungai_sumut.geojson`). Berkas itu dibangun dari ekstrak Geofabrik `sumatra-latest.osm.pbf` dengan `python scripts/ambil_sungai_osm.py`. Lapisan itu nyala sejak awal, biru terang `#00B0FF`: sungai dan kanal lebih tebal (1,3 px pada zoom 6 sampai 2,1 px pada zoom 12) daripada anak sungai (0,9 px pada zoom 9 sampai 1,6 px pada zoom 14). **Sungai Induk (RTRW Sumut)** tetap mati sampai dinyalakan; isian dan garisnya juga `#00B0FF`, garis 1,6 px, lebih tipis daripada batas DAS. Garis DAS memakai warna jingga `#FF6D00`, putus-putus `[2, 1.5]`, tebal 2,8 px pada zoom 6 dan 4 px pada zoom 12. Nama DAS dan kelompok DAS di daftar titik tetap dari Batas DAS KLHK (`data/wilayah/das_sumut.geojson` dan `data/points_das.csv`).
 
 ### Indeks Bahaya Banjir (InaRISK)
 

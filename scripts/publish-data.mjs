@@ -18,6 +18,7 @@ const files = [
   "wilayah/adm4_desa.geojson",
   "survei.geojson",
   "pos_hidrologi_bbws2.geojson",
+  "osm/sungai_sumut.geojson",
 ];
 
 for (const rel of files) {

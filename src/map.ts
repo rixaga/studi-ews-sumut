@@ -11,6 +11,7 @@ export type RasterKind =
   | "batas-desa"
   | "jalan-rtrw"
   | "sungai-rtrw"
+  | "sungai-osm"
   | "danau-rtrw"
   | "pos-hidro";
 export type BatasJenis = "das" | "kab" | "kec" | "desa";
@@ -53,6 +54,7 @@ export type StudyMap = {
   setBatas(jenis: BatasJenis, nyala: boolean): Promise<void>;
   setJalanRtrw(nyala: boolean): Promise<void>;
   setSungaiRtrw(nyala: boolean): Promise<void>;
+  setSungaiOsm(nyala: boolean): Promise<void>;
   setDanauRtrw(nyala: boolean): Promise<void>;
   setPosHidro(nyala: boolean): Promise<void>;
   setUsulan(fitur: GeoJSON.Feature[], tampil: boolean): void;
@@ -244,13 +246,12 @@ function popupHtml(properties: Record<string, unknown>, coordinates: [number, nu
     ["Lintang", formatDerajat(coordinates[1])],
     ["Baris Excel", String(properties.baris_excel ?? "—")],
   ];
-  if (properties.jenis === "sirine" && properties.cakupan_total != null) {
+  if (properties.jenis === "sirine" && properties.cakupan_tercover != null) {
     baris.push(
       ["Penduduk tercover", formatBulat(Number(properties.cakupan_tercover))],
       ["Bahaya tinggi", formatBulat(Number(properties.cakupan_tinggi))],
       ["Bahaya sedang", formatBulat(Number(properties.cakupan_sedang))],
       ["Bahaya rendah", formatBulat(Number(properties.cakupan_rendah))],
-      ["Total", formatBulat(Number(properties.cakupan_total))],
     );
   }
   if (properties.cek_wilayah) {
@@ -274,7 +275,7 @@ function popupHtml(properties: Record<string, unknown>, coordinates: [number, nu
     ? `<p class="lencana-survei">Sudah disurvei</p>`
     : "";
   const catatanRadius =
-    properties.jenis === "sirine" && properties.cakupan_total != null
+    properties.jenis === "sirine" && properties.cakupan_tercover != null
       ? `<p class="popup-catatan">Radius sirine 1 km. Angka per sirine bisa saling tumpang tindih. Kelas adalah klasifikasi tampilan, bukan kelas resmi BNPB.</p>`
       : "";
   return `<h3>${escapeHtml(judulTitik(properties))}</h3>${lencana}<p class="popup-catatan">Status bukan kolom Excel. Koordinat WGS84 dari teks DMS.</p>${cek}${catatanRadius}${blokDihapus(properties, aksiTanda?.admin === true)}<table>${isi}</table>`;
@@ -747,6 +748,9 @@ export async function createStudyMap(
     "sungai-rtrw-label",
     "sungai-rtrw-garis",
     "sungai-rtrw-isi",
+    "sungai-osm-label",
+    "sungai-osm-besar",
+    "sungai-osm-anak",
     "danau-rtrw-label",
     "danau-rtrw-garis",
     "danau-rtrw-isi",
@@ -802,6 +806,7 @@ export async function createStudyMap(
   let genJalan = 0;
   let genLokal = 0;
   let genSungaiRtrw = 0;
+  let genSungaiOsm = 0;
   let genDanauRtrw = 0;
   let jalanRtrwNyala = false;
   const pasangJalanLokal = async () => {
@@ -924,7 +929,7 @@ export async function createStudyMap(
           id: "sungai-rtrw-isi",
           type: "fill",
           source: "sungai-rtrw",
-          paint: { "fill-color": "#4fa3e0", "fill-opacity": 0.6 },
+          paint: { "fill-color": "#00B0FF", "fill-opacity": 0.45 },
         },
         sebelumSipintar("sungai-rtrw-isi"),
       );
@@ -933,7 +938,7 @@ export async function createStudyMap(
           id: "sungai-rtrw-garis",
           type: "line",
           source: "sungai-rtrw",
-          paint: { "line-color": "#1f6fb2", "line-width": 0.5 },
+          paint: { "line-color": "#00B0FF", "line-width": 1.6 },
         },
         sebelumSipintar("sungai-rtrw-garis"),
       );
@@ -958,6 +963,95 @@ export async function createStudyMap(
       onRaster("sungai-rtrw", "ready");
     } catch {
       if (gen === genSungaiRtrw) onRaster("sungai-rtrw", "error");
+    }
+  };
+  const klikSungaiOsm = (event: maplibregl.MapLayerMouseEvent) => {
+    const properti = event.features?.[0]?.properties ?? {};
+    const nama = String(properti.nama ?? "").trim();
+    const jenis = String(properti.jenis ?? "Sungai");
+    popupAir?.remove();
+    popupKlaster?.remove();
+    popupAir = new maplibregl.Popup({ maxWidth: "280px", className: "ews-popup" })
+      .setLngLat(event.lngLat)
+      .setHTML(
+        `<h3>${escapeHtml(nama || jenis)}</h3><p class="popup-catatan">OpenStreetMap contributors. Bukan nilai hidrologi waktu nyata.</p><table>${nama ? `<tr><th>Nama</th><td>${escapeHtml(nama)}</td></tr>` : ""}<tr><th>Jenis</th><td>${escapeHtml(jenis)}</td></tr></table>`,
+      )
+      .addTo(map);
+  };
+  const pasangSungaiOsm = async (nyala: boolean) => {
+    if (!nyala) {
+      genSungaiOsm += 1;
+      lepasLapisan(["sungai-osm-anak", "sungai-osm-besar", "sungai-osm-label"], "sungai-osm");
+      onRaster("sungai-osm", "off");
+      return;
+    }
+    const gen = ++genSungaiOsm;
+    onRaster("sungai-osm", "loading");
+    try {
+      const data = await ambilVektor("data/osm/sungai_sumut.geojson");
+      if (gen !== genSungaiOsm) return;
+      lepasLapisan(["sungai-osm-anak", "sungai-osm-besar", "sungai-osm-label"], "sungai-osm");
+      map.addSource("sungai-osm", { type: "geojson", data, attribution: "© OpenStreetMap contributors" });
+      map.addLayer(
+        {
+          id: "sungai-osm-anak",
+          type: "line",
+          source: "sungai-osm",
+          minzoom: 9,
+          filter: ["==", ["get", "waterway"], "stream"],
+          layout: { "line-cap": "round", "line-join": "round" },
+          paint: {
+            "line-color": "#00B0FF",
+            "line-width": ["interpolate", ["linear"], ["zoom"], 9, 0.9, 14, 1.6],
+          },
+        },
+        sebelumSipintar("sungai-osm-anak"),
+      );
+      map.addLayer(
+        {
+          id: "sungai-osm-besar",
+          type: "line",
+          source: "sungai-osm",
+          filter: ["match", ["get", "waterway"], ["river", "canal"], true, false],
+          layout: { "line-cap": "round", "line-join": "round" },
+          paint: {
+            "line-color": "#00B0FF",
+            "line-width": ["interpolate", ["linear"], ["zoom"], 6, 1.3, 12, 2.1],
+          },
+        },
+        sebelumSipintar("sungai-osm-besar"),
+      );
+      map.addLayer(
+        {
+          id: "sungai-osm-label",
+          type: "symbol",
+          source: "sungai-osm",
+          minzoom: 10,
+          filter: ["all", ["match", ["get", "waterway"], ["river", "canal"], true, false], ["!=", ["get", "nama"], ""]],
+          layout: {
+            "text-field": ["get", "nama"],
+            "text-font": ["Noto Sans Regular"],
+            "text-size": 11,
+            "text-max-width": 8,
+          },
+          paint: { "text-color": "#0277BD", "text-halo-color": "#ffffff", "text-halo-width": 1.2 },
+        },
+        sebelumSipintar("sungai-osm-label"),
+      );
+      for (const id of ["sungai-osm-besar", "sungai-osm-anak"]) {
+        if (klikAirTerpasang.has(id)) continue;
+        klikAirTerpasang.add(id);
+        map.on("click", id, klikSungaiOsm);
+        map.on("mouseenter", id, () => {
+          map.getCanvas().style.cursor = "pointer";
+        });
+        map.on("mouseleave", id, () => {
+          map.getCanvas().style.cursor = "";
+        });
+      }
+      onRaster("sungai-osm", "ready");
+    } catch {
+      if (gen === genSungaiOsm) onRaster("sungai-osm", "error");
     }
   };
   const pasangDanauRtrw = async (nyala: boolean) => {
@@ -1202,6 +1296,7 @@ export async function createStudyMap(
     },
     setJalanRtrw: pasangJalanRtrw,
     setSungaiRtrw: pasangSungaiRtrw,
+    setSungaiOsm: pasangSungaiOsm,
     setDanauRtrw: pasangDanauRtrw,
     setPosHidro: pasangPosHidro,
     aturAksiUsulan(admin, sunting, hapus) {
@@ -1577,10 +1672,11 @@ async function pasangBatas(
           id: "batas-das-garis",
           type: "line",
           source: "batas-das",
-          layout: { "line-join": "round", "line-cap": "round" },
+          layout: { "line-join": "round", "line-cap": "butt" },
           paint: {
-            "line-color": "#00B0FF",
+            "line-color": "#FF6D00",
             "line-width": ["interpolate", ["linear"], ["zoom"], 6, 2.8, 12, 4],
+            "line-dasharray": [2, 1.5],
           },
         },
         "titik-clusters",
@@ -1596,7 +1692,7 @@ async function pasangBatas(
             "text-size": 11,
             "text-max-width": 10,
           },
-          paint: { "text-color": "#0277BD", "text-halo-color": "#ffffff", "text-halo-width": 1.4 },
+          paint: { "text-color": "#E65100", "text-halo-color": "#ffffff", "text-halo-width": 1.4 },
         },
         "titik-clusters",
       );
