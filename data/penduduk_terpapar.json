@@ -1,5 +1,5 @@
 {
-  "sumber_berkas": "Olah Penduduk Terpapar.xlsx",
+  "sumber_berkas": "20261105_Olah_Penduduk_Terpapar3.xlsx",
   "sumber_lembar": "Terpapar",
   "catatan": "Nilai penduduk_terpapar disalin dari kolom 'Penduduk Terpapar'. Metode penghitungan dan sumber penduduk tidak tertulis di berkas; jangan ditafsirkan di luar angka ini. kolom_e_tanpa_judul adalah kolom E tanpa header (108 sel terisi, selebihnya kosong). Angka pecahan dipertahankan. Aplikasi membulatkan hanya untuk tampilan.",
   "jumlah_baris": 3039,

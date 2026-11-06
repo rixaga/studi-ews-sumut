@@ -59,8 +59,10 @@ function kosong(nilai: string | null | undefined): string {
   return teks || "-";
 }
 
-function labelJenis(jenis: string): string {
+function labelJenis(jenis: string, keterangan: string): string {
   if (jenis === "sirine") return "Sirine";
+  if (jenis === "sensor" && keterangan === "Rencana") return "Sensor rencana";
+  if (jenis === "sensor" && keterangan === "Eksisting") return "Sensor existing";
   if (jenis === "sensor") return "Sensor";
   return jenis || "-";
 }
@@ -123,7 +125,7 @@ function jadiBaris(titik: Titik): Baris {
   return {
     titik,
     id: titik.properties.id,
-    jenis: labelJenis(titik.properties.jenis),
+    jenis: labelJenis(titik.properties.jenis, titik.properties.keterangan),
     status: STATUS_LABEL[titik.properties.status] ?? titik.properties.status,
     survei: sudahSurvei.has(titik.properties.id) ? "Sudah disurvei" : "—",
     kab: kosong(titik.properties.wadmkk_tampil),
@@ -195,7 +197,7 @@ function hitungJenis(daftar: Baris[]): { sirine: number; sensor: number } {
   let sensor = 0;
   for (const item of daftar) {
     if (item.jenis === "Sirine") sirine += 1;
-    else if (item.jenis === "Sensor") sensor += 1;
+    else if (item.jenis.startsWith("Sensor")) sensor += 1;
   }
   return { sirine, sensor };
 }

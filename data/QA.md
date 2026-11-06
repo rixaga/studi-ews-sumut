@@ -6,21 +6,21 @@ Dihasilkan oleh `scripts/convert_data.py`. Berkas mentah di `data/raw/` tidak di
 
 | Berkas | SHA-256 |
 | --- | --- |
-| data/raw/SEBARAN SIRINE DAN SENSOR.xlsx | `178eefd119f5275bac98e25b62dfb9dca0554ba7ecf70c33fc9c6d700ef75653` |
-| data/raw/Olah Penduduk Terpapar.xlsx | `4576fe7bd3e864ce176e379063b37b690f793629848d3aa2db860861270bd26e` |
+| data/raw/SEBARAN_SENSOR_DAN_SIREN.xlsx | `5a5812a6e7910d4dcc35aff2841443764edf8472a951299f28120a542a87f425` |
+| data/raw/20261105_Olah_Penduduk_Terpapar3.xlsx | `00e168f697b65becb5f37cf4e71ff84991037815732d24159942ba7ad5bd0682` |
 
 ## Jumlah
 
 | Lapisan | Jumlah | Keterangan |
 | --- | --- | --- |
-| Sirine | 209 | diharapkan 209 |
-| Sensor | 65 | diharapkan 65 |
+| Sirine | 286 | diharapkan 286 |
+| Sensor | 41 | diharapkan 41 (33 Eksisting, 8 Rencana) |
 | Kabupaten/kota pada titik | 12 | diharapkan 12 |
-| Desa lembar Terpapar | 3039 | 20 kabupaten/kota |
-| Desa lembar Terdampak | 3039 | dipertahankan, ditandai |
+| Desa lembar Terpapar | 3039 | |
+| Desa lembar Terdampak | 3039 | identik dengan Terpapar: True |
 | Desa lembar Sumut | 4700 | 33 kabupaten/kota |
-| Alternatif panel kiri | 28 | |
-| Alternatif panel kanan | 81 | |
+| Tidak disurvei | 28 | 7 kabupaten/kota |
+| Alternatif lokasi | 111 | |
 | Gagal konversi DMS sirine | 0 | |
 | Gagal konversi DMS sensor | 0 | |
 
@@ -30,35 +30,53 @@ Baris `Grand Total` pada lembar SIRINE dan SENSOR dibuang (bukan titik).
 
 | Kabupaten/kota | Sirine |
 | --- | --- |
-| Deli Serdang | 46 |
-| Langkat | 42 |
+| Deli Serdang | 60 |
+| Langkat | 58 |
 | Kota Medan | 26 |
+| Tapanuli Tengah | 24 |
+| Tapanuli Utara | 24 |
+| Tapanuli Selatan | 20 |
 | Serdang Bedagai | 18 |
-| Kota Binjai | 14 |
+| Kota Binjai | 15 |
 | Kota Tebing Tinggi | 12 |
 | Humbang Hasundutan | 10 |
 | Kota Sibolga | 10 |
-| Tapanuli Utara | 10 |
-| Tapanuli Tengah | 9 |
-| Tapanuli Selatan | 8 |
-| Kota Padangsidimpuan | 4 |
+| Kota Padangsidimpuan | 9 |
 
 ## Sensor per kabupaten/kota
 
-| Kabupaten/kota | Sensor |
-| --- | --- |
-| Deli Serdang | 15 |
-| Langkat | 15 |
-| Kota Medan | 9 |
-| Serdang Bedagai | 6 |
-| Kota Binjai | 5 |
-| Humbang Hasundutan | 3 |
-| Tapanuli Tengah | 3 |
-| Kota Padangsidimpuan | 2 |
-| Kota Tebing Tinggi | 2 |
-| Tapanuli Selatan | 2 |
-| Tapanuli Utara | 2 |
-| Kota Sibolga | 1 |
+| Kabupaten/kota | Eksisting | Rencana |
+| --- | --- | --- |
+| Deli Serdang | 9 | 0 |
+| Serdang Bedagai | 6 | 0 |
+| Langkat | 1 | 4 |
+| Tapanuli Utara | 5 | 0 |
+| Kota Tebing Tinggi | 3 | 0 |
+| Tapanuli Selatan | 2 | 1 |
+| Humbang Hasundutan | 2 | 0 |
+| Kota Binjai | 2 | 0 |
+| Kota Medan | 2 | 0 |
+| Tapanuli Tengah | 1 | 1 |
+| Kota Padangsidimpuan | 0 | 1 |
+| Kota Sibolga | 0 | 1 |
+
+## ID
+
+Koordinat dicocokkan pada 5 angka desimal.
+
+| Lapisan | Dipakai ulang | Dibuat | Dihapus |
+| --- | --- | --- | --- |
+| Sirine | 209 | 77 | 0 (—) |
+| Sensor | 2 | 39 | 63 |
+
+ID sirine baru: SRN-DS-210 … SRN-DS-286.
+ID sensor baru: SNS-DS-066 … SNS-DS-104.
+ID sensor yang dipertahankan: SNS-DS-033, SNS-DS-059.
+Titik tanpa nama DAS pada poligon KLHK: 0.
+
+## Tidak disurvei
+
+Kabupaten/kota: Asahan, Batu Bara, Mandailing Natal, Nias, Nias Selatan, Nias Utara, Pakpak Bharat.
 
 ## Penduduk terpapar per kabupaten/kota
 
@@ -131,14 +149,14 @@ Kabupaten/kota titik yang tidak ada di Terpapar: —.
 
 ## Isian kosong
 
-Sebelum isi-ke-depan, sel kab/kec/desa/keterangan kosong pada baris titik: sirine 197, sensor 53. Setelah isi-ke-depan:
+Sebelum isi-ke-depan, sel kab/kec/desa/keterangan kosong pada baris titik: sirine 274, sensor 29. Setelah isi-ke-depan:
 
 | Kolom | Sirine kosong | Sensor kosong |
 | --- | --- | --- |
 | wadmkk | 0 | 0 |
 | wadmkc | 0 | 0 |
 | wadmkd | 0 | 0 |
-| keterangan | 0 | 0 |
+| keterangan | 286 | 0 |
 | remark | 0 | 0 |
 | x/y | 0 | 0 |
 
@@ -153,16 +171,15 @@ Remark sirine yang tidak unik:
 
 | Remark | Jumlah |
 | --- | --- |
-| Kantor Urusan Agama | 2 |
+| Kantor Urusan Agama | 3 |
 
 Remark sensor yang tidak unik (ID unik tetap diberikan; remark sumber tidak diubah):
 
 | Remark | Jumlah |
 | --- | --- |
-| Jembatan | 30 |
-| Jembatan Jl. Binjai- Stabat | 2 |
+| Jembatan | 2 |
 
-Remark sensor persis `Jembatan`: 30 titik. Itu sebab ID `SNS-DS-###` dipakai, bukan teks remark.
+Remark sensor persis `Jembatan`: 2 titik. Itu sebab ID `SNS-DS-###` dipakai, bukan teks remark.
 
 ## Bbox dan batas provinsi
 
@@ -171,7 +188,7 @@ Batas referensi: geoBoundaries ADM1 `North Sumatra` / tampilan Sumatera Utara. B
 | Lapisan | Bbox [barat, selatan, timur, utara] | Di dalam bbox batas |
 | --- | --- | --- |
 | Sirine | [98.28845528, 1.14227833, 99.43123028, 4.03868528] | True |
-| Sensor | [98.28985222, 1.145035, 99.43044389, 4.05027889] | True |
+| Sensor | [98.155625, 1.16755111, 99.410385, 4.0016125] | True |
 
 Titik di luar poligon batas (ray casting, tidak dihapus):
 
@@ -185,15 +202,15 @@ Semua teks koordinat sumber yang terbaca berakhiran `E` (kolom X, bujur) dan `N`
 ## Isu yang diketahui
 
 1. Lembar Terdampak identik dengan Terpapar sebagai multiset: True. Urutan baris berbeda. Header nilai tetap "Penduduk Terpapar". Dipertahankan di `data/penduduk_terdampak.json` dan tidak ditampilkan sebagai angka kedua.
-2. Remark tidak unik, terutama sensor `Jembatan` (30 kali) dan beberapa nama sirine/sensor lain pada tabel di atas. ID titik dibuat unik: `SRN-DS-001` … dan `SNS-DS-001` ….
+2. Remark tidak unik pada sebagian sirine. Nama sensor diambil dari kolom Name. ID yang koordinatnya masih sama dipertahankan; ID baru melanjutkan nomor tertinggi dan ID yang hilang tidak dipakai lagi.
 3. String `KABUPATEN PADANGSIDIMPUAN` tidak muncul pada kolom kabupaten/kota. Nama yang tertulis sudah `Kota Padangsidimpuan` (titik: Kota Padangsidimpuan; penduduk: Kota Padangsidimpuan). Judul dan filter memakai nama sumber itu. Pemetaan cadangan di skrip mengubah `KABUPATEN PADANGSIDIMPUAN` menjadi `Kota Padangsidimpuan` pada `wadmkk_tampil` jika string itu muncul.
 4. Kolom E lembar Terpapar tidak berjudul. 108 sel terisi (nilai 1.0–108.0). Disimpan sebagai `kolom_e_tanpa_judul`, bukan sebagai peringkat resmi.
-5. Angka pada Alternatif Lokasi yang se-desa dengan lembar Sumut: panel kiri cocok 28 beda 0; panel kanan cocok 81 beda 0. Kecocokan ini pengamatan, bukan penamaan ulang kolom. `angka_penutup` panel kanan: 108.0.
+5. Angka kolom F (tanpa judul) pada Alternatif Lokasi yang se-desa dengan lembar Sumut: cocok 110, beda 0. Pengamatan, bukan penamaan ulang kolom.
 6. Lembar Terpapar terhadap Sumut: kunci desa hilang 0, nilai berbeda 0.
 7. Metode dan sumber penduduk tidak ada di berkas. Tidak diperkirakan di laporan ini.
 8. Tidak ada poligon desa pada masukan. Peta tidak mengarang batas desa.
 9. Ejaan teks remark (contoh pada sumber: "Hampaaran", "Percuit", "Padang Sidempuan") dibiarkan apa adanya.
-10. Excel tidak memuat kolom status. Properti status bukan kolom pada Excel. KETERANGAN sumber hanya 'Titik Penempatan Sirine Peringatan' atau 'Titik Sensor'. Nilai awal semua titik adalah usulan_studi sesuai keputusan tampilan, dibaca dari data/status_override.csv (bukan inferensi lokasi). ID yang tidak ada di berkas itu memakai bawaan usulan_studi. Nilai belum_ditentukan memakai ikon pin asli tanpa warna status. Ringkasan status saat konversi: usulan_studi=274. Catatan berkas override: tidak ada.
+10. Excel tidak memuat kolom status. Properti status bukan kolom pada Excel. Lembar sirine tidak punya kolom KETERANGAN. Lembar sensor menyimpan KETERANGAN sebagai Eksisting atau Rencana, dan nama pos pada kolom Name. Nilai awal semua titik adalah usulan_studi sesuai keputusan tampilan, dibaca dari data/status_override.csv (bukan inferensi lokasi). ID baru ditambahkan sebagai usulan_studi. ID yang hilang dari sumber dibuang dari berkas itu. Nilai belum_ditentukan memakai ikon pin asli tanpa warna status. Ringkasan status saat konversi: usulan_studi=327. Catatan berkas override: tidak ada.
 
 ## CRS
 

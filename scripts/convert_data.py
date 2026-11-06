@@ -2,9 +2,11 @@
 """Ubah Excel studi EWS Sumut menjadi GeoJSON, CSV, dan JSON.
 
 Masukan (tidak diubah):
-  data/raw/SEBARAN SIRINE DAN SENSOR.xlsx
-  data/raw/Olah Penduduk Terpapar.xlsx
+  data/raw/SEBARAN_SENSOR_DAN_SIREN.xlsx
+  data/raw/20261105_Olah_Penduduk_Terpapar3.xlsx
   data/batas/sumatera_utara_adm1.geojson
+  data/wilayah/das_sumut.geojson
+  data/sirine.geojson dan data/sensor.geojson yang sudah ada (untuk menjaga ID)
 
 Masukan tambahan (dibaca, tidak ditulis ulang):
   data/status_override.csv
@@ -17,6 +19,9 @@ Keluaran:
   data/penduduk_terdampak.json
   data/penduduk_sumut.json
   data/alternatif_lokasi.json
+  data/tidak_disurvei.json
+  data/points_das.csv
+  data/status_override.csv
   data/QA.md
 
 Nilai penduduk disimpan sebagai angka sumber (float Excel, dibersihkan ke 6
@@ -36,9 +41,14 @@ from pathlib import Path
 import openpyxl
 
 ROOT = Path(__file__).resolve().parents[1]
-RAW_SEBARAN = ROOT / "data" / "raw" / "SEBARAN SIRINE DAN SENSOR.xlsx"
-RAW_PENDUDUK = ROOT / "data" / "raw" / "Olah Penduduk Terpapar.xlsx"
+RAW_SEBARAN = ROOT / "data" / "raw" / "SEBARAN_SENSOR_DAN_SIREN.xlsx"
+RAW_PENDUDUK = ROOT / "data" / "raw" / "20261105_Olah_Penduduk_Terpapar3.xlsx"
 BATAS_PATH = ROOT / "data" / "batas" / "sumatera_utara_adm1.geojson"
+DAS_PATH = ROOT / "data" / "wilayah" / "das_sumut.geojson"
+OLD_SIRINE = ROOT / "data" / "sirine.geojson"
+OLD_SENSOR = ROOT / "data" / "sensor.geojson"
+EXPECT_SIRINE = 286
+EXPECT_SENSOR = 41
 
 DMS_RE = re.compile(
     r"""(\d+)\s*°\s*(\d+)\s*'\s*([\d.]+)\s*"\s*([NSEW])""",
@@ -58,11 +68,11 @@ STATUS_PATH = ROOT / "data" / "status_override.csv"
 DEFAULT_STATUS = "usulan_studi"
 VALID_STATUS = {"usulan_studi", "usulan_bpbd", "hasil_survei", "belum_ditentukan"}
 STATUS_CATATAN = (
-    "Properti status bukan kolom pada Excel. KETERANGAN sumber hanya "
-    "'Titik Penempatan Sirine Peringatan' atau 'Titik Sensor'. "
+    "Properti status bukan kolom pada Excel. Lembar sirine tidak punya kolom KETERANGAN. "
+    "Lembar sensor menyimpan KETERANGAN sebagai Eksisting atau Rencana, dan nama pos pada kolom Name. "
     "Nilai awal semua titik adalah usulan_studi sesuai keputusan tampilan, "
     "dibaca dari data/status_override.csv (bukan inferensi lokasi). "
-    "ID yang tidak ada di berkas itu memakai bawaan usulan_studi. "
+    "ID baru ditambahkan sebagai usulan_studi. ID yang hilang dari sumber dibuang dari berkas itu. "
     "Nilai belum_ditentukan memakai ikon pin asli tanpa warna status."
 )
 
@@ -109,19 +119,19 @@ def dms_to_dd(text: str) -> float:
     return round(value, 8)
 
 
-def load_rows(ws) -> list[dict]:
-    """Baca baris titik. Isi ke depan kab/kec/desa/keterangan. Buang Grand Total."""
+def load_sirine(ws) -> tuple[list[dict], int]:
+    """SEBARAN SIREN: WADMKK, WADMKC, WADMKD, REMARK, X, Y. Tanpa kolom KETERANGAN."""
     parsed: list[dict] = []
-    kab = kec = desa = ket = None
+    kab = kec = desa = None
     blank_admin_before = 0
     for row_idx in range(5, ws.max_row + 1):
-        raw = [ws.cell(row_idx, col).value for col in range(1, 8)]
-        a, b, c, d, remark, x_text, y_text = raw
-        if clean_text(a) == "Grand Total":
+        raw = [ws.cell(row_idx, col).value for col in range(1, 7)]
+        if any(clean_text(cell) == "Grand Total" for cell in raw):
             continue
         if all(cell is None for cell in raw):
             continue
-        if a is None or b is None or c is None or d is None:
+        a, b, c, remark, x_text, y_text = raw
+        if a is None or b is None or c is None:
             blank_admin_before += 1
         if a is not None:
             kab = clean_text(a)
@@ -129,16 +139,49 @@ def load_rows(ws) -> list[dict]:
             kec = clean_text(b)
         if c is not None:
             desa = clean_text(c)
-        if d is not None:
-            ket = clean_text(d)
         parsed.append(
             {
                 "baris_excel": row_idx,
                 "wadmkk": kab,
                 "wadmkc": kec,
                 "wadmkd": desa,
-                "keterangan": ket,
-                "remark": clean_text(remark),
+                "keterangan": "",
+                "remark": clean_text(remark) or "",
+                "x_dms": clean_text(x_text),
+                "y_dms": clean_text(y_text),
+            }
+        )
+    return parsed, blank_admin_before
+
+
+def load_sensor(ws) -> tuple[list[dict], int]:
+    """SENSOR: WADMKK, WADMKC, WADMKD, KETERANGAN, Name, X, Y."""
+    parsed: list[dict] = []
+    kab = kec = desa = None
+    blank_admin_before = 0
+    for row_idx in range(5, ws.max_row + 1):
+        raw = [ws.cell(row_idx, col).value for col in range(1, 8)]
+        if any(clean_text(cell) == "Grand Total" for cell in raw):
+            continue
+        if all(cell is None for cell in raw):
+            continue
+        a, b, c, ket, nama, x_text, y_text = raw
+        if a is None or b is None or c is None:
+            blank_admin_before += 1
+        if a is not None:
+            kab = clean_text(a)
+        if b is not None:
+            kec = clean_text(b)
+        if c is not None:
+            desa = clean_text(c)
+        parsed.append(
+            {
+                "baris_excel": row_idx,
+                "wadmkk": kab,
+                "wadmkc": kec,
+                "wadmkd": desa,
+                "keterangan": clean_text(ket) or "",
+                "remark": clean_text(nama) or "",
                 "x_dms": clean_text(x_text),
                 "y_dms": clean_text(y_text),
             }
@@ -252,54 +295,135 @@ def row_key(item: dict) -> tuple:
     )
 
 
-def read_alternatif(ws) -> dict:
-    kiri = []
-    kanan = []
-    angka_penutup = None
+def kunci_koordinat(lon: float, lat: float) -> tuple[float, float]:
+    return (round(lon, 5), round(lat, 5))
+
+
+def indeks_id_lama(path: Path) -> tuple[dict[tuple[float, float], list[str]], int]:
+    data = json.loads(path.read_text(encoding="utf-8"))
+    oleh: dict[tuple[float, float], list[str]] = {}
+    tertinggi = 0
+    for feature in data.get("features", []):
+        lon, lat = feature["geometry"]["coordinates"]
+        point_id = str(feature["properties"]["id"])
+        oleh.setdefault(kunci_koordinat(lon, lat), []).append(point_id)
+        tertinggi = max(tertinggi, int(point_id.rsplit("-", 1)[-1]))
+    return oleh, tertinggi
+
+
+def tetapkan_id(features: list[dict], path_lama: Path, awalan: str) -> dict[str, list[str]]:
+    """Jaga ID lama bila koordinat (5 desimal) cocok. ID baru melanjutkan nomor tertinggi."""
+    oleh, tertinggi = indeks_id_lama(path_lama)
+    terpakai: set[str] = set()
+    dipakai_ulang: list[str] = []
+    dibuat: list[str] = []
+    for feature in features:
+        lon, lat = feature["geometry"]["coordinates"]
+        pilihan = None
+        for calon in oleh.get(kunci_koordinat(lon, lat), []):
+            if calon not in terpakai:
+                pilihan = calon
+                break
+        if pilihan:
+            terpakai.add(pilihan)
+            point_id = pilihan
+            dipakai_ulang.append(point_id)
+        else:
+            tertinggi += 1
+            point_id = f"{awalan}-{tertinggi:03d}"
+            dibuat.append(point_id)
+        feature["id"] = point_id
+        feature["properties"]["id"] = point_id
+    lama = {point_id for daftar in oleh.values() for point_id in daftar}
+    return {"dipakai_ulang": dipakai_ulang, "dibuat": dibuat, "dihapus": sorted(lama - terpakai)}
+
+
+def nama_das_pada(lon: float, lat: float, fitur_das: list[dict]) -> str:
+    for feature in fitur_das:
+        if point_in_geometry(lon, lat, feature["geometry"]):
+            return str((feature.get("properties") or {}).get("nama_das") or "")
+    return ""
+
+
+def tulis_points_das(path: Path, features: list[dict], fitur_das: list[dict]) -> None:
+    with path.open("w", encoding="utf-8", newline="") as handle:
+        writer = csv.writer(handle)
+        writer.writerow(["id", "das", "sub_das"])
+        for feature in features:
+            lon, lat = feature["geometry"]["coordinates"]
+            writer.writerow([feature["properties"]["id"], nama_das_pada(lon, lat, fitur_das), ""])
+
+
+def tulis_status(path: Path, features: list[dict], overrides: dict[str, str]) -> None:
+    baris = []
+    for feature in features:
+        point_id = feature["properties"]["id"]
+        status = overrides.get(point_id, DEFAULT_STATUS)
+        feature["properties"]["status"] = status
+        feature["properties"]["status_sumber"] = "status_override.csv"
+        baris.append((point_id, status))
+    baris.sort(key=lambda item: (item[0][:3], int(item[0].rsplit("-", 1)[-1])))
+    with path.open("w", encoding="utf-8", newline="") as handle:
+        writer = csv.writer(handle)
+        writer.writerow(["id", "status"])
+        writer.writerows(baris)
+
+
+def read_tidak_disurvei(ws) -> list[dict]:
+    rows = []
     for row_idx in range(2, ws.max_row + 1):
-        a, b, c, d, e, f, g, h, i, j, k, l = [ws.cell(row_idx, col).value for col in range(1, 13)]
-        if clean_text(b) or clean_text(c) or clean_text(d) or e is not None:
-            kiri.append(
-                {
-                    "kab_kota": clean_text(b),
-                    "kecamatan": clean_text(c),
-                    "desa": clean_text(d),
-                    "nilai": clean_float(e),
-                    "penanda_angka": clean_float(a),
-                    "status": None,
-                    "catatan": None,
-                    "baris_excel": row_idx,
-                }
-            )
-        if clean_text(g) or clean_text(h) or clean_text(i) or j is not None:
-            kanan.append(
-                {
-                    "kab_kota": clean_text(g),
-                    "kecamatan": clean_text(h),
-                    "desa": clean_text(i),
-                    "nilai": clean_float(j),
-                    "penanda_angka": clean_float(f),
-                    "status": clean_text(k),
-                    "catatan": clean_text(l),
-                    "baris_excel": row_idx,
-                }
-            )
-        elif f is not None and g is None and b is None:
-            angka_penutup = clean_float(f)
+        penanda, kab, kec, desa, pop = [ws.cell(row_idx, col).value for col in range(1, 6)]
+        if clean_text(kab) is None and clean_text(kec) is None and clean_text(desa) is None:
+            continue
+        rows.append(
+            {
+                "penanda_angka": clean_float(penanda),
+                "kab_kota": clean_text(kab),
+                "kecamatan": clean_text(kec),
+                "desa": clean_text(desa),
+                "penduduk_terpapar": clean_float(pop),
+                "baris_excel": row_idx,
+            }
+        )
+    return rows
+
+
+def read_alternatif(ws) -> dict:
+    """Satu tabel. Header tertulis: kota/kab, kecamatan, desa, Alt sirine, dan tiga kolom sensor."""
+    rows = []
+    for row_idx in range(2, ws.max_row + 1):
+        raw = [ws.cell(row_idx, col).value for col in range(1, 12)]
+        if all(cell is None for cell in raw):
+            continue
+        penanda_a, penanda_b, kab, kec, desa, nilai, penanda_g, alt_sirine, sensor_desa, nama_desa, beda = raw
+        if clean_text(kab) is None and clean_text(desa) is None and nilai is None:
+            continue
+        rows.append(
+            {
+                "penanda_a": clean_float(penanda_a),
+                "penanda_b": clean_float(penanda_b),
+                "kab_kota": clean_text(kab),
+                "kecamatan": clean_text(kec),
+                "desa": clean_text(desa),
+                "nilai": clean_float(nilai),
+                "penanda_g": clean_text(penanda_g),
+                "alt_sirine": clean_float(alt_sirine),
+                "sensor_di_desa": clean_text(sensor_desa),
+                "nama_desa_sensor": clean_text(nama_desa),
+                "sensor_beda_desa": clean_text(beda),
+                "baris_excel": row_idx,
+            }
+        )
     return {
-        "sumber_berkas": "Olah Penduduk Terpapar.xlsx",
+        "sumber_berkas": RAW_PENDUDUK.name,
         "sumber_lembar": "Alternatif Lokasi",
         "catatan": (
-            "Lembar tersusun dua panel berdampingan. Judul kolom yang tertulis hanya "
-            "kota/kab, kecamatan, dan desa. Kolom numerik (E di panel kiri, J di panel kanan) "
-            "tidak berjudul pada sumber dan disimpan sebagai nilai. Kolom A dan F berisi angka "
-            "pada sebagian baris, juga tanpa judul, disimpan sebagai penanda_angka dan tidak "
-            "diisi-ke-depan. Status (kolom K) dan catatan (kolom L) hanya ada pada panel kanan. "
-            "Makna resmi angka tanpa judul tidak tertulis di berkas."
+            "Satu tabel, bukan dua panel. Judul yang tertulis: kota/kab, kecamatan, desa, "
+            "Alt sirine, Sensor eksisting di desa yang direncanakan sirine, Nama desa ada sensor, "
+            "dan Sensor eksisting, beda desa. Kolom A, B, F, dan G tidak berjudul. "
+            "Kolom F disimpan sebagai nilai. Makna resmi angka tanpa judul tidak tertulis di berkas."
         ),
-        "panel_kiri": kiri,
-        "panel_kanan": kanan,
-        "angka_penutup": angka_penutup,
+        "baris": rows,
     }
 
 
@@ -391,16 +515,19 @@ def main() -> int:
     sebaran = openpyxl.load_workbook(RAW_SEBARAN, data_only=True)
     penduduk_wb = openpyxl.load_workbook(RAW_PENDUDUK, data_only=True)
 
-    sirine_rows, sirine_blank = load_rows(sebaran["SIRINE"])
-    sensor_rows, sensor_blank = load_rows(sebaran["SENSOR"])
+    sirine_rows, sirine_blank = load_sirine(sebaran["SEBARAN SIREN"])
+    sensor_rows, sensor_blank = load_sensor(sebaran["SENSOR"])
     sirine_gj = to_geojson(sirine_rows, "SRN-DS", "sirine")
     sensor_gj = to_geojson(sensor_rows, "SNS-DS", "sensor")
     sirine_fail = sirine_gj.pop("_failures")
     sensor_fail = sensor_gj.pop("_failures")
+    id_sirine = tetapkan_id(sirine_gj["features"], OLD_SIRINE, "SRN-DS")
+    id_sensor = tetapkan_id(sensor_gj["features"], OLD_SENSOR, "SNS-DS")
 
     terpapar = read_penduduk_sheet(penduduk_wb["Terpapar"], extra_col=True)
     terdampak = read_penduduk_sheet(penduduk_wb["Terdampak"], extra_col=False)
     sumut = read_penduduk_sheet(penduduk_wb["Sumut"], extra_col=False)
+    tidak_disurvei = read_tidak_disurvei(penduduk_wb["Tidak disurvei"])
     alternatif = read_alternatif(penduduk_wb["Alternatif Lokasi"])
 
     ter_keys = Counter(row_key(row) for row in terpapar)
@@ -432,8 +559,7 @@ def main() -> int:
                 beda += 1
         return cocok, beda
 
-    kiri_cocok, kiri_beda = cocok_alternatif(alternatif["panel_kiri"])
-    kanan_cocok, kanan_beda = cocok_alternatif(alternatif["panel_kanan"])
+    alt_cocok, alt_beda = cocok_alternatif(alternatif["baris"])
 
     def outside(features: list[dict]) -> list[str]:
         hasil = []
@@ -482,12 +608,10 @@ def main() -> int:
     padang_penduduk = sorted({row["kab_kota"] for row in terpapar + sumut if row["kab_kota"] and "PADANGSIDIMPUAN" in row["kab_kota"].upper().replace(" ", "")})
 
     status_overrides, status_issues = load_status_overrides(STATUS_PATH)
-    apply_status(sirine_gj["features"], status_overrides)
-    apply_status(sensor_gj["features"], status_overrides)
-    known_ids = {feature["properties"]["id"] for feature in sirine_gj["features"] + sensor_gj["features"]}
-    unknown_ids = sorted(point_id for point_id in status_overrides if point_id not in known_ids)
-    if unknown_ids:
-        status_issues.append("ID pada status_override.csv tidak ada di titik: " + ", ".join(unknown_ids))
+    semua_fitur = sirine_gj["features"] + sensor_gj["features"]
+    tulis_status(STATUS_PATH, semua_fitur, status_overrides)
+    known_ids = {feature["properties"]["id"] for feature in semua_fitur}
+    hilang_override = sorted(set(status_overrides) - known_ids)
     sirine_gj["status_catatan"] = STATUS_CATATAN
     sensor_gj["status_catatan"] = STATUS_CATATAN
     status_counts = Counter(
@@ -500,7 +624,7 @@ def main() -> int:
     dump_json(
         ROOT / "data" / "penduduk_terpapar.json",
         {
-            "sumber_berkas": "Olah Penduduk Terpapar.xlsx",
+            "sumber_berkas": RAW_PENDUDUK.name,
             "sumber_lembar": "Terpapar",
             "catatan": (
                 "Nilai penduduk_terpapar disalin dari kolom 'Penduduk Terpapar'. "
@@ -516,7 +640,7 @@ def main() -> int:
     dump_json(
         ROOT / "data" / "penduduk_terdampak.json",
         {
-            "sumber_berkas": "Olah Penduduk Terpapar.xlsx",
+            "sumber_berkas": RAW_PENDUDUK.name,
             "sumber_lembar": "Terdampak",
             "isu": (
                 "Multiset (kab/kota, kecamatan, desa, penduduk) identik dengan lembar Terpapar. "
@@ -531,7 +655,7 @@ def main() -> int:
     dump_json(
         ROOT / "data" / "penduduk_sumut.json",
         {
-            "sumber_berkas": "Olah Penduduk Terpapar.xlsx",
+            "sumber_berkas": RAW_PENDUDUK.name,
             "sumber_lembar": "Sumut",
             "catatan": (
                 "Seluruh baris lembar Sumut. Header kolom nilai sama: 'Penduduk Terpapar'. "
@@ -544,6 +668,25 @@ def main() -> int:
         },
     )
     dump_json(ROOT / "data" / "alternatif_lokasi.json", alternatif)
+    kab_tidak = sorted({row["kab_kota"] for row in tidak_disurvei if row["kab_kota"]})
+    dump_json(
+        ROOT / "data" / "tidak_disurvei.json",
+        {
+            "sumber_berkas": RAW_PENDUDUK.name,
+            "sumber_lembar": "Tidak disurvei",
+            "catatan": (
+                "Desa pada lembar Tidak disurvei. Angka di kolom tanpa judul disimpan sebagai penduduk_terpapar "
+                "karena angkanya sejenis dengan kolom Penduduk Terpapar pada lembar lain; header kolom itu tidak tertulis. "
+                "penanda_angka adalah kolom A, juga tanpa judul, hanya terisi pada baris pertama tiap kabupaten/kota."
+            ),
+            "jumlah_baris": len(tidak_disurvei),
+            "kabupaten_kota": kab_tidak,
+            "baris": tidak_disurvei,
+        },
+    )
+    fitur_das = json.loads(DAS_PATH.read_text(encoding="utf-8"))["features"]
+    tulis_points_das(ROOT / "data" / "points_das.csv", semua_fitur, fitur_das)
+    tanpa_das = sum(1 for feature in semua_fitur if not nama_das_pada(*feature["geometry"]["coordinates"], fitur_das))
 
     sirine_remarks = nonunique([f["properties"]["remark"] for f in sirine_gj["features"]])
     sensor_remarks = nonunique([f["properties"]["remark"] for f in sensor_gj["features"]])
@@ -566,21 +709,21 @@ Dihasilkan oleh `scripts/convert_data.py`. Berkas mentah di `data/raw/` tidak di
 
 | Berkas | SHA-256 |
 | --- | --- |
-| data/raw/SEBARAN SIRINE DAN SENSOR.xlsx | `{sha256(RAW_SEBARAN)}` |
-| data/raw/Olah Penduduk Terpapar.xlsx | `{sha256(RAW_PENDUDUK)}` |
+| data/raw/{RAW_SEBARAN.name} | `{sha256(RAW_SEBARAN)}` |
+| data/raw/{RAW_PENDUDUK.name} | `{sha256(RAW_PENDUDUK)}` |
 
 ## Jumlah
 
 | Lapisan | Jumlah | Keterangan |
 | --- | --- | --- |
-| Sirine | {len(sirine_gj["features"])} | diharapkan 209 |
-| Sensor | {len(sensor_gj["features"])} | diharapkan 65 |
+| Sirine | {len(sirine_gj["features"])} | diharapkan {EXPECT_SIRINE} |
+| Sensor | {len(sensor_gj["features"])} | diharapkan {EXPECT_SENSOR} (33 Eksisting, 8 Rencana) |
 | Kabupaten/kota pada titik | {len(titik_kab)} | diharapkan 12 |
-| Desa lembar Terpapar | {len(terpapar)} | 20 kabupaten/kota |
-| Desa lembar Terdampak | {len(terdampak)} | dipertahankan, ditandai |
+| Desa lembar Terpapar | {len(terpapar)} | |
+| Desa lembar Terdampak | {len(terdampak)} | identik dengan Terpapar: {identik} |
 | Desa lembar Sumut | {len(sumut)} | {len(sumut_kab)} kabupaten/kota |
-| Alternatif panel kiri | {len(alternatif["panel_kiri"])} | |
-| Alternatif panel kanan | {len(alternatif["panel_kanan"])} | |
+| Tidak disurvei | {len(tidak_disurvei)} | {len(kab_tidak)} kabupaten/kota |
+| Alternatif lokasi | {len(alternatif["baris"])} | |
 | Gagal konversi DMS sirine | {len(sirine_fail)} | |
 | Gagal konversi DMS sensor | {len(sensor_fail)} | |
 
@@ -592,7 +735,32 @@ Baris `Grand Total` pada lembar SIRINE dan SENSOR dibuang (bukan titik).
 
 ## Sensor per kabupaten/kota
 
-{md_table(["Kabupaten/kota", "Sensor"], [[name, count] for name, count in kab_sensor])}
+{md_table(["Kabupaten/kota", "Eksisting", "Rencana"], [
+    [
+        name,
+        sum(1 for f in sensor_gj["features"] if f["properties"]["wadmkk"] == name and f["properties"]["keterangan"] == "Eksisting"),
+        sum(1 for f in sensor_gj["features"] if f["properties"]["wadmkk"] == name and f["properties"]["keterangan"] == "Rencana"),
+    ]
+    for name, _count in kab_sensor
+])}
+
+## ID
+
+Koordinat dicocokkan pada 5 angka desimal.
+
+| Lapisan | Dipakai ulang | Dibuat | Dihapus |
+| --- | --- | --- | --- |
+| Sirine | {len(id_sirine["dipakai_ulang"])} | {len(id_sirine["dibuat"])} | {len(id_sirine["dihapus"])} ({", ".join(id_sirine["dihapus"]) or "—"}) |
+| Sensor | {len(id_sensor["dipakai_ulang"])} | {len(id_sensor["dibuat"])} | {len(id_sensor["dihapus"])} |
+
+ID sirine baru: {id_sirine["dibuat"][0] if id_sirine["dibuat"] else "—"} … {id_sirine["dibuat"][-1] if id_sirine["dibuat"] else "—"}.
+ID sensor baru: {id_sensor["dibuat"][0] if id_sensor["dibuat"] else "—"} … {id_sensor["dibuat"][-1] if id_sensor["dibuat"] else "—"}.
+ID sensor yang dipertahankan: {", ".join(id_sensor["dipakai_ulang"]) or "—"}.
+Titik tanpa nama DAS pada poligon KLHK: {tanpa_das}.
+
+## Tidak disurvei
+
+Kabupaten/kota: {", ".join(kab_tidak)}.
 
 ## Penduduk terpapar per kabupaten/kota
 
@@ -669,10 +837,10 @@ Semua teks koordinat sumber yang terbaca berakhiran `E` (kolom X, bujur) dan `N`
 ## Isu yang diketahui
 
 1. Lembar Terdampak identik dengan Terpapar sebagai multiset: {identik}. Urutan baris berbeda. Header nilai tetap "Penduduk Terpapar". Dipertahankan di `data/penduduk_terdampak.json` dan tidak ditampilkan sebagai angka kedua.
-2. Remark tidak unik, terutama sensor `Jembatan` ({jembatan} kali) dan beberapa nama sirine/sensor lain pada tabel di atas. ID titik dibuat unik: `SRN-DS-001` … dan `SNS-DS-001` ….
+2. Remark tidak unik pada sebagian sirine. Nama sensor diambil dari kolom Name. ID yang koordinatnya masih sama dipertahankan; ID baru melanjutkan nomor tertinggi dan ID yang hilang tidak dipakai lagi.
 3. String `KABUPATEN PADANGSIDIMPUAN` tidak muncul pada kolom kabupaten/kota. Nama yang tertulis sudah `Kota Padangsidimpuan` (titik: {", ".join(padang_strings) or "—"}; penduduk: {", ".join(padang_penduduk) or "—"}). Judul dan filter memakai nama sumber itu. Pemetaan cadangan di skrip mengubah `KABUPATEN PADANGSIDIMPUAN` menjadi `Kota Padangsidimpuan` pada `wadmkk_tampil` jika string itu muncul.
 4. Kolom E lembar Terpapar tidak berjudul. {sum(1 for row in terpapar if row["kolom_e_tanpa_judul"] is not None)} sel terisi (nilai {min((row["kolom_e_tanpa_judul"] for row in terpapar if row["kolom_e_tanpa_judul"] is not None), default="—")}–{max((row["kolom_e_tanpa_judul"] for row in terpapar if row["kolom_e_tanpa_judul"] is not None), default="—")}). Disimpan sebagai `kolom_e_tanpa_judul`, bukan sebagai peringkat resmi.
-5. Angka pada Alternatif Lokasi yang se-desa dengan lembar Sumut: panel kiri cocok {kiri_cocok} beda {kiri_beda}; panel kanan cocok {kanan_cocok} beda {kanan_beda}. Kecocokan ini pengamatan, bukan penamaan ulang kolom. `angka_penutup` panel kanan: {alternatif["angka_penutup"]}.
+5. Angka kolom F (tanpa judul) pada Alternatif Lokasi yang se-desa dengan lembar Sumut: cocok {alt_cocok}, beda {alt_beda}. Pengamatan, bukan penamaan ulang kolom.
 6. Lembar Terpapar terhadap Sumut: kunci desa hilang {ter_missing}, nilai berbeda {ter_diff}.
 7. Metode dan sumber penduduk tidak ada di berkas. Tidak diperkirakan di laporan ini.
 8. Tidak ada poligon desa pada masukan. Peta tidak mengarang batas desa.
@@ -689,9 +857,24 @@ EPSG:4326 (WGS84), derajat desimal, urutan GeoJSON `[bujur, lintang]`.
     print(f"sirine {len(sirine_gj['features'])} sensor {len(sensor_gj['features'])} kab {len(titik_kab)}")
     print(f"terpapar {len(terpapar)} terdampak identik {identik} sumut {len(sumut)}")
     print(f"luar poligon sirine {len(sirine_out)} sensor {len(sensor_out)}")
-    if len(sirine_gj["features"]) != 209 or len(sensor_gj["features"]) != 65 or len(titik_kab) != 12:
-        print("jumlah tidak sesuai harapan", file=sys.stderr)
+    ket_sensor = Counter(f["properties"]["keterangan"] for f in sensor_gj["features"])
+    if (
+        len(sirine_gj["features"]) != EXPECT_SIRINE
+        or len(sensor_gj["features"]) != EXPECT_SENSOR
+        or len(titik_kab) != 12
+        or ket_sensor.get("Eksisting") != 33
+        or ket_sensor.get("Rencana") != 8
+        or len(tidak_disurvei) != 28
+        or len(kab_tidak) != 7
+    ):
+        print("jumlah tidak sesuai harapan", ket_sensor, len(tidak_disurvei), kab_tidak, file=sys.stderr)
         return 1
+    print(
+        f"id sirine ulang {len(id_sirine['dipakai_ulang'])} baru {len(id_sirine['dibuat'])} hapus {id_sirine['dihapus']}"
+    )
+    print(
+        f"id sensor ulang {len(id_sensor['dipakai_ulang'])} baru {len(id_sensor['dibuat'])} hapus {len(id_sensor['dihapus'])}"
+    )
     if sirine_fail or sensor_fail:
         print("ada DMS gagal", file=sys.stderr)
         return 1

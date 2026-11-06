@@ -1,0 +1,241 @@
+{
+  "sumber_berkas": "20261105_Olah_Penduduk_Terpapar3.xlsx",
+  "sumber_lembar": "Tidak disurvei",
+  "catatan": "Desa pada lembar Tidak disurvei. Angka di kolom tanpa judul disimpan sebagai penduduk_terpapar karena angkanya sejenis dengan kolom Penduduk Terpapar pada lembar lain; header kolom itu tidak tertulis. penanda_angka adalah kolom A, juga tanpa judul, hanya terisi pada baris pertama tiap kabupaten/kota.",
+  "jumlah_baris": 28,
+  "kabupaten_kota": [
+    "Asahan",
+    "Batu Bara",
+    "Mandailing Natal",
+    "Nias",
+    "Nias Selatan",
+    "Nias Utara",
+    "Pakpak Bharat"
+  ],
+  "baris": [
+    {
+      "penanda_angka": 4.0,
+      "kab_kota": "Asahan",
+      "kecamatan": "Simpang Empat",
+      "desa": "Simpang Empat",
+      "penduduk_terpapar": 13214.501006,
+      "baris_excel": 2
+    },
+    {
+      "penanda_angka": null,
+      "kab_kota": "Asahan",
+      "kecamatan": "Air Joman",
+      "desa": "Punggulan",
+      "penduduk_terpapar": 11732.137634,
+      "baris_excel": 3
+    },
+    {
+      "penanda_angka": null,
+      "kab_kota": "Asahan",
+      "kecamatan": "Kota Kisaran Timur",
+      "desa": "Mutiara",
+      "penduduk_terpapar": 10974.260538,
+      "baris_excel": 4
+    },
+    {
+      "penanda_angka": null,
+      "kab_kota": "Asahan",
+      "kecamatan": "Air Joman",
+      "desa": "Binjai Serbangan",
+      "penduduk_terpapar": 9184.300881,
+      "baris_excel": 5
+    },
+    {
+      "penanda_angka": 4.0,
+      "kab_kota": "Batu Bara",
+      "kecamatan": "Medang Deras",
+      "desa": "Lalang",
+      "penduduk_terpapar": 9690.664467,
+      "baris_excel": 6
+    },
+    {
+      "penanda_angka": null,
+      "kab_kota": "Batu Bara",
+      "kecamatan": "Tanjung Tiram",
+      "desa": "Suka Maju",
+      "penduduk_terpapar": 9588.532578,
+      "baris_excel": 7
+    },
+    {
+      "penanda_angka": null,
+      "kab_kota": "Batu Bara",
+      "kecamatan": "Nibung Hangus",
+      "desa": "Ujung Kubu",
+      "penduduk_terpapar": 7984.165467,
+      "baris_excel": 8
+    },
+    {
+      "penanda_angka": null,
+      "kab_kota": "Batu Bara",
+      "kecamatan": "Lima Puluh Pesisir",
+      "desa": "Gambus Laut",
+      "penduduk_terpapar": 6902.593003,
+      "baris_excel": 9
+    },
+    {
+      "penanda_angka": 4.0,
+      "kab_kota": "Mandailing Natal",
+      "kecamatan": "Panyabungan",
+      "desa": "Sipolu-Polu",
+      "penduduk_terpapar": 6169.699661,
+      "baris_excel": 10
+    },
+    {
+      "penanda_angka": null,
+      "kab_kota": "Mandailing Natal",
+      "kecamatan": "Muara Batang Gadis",
+      "desa": "Tabuyung",
+      "penduduk_terpapar": 4575.023684,
+      "baris_excel": 11
+    },
+    {
+      "penanda_angka": null,
+      "kab_kota": "Mandailing Natal",
+      "kecamatan": "Lingga Bayu",
+      "desa": "Simpang Gambir",
+      "penduduk_terpapar": 3767.704491,
+      "baris_excel": 12
+    },
+    {
+      "penanda_angka": null,
+      "kab_kota": "Mandailing Natal",
+      "kecamatan": "Panyabungan",
+      "desa": "Kota Siantar",
+      "penduduk_terpapar": 2761.806601,
+      "baris_excel": 13
+    },
+    {
+      "penanda_angka": 4.0,
+      "kab_kota": "Nias",
+      "kecamatan": "Idanogawo",
+      "desa": "Laowo Hilimbaruzo",
+      "penduduk_terpapar": 1893.586939,
+      "baris_excel": 14
+    },
+    {
+      "penanda_angka": null,
+      "kab_kota": "Nias",
+      "kecamatan": "Gido",
+      "desa": "Somi",
+      "penduduk_terpapar": 1821.091396,
+      "baris_excel": 15
+    },
+    {
+      "penanda_angka": null,
+      "kab_kota": "Nias",
+      "kecamatan": "Bawolato",
+      "desa": "Siofaewali",
+      "penduduk_terpapar": 1780.173416,
+      "baris_excel": 16
+    },
+    {
+      "penanda_angka": null,
+      "kab_kota": "Nias",
+      "kecamatan": "Bawolato",
+      "desa": "Hilihoru",
+      "penduduk_terpapar": 1650.999994,
+      "baris_excel": 17
+    },
+    {
+      "penanda_angka": 4.0,
+      "kab_kota": "Nias Selatan",
+      "kecamatan": "Teluk Dalam",
+      "desa": "Pasar Teluk Dalam",
+      "penduduk_terpapar": 5797.608048,
+      "baris_excel": 18
+    },
+    {
+      "penanda_angka": null,
+      "kab_kota": "Nias Selatan",
+      "kecamatan": "Toma",
+      "desa": "Hilisataro Raya",
+      "penduduk_terpapar": 3018.633845,
+      "baris_excel": 19
+    },
+    {
+      "penanda_angka": null,
+      "kab_kota": "Nias Selatan",
+      "kecamatan": "Lahusa",
+      "desa": "Sarahililaza",
+      "penduduk_terpapar": 1831.033329,
+      "baris_excel": 20
+    },
+    {
+      "penanda_angka": null,
+      "kab_kota": "Nias Selatan",
+      "kecamatan": "Susua",
+      "desa": "Sifalago Susua",
+      "penduduk_terpapar": 1677.216086,
+      "baris_excel": 21
+    },
+    {
+      "penanda_angka": 4.0,
+      "kab_kota": "Nias Utara",
+      "kecamatan": "Tuhemberua",
+      "desa": "Siofa Banua",
+      "penduduk_terpapar": 2676.566016,
+      "baris_excel": 22
+    },
+    {
+      "penanda_angka": null,
+      "kab_kota": "Nias Utara",
+      "kecamatan": "Lahewa",
+      "desa": "Pasar Lahewa",
+      "penduduk_terpapar": 2577.407904,
+      "baris_excel": 23
+    },
+    {
+      "penanda_angka": null,
+      "kab_kota": "Nias Utara",
+      "kecamatan": "Sawo",
+      "desa": "Lasara Sawo",
+      "penduduk_terpapar": 2197.684568,
+      "baris_excel": 24
+    },
+    {
+      "penanda_angka": null,
+      "kab_kota": "Nias Utara",
+      "kecamatan": "Afulu",
+      "desa": "Lauru Fadoro",
+      "penduduk_terpapar": 1933.567297,
+      "baris_excel": 25
+    },
+    {
+      "penanda_angka": 4.0,
+      "kab_kota": "Pakpak Bharat",
+      "kecamatan": "Sitelu Tali Urang Jehe",
+      "desa": "Simberruna",
+      "penduduk_terpapar": 804.087956,
+      "baris_excel": 26
+    },
+    {
+      "penanda_angka": null,
+      "kab_kota": "Pakpak Bharat",
+      "kecamatan": "Sitelu Tali Urang Jehe",
+      "desa": "Tanjung Meriah",
+      "penduduk_terpapar": 544.527414,
+      "baris_excel": 27
+    },
+    {
+      "penanda_angka": null,
+      "kab_kota": "Pakpak Bharat",
+      "kecamatan": "Sitelu Tali Urang Jehe",
+      "desa": "Mbinalun",
+      "penduduk_terpapar": 491.492182,
+      "baris_excel": 28
+    },
+    {
+      "penanda_angka": null,
+      "kab_kota": "Pakpak Bharat",
+      "kecamatan": "Siempat Rube",
+      "desa": "Siempat Rube II",
+      "penduduk_terpapar": 257.127776,
+      "baris_excel": 29
+    }
+  ]
+}

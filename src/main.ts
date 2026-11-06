@@ -188,41 +188,36 @@ function gambarDesa() {
     .join("")}</ul>`;
 }
 
-function gambarAlternatif(baris: BarisAlternatif[], judul: string): string {
-  if (!baris.length) return "";
+function gambarAlternatif(baris: BarisAlternatif[]): string {
+  if (!baris.length) return `<p class="hint">Tidak ada baris alternatif untuk kabupaten/kota ini.</p>`;
   const isi = baris
     .slice(0, 12)
     .map((row) => {
-      const catatan = row.catatan ? `<p class="v3-baris-rinci">${escapeHtml(row.catatan)}</p>` : "";
-      const status = row.status ? `<span class="v3-pil">${escapeHtml(row.status)}</span>` : "";
+      const sensor = [row.sensor_di_desa, row.nama_desa_sensor, row.sensor_beda_desa].filter(Boolean).join(" · ");
+      const rinci = sensor ? `<p class="v3-baris-rinci">${escapeHtml(sensor)}</p>` : "";
+      const alt = row.alt_sirine != null ? `<span class="v3-pil">${escapeHtml(row.alt_sirine)} sirine</span>` : "";
       return `<li class="desa-baris">
         <div>
           <p class="v3-baris-judul">${escapeHtml(row.desa)}</p>
           <p class="v3-baris-rinci">${escapeHtml(row.kecamatan)}</p>
-          ${catatan}
+          ${rinci}
         </div>
-        <div class="alt-kanan">${status}<strong>${formatBulat(row.nilai)}</strong></div>
+        <div class="alt-kanan">${alt}<strong>${formatBulat(row.nilai)}</strong></div>
       </li>`;
     })
     .join("");
   const sisa = baris.length > 12 ? `<p class="hint">${baris.length - 12} baris lagi tidak ditampilkan.</p>` : "";
-  return `<h3>${judul}</h3><ul class="v3-daftar">${isi}</ul>${sisa}`;
+  return `<ul class="v3-daftar">${isi}</ul>${sisa}<p class="hint">Angka dibulatkan. Kolom penduduk pada lembar ini tidak berjudul.</p>`;
 }
 
 function gambarAlt() {
   if (!alternatif) return;
   const kab = kabSelect.value;
   if (kab === "semua") {
-    altBody.innerHTML = `<p class="hint">Pilih kabupaten/kota untuk melihat kandidat. Panel kiri ${alternatif.panel_kiri.length} desa, panel kanan ${alternatif.panel_kanan.length} desa. Nilai numerik tidak berjudul di sumber.</p>`;
+    altBody.innerHTML = `<p class="hint">Pilih kabupaten/kota untuk melihat kandidat. ${alternatif.baris.length} desa pada lembar Alternatif Lokasi.</p>`;
     return;
   }
-  const kiri = alternatif.panel_kiri.filter((row) => row.kab_kota === kab);
-  const kanan = alternatif.panel_kanan.filter((row) => row.kab_kota === kab);
-  if (!kiri.length && !kanan.length) {
-    altBody.innerHTML = `<p class="hint">Tidak ada baris alternatif untuk kabupaten/kota ini.</p>`;
-    return;
-  }
-  altBody.innerHTML = `${gambarAlternatif(kanan, "Panel kanan")}${gambarAlternatif(kiri, "Panel kiri")}<p class="hint">Angka dibulatkan. Kolom nilai tidak berjudul pada berkas sumber.</p>`;
+  altBody.innerHTML = gambarAlternatif(alternatif.baris.filter((row) => row.kab_kota === kab));
 }
 
 function perbaruiStatus() {
@@ -295,6 +290,12 @@ function terapkan(geserPeta: boolean) {
   const nPop = document.querySelector("#n-pop");
   if (nSirine) nSirine.textContent = sirineSaring.length.toLocaleString("id-ID");
   if (nSensor) nSensor.textContent = sensorSaring.length.toLocaleString("id-ID");
+  const catatanSensor = document.querySelector("#n-sensor-catatan");
+  if (catatanSensor) {
+    const existing = sensorSaring.filter((titik) => titik.properties.keterangan === "Eksisting").length;
+    const rencana = sensorSaring.filter((titik) => titik.properties.keterangan === "Rencana").length;
+    catatanSensor.textContent = `Sensor · ${existing.toLocaleString("id-ID")} existing, ${rencana.toLocaleString("id-ID")} rencana`;
+  }
   if (nDesa) nDesa.textContent = jumlahPositif.toLocaleString("id-ID");
   if (nPop) nPop.textContent = formatBulat(jumlahPenduduk);
   gambarDesa();
