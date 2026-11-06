@@ -6,7 +6,7 @@ Masukan (tidak diubah):
   data/raw/20261105_Olah_Penduduk_Terpapar3.xlsx
   data/batas/sumatera_utara_adm1.geojson
   data/wilayah/das_sumut.geojson
-  data/sirine.geojson dan data/sensor.geojson yang sudah ada (untuk menjaga ID)
+  data/id_acuan/sirine.geojson dan data/id_acuan/sensor.geojson (ID sebelum pembaruan ini)
 
 Masukan tambahan (dibaca, tidak ditulis ulang):
   data/status_override.csv
@@ -45,8 +45,8 @@ RAW_SEBARAN = ROOT / "data" / "raw" / "SEBARAN_SENSOR_DAN_SIREN.xlsx"
 RAW_PENDUDUK = ROOT / "data" / "raw" / "20261105_Olah_Penduduk_Terpapar3.xlsx"
 BATAS_PATH = ROOT / "data" / "batas" / "sumatera_utara_adm1.geojson"
 DAS_PATH = ROOT / "data" / "wilayah" / "das_sumut.geojson"
-OLD_SIRINE = ROOT / "data" / "sirine.geojson"
-OLD_SENSOR = ROOT / "data" / "sensor.geojson"
+OLD_SIRINE = ROOT / "data" / "id_acuan" / "sirine.geojson"
+OLD_SENSOR = ROOT / "data" / "id_acuan" / "sensor.geojson"
 EXPECT_SIRINE = 286
 EXPECT_SENSOR = 41
 

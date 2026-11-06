@@ -1,0 +1,1698 @@
+{
+  "type": "FeatureCollection",
+  "name": "sensor",
+  "crs_catatan": "WGS84 (EPSG:4326). Bujur/lintang dihitung dari teks DMS kolom X dan Y. Hemisfer mengikuti akhiran E/W dan N/S pada sumber.",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "SNS-DS-001",
+      "properties": {
+        "id": "SNS-DS-001",
+        "jenis": "sensor",
+        "wadmkk": "Deli Serdang",
+        "wadmkk_tampil": "Deli Serdang",
+        "wadmkc": "Batang Kuis",
+        "wadmkd": "Tanjung Sari",
+        "keterangan": "Titik Sensor",
+        "remark": "Stasiun Batang Kuis",
+        "x_dms": "98° 48' 3.100\" E",
+        "y_dms": "3° 36' 38.121\" N",
+        "baris_excel": 5,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.80086111,
+          3.61058917
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SNS-DS-002",
+      "properties": {
+        "id": "SNS-DS-002",
+        "jenis": "sensor",
+        "wadmkk": "Deli Serdang",
+        "wadmkk_tampil": "Deli Serdang",
+        "wadmkc": "Beringin",
+        "wadmkd": "Sidodadi Ramunia",
+        "keterangan": "Titik Sensor",
+        "remark": "Jembatan Sei Kenang",
+        "x_dms": "98° 54' 56.680\" E",
+        "y_dms": "3° 36' 8.441\" N",
+        "baris_excel": 6,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.91574444,
+          3.60234472
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SNS-DS-003",
+      "properties": {
+        "id": "SNS-DS-003",
+        "jenis": "sensor",
+        "wadmkk": "Deli Serdang",
+        "wadmkk_tampil": "Deli Serdang",
+        "wadmkc": "Hamparan Perak",
+        "wadmkd": "Hamparan Perak",
+        "keterangan": "Titik Sensor",
+        "remark": "Jembatan",
+        "x_dms": "98° 37' 55.596\" E",
+        "y_dms": "3° 44' 13.636\" N",
+        "baris_excel": 7,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.63211,
+          3.73712111
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SNS-DS-004",
+      "properties": {
+        "id": "SNS-DS-004",
+        "jenis": "sensor",
+        "wadmkk": "Deli Serdang",
+        "wadmkk_tampil": "Deli Serdang",
+        "wadmkc": "Hamparan Perak",
+        "wadmkd": "Klumpang Kebun",
+        "keterangan": "Titik Sensor",
+        "remark": "Jembatan",
+        "x_dms": "98° 36' 54.035\" E",
+        "y_dms": "3° 41' 16.680\" N",
+        "baris_excel": 8,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.61500972,
+          3.68796667
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SNS-DS-005",
+      "properties": {
+        "id": "SNS-DS-005",
+        "jenis": "sensor",
+        "wadmkk": "Deli Serdang",
+        "wadmkk_tampil": "Deli Serdang",
+        "wadmkc": "Labuhan Deli",
+        "wadmkd": "Pematang Johar",
+        "keterangan": "Titik Sensor",
+        "remark": "Jembatan",
+        "x_dms": "98° 42' 58.253\" E",
+        "y_dms": "3° 40' 6.377\" N",
+        "baris_excel": 9,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.71618139,
+          3.66843806
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SNS-DS-006",
+      "properties": {
+        "id": "SNS-DS-006",
+        "jenis": "sensor",
+        "wadmkk": "Deli Serdang",
+        "wadmkk_tampil": "Deli Serdang",
+        "wadmkc": "Lubuk Pakam",
+        "wadmkd": "Sekip",
+        "keterangan": "Titik Sensor",
+        "remark": "Jembatan",
+        "x_dms": "98° 53' 20.747\" E",
+        "y_dms": "3° 34' 16.552\" N",
+        "baris_excel": 10,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.88909639,
+          3.57126444
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SNS-DS-007",
+      "properties": {
+        "id": "SNS-DS-007",
+        "jenis": "sensor",
+        "wadmkk": "Deli Serdang",
+        "wadmkk_tampil": "Deli Serdang",
+        "wadmkc": "Percut Sei Tuan",
+        "wadmkd": "Bandar Khalipah",
+        "keterangan": "Titik Sensor",
+        "remark": "Jembatan",
+        "x_dms": "98° 44' 44.637\" E",
+        "y_dms": "3° 36' 34.990\" N",
+        "baris_excel": 11,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.7457325,
+          3.60971944
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SNS-DS-008",
+      "properties": {
+        "id": "SNS-DS-008",
+        "jenis": "sensor",
+        "wadmkk": "Deli Serdang",
+        "wadmkk_tampil": "Deli Serdang",
+        "wadmkc": "Percut Sei Tuan",
+        "wadmkd": "Bandar Klippa",
+        "keterangan": "Titik Sensor",
+        "remark": "SMPN 8 Percuit Sei Tuan",
+        "x_dms": "98° 46' 36.575\" E",
+        "y_dms": "3° 37' 21.216\" N",
+        "baris_excel": 12,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.77682639,
+          3.62256
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SNS-DS-009",
+      "properties": {
+        "id": "SNS-DS-009",
+        "jenis": "sensor",
+        "wadmkk": "Deli Serdang",
+        "wadmkk_tampil": "Deli Serdang",
+        "wadmkc": "Percut Sei Tuan",
+        "wadmkd": "Kenangan Baru",
+        "keterangan": "Titik Sensor",
+        "remark": "Jembatan",
+        "x_dms": "98° 44' 28.183\" E",
+        "y_dms": "3° 35' 31.938\" N",
+        "baris_excel": 13,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.74116194,
+          3.592205
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SNS-DS-010",
+      "properties": {
+        "id": "SNS-DS-010",
+        "jenis": "sensor",
+        "wadmkk": "Deli Serdang",
+        "wadmkk_tampil": "Deli Serdang",
+        "wadmkc": "Percut Sei Tuan",
+        "wadmkd": "Percut",
+        "keterangan": "Titik Sensor",
+        "remark": "Jembatan Kambes",
+        "x_dms": "98° 45' 53.840\" E",
+        "y_dms": "3° 40' 59.109\" N",
+        "baris_excel": 14,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.76495556,
+          3.68308583
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SNS-DS-011",
+      "properties": {
+        "id": "SNS-DS-011",
+        "jenis": "sensor",
+        "wadmkk": "Deli Serdang",
+        "wadmkk_tampil": "Deli Serdang",
+        "wadmkc": "Percut Sei Tuan",
+        "wadmkd": "Saentis",
+        "keterangan": "Titik Sensor",
+        "remark": "Jembatan Sei Percuit",
+        "x_dms": "98° 45' 26.720\" E",
+        "y_dms": "3° 39' 40.640\" N",
+        "baris_excel": 15,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.75742222,
+          3.66128889
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SNS-DS-012",
+      "properties": {
+        "id": "SNS-DS-012",
+        "jenis": "sensor",
+        "wadmkk": "Deli Serdang",
+        "wadmkk_tampil": "Deli Serdang",
+        "wadmkc": "Percut Sei Tuan",
+        "wadmkd": "Sambirejo Timur",
+        "keterangan": "Titik Sensor",
+        "remark": "Jembatan",
+        "x_dms": "98° 47' 27.360\" E",
+        "y_dms": "3° 35' 25.759\" N",
+        "baris_excel": 16,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.79093333,
+          3.59048861
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SNS-DS-013",
+      "properties": {
+        "id": "SNS-DS-013",
+        "jenis": "sensor",
+        "wadmkk": "Deli Serdang",
+        "wadmkk_tampil": "Deli Serdang",
+        "wadmkc": "Percut Sei Tuan",
+        "wadmkd": "Sampali",
+        "keterangan": "Titik Sensor",
+        "remark": "Jembatan",
+        "x_dms": "98° 42' 30.989\" E",
+        "y_dms": "3° 39' 2.600\" N",
+        "baris_excel": 17,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.70860806,
+          3.65072222
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SNS-DS-014",
+      "properties": {
+        "id": "SNS-DS-014",
+        "jenis": "sensor",
+        "wadmkk": "Deli Serdang",
+        "wadmkk_tampil": "Deli Serdang",
+        "wadmkc": "Percut Sei Tuan",
+        "wadmkd": "Sei Rotan",
+        "keterangan": "Titik Sensor",
+        "remark": "Jembatan Sei Rotan 4",
+        "x_dms": "98° 47' 29.933\" E",
+        "y_dms": "3° 36' 25.407\" N",
+        "baris_excel": 18,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.79164806,
+          3.6070575
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SNS-DS-015",
+      "properties": {
+        "id": "SNS-DS-015",
+        "jenis": "sensor",
+        "wadmkk": "Deli Serdang",
+        "wadmkk_tampil": "Deli Serdang",
+        "wadmkc": "Percut Sei Tuan",
+        "wadmkd": "Tembung",
+        "keterangan": "Titik Sensor",
+        "remark": "Jembatan",
+        "x_dms": "98° 44' 28.492\" E",
+        "y_dms": "3° 35' 32.109\" N",
+        "baris_excel": 19,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.74124778,
+          3.5922525
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SNS-DS-016",
+      "properties": {
+        "id": "SNS-DS-016",
+        "jenis": "sensor",
+        "wadmkk": "Humbang Hasundutan",
+        "wadmkk_tampil": "Humbang Hasundutan",
+        "wadmkc": "Baktiraja",
+        "wadmkd": "Marbun Toruan",
+        "keterangan": "Titik Sensor",
+        "remark": "Jembatan",
+        "x_dms": "98° 49' 17.715\" E",
+        "y_dms": "2° 19' 23.111\" N",
+        "baris_excel": 20,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.8215875,
+          2.32308639
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SNS-DS-017",
+      "properties": {
+        "id": "SNS-DS-017",
+        "jenis": "sensor",
+        "wadmkk": "Humbang Hasundutan",
+        "wadmkk_tampil": "Humbang Hasundutan",
+        "wadmkc": "Baktiraja",
+        "wadmkd": "Sinambela",
+        "keterangan": "Titik Sensor",
+        "remark": "Jembatan",
+        "x_dms": "98° 49' 18.129\" E",
+        "y_dms": "2° 19' 23.011\" N",
+        "baris_excel": 21,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.8217025,
+          2.32305861
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SNS-DS-018",
+      "properties": {
+        "id": "SNS-DS-018",
+        "jenis": "sensor",
+        "wadmkk": "Humbang Hasundutan",
+        "wadmkk_tampil": "Humbang Hasundutan",
+        "wadmkc": "Baktiraja",
+        "wadmkd": "Tipang",
+        "keterangan": "Titik Sensor",
+        "remark": "SDN 174538 Tipang Baktiraja",
+        "x_dms": "98° 49' 34.466\" E",
+        "y_dms": "2° 21' 21.291\" N",
+        "baris_excel": 22,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.82624056,
+          2.35591417
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SNS-DS-019",
+      "properties": {
+        "id": "SNS-DS-019",
+        "jenis": "sensor",
+        "wadmkk": "Kota Binjai",
+        "wadmkk_tampil": "Kota Binjai",
+        "wadmkc": "Binjai Barat",
+        "wadmkd": "Paya Roba",
+        "keterangan": "Titik Sensor",
+        "remark": "Jembatan Jl Labu",
+        "x_dms": "98° 29' 3.685\" E",
+        "y_dms": "3° 37' 55.833\" N",
+        "baris_excel": 23,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.48435694,
+          3.63217583
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SNS-DS-020",
+      "properties": {
+        "id": "SNS-DS-020",
+        "jenis": "sensor",
+        "wadmkk": "Kota Binjai",
+        "wadmkk_tampil": "Kota Binjai",
+        "wadmkc": "Binjai Kota",
+        "wadmkd": "Berngam",
+        "keterangan": "Titik Sensor",
+        "remark": "Jembatan Sungai Binge Berngam",
+        "x_dms": "98° 27' 36.606\" E",
+        "y_dms": "3° 35' 47.333\" N",
+        "baris_excel": 24,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.46016833,
+          3.59648139
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SNS-DS-021",
+      "properties": {
+        "id": "SNS-DS-021",
+        "jenis": "sensor",
+        "wadmkk": "Kota Binjai",
+        "wadmkk_tampil": "Kota Binjai",
+        "wadmkc": "Binjai Utara",
+        "wadmkd": "Cengkeh Turi",
+        "keterangan": "Titik Sensor",
+        "remark": "Jembatan Binjai Paya Roba",
+        "x_dms": "98° 28' 34.206\" E",
+        "y_dms": "3° 38' 34.047\" N",
+        "baris_excel": 25,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.47616833,
+          3.64279083
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SNS-DS-022",
+      "properties": {
+        "id": "SNS-DS-022",
+        "jenis": "sensor",
+        "wadmkk": "Kota Binjai",
+        "wadmkk_tampil": "Kota Binjai",
+        "wadmkc": "Binjai Utara",
+        "wadmkd": "Jati Karya",
+        "keterangan": "Titik Sensor",
+        "remark": "PLN P3BS Tragi Binjai",
+        "x_dms": "98° 30' 24.901\" E",
+        "y_dms": "3° 38' 45.119\" N",
+        "baris_excel": 26,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.50691694,
+          3.64586639
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SNS-DS-023",
+      "properties": {
+        "id": "SNS-DS-023",
+        "jenis": "sensor",
+        "wadmkk": "Kota Binjai",
+        "wadmkk_tampil": "Kota Binjai",
+        "wadmkc": "Binjai Utara",
+        "wadmkd": "Jati Utomo",
+        "keterangan": "Titik Sensor",
+        "remark": "Kantor Lurah Jatiutomo",
+        "x_dms": "98° 30' 11.539\" E",
+        "y_dms": "3° 39' 12.722\" N",
+        "baris_excel": 27,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.50320528,
+          3.65353389
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SNS-DS-024",
+      "properties": {
+        "id": "SNS-DS-024",
+        "jenis": "sensor",
+        "wadmkk": "Kota Medan",
+        "wadmkk_tampil": "Kota Medan",
+        "wadmkc": "Medan Deli",
+        "wadmkd": "Mabar Hilir",
+        "keterangan": "Titik Sensor",
+        "remark": "Kantor Lurah Mabar Hilir",
+        "x_dms": "98° 41' 17.264\" E",
+        "y_dms": "3° 39' 12.500\" N",
+        "baris_excel": 28,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.68812889,
+          3.65347222
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SNS-DS-025",
+      "properties": {
+        "id": "SNS-DS-025",
+        "jenis": "sensor",
+        "wadmkk": "Kota Medan",
+        "wadmkk_tampil": "Kota Medan",
+        "wadmkc": "Medan Deli",
+        "wadmkd": "Tanjung Mulya",
+        "keterangan": "Titik Sensor",
+        "remark": "Jembatan Sungai Deli Medan Kota",
+        "x_dms": "98° 39' 38.532\" E",
+        "y_dms": "3° 39' 10.547\" N",
+        "baris_excel": 29,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.66070333,
+          3.65292972
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SNS-DS-026",
+      "properties": {
+        "id": "SNS-DS-026",
+        "jenis": "sensor",
+        "wadmkk": "Kota Medan",
+        "wadmkk_tampil": "Kota Medan",
+        "wadmkc": "Medan Helvetia",
+        "wadmkd": "Tanjung Gusta",
+        "keterangan": "Titik Sensor",
+        "remark": "SMPN 40 Medan",
+        "x_dms": "98° 36' 11.965\" E",
+        "y_dms": "3° 36' 43.064\" N",
+        "baris_excel": 30,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.60332361,
+          3.61196222
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SNS-DS-027",
+      "properties": {
+        "id": "SNS-DS-027",
+        "jenis": "sensor",
+        "wadmkk": "Kota Medan",
+        "wadmkk_tampil": "Kota Medan",
+        "wadmkc": "Medan Labuhan",
+        "wadmkd": "Besar",
+        "keterangan": "Titik Sensor",
+        "remark": "Jembatan Sei Deli",
+        "x_dms": "98° 40' 17.123\" E",
+        "y_dms": "3° 41' 58.746\" N",
+        "baris_excel": 31,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.67142306,
+          3.69965167
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SNS-DS-028",
+      "properties": {
+        "id": "SNS-DS-028",
+        "jenis": "sensor",
+        "wadmkk": "Kota Medan",
+        "wadmkk_tampil": "Kota Medan",
+        "wadmkc": "Medan Labuhan",
+        "wadmkd": "Tangkahan",
+        "keterangan": "Titik Sensor",
+        "remark": "Jembatan",
+        "x_dms": "98° 41' 36.057\" E",
+        "y_dms": "3° 41' 21.375\" N",
+        "baris_excel": 32,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.69334917,
+          3.68927083
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SNS-DS-029",
+      "properties": {
+        "id": "SNS-DS-029",
+        "jenis": "sensor",
+        "wadmkk": "Kota Medan",
+        "wadmkk_tampil": "Kota Medan",
+        "wadmkc": "Medan Marelan",
+        "wadmkd": "Rengas Pulau",
+        "keterangan": "Titik Sensor",
+        "remark": "Jembatan Jl. M Basir",
+        "x_dms": "98° 40' 45.662\" E",
+        "y_dms": "3° 42' 28.196\" N",
+        "baris_excel": 33,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.67935056,
+          3.70783222
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SNS-DS-030",
+      "properties": {
+        "id": "SNS-DS-030",
+        "jenis": "sensor",
+        "wadmkk": "Kota Medan",
+        "wadmkk_tampil": "Kota Medan",
+        "wadmkc": "Medan Marelan",
+        "wadmkd": "Terjun",
+        "keterangan": "Titik Sensor",
+        "remark": "Jembatan Sei Bedera",
+        "x_dms": "98° 38' 15.234\" E",
+        "y_dms": "3° 42' 47.528\" N",
+        "baris_excel": 34,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.637565,
+          3.71320222
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SNS-DS-031",
+      "properties": {
+        "id": "SNS-DS-031",
+        "jenis": "sensor",
+        "wadmkk": "Kota Medan",
+        "wadmkk_tampil": "Kota Medan",
+        "wadmkc": "Medan Sunggal",
+        "wadmkd": "Tanjung Rejo",
+        "keterangan": "Titik Sensor",
+        "remark": "Jembatan Jl. Setia",
+        "x_dms": "98° 38' 21.236\" E",
+        "y_dms": "3° 34' 38.108\" N",
+        "baris_excel": 35,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.63923222,
+          3.57725222
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SNS-DS-032",
+      "properties": {
+        "id": "SNS-DS-032",
+        "jenis": "sensor",
+        "wadmkk": "Kota Medan",
+        "wadmkk_tampil": "Kota Medan",
+        "wadmkc": "Medan Tembung",
+        "wadmkd": "Bantan",
+        "keterangan": "Titik Sensor",
+        "remark": "SMAN 11 Medan",
+        "x_dms": "98° 43' 56.038\" E",
+        "y_dms": "3° 35' 37.340\" N",
+        "baris_excel": 36,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.73223278,
+          3.59370556
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SNS-DS-033",
+      "properties": {
+        "id": "SNS-DS-033",
+        "jenis": "sensor",
+        "wadmkk": "Kota Padangsidimpuan",
+        "wadmkk_tampil": "Kota Padangsidimpuan",
+        "wadmkc": "Padangsidimpuan Tenggara",
+        "wadmkd": "Huta Lombang",
+        "keterangan": "Titik Sensor",
+        "remark": "Jembatan Manggepoi",
+        "x_dms": "99° 19' 19.418\" E",
+        "y_dms": "1° 19' 51.014\" N",
+        "baris_excel": 37,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.32206056,
+          1.33083722
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SNS-DS-034",
+      "properties": {
+        "id": "SNS-DS-034",
+        "jenis": "sensor",
+        "wadmkk": "Kota Padangsidimpuan",
+        "wadmkk_tampil": "Kota Padangsidimpuan",
+        "wadmkc": "Padangsidimpuan Tenggara",
+        "wadmkd": "Manunggang Jae",
+        "keterangan": "Titik Sensor",
+        "remark": "Masjid Nur Amal",
+        "x_dms": "99° 19' 37.976\" E",
+        "y_dms": "1° 19' 52.361\" N",
+        "baris_excel": 38,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.32721556,
+          1.33121139
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SNS-DS-035",
+      "properties": {
+        "id": "SNS-DS-035",
+        "jenis": "sensor",
+        "wadmkk": "Kota Sibolga",
+        "wadmkk_tampil": "Kota Sibolga",
+        "wadmkc": "Sibolga Utara",
+        "wadmkd": "Simare-Mare",
+        "keterangan": "Titik Sensor",
+        "remark": "Jembatan",
+        "x_dms": "98° 46' 36.648\" E",
+        "y_dms": "1° 44' 42.259\" N",
+        "baris_excel": 39,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.77684667,
+          1.74507194
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SNS-DS-036",
+      "properties": {
+        "id": "SNS-DS-036",
+        "jenis": "sensor",
+        "wadmkk": "Kota Tebing Tinggi",
+        "wadmkk_tampil": "Kota Tebing Tinggi",
+        "wadmkc": "Bajenis",
+        "wadmkd": "Bulian",
+        "keterangan": "Titik Sensor",
+        "remark": "Jembatan",
+        "x_dms": "99° 8' 17.852\" E",
+        "y_dms": "3° 20' 2.477\" N",
+        "baris_excel": 40,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.13829222,
+          3.33402139
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SNS-DS-037",
+      "properties": {
+        "id": "SNS-DS-037",
+        "jenis": "sensor",
+        "wadmkk": "Kota Tebing Tinggi",
+        "wadmkk_tampil": "Kota Tebing Tinggi",
+        "wadmkc": "Rambutan",
+        "wadmkd": "Karya Jaya",
+        "keterangan": "Titik Sensor",
+        "remark": "Jembatan Bandar Sakti",
+        "x_dms": "99° 9' 4.686\" E",
+        "y_dms": "3° 20' 9.561\" N",
+        "baris_excel": 41,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.15130167,
+          3.33598917
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SNS-DS-038",
+      "properties": {
+        "id": "SNS-DS-038",
+        "jenis": "sensor",
+        "wadmkk": "Langkat",
+        "wadmkk_tampil": "Langkat",
+        "wadmkc": "Babalan",
+        "wadmkd": "Pelawi Utara",
+        "keterangan": "Titik Sensor",
+        "remark": "Jembatan",
+        "x_dms": "98° 17' 40.619\" E",
+        "y_dms": "3° 59' 48.537\" N",
+        "baris_excel": 42,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.29461639,
+          3.99681583
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SNS-DS-039",
+      "properties": {
+        "id": "SNS-DS-039",
+        "jenis": "sensor",
+        "wadmkk": "Langkat",
+        "wadmkk_tampil": "Langkat",
+        "wadmkc": "Babalan",
+        "wadmkd": "Securai Selatan",
+        "keterangan": "Titik Sensor",
+        "remark": "Jembatan",
+        "x_dms": "98° 19' 35.698\" E",
+        "y_dms": "4° 0' 10.255\" N",
+        "baris_excel": 43,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.32658278,
+          4.00284861
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SNS-DS-040",
+      "properties": {
+        "id": "SNS-DS-040",
+        "jenis": "sensor",
+        "wadmkk": "Langkat",
+        "wadmkk_tampil": "Langkat",
+        "wadmkc": "Babalan",
+        "wadmkd": "Securai Utara",
+        "keterangan": "Titik Sensor",
+        "remark": "Jembatan Tiger",
+        "x_dms": "98° 18' 32.746\" E",
+        "y_dms": "4° 0' 14.336\" N",
+        "baris_excel": 44,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.30909611,
+          4.00398222
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SNS-DS-041",
+      "properties": {
+        "id": "SNS-DS-041",
+        "jenis": "sensor",
+        "wadmkk": "Langkat",
+        "wadmkk_tampil": "Langkat",
+        "wadmkc": "Babalan",
+        "wadmkd": "Teluk Meku",
+        "keterangan": "Titik Sensor",
+        "remark": "Jembatan",
+        "x_dms": "98° 19' 32.881\" E",
+        "y_dms": "4° 3' 1.004\" N",
+        "baris_excel": 45,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.32580028,
+          4.05027889
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SNS-DS-042",
+      "properties": {
+        "id": "SNS-DS-042",
+        "jenis": "sensor",
+        "wadmkk": "Langkat",
+        "wadmkk_tampil": "Langkat",
+        "wadmkc": "Binjai",
+        "wadmkd": "Sambi Rejo",
+        "keterangan": "Titik Sensor",
+        "remark": "Jembatan Kuala Madu",
+        "x_dms": "98° 27' 35.539\" E",
+        "y_dms": "3° 39' 18.894\" N",
+        "baris_excel": 46,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.45987194,
+          3.65524833
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SNS-DS-043",
+      "properties": {
+        "id": "SNS-DS-043",
+        "jenis": "sensor",
+        "wadmkk": "Langkat",
+        "wadmkk_tampil": "Langkat",
+        "wadmkc": "Gebang",
+        "wadmkd": "Air Hitam",
+        "keterangan": "Titik Sensor",
+        "remark": "Jembatan",
+        "x_dms": "98° 24' 12.306\" E",
+        "y_dms": "3° 54' 47.607\" N",
+        "baris_excel": 47,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.40341833,
+          3.91322417
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SNS-DS-044",
+      "properties": {
+        "id": "SNS-DS-044",
+        "jenis": "sensor",
+        "wadmkk": "Langkat",
+        "wadmkk_tampil": "Langkat",
+        "wadmkc": "Hinai",
+        "wadmkd": "Batu Malenggang",
+        "keterangan": "Titik Sensor",
+        "remark": "Jembatan",
+        "x_dms": "98° 24' 33.813\" E",
+        "y_dms": "3° 52' 5.217\" N",
+        "baris_excel": 48,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.4093925,
+          3.86811583
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SNS-DS-045",
+      "properties": {
+        "id": "SNS-DS-045",
+        "jenis": "sensor",
+        "wadmkk": "Langkat",
+        "wadmkk_tampil": "Langkat",
+        "wadmkc": "Secanggang",
+        "wadmkd": "Secanggang",
+        "keterangan": "Titik Sensor",
+        "remark": "Jembatan_x000D_\nJembatan",
+        "x_dms": "98° 32' 53.131\" E",
+        "y_dms": "3° 52' 39.604\" N",
+        "baris_excel": 49,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.54809194,
+          3.87766778
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SNS-DS-046",
+      "properties": {
+        "id": "SNS-DS-046",
+        "jenis": "sensor",
+        "wadmkk": "Langkat",
+        "wadmkk_tampil": "Langkat",
+        "wadmkc": "Sei Lepan",
+        "wadmkd": "Sei Bilah",
+        "keterangan": "Titik Sensor",
+        "remark": "Bea dan Cukai Seibilah",
+        "x_dms": "98° 17' 23.468\" E",
+        "y_dms": "4° 1' 53.618\" N",
+        "baris_excel": 50,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.28985222,
+          4.03156056
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SNS-DS-047",
+      "properties": {
+        "id": "SNS-DS-047",
+        "jenis": "sensor",
+        "wadmkk": "Langkat",
+        "wadmkk_tampil": "Langkat",
+        "wadmkc": "Stabat",
+        "wadmkd": "Ara Condong",
+        "keterangan": "Titik Sensor",
+        "remark": "Jembatan",
+        "x_dms": "98° 30' 23.876\" E",
+        "y_dms": "3° 46' 38.745\" N",
+        "baris_excel": 51,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.50663222,
+          3.77742917
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SNS-DS-048",
+      "properties": {
+        "id": "SNS-DS-048",
+        "jenis": "sensor",
+        "wadmkk": "Langkat",
+        "wadmkk_tampil": "Langkat",
+        "wadmkc": "Stabat",
+        "wadmkd": "Kwala Bingai",
+        "keterangan": "Titik Sensor",
+        "remark": "Jembatan Jl. Binjai- Stabat",
+        "x_dms": "98° 27' 31.830\" E",
+        "y_dms": "3° 45' 2.416\" N",
+        "baris_excel": 52,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.45884167,
+          3.75067111
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SNS-DS-049",
+      "properties": {
+        "id": "SNS-DS-049",
+        "jenis": "sensor",
+        "wadmkk": "Langkat",
+        "wadmkk_tampil": "Langkat",
+        "wadmkc": "Stabat",
+        "wadmkd": "Pantai Gemi",
+        "keterangan": "Titik Sensor",
+        "remark": "Jembatan Sei Wampu",
+        "x_dms": "98° 24' 13.387\" E",
+        "y_dms": "3° 44' 46.223\" N",
+        "baris_excel": 53,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.40371861,
+          3.74617306
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SNS-DS-050",
+      "properties": {
+        "id": "SNS-DS-050",
+        "jenis": "sensor",
+        "wadmkk": "Langkat",
+        "wadmkk_tampil": "Langkat",
+        "wadmkc": "Stabat",
+        "wadmkd": "Perdamaian",
+        "keterangan": "Titik Sensor",
+        "remark": "Jembatan Jl. Binjai- Stabat",
+        "x_dms": "98° 27' 32.638\" E",
+        "y_dms": "3° 45' 2.371\" N",
+        "baris_excel": 54,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.45906611,
+          3.75065861
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SNS-DS-051",
+      "properties": {
+        "id": "SNS-DS-051",
+        "jenis": "sensor",
+        "wadmkk": "Langkat",
+        "wadmkk_tampil": "Langkat",
+        "wadmkc": "Tanjung Pura",
+        "wadmkd": "Pekan Tanjung Pura",
+        "keterangan": "Titik Sensor",
+        "remark": "Jembatan Tanjung Pura, Langkat",
+        "x_dms": "98° 25' 11.161\" E",
+        "y_dms": "3° 53' 51.796\" N",
+        "baris_excel": 55,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.41976694,
+          3.89772111
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SNS-DS-052",
+      "properties": {
+        "id": "SNS-DS-052",
+        "jenis": "sensor",
+        "wadmkk": "Langkat",
+        "wadmkk_tampil": "Langkat",
+        "wadmkc": "Tanjung Pura",
+        "wadmkd": "Pematang Cengal",
+        "keterangan": "Titik Sensor",
+        "remark": "Jembatan",
+        "x_dms": "98° 26' 52.727\" E",
+        "y_dms": "3° 57' 35.690\" N",
+        "baris_excel": 56,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.44797972,
+          3.95991389
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SNS-DS-053",
+      "properties": {
+        "id": "SNS-DS-053",
+        "jenis": "sensor",
+        "wadmkk": "Serdang Bedagai",
+        "wadmkk_tampil": "Serdang Bedagai",
+        "wadmkc": "Perbaungan",
+        "wadmkd": "Melati II",
+        "keterangan": "Titik Sensor",
+        "remark": "Jembatan",
+        "x_dms": "98° 58' 59.642\" E",
+        "y_dms": "3° 32' 4.015\" N",
+        "baris_excel": 57,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.98323389,
+          3.53444861
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SNS-DS-054",
+      "properties": {
+        "id": "SNS-DS-054",
+        "jenis": "sensor",
+        "wadmkk": "Serdang Bedagai",
+        "wadmkk_tampil": "Serdang Bedagai",
+        "wadmkc": "Sei Bamban",
+        "wadmkd": "Sei Bamban",
+        "keterangan": "Titik Sensor",
+        "remark": "Jembatan",
+        "x_dms": "99° 11' 23.149\" E",
+        "y_dms": "3° 27' 48.466\" N",
+        "baris_excel": 58,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.18976361,
+          3.46346278
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SNS-DS-055",
+      "properties": {
+        "id": "SNS-DS-055",
+        "jenis": "sensor",
+        "wadmkk": "Serdang Bedagai",
+        "wadmkk_tampil": "Serdang Bedagai",
+        "wadmkc": "Sei Rampah",
+        "wadmkd": "Sei Rampah",
+        "keterangan": "Titik Sensor",
+        "remark": "Jembatan Jl. Besar",
+        "x_dms": "99° 8' 26.475\" E",
+        "y_dms": "3° 28' 51.885\" N",
+        "baris_excel": 59,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.1406875,
+          3.48107917
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SNS-DS-056",
+      "properties": {
+        "id": "SNS-DS-056",
+        "jenis": "sensor",
+        "wadmkk": "Serdang Bedagai",
+        "wadmkk_tampil": "Serdang Bedagai",
+        "wadmkc": "Tanjung Beringin",
+        "wadmkd": "Pekan Tanjung Beringin",
+        "keterangan": "Titik Sensor",
+        "remark": "Jembatan",
+        "x_dms": "99° 11' 7.520\" E",
+        "y_dms": "3° 29' 31.482\" N",
+        "baris_excel": 60,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.18542222,
+          3.49207833
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SNS-DS-057",
+      "properties": {
+        "id": "SNS-DS-057",
+        "jenis": "sensor",
+        "wadmkk": "Serdang Bedagai",
+        "wadmkk_tampil": "Serdang Bedagai",
+        "wadmkc": "Tebing Tinggi",
+        "wadmkd": "Paya Lombang",
+        "keterangan": "Titik Sensor",
+        "remark": "Jembatan",
+        "x_dms": "99° 13' 23.525\" E",
+        "y_dms": "3° 22' 49.933\" N",
+        "baris_excel": 61,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.22320139,
+          3.38053694
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SNS-DS-058",
+      "properties": {
+        "id": "SNS-DS-058",
+        "jenis": "sensor",
+        "wadmkk": "Serdang Bedagai",
+        "wadmkk_tampil": "Serdang Bedagai",
+        "wadmkc": "Teluk Mengkudu",
+        "wadmkd": "Sei Buluh",
+        "keterangan": "Titik Sensor",
+        "remark": "Jembatan",
+        "x_dms": "99° 4' 5.063\" E",
+        "y_dms": "3° 32' 48.836\" N",
+        "baris_excel": 62,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.06807306,
+          3.54689889
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SNS-DS-059",
+      "properties": {
+        "id": "SNS-DS-059",
+        "jenis": "sensor",
+        "wadmkk": "Tapanuli Selatan",
+        "wadmkk_tampil": "Tapanuli Selatan",
+        "wadmkc": "Angkola Selatan",
+        "wadmkd": "Pardomuan",
+        "keterangan": "Titik Sensor",
+        "remark": "Jembatan",
+        "x_dms": "99° 5' 39.552\" E",
+        "y_dms": "1° 16' 7.243\" N",
+        "baris_excel": 63,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.09432,
+          1.26867861
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SNS-DS-060",
+      "properties": {
+        "id": "SNS-DS-060",
+        "jenis": "sensor",
+        "wadmkk": "Tapanuli Selatan",
+        "wadmkk_tampil": "Tapanuli Selatan",
+        "wadmkc": "Sayur Matinggi",
+        "wadmkd": "Sayur Matinggi",
+        "keterangan": "Titik Sensor",
+        "remark": "Jembatan",
+        "x_dms": "99° 25' 49.598\" E",
+        "y_dms": "1° 8' 42.126\" N",
+        "baris_excel": 64,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.43044389,
+          1.145035
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SNS-DS-061",
+      "properties": {
+        "id": "SNS-DS-061",
+        "jenis": "sensor",
+        "wadmkk": "Tapanuli Tengah",
+        "wadmkk_tampil": "Tapanuli Tengah",
+        "wadmkc": "Pandan",
+        "wadmkd": "Aek Tolang",
+        "keterangan": "Titik Sensor",
+        "remark": "Jembatan",
+        "x_dms": "98° 50' 2.623\" E",
+        "y_dms": "1° 41' 13.692\" N",
+        "baris_excel": 65,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.83406194,
+          1.68713667
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SNS-DS-062",
+      "properties": {
+        "id": "SNS-DS-062",
+        "jenis": "sensor",
+        "wadmkk": "Tapanuli Tengah",
+        "wadmkk_tampil": "Tapanuli Tengah",
+        "wadmkc": "Pandan",
+        "wadmkd": "Kalangan",
+        "keterangan": "Titik Sensor",
+        "remark": "Jembatan Aek Kalangan",
+        "x_dms": "98° 49' 47.679\" E",
+        "y_dms": "1° 39' 55.074\" N",
+        "baris_excel": 66,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.82991083,
+          1.66529833
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SNS-DS-063",
+      "properties": {
+        "id": "SNS-DS-063",
+        "jenis": "sensor",
+        "wadmkk": "Tapanuli Tengah",
+        "wadmkk_tampil": "Tapanuli Tengah",
+        "wadmkc": "Pandan",
+        "wadmkd": "Pandan",
+        "keterangan": "Titik Sensor",
+        "remark": "Jembatan Kalangan",
+        "x_dms": "98° 49' 37.211\" E",
+        "y_dms": "1° 40' 36.627\" N",
+        "baris_excel": 67,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.82700306,
+          1.67684083
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SNS-DS-064",
+      "properties": {
+        "id": "SNS-DS-064",
+        "jenis": "sensor",
+        "wadmkk": "Tapanuli Utara",
+        "wadmkk_tampil": "Tapanuli Utara",
+        "wadmkc": "Tarutung",
+        "wadmkd": "Hutatoruan X",
+        "keterangan": "Titik Sensor",
+        "remark": "Jembatan",
+        "x_dms": "98° 57' 51.050\" E",
+        "y_dms": "2° 1' 16.583\" N",
+        "baris_excel": 68,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.96418056,
+          2.02127306
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SNS-DS-065",
+      "properties": {
+        "id": "SNS-DS-065",
+        "jenis": "sensor",
+        "wadmkk": "Tapanuli Utara",
+        "wadmkk_tampil": "Tapanuli Utara",
+        "wadmkc": "Tarutung",
+        "wadmkd": "Simamora",
+        "keterangan": "Titik Sensor",
+        "remark": "Jembatan Nahehong",
+        "x_dms": "98° 57' 42.826\" E",
+        "y_dms": "2° 1' 37.941\" N",
+        "baris_excel": 69,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.96189611,
+          2.02720583
+        ]
+      }
+    }
+  ],
+  "status_catatan": "Properti status bukan kolom pada Excel. KETERANGAN sumber hanya 'Titik Penempatan Sirine Peringatan' atau 'Titik Sensor'. Nilai awal semua titik adalah usulan_studi sesuai keputusan tampilan, dibaca dari data/status_override.csv (bukan inferensi lokasi). ID yang tidak ada di berkas itu memakai bawaan usulan_studi. Nilai belum_ditentukan memakai ikon pin asli tanpa warna status."
+}
