@@ -3,6 +3,8 @@ import { dirname, resolve } from "node:path";
 
 const files = [
   "sirine.geojson",
+  "sirine_buffer_1km.geojson",
+  "sirine_cakupan.json",
   "sensor.geojson",
   "penduduk_terpapar.json",
   "alternatif_lokasi.json",

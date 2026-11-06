@@ -4,6 +4,8 @@ __pycache__/
 *.pyc
 .venv/
 public/data/sirine.geojson
+public/data/sirine_buffer_1km.geojson
+public/data/sirine_cakupan.json
 public/data/sensor.geojson
 public/data/penduduk_terpapar.json
 public/data/alternatif_lokasi.json
@@ -12,3 +14,4 @@ public/data/mismatch_points.csv
 public/data/wilayah/
 public/data/batas/
 public/data/hidro/
+data/cache/

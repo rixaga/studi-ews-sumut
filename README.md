@@ -14,6 +14,8 @@ Tampilan mengikuti bahasa visual [Pantau Bencana v0.3](https://pantau-bencana.gi
 | `data/raw/20261105_Olah_Penduduk_Terpapar3.xlsx` | Lembar penduduk 5 November 2026, termasuk Tidak disurvei. |
 | `data/raw/arsip/` | Berkas mentah sebelumnya, tidak dipakai konversi. |
 | `data/sirine.geojson`, `data/sensor.geojson` | 286 sirine dan 8 sensor Rencana. 33 baris Eksisting tidak masuk lapisan karena sama dengan pos PDA BBWS II. |
+| `data/sirine_buffer_1km.geojson` | Lingkaran radius 1 km untuk 286 sirine saja. Garis hijau putus-putus, tanpa isian pekat. |
+| `data/sirine_cakupan.json` | Penduduk tercover dan kelas bahaya per sirine, plus total gabungan tanpa hitung ganda. |
 | `data/penduduk_terpapar.csv`, `data/penduduk_terpapar.json` | 3.039 desa pada 20 kabupaten/kota. |
 | `data/penduduk_terdampak.json` | Salinan multiset lembar Terpapar. Lihat isu di bawah. |
 | `data/penduduk_sumut.json` | 4.700 desa pada 33 kabupaten/kota. |
@@ -41,6 +43,8 @@ WGS 84, EPSG:4326. Tidak ada transformasi datum lain.
 Excel **tidak** punya kolom status. Lembar sirine tidak punya `KETERANGAN`. Lembar sensor memakai `KETERANGAN` = `Eksisting` atau `Rencana`, dan nama pos pada kolom `Name`.
 
 Keputusan tampilan saat ini: **286 sirine dan 8 sensor Rencana berstatus `usulan_studi`**. Sensor rencana memakai segitiga oranye. Pos existing (60 PDA, 34 PCH, 7 PKL) hanya ada pada lapisan Pos Hidrologi BBWS II, bukan sebagai titik studi kedua.
+
+Radius sirine 1 km digambar sebagai lingkaran (buffer UTM zona 47N), garis hijau terang putus-putus `#00E676`. Sensor tidak punya radius. Penduduk tercover diambil dari Penduduk Terpapar desa yang dibagi rata ke piksel InaRISK `INDEKS_BAHAYA_BANJIR` di dalam poligon desa dengan indeks ≥ 0,01. Kelas rendah, sedang, dan tinggi adalah klasifikasi tampilan, bukan kelas resmi BNPB. Angka per sirine boleh tumpang tindih; total gabungan memakai union radius. Hitung ulang dengan `python scripts/cakupan_sirine.py`.
 
 Nilai yang diterima:
 

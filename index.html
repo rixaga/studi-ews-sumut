@@ -186,6 +186,10 @@
               <section>
                 <p class="label-grup">Titik</p>
                 <label class="switch"><input id="tog-sirine" type="checkbox" checked /> Sirine</label>
+                <label class="switch"><input id="tog-radius" type="checkbox" checked /> Radius sirine (1 km)</label>
+                <ul class="kelas">
+                  <li><i class="garis garis-radius"></i> Radius sirine (1 km)</li>
+                </ul>
                 <label class="switch"><input id="tog-sensor" type="checkbox" checked /> Sensor</label>
                 <ul class="kelas">
                   <li><i class="titik-sensor-rencana"></i> Sensor rencana</li>
@@ -305,6 +309,7 @@
             <div>
               <h2 id="judul-tabel">Daftar titik</h2>
               <p id="tabel-meta" class="hint"></p>
+              <p id="tabel-cakupan" class="hint"></p>
             </div>
             <label class="field cari">
               Cari
@@ -354,7 +359,7 @@
                   <td>Tidak tercantum</td>
                   <td>Tidak tercantum</td>
                   <td>—</td>
-                  <td>Excel studi: 286 sirine dan 8 sensor Rencana. 33 baris sensor Eksisting tidak digambar karena sama dengan pos PDA BBWS II. Koordinat teks DMS, WGS84.</td>
+                  <td>Excel studi: 286 sirine dan 8 sensor Rencana. 33 baris sensor Eksisting tidak digambar karena sama dengan pos PDA BBWS II. Koordinat teks DMS, WGS84. Tiap sirine punya radius 1 km (garis hijau putus-putus). Sensor tidak punya radius.</td>
                   <td><span class="pil">statis</span></td>
                 </tr>
                 <tr>

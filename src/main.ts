@@ -16,7 +16,7 @@ import {
   STATUS_LABEL,
 } from "./model";
 import { pasangInfo, periksaUlang } from "./info";
-import { gambarTabel, muatIndeksDas, pasangTabel } from "./tabel";
+import { aturCakupan, gambarTabel, muatIndeksDas, pasangTabel } from "./tabel";
 import { muatSurvei, pasangFoto } from "./survei";
 import { saatTandaBerubah, tempelProperti } from "./tanda";
 import { pasangUsulan } from "./usulan-ui";
@@ -29,6 +29,7 @@ function wajib<T>(node: T | null, nama: string): T {
 const kabSelect = wajib(document.querySelector<HTMLSelectElement>("#kab-select"), "kab");
 const statusSelect = wajib(document.querySelector<HTMLSelectElement>("#status-select"), "status");
 const togSirine = wajib(document.querySelector<HTMLInputElement>("#tog-sirine"), "sirine");
+const togRadius = wajib(document.querySelector<HTMLInputElement>("#tog-radius"), "radius sirine");
 const togSensor = wajib(document.querySelector<HTMLInputElement>("#tog-sensor"), "sensor");
 const togBahaya = wajib(document.querySelector<HTMLInputElement>("#tog-bahaya"), "bahaya");
 const togProxy = wajib(document.querySelector<HTMLInputElement>("#tog-proxy"), "proxy");
@@ -250,6 +251,7 @@ function terapkan(geserPeta: boolean) {
   peta?.setTitik(sirineSaring, sensorSaring);
   peta?.setVisible("sirine", togSirine.checked);
   peta?.setVisible("sensor", togSensor.checked);
+  peta?.setRadius(togRadius.checked, sirineSaring.map((titik) => titik.properties.id));
   bahayaDetail.hidden = !togBahaya.checked;
   proxyDetail.hidden = !togProxy.checked;
   batasDasDetail.hidden = !togBatasDas.checked;
@@ -421,7 +423,7 @@ function pasangLapisan() {
 function pasangMenu() {
   menuBtn.addEventListener("click", () => menu(!sidebar.classList.contains("terbuka")));
   scrim.addEventListener("click", () => menu(false));
-  for (const elemen of [kabSelect, statusSelect, togSirine, togSensor, togBahaya, togProxy, bahayaKelas, togBatasDas, togBatasKec, togBatasDesa, togJalanRtrw, togSungaiRtrw, togDanauRtrw, togPosHidro]) {
+  for (const elemen of [kabSelect, statusSelect, togSirine, togSensor, togRadius, togBahaya, togProxy, bahayaKelas, togBatasDas, togBatasKec, togBatasDesa, togJalanRtrw, togSungaiRtrw, togDanauRtrw, togPosHidro]) {
     elemen.addEventListener("change", () => {
       const geser = elemen === kabSelect || elemen === statusSelect;
       terapkan(geser);
@@ -445,15 +447,30 @@ async function mulai() {
   pasangMenu();
   void periksaUlang();
   try {
-    const [sirineData, sensorData, penduduk, alternatifData, batas, posData] = await Promise.all([
+    const [sirineData, sensorData, penduduk, alternatifData, batas, posData, cakupanData] = await Promise.all([
       muat<KoleksiTitik>("data/sirine.geojson"),
       muat<KoleksiTitik>("data/sensor.geojson"),
       muat<BerkasTerpapar>("data/penduduk_terpapar.json"),
       muat<BerkasAlternatif>("data/alternatif_lokasi.json"),
       muat<BatasProvinsi>("data/batas/sumatera_utara_adm1.geojson"),
       muat<{ features: Array<{ properties?: { jenis?: string; kode?: string } }> }>("data/pos_hidrologi_bbws2.geojson"),
+      muat<{
+        per_sirine: Record<string, { tercover: number; tinggi: number; sedang: number; rendah: number; total: number }>;
+        gabungan: { tercover: number; tinggi: number; sedang: number; rendah: number; total: number };
+        desa: { positif: number; tepat: number; fuzzy_kecamatan: number; fuzzy_kabupaten: number; gagal: number };
+      }>("data/sirine_cakupan.json"),
     ]);
     sirine = sirineData.features;
+    for (const titik of sirine) {
+      const angka = cakupanData.per_sirine[titik.properties.id];
+      if (!angka) continue;
+      titik.properties.cakupan_tercover = angka.tercover;
+      titik.properties.cakupan_tinggi = angka.tinggi;
+      titik.properties.cakupan_sedang = angka.sedang;
+      titik.properties.cakupan_rendah = angka.rendah;
+      titik.properties.cakupan_total = angka.total;
+    }
+    aturCakupan({ gabungan: cakupanData.gabungan, desa: cakupanData.desa });
     sensor = sensorData.features.filter((titik) => titik.properties.keterangan !== "Eksisting");
     posHitung = { pda: 0, pch: 0, pkl: 0 };
     for (const fitur of posData.features) {

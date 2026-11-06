@@ -1,7 +1,24 @@
 import type { Titik } from "./model";
-import { asset, escapeHtml, formatDerajat, STATUS_LABEL } from "./model";
+import { asset, escapeHtml, formatBulat, formatDerajat, STATUS_LABEL } from "./model";
 
-type Kunci = "id" | "jenis" | "status" | "survei" | "kab" | "kecamatan" | "desa" | "lokasi" | "lon" | "lat" | "das" | "subDas";
+type Kunci =
+  | "id"
+  | "jenis"
+  | "status"
+  | "survei"
+  | "kab"
+  | "kecamatan"
+  | "desa"
+  | "lokasi"
+  | "lon"
+  | "lat"
+  | "das"
+  | "subDas"
+  | "tercover"
+  | "tinggi"
+  | "sedang"
+  | "rendah"
+  | "total";
 type Kelompok = "kab" | "das";
 
 type Baris = {
@@ -18,6 +35,24 @@ type Baris = {
   lat: number;
   das: string;
   subDas: string;
+  tercover: number | null;
+  tinggi: number | null;
+  sedang: number | null;
+  rendah: number | null;
+  total: number | null;
+};
+
+type AngkaCakupan = {
+  tercover: number;
+  tinggi: number;
+  sedang: number;
+  rendah: number;
+  total: number;
+};
+
+type BerkasCakupan = {
+  gabungan: AngkaCakupan;
+  desa: { positif: number; tepat: number; fuzzy_kecamatan: number; fuzzy_kabupaten: number; gagal: number };
 };
 
 const KOLOM: Array<[Kunci, string]> = [
@@ -33,11 +68,17 @@ const KOLOM: Array<[Kunci, string]> = [
   ["lat", "Lat"],
   ["das", "DAS"],
   ["subDas", "Sub-DAS"],
+  ["tercover", "Penduduk tercover"],
+  ["tinggi", "Bahaya tinggi"],
+  ["sedang", "Bahaya sedang"],
+  ["rendah", "Bahaya rendah"],
+  ["total", "Total"],
 ];
 
 const kepala = document.querySelector<HTMLTableRowElement>("#tabel-kepala");
 const isi = document.querySelector<HTMLTableSectionElement>("#tabel-isi");
 const meta = document.querySelector<HTMLElement>("#tabel-meta");
+const cakupanMeta = document.querySelector<HTMLElement>("#tabel-cakupan");
 const cari = document.querySelector<HTMLInputElement>("#tabel-cari");
 const tombolKab = document.querySelector<HTMLButtonElement>("#grup-kab");
 const tombolDas = document.querySelector<HTMLButtonElement>("#grup-das");
@@ -53,6 +94,12 @@ const terbuka = new Set<string>();
 const ditutupSaatCari = new Set<string>();
 let onPilih: (titik: Titik) => void = () => undefined;
 const sudahSurvei = new Set<string>();
+let cakupan: BerkasCakupan | null = null;
+const ANGKA: Kunci[] = ["tercover", "tinggi", "sedang", "rendah", "total"];
+
+function teksAngka(nilai: number | null): string {
+  return nilai == null ? "-" : formatBulat(nilai);
+}
 
 function kosong(nilai: string | null | undefined): string {
   const teks = (nilai ?? "").trim();
@@ -136,12 +183,35 @@ function jadiBaris(titik: Titik): Baris {
     lat,
     das: kosong(nama?.das),
     subDas: kosong(nama?.subDas),
+    tercover: titik.properties.jenis === "sirine" ? (titik.properties.cakupan_tercover ?? null) : null,
+    tinggi: titik.properties.jenis === "sirine" ? (titik.properties.cakupan_tinggi ?? null) : null,
+    sedang: titik.properties.jenis === "sirine" ? (titik.properties.cakupan_sedang ?? null) : null,
+    rendah: titik.properties.jenis === "sirine" ? (titik.properties.cakupan_rendah ?? null) : null,
+    total: titik.properties.jenis === "sirine" ? (titik.properties.cakupan_total ?? null) : null,
   };
 }
 
 function cocok(baris: Baris, kata: string): boolean {
   if (!kata) return true;
-  const haystack = [baris.id, baris.jenis, baris.status, baris.survei, baris.kab, baris.kecamatan, baris.desa, baris.lokasi, formatDerajat(baris.lon), formatDerajat(baris.lat), baris.das, baris.subDas]
+  const haystack = [
+    baris.id,
+    baris.jenis,
+    baris.status,
+    baris.survei,
+    baris.kab,
+    baris.kecamatan,
+    baris.desa,
+    baris.lokasi,
+    formatDerajat(baris.lon),
+    formatDerajat(baris.lat),
+    baris.das,
+    baris.subDas,
+    teksAngka(baris.tercover),
+    teksAngka(baris.tinggi),
+    teksAngka(baris.sedang),
+    teksAngka(baris.rendah),
+    teksAngka(baris.total),
+  ]
     .join(" ")
     .toLocaleLowerCase("id");
   return haystack.includes(kata);
@@ -150,7 +220,14 @@ function cocok(baris: Baris, kata: string): boolean {
 function banding(a: Baris, b: Baris): number {
   const arah = urut.arah === "naik" ? 1 : -1;
   if (urut.kunci === "lon" || urut.kunci === "lat") return (a[urut.kunci] - b[urut.kunci]) * arah;
-  return a[urut.kunci].localeCompare(b[urut.kunci], "id", { numeric: true, sensitivity: "base" }) * arah;
+  if (ANGKA.includes(urut.kunci)) {
+    const kiri = a[urut.kunci] as number | null;
+    const kanan = b[urut.kunci] as number | null;
+    return ((kiri ?? -1) - (kanan ?? -1)) * arah;
+  }
+  const kiri = a[urut.kunci];
+  const kanan = b[urut.kunci];
+  return String(kiri).localeCompare(String(kanan), "id", { numeric: true, sensitivity: "base" }) * arah;
 }
 
 function urutGrup(kunci: string[]): string[] {
@@ -175,6 +252,11 @@ function sel(baris: Baris): string {
     lat: formatDerajat(baris.lat),
     das: baris.das,
     subDas: baris.subDas,
+    tercover: teksAngka(baris.tercover),
+    tinggi: teksAngka(baris.tinggi),
+    sedang: teksAngka(baris.sedang),
+    rendah: teksAngka(baris.rendah),
+    total: teksAngka(baris.total),
   };
   return KOLOM.map(([kunci]) => {
     if (kunci === "id" && baris.titik.properties.cek_wilayah) {
@@ -294,6 +376,13 @@ function gambar() {
       ? `${baris.length.toLocaleString("id-ID")} titik. DAS dari data/points_das.csv.${adaSub ? "" : " Sub-DAS kosong pada berkas, ditampilkan -."}`
       : `${baris.length.toLocaleString("id-ID")} titik. DAS dan Sub-DAS masih - sampai data/points_das.csv diisi.`;
   }
+  if (cakupanMeta) {
+    const gabungan = cakupan?.gabungan;
+    const desa = cakupan?.desa;
+    cakupanMeta.textContent = gabungan
+      ? `Radius sirine 1 km. Angka per baris boleh saling tumpang tindih. Total gabungan tanpa hitung ganda: penduduk tercover ${formatBulat(gabungan.tercover)}, bahaya tinggi ${formatBulat(gabungan.tinggi)}, sedang ${formatBulat(gabungan.sedang)}, rendah ${formatBulat(gabungan.rendah)}, total ${formatBulat(gabungan.total)}. Kelas adalah klasifikasi tampilan InaRISK (bukan kelas resmi BNPB). Penduduk pada piksel indeks di bawah 0,01 tidak dihitung.${desa ? ` Desa positif yang tidak ketemu poligon: ${desa.gagal.toLocaleString("id-ID")} dari ${desa.positif.toLocaleString("id-ID")}.` : ""}`
+      : "";
+  }
   gambarKepala();
   if (!isi) return;
   isi.innerHTML = baris.length
@@ -355,6 +444,11 @@ function pilihBaris(id: string) {
 export function aturTandaSurvei(id: string[]) {
   sudahSurvei.clear();
   for (const item of id) sudahSurvei.add(item);
+  gambar();
+}
+
+export function aturCakupan(berkas: BerkasCakupan | null) {
+  cakupan = berkas;
   gambar();
 }
 

@@ -28,6 +28,11 @@ export type TitikProps = {
   dihapus_waktu?: string;
   tanda_id?: string;
   spider?: [number, number];
+  cakupan_tercover?: number;
+  cakupan_tinggi?: number;
+  cakupan_sedang?: number;
+  cakupan_rendah?: number;
+  cakupan_total?: number;
 };
 
 export type Titik = {

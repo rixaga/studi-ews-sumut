@@ -861,6 +861,26 @@ Semua teks koordinat sumber yang terbaca berakhiran `E` (kolom X, bujur) dan `N`
 EPSG:4326 (WGS84), derajat desimal, urutan GeoJSON `[bujur, lintang]`.
 """
 
+    cakupan_path = ROOT / "data" / "sirine_cakupan.json"
+    if cakupan_path.exists():
+        cakupan = json.loads(cakupan_path.read_text(encoding="utf-8"))
+        desa = cakupan["desa"]
+        baris = cakupan["jumlah_baris"]
+        gabungan = cakupan["gabungan"]
+        def satu(nilai: float) -> str:
+            return f"{float(nilai):.1f}"
+
+        qa += f"""
+
+## Radius sirine 1 km
+
+{cakupan["metode"]}
+Desa bernilai positif {desa["positif"]}: cocok tepat {desa["tepat"]}, fuzzy kecamatan {desa["fuzzy_kecamatan"]}, fuzzy kabupaten {desa["fuzzy_kabupaten"]}, gagal {desa["gagal"]}. Penduduk cocok {satu(desa["penduduk_cocok"])}; penduduk tanpa poligon {satu(desa["penduduk_gagal"])}.
+Sirine berangka {cakupan["sirine"]}. Jumlah tiap baris, boleh tumpang tindih: tinggi {satu(baris["tinggi"])}, sedang {satu(baris["sedang"])}, rendah {satu(baris["rendah"])}, total {satu(baris["total"])}.
+Gabungan tanpa hitung ganda: tinggi {satu(gabungan["tinggi"])}, sedang {satu(gabungan["sedang"])}, rendah {satu(gabungan["rendah"])}, total {satu(gabungan["total"])}.
+Sensor tidak punya radius. Kelas adalah klasifikasi tampilan, bukan kelas resmi BNPB.
+"""
+
     (ROOT / "data" / "QA.md").write_text(qa, encoding="utf-8")
 
     print(f"sirine {len(sirine_gj['features'])} sensor {len(sensor_gj['features'])} kab {len(titik_kab)}")
