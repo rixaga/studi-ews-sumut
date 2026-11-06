@@ -1526,7 +1526,11 @@ async function pasangBatas(
           id: "batas-das-garis",
           type: "line",
           source: "batas-das",
-          paint: { "line-color": "#8D5524", "line-width": 1.5 },
+          layout: { "line-join": "round", "line-cap": "round" },
+          paint: {
+            "line-color": "#00B0FF",
+            "line-width": ["interpolate", ["linear"], ["zoom"], 6, 2.8, 12, 4],
+          },
         },
         "titik-clusters",
       );
@@ -1541,7 +1545,7 @@ async function pasangBatas(
             "text-size": 11,
             "text-max-width": 10,
           },
-          paint: { "text-color": "#8D5524", "text-halo-color": "#ffffff", "text-halo-width": 1.2 },
+          paint: { "text-color": "#0277BD", "text-halo-color": "#ffffff", "text-halo-width": 1.4 },
         },
         "titik-clusters",
       );
