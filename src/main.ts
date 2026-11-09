@@ -310,7 +310,7 @@ function terapkan(geserPeta: boolean) {
   if (nSirineAlt) {
     const alt1 = sirineSaring.filter((titik) => titik.properties.alternatif === "Alternatif 1").length;
     const alt23 = sirineSaring.filter((titik) => titik.properties.alternatif === "Alternatif 2" || titik.properties.alternatif === "Alternatif 3").length;
-    nSirineAlt.textContent = `Alt 1: ${alt1.toLocaleString("id-ID")} · Alt 2/3: ${alt23.toLocaleString("id-ID")}`;
+    nSirineAlt.textContent = `Usulan studi: ${alt1.toLocaleString("id-ID")} · Usulan alternatif: ${alt23.toLocaleString("id-ID")}`;
   }
   if (nSensor) nSensor.textContent = sensorSaring.length.toLocaleString("id-ID");
   const nPda = document.querySelector("#n-pda");

@@ -140,21 +140,56 @@ function denganSpider(titik: Titik[]): Titik[] {
   });
 }
 
+function gelap(warna: string): string {
+  const angka = Number.parseInt(warna.slice(1), 16);
+  const saluran = (geser: number) => Math.round(((angka >> geser) & 255) * 0.62).toString(16).padStart(2, "0");
+  return `#${saluran(16)}${saluran(8)}${saluran(0)}`;
+}
+
 function gambarSirineAlternatif(warna: string): ImageData {
-  const ukuran = 64;
   const kanvas = document.createElement("canvas");
-  kanvas.width = ukuran;
-  kanvas.height = ukuran;
+  kanvas.width = 64;
+  kanvas.height = 80;
   const g = kanvas.getContext("2d");
   if (!g) throw new Error("kanvas sirine");
-  g.beginPath();
-  g.arc(32, 32, 16, 0, Math.PI * 2);
+  g.lineJoin = "round";
+  g.lineCap = "round";
+  const pin = new Path2D("M32 78 C32 78 6 50 6 30 A26 26 0 0 1 58 30 C58 50 32 78 32 78Z");
   g.fillStyle = warna;
-  g.fill();
-  g.lineWidth = 6;
+  g.fill(pin);
+  g.lineWidth = 4;
   g.strokeStyle = "#ffffff";
+  g.stroke(pin);
+  g.fillStyle = "#ffffff";
+  g.beginPath();
+  g.arc(32, 30, 19, 0, Math.PI * 2);
+  g.fill();
+  g.fillStyle = warna;
+  g.fill(new Path2D("M22 40 V30 A10 10 0 0 1 42 30 V40Z"));
+  g.fillStyle = gelap(warna);
+  g.beginPath();
+  g.roundRect(19, 40, 26, 5, 1.5);
+  g.fill();
+  g.strokeStyle = "#ffffff";
+  g.lineWidth = 2.5;
+  g.stroke(new Path2D("M27 30 A5 5 0 0 1 32 25"));
+  g.strokeStyle = warna;
+  g.beginPath();
+  g.moveTo(32, 13);
+  g.lineTo(32, 17);
+  g.moveTo(18, 18);
+  g.lineTo(21, 21);
+  g.moveTo(46, 18);
+  g.lineTo(43, 21);
   g.stroke();
-  return g.getImageData(0, 0, ukuran, ukuran);
+  return g.getImageData(0, 0, 64, 80);
+}
+
+function labelSirine(alternatif: unknown): string {
+  const nilai = String(alternatif ?? "");
+  if (nilai === "Alternatif 1") return "Usulan studi";
+  if (nilai === "Alternatif 2" || nilai === "Alternatif 3") return "Usulan alternatif";
+  return "Tanpa alternatif";
 }
 
 function ikonSirine(): maplibregl.ExpressionSpecification {
@@ -251,6 +286,7 @@ function popupHtml(properties: Record<string, unknown>, coordinates: [number, nu
   const baris: Array<[string, string]> = [
     ["ID", String(properties.id ?? "—")],
     ["Jenis", jenisTitik(properties)],
+    ...(properties.jenis === "sirine" ? [["Label", labelSirine(properties.alternatif)] as [string, string]] : []),
     ["Alternatif", properties.jenis === "sirine" ? String(properties.alternatif || "tidak diisi") : "—"],
     ["Status", statusLabel],
     ["Sumber status", labelStatusSumber(String(properties.status_sumber ?? ""))],
