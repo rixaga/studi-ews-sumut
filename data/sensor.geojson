@@ -5,53 +5,109 @@
   "features": [
     {
       "type": "Feature",
-      "id": "SNS-DS-033",
+      "id": "SNS-DS-100",
       "properties": {
-        "id": "SNS-DS-033",
+        "id": "SNS-DS-100",
         "jenis": "sensor",
-        "wadmkk": "Kota Padangsidimpuan",
-        "wadmkk_tampil": "Kota Padangsidimpuan",
-        "wadmkc": "Padangsidimpuan Tenggara",
-        "wadmkd": "Huta Lombang",
+        "wadmkk": "Humbang Hasundutan",
+        "wadmkk_tampil": "Humbang Hasundutan",
+        "wadmkc": "Baktiraja",
+        "wadmkd": "Marbun Tonga Marbun Dolok",
         "keterangan": "Rencana",
-        "remark": "Jembatan Manggepoi",
-        "x_dms": "99° 19' 19.418\" E",
-        "y_dms": "1° 19' 51.014\" N",
-        "baris_excel": 20,
+        "alternatif": "",
+        "remark": "Jembatan",
+        "x_dms": "98° 47' 55.473\" E",
+        "y_dms": "2° 18' 10.640\" N",
+        "baris_excel": 5,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          99.32206056,
-          1.33083722
+          98.7987425,
+          2.30295556
         ]
       }
     },
     {
       "type": "Feature",
-      "id": "SNS-DS-081",
+      "id": "SNS-DS-101",
       "properties": {
-        "id": "SNS-DS-081",
+        "id": "SNS-DS-101",
         "jenis": "sensor",
-        "wadmkk": "Kota Sibolga",
-        "wadmkk_tampil": "Kota Sibolga",
-        "wadmkc": "Sibolga Utara",
-        "wadmkd": "Huta Barangan",
+        "wadmkk": "Humbang Hasundutan",
+        "wadmkk_tampil": "Humbang Hasundutan",
+        "wadmkc": "Baktiraja",
+        "wadmkd": "Sinambela",
         "keterangan": "Rencana",
-        "remark": "Jembatan",
-        "x_dms": "98° 47' 46.760\" E",
-        "y_dms": "1° 45' 28.357\" N",
-        "baris_excel": 21,
+        "alternatif": "",
+        "remark": "SMPN 1 Baktiraja",
+        "x_dms": "98° 49' 33.952\" E",
+        "y_dms": "2° 19' 24.987\" N",
+        "baris_excel": 6,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          98.79632222,
-          1.75787694
+          98.82609778,
+          2.3236075
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SNS-DS-102",
+      "properties": {
+        "id": "SNS-DS-102",
+        "jenis": "sensor",
+        "wadmkk": "Kota Padangsidimpuan",
+        "wadmkk_tampil": "Kota Padangsidimpuan",
+        "wadmkc": "Padangsidimpuan Tenggara",
+        "wadmkd": "Palopat Pijor Koling",
+        "keterangan": "Rencana",
+        "alternatif": "",
+        "remark": "Jembatan Batang Angkola Palopat PK",
+        "x_dms": "99° 18' 15.820\" E",
+        "y_dms": "1° 20' 35.515\" N",
+        "baris_excel": 7,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.30439444,
+          1.34319861
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SNS-DS-103",
+      "properties": {
+        "id": "SNS-DS-103",
+        "jenis": "sensor",
+        "wadmkk": "Kota Sibolga",
+        "wadmkk_tampil": "Kota Sibolga",
+        "wadmkc": "Sibolga Utara",
+        "wadmkd": "Angin Nauli",
+        "keterangan": "Rencana",
+        "alternatif": "",
+        "remark": "Jembatan",
+        "x_dms": "98° 47' 17.454\" E",
+        "y_dms": "1° 45' 0.238\" N",
+        "baris_excel": 8,
+        "status": "usulan_studi",
+        "status_sumber": "status_override.csv"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.78818167,
+          1.75006611
         ]
       }
     },
@@ -66,10 +122,11 @@
         "wadmkc": "Batang Serangan",
         "wadmkd": "Namo Sialang",
         "keterangan": "Rencana",
+        "alternatif": "",
         "remark": "Jembatan Mangga",
         "x_dms": "98° 9' 20.250\" E",
         "y_dms": "3° 41' 49.654\" N",
-        "baris_excel": 25,
+        "baris_excel": 9,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -92,10 +149,11 @@
         "wadmkc": "Besitang",
         "wadmkd": "Sekoci",
         "keterangan": "Rencana",
+        "alternatif": "",
         "remark": "Jembatan Skoci",
         "x_dms": "98° 9' 57.598\" E",
         "y_dms": "3° 59' 4.437\" N",
-        "baris_excel": 26,
+        "baris_excel": 10,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -118,10 +176,11 @@
         "wadmkc": "Kutambaru",
         "wadmkd": "Namotogan",
         "keterangan": "Rencana",
+        "alternatif": "",
         "remark": "PLTA Batu Gajah",
         "x_dms": "98° 11' 50.703\" E",
         "y_dms": "3° 27' 0.336\" N",
-        "baris_excel": 27,
+        "baris_excel": 11,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -144,10 +203,11 @@
         "wadmkc": "Sei Lepan",
         "wadmkd": "Alur Dua Baru",
         "keterangan": "Rencana",
+        "alternatif": "",
         "remark": "Jembatan Sei Babalan",
         "x_dms": "98° 15' 7.831\" E",
         "y_dms": "4° 0' 5.805\" N",
-        "baris_excel": 28,
+        "baris_excel": 12,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -170,10 +230,11 @@
         "wadmkc": "Angkola Selatan",
         "wadmkd": "Pardomuan",
         "keterangan": "Rencana",
+        "alternatif": "",
         "remark": "Jembatan",
         "x_dms": "99° 5' 39.552\" E",
         "y_dms": "1° 16' 7.243\" N",
-        "baris_excel": 36,
+        "baris_excel": 13,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -196,10 +257,11 @@
         "wadmkc": "Pandan",
         "wadmkd": "Sihaporas Nauli",
         "keterangan": "Rencana",
+        "alternatif": "",
         "remark": "PLTA Sipansihaporas",
         "x_dms": "98° 52' 47.040\" E",
         "y_dms": "1° 44' 48.954\" N",
-        "baris_excel": 40,
+        "baris_excel": 14,
         "status": "usulan_studi",
         "status_sumber": "status_override.csv"
       },
@@ -213,5 +275,5 @@
     }
   ],
   "catatan_lapisan": "Hanya baris Excel KETERANGAN=Rencana. Baris Eksisting tidak ditulis ke lapisan ini karena koordinatnya sama dengan pos PDA pada data/pos_hidrologi_bbws2.geojson.",
-  "status_catatan": "Properti status bukan kolom pada Excel. Lembar sirine tidak punya kolom KETERANGAN. Lembar sensor menyimpan KETERANGAN sebagai Eksisting atau Rencana, dan nama pos pada kolom Name. Nilai awal semua titik adalah usulan_studi sesuai keputusan tampilan, dibaca dari data/status_override.csv (bukan inferensi lokasi). ID baru ditambahkan sebagai usulan_studi. ID yang hilang dari sumber dibuang dari berkas itu. Nilai belum_ditentukan memakai ikon pin asli tanpa warna status."
+  "status_catatan": "Properti status bukan kolom pada Excel. Lembar sirine menyimpan KETERANGAN dan ALTERBATIF. Lembar sensor menyimpan KETERANGAN; teks yang diawali Rencana disimpan sebagai Rencana, teks yang diawali Eksisting sebagai Eksisting, dan nama pos pada kolom Name. Nilai awal semua titik adalah usulan_studi sesuai keputusan tampilan, dibaca dari data/status_override.csv (bukan inferensi lokasi). ID baru ditambahkan sebagai usulan_studi. ID yang hilang dari sumber dibuang dari berkas itu. Warna sirine pada peta mengikuti Alternatif, bukan status."
 }

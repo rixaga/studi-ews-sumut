@@ -6,16 +6,16 @@ Dihasilkan oleh `scripts/convert_data.py`. Berkas mentah di `data/raw/` tidak di
 
 | Berkas | SHA-256 |
 | --- | --- |
-| data/raw/SEBARAN_SENSOR_DAN_SIREN.xlsx | `5a5812a6e7910d4dcc35aff2841443764edf8472a951299f28120a542a87f425` |
+| data/raw/SEBARAN_SENSOR_DAN_SIREN.xlsx | `9cb7b014e503051ba1efddfc635506b86a65e8900a5388a0e9d331fac357b2ae` |
 | data/raw/20261105_Olah_Penduduk_Terpapar3.xlsx | `00e168f697b65becb5f37cf4e71ff84991037815732d24159942ba7ad5bd0682` |
 
 ## Jumlah
 
 | Lapisan | Jumlah | Keterangan |
 | --- | --- | --- |
-| Sirine | 286 | diharapkan 286 |
-| Sensor digambar | 8 | hanya Rencana; diharapkan 8 |
-| Sensor Eksisting tidak digambar | 33 | diharapkan 33, sama dengan PDA BBWS |
+| Sirine | 295 | diharapkan 295 |
+| Sensor digambar | 10 | hanya Rencana; diharapkan 10 |
+| Sensor Eksisting tidak digambar | 0 | diharapkan 0. Berkas ini tidak memuat baris Eksisting. |
 | Kabupaten/kota pada titik | 12 | diharapkan 12 |
 | Desa lembar Terpapar | 3039 | |
 | Desa lembar Terdampak | 3039 | identik dengan Terpapar: True |
@@ -33,35 +33,40 @@ Baris `Grand Total` pada lembar SIRINE dan SENSOR dibuang (bukan titik).
 | --- | --- |
 | Deli Serdang | 60 |
 | Langkat | 58 |
+| Tapanuli Utara | 27 |
 | Kota Medan | 26 |
-| Tapanuli Tengah | 24 |
-| Tapanuli Utara | 24 |
+| Tapanuli Tengah | 26 |
+| Serdang Bedagai | 20 |
 | Tapanuli Selatan | 20 |
-| Serdang Bedagai | 18 |
 | Kota Binjai | 15 |
+| Humbang Hasundutan | 12 |
 | Kota Tebing Tinggi | 12 |
-| Humbang Hasundutan | 10 |
 | Kota Sibolga | 10 |
 | Kota Padangsidimpuan | 9 |
+
+## Alternatif sirine
+
+Kolom sumber bernama `ALTERBATIF`. Nilai kosong tidak diisi.
+
+| Alternatif | Sirine |
+| --- | --- |
+| Alternatif 1 | 112 |
+| Alternatif 2 | 108 |
+| Alternatif 3 | 74 |
+| (kosong) | 1 |
 
 ## Sensor per kabupaten/kota
 
 | Kabupaten/kota | Eksisting (tidak digambar) | Rencana (digambar) |
 | --- | --- | --- |
-| Deli Serdang | 9 | 0 |
-| Humbang Hasundutan | 2 | 0 |
-| Kota Binjai | 2 | 0 |
-| Kota Medan | 2 | 0 |
+| Humbang Hasundutan | 0 | 2 |
 | Kota Padangsidimpuan | 0 | 1 |
 | Kota Sibolga | 0 | 1 |
-| Kota Tebing Tinggi | 3 | 0 |
-| Langkat | 1 | 4 |
-| Serdang Bedagai | 6 | 0 |
-| Tapanuli Selatan | 2 | 1 |
-| Tapanuli Tengah | 1 | 1 |
-| Tapanuli Utara | 5 | 0 |
+| Langkat | 0 | 4 |
+| Tapanuli Selatan | 0 | 1 |
+| Tapanuli Tengah | 0 | 1 |
 
-ID Rencana yang digambar: SNS-DS-033, SNS-DS-081, SNS-DS-085, SNS-DS-086, SNS-DS-087, SNS-DS-088, SNS-DS-059, SNS-DS-099.
+ID Rencana yang digambar: SNS-DS-100, SNS-DS-101, SNS-DS-102, SNS-DS-103, SNS-DS-085, SNS-DS-086, SNS-DS-087, SNS-DS-088, SNS-DS-059, SNS-DS-099.
 
 ## ID
 
@@ -69,12 +74,12 @@ Koordinat dicocokkan pada 5 angka desimal.
 
 | Lapisan | Dipakai ulang | Dibuat | Dihapus |
 | --- | --- | --- | --- |
-| Sirine | 209 | 77 | 0 (—) |
-| Sensor | 2 | 39 | 63 |
+| Sirine | 260 | 35 | 26 (SRN-DS-014, SRN-DS-017, SRN-DS-025, SRN-DS-028, SRN-DS-031, SRN-DS-037, SRN-DS-040, SRN-DS-042, SRN-DS-043, SRN-DS-077, SRN-DS-078, SRN-DS-081, SRN-DS-083, SRN-DS-084, SRN-DS-093, SRN-DS-095, SRN-DS-108, SRN-DS-112, SRN-DS-123, SRN-DS-153, SRN-DS-154, SRN-DS-196, SRN-DS-207, SRN-DS-209, SRN-DS-268, SRN-DS-269) |
+| Sensor | 6 | 4 | 2 |
 
-ID sirine baru: SRN-DS-210 … SRN-DS-286.
-ID sensor baru: SNS-DS-066 … SNS-DS-104.
-ID sensor yang dipertahankan: SNS-DS-033, SNS-DS-059.
+ID sirine baru: SRN-DS-287 … SRN-DS-321.
+ID sensor baru: SNS-DS-100 … SNS-DS-103.
+ID sensor yang dipertahankan: SNS-DS-085, SNS-DS-086, SNS-DS-087, SNS-DS-088, SNS-DS-059, SNS-DS-099.
 Titik tanpa nama DAS pada poligon KLHK: 0.
 
 ## Tidak disurvei
@@ -152,14 +157,14 @@ Kabupaten/kota titik yang tidak ada di Terpapar: —.
 
 ## Isian kosong
 
-Sebelum isi-ke-depan, sel kab/kec/desa/keterangan kosong pada baris titik: sirine 274, sensor 29. Setelah isi-ke-depan:
+Sebelum isi-ke-depan, sel kab/kec/desa/keterangan kosong pada baris titik: sirine 283, sensor 4. Setelah isi-ke-depan:
 
 | Kolom | Sirine kosong | Sensor kosong |
 | --- | --- | --- |
 | wadmkk | 0 | 0 |
 | wadmkc | 0 | 0 |
 | wadmkd | 0 | 0 |
-| keterangan | 286 | 0 |
+| keterangan | 0 | 0 |
 | remark | 0 | 0 |
 | x/y | 0 | 0 |
 
@@ -174,15 +179,17 @@ Remark sirine yang tidak unik:
 
 | Remark | Jumlah |
 | --- | --- |
-| Kantor Urusan Agama | 3 |
+| SDN - | 4 |
+| TPU | 3 |
+| Kantor Urusan Agama | 2 |
 
 Remark sensor yang tidak unik (ID unik tetap diberikan; remark sumber tidak diubah):
 
 | Remark | Jumlah |
 | --- | --- |
-| Jembatan | 2 |
+| Jembatan | 3 |
 
-Remark sensor persis `Jembatan`: 2 titik. Itu sebab ID `SNS-DS-###` dipakai, bukan teks remark.
+Remark sensor persis `Jembatan`: 3 titik. Itu sebab ID `SNS-DS-###` dipakai, bukan teks remark.
 
 ## Bbox dan batas provinsi
 
@@ -191,7 +198,7 @@ Batas referensi: geoBoundaries ADM1 `North Sumatra` / tampilan Sumatera Utara. B
 | Lapisan | Bbox [barat, selatan, timur, utara] | Di dalam bbox batas |
 | --- | --- | --- |
 | Sirine | [98.28845528, 1.14227833, 99.43123028, 4.03868528] | True |
-| Sensor | [98.155625, 1.16755111, 99.410385, 4.0016125] | True |
+| Sensor | [98.155625, 1.26867861, 99.30439444, 4.0016125] | True |
 
 Titik di luar poligon batas (ray casting, tidak dihapus):
 
@@ -213,7 +220,7 @@ Semua teks koordinat sumber yang terbaca berakhiran `E` (kolom X, bujur) dan `N`
 7. Metode dan sumber penduduk tidak ada di berkas. Tidak diperkirakan di laporan ini.
 8. Tidak ada poligon desa pada masukan. Peta tidak mengarang batas desa.
 9. Ejaan teks remark (contoh pada sumber: "Hampaaran", "Percuit", "Padang Sidempuan") dibiarkan apa adanya.
-10. Excel tidak memuat kolom status. Properti status bukan kolom pada Excel. Lembar sirine tidak punya kolom KETERANGAN. Lembar sensor menyimpan KETERANGAN sebagai Eksisting atau Rencana, dan nama pos pada kolom Name. Nilai awal semua titik adalah usulan_studi sesuai keputusan tampilan, dibaca dari data/status_override.csv (bukan inferensi lokasi). ID baru ditambahkan sebagai usulan_studi. ID yang hilang dari sumber dibuang dari berkas itu. Nilai belum_ditentukan memakai ikon pin asli tanpa warna status. Ringkasan status saat konversi: usulan_studi=294. Catatan berkas override: tidak ada.
+10. Excel tidak memuat kolom status. Properti status bukan kolom pada Excel. Lembar sirine menyimpan KETERANGAN dan ALTERBATIF. Lembar sensor menyimpan KETERANGAN; teks yang diawali Rencana disimpan sebagai Rencana, teks yang diawali Eksisting sebagai Eksisting, dan nama pos pada kolom Name. Nilai awal semua titik adalah usulan_studi sesuai keputusan tampilan, dibaca dari data/status_override.csv (bukan inferensi lokasi). ID baru ditambahkan sebagai usulan_studi. ID yang hilang dari sumber dibuang dari berkas itu. Warna sirine pada peta mengikuti Alternatif, bukan status. Ringkasan status saat konversi: usulan_studi=305. Catatan berkas override: tidak ada.
 
 ## CRS
 
@@ -224,6 +231,6 @@ EPSG:4326 (WGS84), derajat desimal, urutan GeoJSON `[bujur, lintang]`.
 
 Penduduk Terpapar desa dibagi rata ke piksel InaRISK INDEKS_BAHAYA_BANJIR (EPSG:4326, sekitar 111 m) di dalam poligon desa HDX yang indeksnya >= 0,01. Radius 1 km dihitung di UTM zona 47N, lalu dikembalikan ke WGS84. Kelas adalah klasifikasi tampilan, bukan kelas resmi BNPB: rendah 0,01–0,333; sedang >0,333–0,666; tinggi >0,666–1. Penduduk pada piksel < 0,01 tidak dihitung.
 Desa bernilai positif 2214: cocok tepat 1740, fuzzy kecamatan 245, fuzzy kabupaten 171, gagal 58. Penduduk cocok 4904789.4; penduduk tanpa poligon 145787.1.
-Sirine berangka 286. Jumlah tiap baris, boleh tumpang tindih: tinggi 564886.0, sedang 1150513.5, rendah 101855.8, total 1817255.3.
-Gabungan tanpa hitung ganda: tinggi 321118.6, sedang 541063.2, rendah 50210.6, total 912392.4.
+Sirine berangka 295. Jumlah tiap baris, boleh tumpang tindih: tinggi 544702.1, sedang 1084773.9, rendah 88171.3, total 1717647.3.
+Gabungan tanpa hitung ganda: tinggi 340891.0, sedang 575233.2, rendah 51654.3, total 967778.5.
 Sensor tidak punya radius. Kelas adalah klasifikasi tampilan, bukan kelas resmi BNPB.

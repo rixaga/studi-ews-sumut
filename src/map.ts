@@ -57,6 +57,8 @@ export type StudyMap = {
   setSungaiOsm(nyala: boolean): Promise<void>;
   setDanauRtrw(nyala: boolean): Promise<void>;
   setPosHidro(nyala: boolean): Promise<void>;
+  setLabelEsri(nyala: boolean): void;
+  setPoi(nyala: boolean): void;
   setUsulan(fitur: GeoJSON.Feature[], tampil: boolean): void;
   setSurvei(fitur: GeoJSON.Feature[], tampil: boolean): void;
   aturIndeksSurvei(id: string[]): void;
@@ -138,17 +140,34 @@ function denganSpider(titik: Titik[]): Titik[] {
   });
 }
 
+function gambarSirineAlternatif(warna: string): ImageData {
+  const ukuran = 64;
+  const kanvas = document.createElement("canvas");
+  kanvas.width = ukuran;
+  kanvas.height = ukuran;
+  const g = kanvas.getContext("2d");
+  if (!g) throw new Error("kanvas sirine");
+  g.beginPath();
+  g.arc(32, 32, 16, 0, Math.PI * 2);
+  g.fillStyle = warna;
+  g.fill();
+  g.lineWidth = 6;
+  g.strokeStyle = "#ffffff";
+  g.stroke();
+  return g.getImageData(0, 0, ukuran, ukuran);
+}
+
 function ikonSirine(): maplibregl.ExpressionSpecification {
   return [
     "match",
-    ["get", "status"],
-    "usulan_studi",
-    "sirene-usulan-studi",
-    "usulan_bpbd",
-    "sirene-usulan-bpbd",
-    "hasil_survei",
-    "sirene-hasil-survei",
-    "sirene",
+    ["get", "alternatif"],
+    "Alternatif 1",
+    "sirine-alt-1",
+    "Alternatif 2",
+    "sirine-alt-23",
+    "Alternatif 3",
+    "sirine-alt-23",
+    "sirine-alt-kosong",
   ];
 }
 
@@ -232,6 +251,7 @@ function popupHtml(properties: Record<string, unknown>, coordinates: [number, nu
   const baris: Array<[string, string]> = [
     ["ID", String(properties.id ?? "—")],
     ["Jenis", jenisTitik(properties)],
+    ["Alternatif", properties.jenis === "sirine" ? String(properties.alternatif || "tidak diisi") : "—"],
     ["Status", statusLabel],
     ["Sumber status", labelStatusSumber(String(properties.status_sumber ?? ""))],
     ["Kabupaten/kota (sumber)", String(properties.wadmkk ?? "—")],
@@ -427,7 +447,7 @@ export async function createStudyMap(
     type: "raster",
     tiles: [CITRA_URL],
     tileSize: 256,
-    maxzoom: 19,
+    maxzoom: 18,
     attribution: CITRA_ATRIBUSI,
   });
   map.addSource("citra-label", {
@@ -440,13 +460,20 @@ export async function createStudyMap(
   const lapisanPertama = map.getStyle().layers[0]?.id;
   map.addLayer({ id: "citra-label", type: "raster", source: "citra-label", layout: { visibility: "none" } }, lapisanPertama);
   map.addLayer({ id: "citra", type: "raster", source: "citra", layout: { visibility: "none" } }, "citra-label");
+  let modeDasar: DasarPeta = dasarAwal;
+  let lihatLabelEsri = false;
+  const segarLabelEsri = () => {
+    const nyala = lihatLabelEsri || modeDasar === "satelit-label";
+    if (map.getLayer("citra-label")) map.setLayoutProperty("citra-label", "visibility", nyala ? "visible" : "none");
+  };
   const terapkanDasar = (mode: DasarPeta) => {
+    modeDasar = mode;
     const jalan = mode === "jalan";
     for (const [id, tampak] of Object.entries(tampakJalan)) {
       if (map.getLayer(id)) map.setLayoutProperty(id, "visibility", jalan ? tampak : "none");
     }
     map.setLayoutProperty("citra", "visibility", jalan ? "none" : "visible");
-    map.setLayoutProperty("citra-label", "visibility", mode === "satelit-label" ? "visible" : "none");
+    segarLabelEsri();
     aturSelubungBatas(!jalan);
   };
   const aturSelubungBatas = (satelit: boolean) => {
@@ -462,6 +489,9 @@ export async function createStudyMap(
     if (!map.hasImage(name)) map.addImage(name, image.data, { pixelRatio: 2 });
   }
   if (!map.hasImage("sensor-rencana")) map.addImage("sensor-rencana", gambarSensorRencana(), { pixelRatio: 2 });
+  if (!map.hasImage("sirine-alt-1")) map.addImage("sirine-alt-1", gambarSirineAlternatif("#E53935"), { pixelRatio: 2 });
+  if (!map.hasImage("sirine-alt-23")) map.addImage("sirine-alt-23", gambarSirineAlternatif("#8E24AA"), { pixelRatio: 2 });
+  if (!map.hasImage("sirine-alt-kosong")) map.addImage("sirine-alt-kosong", gambarSirineAlternatif("#546E7A"), { pixelRatio: 2 });
 
   map.addSource("sumut", {
     type: "geojson",
@@ -1244,6 +1274,127 @@ export async function createStudyMap(
     // Radius tetap kosong jika berkas belum tersedia.
   }
 
+  const kelasPoi = [
+    "school",
+    "college",
+    "university",
+    "kindergarten",
+    "hospital",
+    "clinic",
+    "doctors",
+    "pharmacy",
+    "place_of_worship",
+    "town_hall",
+    "marketplace",
+    "community_centre",
+    "police",
+    "fire_station",
+    "library",
+  ];
+  const artiPoi: Record<string, string> = {
+    school: "Sekolah",
+    college: "Kampus",
+    university: "Universitas",
+    kindergarten: "Taman kanak-kanak",
+    hospital: "Rumah sakit / puskesmas",
+    clinic: "Klinik",
+    doctors: "Layanan kesehatan",
+    pharmacy: "Apotek",
+    place_of_worship: "Tempat ibadah",
+    town_hall: "Kantor",
+    marketplace: "Pasar",
+    community_centre: "Balai",
+    police: "Polisi",
+    fire_station: "Pemadam",
+    library: "Perpustakaan",
+  };
+  map.addSource("poi-osm", {
+    type: "vector",
+    url: "https://tiles.openfreemap.org/planet",
+    attribution: "© OpenStreetMap contributors",
+  });
+  map.addLayer(
+    {
+      id: "poi-titik",
+      type: "circle",
+      source: "poi-osm",
+      "source-layer": "poi",
+      minzoom: 14,
+      filter: ["match", ["get", "class"], kelasPoi, true, false],
+      layout: { visibility: "none" },
+      paint: {
+        "circle-radius": 4,
+        "circle-color": [
+          "match",
+          ["get", "class"],
+          "place_of_worship",
+          "#2E7D32",
+          "hospital",
+          "#00838F",
+          "clinic",
+          "#00838F",
+          "doctors",
+          "#00838F",
+          "pharmacy",
+          "#00838F",
+          "marketplace",
+          "#EF6C00",
+          "town_hall",
+          "#455A64",
+          "community_centre",
+          "#455A64",
+          "#1565C0",
+        ],
+        "circle-stroke-width": 1.5,
+        "circle-stroke-color": "#ffffff",
+      },
+    },
+    "titik-clusters",
+  );
+  map.addLayer(
+    {
+      id: "poi-nama",
+      type: "symbol",
+      source: "poi-osm",
+      "source-layer": "poi",
+      minzoom: 14,
+      filter: ["match", ["get", "class"], kelasPoi, true, false],
+      layout: {
+        visibility: "none",
+        "text-field": ["coalesce", ["get", "name:latin"], ["get", "name"], ["get", "name_en"], ["get", "name:id"], ""],
+        "text-font": ["Noto Sans Regular"],
+        "text-size": 11,
+        "text-offset": [0, 0.8],
+        "text-anchor": "top",
+        "text-max-width": 8,
+        "text-optional": true,
+      },
+      paint: { "text-color": "#1c1c1f", "text-halo-color": "#ffffff", "text-halo-width": 1.2 },
+    },
+    "titik-clusters",
+  );
+  map.on("click", "poi-titik", (event) => {
+    const properti = event.features?.[0]?.properties ?? {};
+    const nama = String(properti["name:latin"] || properti.name || properti.name_en || properti["name:id"] || "Tanpa nama");
+    const jenis = String(properti.class ?? "");
+    const sub = String(properti.subclass ?? "").trim();
+    popupAir?.remove();
+    popupKlaster?.remove();
+    popupTitik?.remove();
+    popupAir = new maplibregl.Popup({ maxWidth: "280px", className: "ews-popup" })
+      .setLngLat(event.lngLat)
+      .setHTML(
+        `<h3>${escapeHtml(nama)}</h3><p class="popup-catatan">OpenStreetMap. Bukan titik studi.</p><table><tr><th>Jenis</th><td>${escapeHtml(artiPoi[jenis] || jenis || "—")}</td></tr>${sub ? `<tr><th>Rincian</th><td>${escapeHtml(sub)}</td></tr>` : ""}</table>`,
+      )
+      .addTo(map);
+  });
+  map.on("mouseenter", "poi-titik", () => {
+    map.getCanvas().style.cursor = "pointer";
+  });
+  map.on("mouseleave", "poi-titik", () => {
+    map.getCanvas().style.cursor = "";
+  });
+
   return {
     setTitik(sirine, sensor) {
       simpanSirine = sirine;
@@ -1299,6 +1450,16 @@ export async function createStudyMap(
     setSungaiOsm: pasangSungaiOsm,
     setDanauRtrw: pasangDanauRtrw,
     setPosHidro: pasangPosHidro,
+    setLabelEsri(nyala) {
+      lihatLabelEsri = nyala;
+      segarLabelEsri();
+    },
+    setPoi(nyala) {
+      const tampak = nyala ? "visible" : "none";
+      for (const id of ["poi-titik", "poi-nama"]) {
+        if (map.getLayer(id)) map.setLayoutProperty(id, "visibility", tampak);
+      }
+    },
     aturAksiUsulan(admin, sunting, hapus) {
       adminUsulan = admin;
       onSuntingUsulan = sunting;

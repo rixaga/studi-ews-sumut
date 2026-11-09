@@ -30,6 +30,8 @@ const kabSelect = wajib(document.querySelector<HTMLSelectElement>("#kab-select")
 const statusSelect = wajib(document.querySelector<HTMLSelectElement>("#status-select"), "status");
 const togSirine = wajib(document.querySelector<HTMLInputElement>("#tog-sirine"), "sirine");
 const togRadius = wajib(document.querySelector<HTMLInputElement>("#tog-radius"), "radius sirine");
+const togLabelEsri = wajib(document.querySelector<HTMLInputElement>("#tog-label-esri"), "label esri");
+const togPoi = wajib(document.querySelector<HTMLInputElement>("#tog-poi"), "poi");
 const togSensor = wajib(document.querySelector<HTMLInputElement>("#tog-sensor"), "sensor");
 const togBahaya = wajib(document.querySelector<HTMLInputElement>("#tog-bahaya"), "bahaya");
 const togProxy = wajib(document.querySelector<HTMLInputElement>("#tog-proxy"), "proxy");
@@ -257,6 +259,8 @@ function terapkan(geserPeta: boolean) {
   peta?.setVisible("sirine", togSirine.checked);
   peta?.setVisible("sensor", togSensor.checked);
   peta?.setRadius(togRadius.checked, sirineSaring.map((titik) => titik.properties.id));
+  peta?.setLabelEsri(togLabelEsri.checked);
+  peta?.setPoi(togPoi.checked);
   bahayaDetail.hidden = !togBahaya.checked;
   proxyDetail.hidden = !togProxy.checked;
   batasDasDetail.hidden = !togBatasDas.checked;
@@ -302,6 +306,12 @@ function terapkan(geserPeta: boolean) {
   const nDesa = document.querySelector("#n-desa");
   const nPop = document.querySelector("#n-pop");
   if (nSirine) nSirine.textContent = sirineSaring.length.toLocaleString("id-ID");
+  const nSirineAlt = document.querySelector("#n-sirine-alt");
+  if (nSirineAlt) {
+    const alt1 = sirineSaring.filter((titik) => titik.properties.alternatif === "Alternatif 1").length;
+    const alt23 = sirineSaring.filter((titik) => titik.properties.alternatif === "Alternatif 2" || titik.properties.alternatif === "Alternatif 3").length;
+    nSirineAlt.textContent = `Alt 1: ${alt1.toLocaleString("id-ID")} · Alt 2/3: ${alt23.toLocaleString("id-ID")}`;
+  }
   if (nSensor) nSensor.textContent = sensorSaring.length.toLocaleString("id-ID");
   const nPda = document.querySelector("#n-pda");
   const nPch = document.querySelector("#n-pch");
@@ -433,7 +443,7 @@ function pasangLapisan() {
 function pasangMenu() {
   menuBtn.addEventListener("click", () => menu(!sidebar.classList.contains("terbuka")));
   scrim.addEventListener("click", () => menu(false));
-  for (const elemen of [kabSelect, statusSelect, togSirine, togSensor, togRadius, togBahaya, togProxy, bahayaKelas, togBatasDas, togBatasKec, togBatasDesa, togJalanRtrw, togSungaiOsm, togSungaiRtrw, togDanauRtrw, togPosHidro]) {
+  for (const elemen of [kabSelect, statusSelect, togSirine, togSensor, togRadius, togLabelEsri, togPoi, togBahaya, togProxy, bahayaKelas, togBatasDas, togBatasKec, togBatasDesa, togJalanRtrw, togSungaiOsm, togSungaiRtrw, togDanauRtrw, togPosHidro]) {
     elemen.addEventListener("change", () => {
       const geser = elemen === kabSelect || elemen === statusSelect;
       terapkan(geser);
