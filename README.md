@@ -42,7 +42,7 @@ WGS 84, EPSG:4326. Tidak ada transformasi datum lain.
 
 Excel **tidak** punya kolom status. Lembar sirine tidak punya `KETERANGAN`. Lembar sensor memakai `KETERANGAN` = `Eksisting` atau `Rencana`, dan nama pos pada kolom `Name`.
 
-Keputusan tampilan saat ini: sirine dan sensor Rencana berstatus `usulan_studi`. Sirine Alternatif 1 memakai lingkaran merah `#E53935`, Alternatif 2 dan 3 memakai ungu `#8E24AA`, keduanya dengan garis putih. Sensor rencana memakai segitiga oranye. Pos existing (60 PDA, 34 PCH, 7 PKL) hanya ada pada lapisan Pos Hidrologi BBWS II, bukan sebagai titik studi kedua.
+Keputusan tampilan saat ini: sirine dan sensor Rencana berstatus `usulan_studi`. Sirine memakai ikon pin sirine: Alternatif 1 (Usulan studi) merah `#E53935`, Alternatif 2 dan 3 (Usulan alternatif) ungu `#8E24AA`, dengan garis putih. Sensor rencana memakai segitiga oranye karena lembar sensor tidak punya kolom Alternatif. Pos existing (60 PDA, 34 PCH, 7 PKL) hanya ada pada lapisan Pos Hidrologi BBWS II, bukan sebagai titik studi kedua.
 
 Radius sirine 1 km digambar sebagai lingkaran (buffer UTM zona 47N), garis hijau terang putus-putus `#00E676`. Sensor tidak punya radius. Penduduk tercover diambil dari Penduduk Terpapar desa yang dibagi rata ke piksel InaRISK `INDEKS_BAHAYA_BANJIR` di dalam poligon desa dengan indeks ≥ 0,01. Kelas rendah, sedang, dan tinggi adalah klasifikasi tampilan, bukan kelas resmi BNPB. Angka per sirine boleh tumpang tindih; total gabungan memakai union radius. Hitung ulang dengan `python scripts/cakupan_sirine.py`.
 
