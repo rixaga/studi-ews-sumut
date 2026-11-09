@@ -8,6 +8,7 @@ export type TitikProps = {
   wadmkc: string;
   wadmkd: string;
   keterangan: string;
+  alternatif?: string;
   remark: string;
   nama?: string;
   x_dms: string;

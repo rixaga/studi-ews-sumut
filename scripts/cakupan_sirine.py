@@ -241,8 +241,8 @@ def main() -> None:
     print("bagi penduduk", statistik, flush=True)
     rendah, sedang, tinggi = bagi_penduduk(bahaya, transformasi, desa)
     sirine = json.loads((ROOT / "data" / "sirine.geojson").read_text(encoding="utf-8"))["features"]
-    if len(sirine) != 286:
-        raise SystemExit(f"sirine {len(sirine)} bukan 286")
+    if not sirine:
+        raise SystemExit("sirine kosong")
     lingkaran_fitur = []
     per_sirine = {}
     jumlah_baris = {"rendah": 0.0, "sedang": 0.0, "tinggi": 0.0, "total": 0.0}

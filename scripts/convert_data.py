@@ -47,8 +47,8 @@ BATAS_PATH = ROOT / "data" / "batas" / "sumatera_utara_adm1.geojson"
 DAS_PATH = ROOT / "data" / "wilayah" / "das_sumut.geojson"
 OLD_SIRINE = ROOT / "data" / "id_acuan" / "sirine.geojson"
 OLD_SENSOR = ROOT / "data" / "id_acuan" / "sensor.geojson"
-EXPECT_SIRINE = 286
-EXPECT_SENSOR = 41
+EXPECT_SIRINE = 295
+EXPECT_SENSOR = 10
 
 DMS_RE = re.compile(
     r"""(\d+)\s*°\s*(\d+)\s*'\s*([\d.]+)\s*"\s*([NSEW])""",
@@ -68,12 +68,13 @@ STATUS_PATH = ROOT / "data" / "status_override.csv"
 DEFAULT_STATUS = "usulan_studi"
 VALID_STATUS = {"usulan_studi", "usulan_bpbd", "hasil_survei", "belum_ditentukan"}
 STATUS_CATATAN = (
-    "Properti status bukan kolom pada Excel. Lembar sirine tidak punya kolom KETERANGAN. "
-    "Lembar sensor menyimpan KETERANGAN sebagai Eksisting atau Rencana, dan nama pos pada kolom Name. "
+    "Properti status bukan kolom pada Excel. Lembar sirine menyimpan KETERANGAN dan ALTERBATIF. "
+    "Lembar sensor menyimpan KETERANGAN; teks yang diawali Rencana disimpan sebagai Rencana, "
+    "teks yang diawali Eksisting sebagai Eksisting, dan nama pos pada kolom Name. "
     "Nilai awal semua titik adalah usulan_studi sesuai keputusan tampilan, "
     "dibaca dari data/status_override.csv (bukan inferensi lokasi). "
     "ID baru ditambahkan sebagai usulan_studi. ID yang hilang dari sumber dibuang dari berkas itu. "
-    "Nilai belum_ditentukan memakai ikon pin asli tanpa warna status."
+    "Warna sirine pada peta mengikuti Alternatif, bukan status."
 )
 
 
@@ -119,18 +120,27 @@ def dms_to_dd(text: str) -> float:
     return round(value, 8)
 
 
+def norm_keterangan_sensor(teks: str | None) -> str:
+    nilai = (teks or "").strip().lower()
+    if nilai.startswith("rencana"):
+        return "Rencana"
+    if nilai.startswith("eksisting"):
+        return "Eksisting"
+    return (teks or "").strip()
+
+
 def load_sirine(ws) -> tuple[list[dict], int]:
-    """SEBARAN SIREN: WADMKK, WADMKC, WADMKD, REMARK, X, Y. Tanpa kolom KETERANGAN."""
+    """SEBARAN SIRINE: WADMKK, WADMKC, WADMKD, KETERANGAN, ALTERBATIF, REMARK, X, Y."""
     parsed: list[dict] = []
-    kab = kec = desa = None
+    kab = kec = desa = ket = None
     blank_admin_before = 0
     for row_idx in range(5, ws.max_row + 1):
-        raw = [ws.cell(row_idx, col).value for col in range(1, 7)]
+        raw = [ws.cell(row_idx, col).value for col in range(1, 9)]
         if any(clean_text(cell) == "Grand Total" for cell in raw):
             continue
         if all(cell is None for cell in raw):
             continue
-        a, b, c, remark, x_text, y_text = raw
+        a, b, c, keterangan, alternatif, remark, x_text, y_text = raw
         if a is None or b is None or c is None:
             blank_admin_before += 1
         if a is not None:
@@ -139,13 +149,16 @@ def load_sirine(ws) -> tuple[list[dict], int]:
             kec = clean_text(b)
         if c is not None:
             desa = clean_text(c)
+        if keterangan is not None:
+            ket = clean_text(keterangan)
         parsed.append(
             {
                 "baris_excel": row_idx,
                 "wadmkk": kab,
                 "wadmkc": kec,
                 "wadmkd": desa,
-                "keterangan": "",
+                "keterangan": ket or "",
+                "alternatif": clean_text(alternatif) or "",
                 "remark": clean_text(remark) or "",
                 "x_dms": clean_text(x_text),
                 "y_dms": clean_text(y_text),
@@ -155,7 +168,7 @@ def load_sirine(ws) -> tuple[list[dict], int]:
 
 
 def load_sensor(ws) -> tuple[list[dict], int]:
-    """SENSOR: WADMKK, WADMKC, WADMKD, KETERANGAN, Name, X, Y."""
+    """SEBARAN SENSOR: WADMKK, WADMKC, WADMKD, KETERANGAN, Name, X, Y."""
     parsed: list[dict] = []
     kab = kec = desa = None
     blank_admin_before = 0
@@ -180,7 +193,8 @@ def load_sensor(ws) -> tuple[list[dict], int]:
                 "wadmkk": kab,
                 "wadmkc": kec,
                 "wadmkd": desa,
-                "keterangan": clean_text(ket) or "",
+                "keterangan": norm_keterangan_sensor(clean_text(ket)),
+                "alternatif": "",
                 "remark": clean_text(nama) or "",
                 "x_dms": clean_text(x_text),
                 "y_dms": clean_text(y_text),
@@ -213,6 +227,7 @@ def to_geojson(rows: list[dict], prefix: str, jenis: str) -> dict:
                     "wadmkc": row["wadmkc"],
                     "wadmkd": row["wadmkd"],
                     "keterangan": row["keterangan"],
+                    "alternatif": row.get("alternatif") or "",
                     "remark": row["remark"],
                     "x_dms": row["x_dms"],
                     "y_dms": row["y_dms"],
@@ -515,8 +530,8 @@ def main() -> int:
     sebaran = openpyxl.load_workbook(RAW_SEBARAN, data_only=True)
     penduduk_wb = openpyxl.load_workbook(RAW_PENDUDUK, data_only=True)
 
-    sirine_rows, sirine_blank = load_sirine(sebaran["SEBARAN SIREN"])
-    sensor_rows, sensor_blank = load_sensor(sebaran["SENSOR"])
+    sirine_rows, sirine_blank = load_sirine(sebaran["SEBARAN SIRINE"])
+    sensor_rows, sensor_blank = load_sensor(sebaran["SEBARAN SENSOR"])
     sirine_gj = to_geojson(sirine_rows, "SRN-DS", "sirine")
     sensor_gj = to_geojson(sensor_rows, "SNS-DS", "sensor")
     sirine_fail = sirine_gj.pop("_failures")
@@ -698,6 +713,10 @@ def main() -> int:
     sensor_remarks = nonunique([f["properties"]["remark"] for f in sensor_gj["features"]])
     jembatan = sum(1 for f in sensor_gj["features"] if f["properties"]["remark"] == "Jembatan")
 
+    alt_sirine = count_by(
+        [{"alternatif": f["properties"].get("alternatif") or "(kosong)"} for f in sirine_gj["features"]],
+        "alternatif",
+    )
     kab_sirine = count_by([f["properties"] for f in sirine_gj["features"]], "wadmkk")
     kab_sensor = count_by([f["properties"] for f in sensor_gj["features"]], "wadmkk")
     kab_ter = count_by(terpapar, "kab_kota")
@@ -723,8 +742,8 @@ Dihasilkan oleh `scripts/convert_data.py`. Berkas mentah di `data/raw/` tidak di
 | Lapisan | Jumlah | Keterangan |
 | --- | --- | --- |
 | Sirine | {len(sirine_gj["features"])} | diharapkan {EXPECT_SIRINE} |
-| Sensor digambar | {len(sensor_gj["features"])} | hanya Rencana; diharapkan 8 |
-| Sensor Eksisting tidak digambar | {sum(1 for f in sensor_lembar if f["properties"]["keterangan"] == "Eksisting")} | diharapkan 33, sama dengan PDA BBWS |
+| Sensor digambar | {len(sensor_gj["features"])} | hanya Rencana; diharapkan 10 |
+| Sensor Eksisting tidak digambar | {sum(1 for f in sensor_lembar if f["properties"]["keterangan"] == "Eksisting")} | diharapkan 0. Berkas ini tidak memuat baris Eksisting. |
 | Kabupaten/kota pada titik | {len(titik_kab)} | diharapkan 12 |
 | Desa lembar Terpapar | {len(terpapar)} | |
 | Desa lembar Terdampak | {len(terdampak)} | identik dengan Terpapar: {identik} |
@@ -739,6 +758,12 @@ Baris `Grand Total` pada lembar SIRINE dan SENSOR dibuang (bukan titik).
 ## Sirine per kabupaten/kota
 
 {md_table(["Kabupaten/kota", "Sirine"], [[name, count] for name, count in kab_sirine])}
+
+## Alternatif sirine
+
+Kolom sumber bernama `ALTERBATIF`. Nilai kosong tidak diisi.
+
+{md_table(["Alternatif", "Sirine"], [[name, count] for name, count in alt_sirine])}
 
 ## Sensor per kabupaten/kota
 
@@ -890,10 +915,10 @@ Sensor tidak punya radius. Kelas adalah klasifikasi tampilan, bukan kelas resmi 
     if (
         len(sirine_gj["features"]) != EXPECT_SIRINE
         or len(sensor_lembar) != EXPECT_SENSOR
-        or len(sensor_gj["features"]) != 8
+        or         len(sensor_gj["features"]) != 10
         or len(titik_kab) != 12
-        or ket_sensor.get("Eksisting") != 33
-        or ket_sensor.get("Rencana") != 8
+        or ket_sensor.get("Eksisting", 0) != 0
+        or ket_sensor.get("Rencana") != 10
         or len(tidak_disurvei) != 28
         or len(kab_tidak) != 7
     ):

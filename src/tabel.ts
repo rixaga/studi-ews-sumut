@@ -4,6 +4,7 @@ import { asset, escapeHtml, formatBulat, formatDerajat, STATUS_LABEL } from "./m
 type Kunci =
   | "id"
   | "jenis"
+  | "alternatif"
   | "status"
   | "survei"
   | "kab"
@@ -24,6 +25,7 @@ type Baris = {
   titik: Titik;
   id: string;
   jenis: string;
+  alternatif: string;
   status: string;
   survei: string;
   kab: string;
@@ -56,6 +58,7 @@ type BerkasCakupan = {
 const KOLOM: Array<[Kunci, string]> = [
   ["id", "ID"],
   ["jenis", "Jenis"],
+  ["alternatif", "Alternatif"],
   ["status", "Status"],
   ["survei", "Survei"],
   ["kab", "Kab/Kota"],
@@ -170,6 +173,7 @@ function jadiBaris(titik: Titik): Baris {
     titik,
     id: titik.properties.id,
     jenis: labelJenis(titik.properties.jenis, titik.properties.keterangan),
+    alternatif: titik.properties.jenis === "sirine" ? kosong(titik.properties.alternatif) : "-",
     status: STATUS_LABEL[titik.properties.status] ?? titik.properties.status,
     survei: sudahSurvei.has(titik.properties.id) ? "Sudah disurvei" : "—",
     kab: kosong(titik.properties.wadmkk_tampil),
@@ -192,6 +196,7 @@ function cocok(baris: Baris, kata: string): boolean {
   const haystack = [
     baris.id,
     baris.jenis,
+    baris.alternatif,
     baris.status,
     baris.survei,
     baris.kab,
@@ -237,6 +242,7 @@ function sel(baris: Baris): string {
   const nilai: Record<Kunci, string> = {
     id: baris.id,
     jenis: baris.jenis,
+    alternatif: baris.alternatif,
     status: baris.status,
     survei: baris.survei,
     kab: baris.kab,

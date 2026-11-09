@@ -13,8 +13,8 @@ Tampilan mengikuti bahasa visual [Pantau Bencana v0.3](https://pantau-bencana.gi
 | `data/raw/SEBARAN_SENSOR_DAN_SIREN.xlsx` | Lembar SEBARAN SIREN dan SENSOR. Tidak diubah. |
 | `data/raw/20261105_Olah_Penduduk_Terpapar3.xlsx` | Lembar penduduk 5 November 2026, termasuk Tidak disurvei. |
 | `data/raw/arsip/` | Berkas mentah sebelumnya, tidak dipakai konversi. |
-| `data/sirine.geojson`, `data/sensor.geojson` | 286 sirine dan 8 sensor Rencana. 33 baris Eksisting tidak masuk lapisan karena sama dengan pos PDA BBWS II. |
-| `data/sirine_buffer_1km.geojson` | Lingkaran radius 1 km untuk 286 sirine saja. Garis hijau putus-putus, tanpa isian pekat. |
+| `data/sirine.geojson`, `data/sensor.geojson` | Sirine dari berkas terbaru, diwarnai menurut Alternatif, dan sensor Rencana. Baris sensor Eksisting, bila ada, tidak masuk lapisan karena sama dengan pos PDA BBWS II. |
+| `data/sirine_buffer_1km.geojson` | Lingkaran radius 1 km untuk setiap sirine. Garis hijau putus-putus, tanpa isian pekat. Sensor tidak punya radius. |
 | `data/sirine_cakupan.json` | Penduduk tercover dan kelas bahaya per sirine, plus total gabungan tanpa hitung ganda. |
 | `data/penduduk_terpapar.csv`, `data/penduduk_terpapar.json` | 3.039 desa pada 20 kabupaten/kota. |
 | `data/penduduk_terdampak.json` | Salinan multiset lembar Terpapar. Lihat isu di bawah. |
@@ -42,7 +42,7 @@ WGS 84, EPSG:4326. Tidak ada transformasi datum lain.
 
 Excel **tidak** punya kolom status. Lembar sirine tidak punya `KETERANGAN`. Lembar sensor memakai `KETERANGAN` = `Eksisting` atau `Rencana`, dan nama pos pada kolom `Name`.
 
-Keputusan tampilan saat ini: **286 sirine dan 8 sensor Rencana berstatus `usulan_studi`**. Sensor rencana memakai segitiga oranye. Pos existing (60 PDA, 34 PCH, 7 PKL) hanya ada pada lapisan Pos Hidrologi BBWS II, bukan sebagai titik studi kedua.
+Keputusan tampilan saat ini: sirine dan sensor Rencana berstatus `usulan_studi`. Sirine Alternatif 1 memakai lingkaran merah `#E53935`, Alternatif 2 dan 3 memakai ungu `#8E24AA`, keduanya dengan garis putih. Sensor rencana memakai segitiga oranye. Pos existing (60 PDA, 34 PCH, 7 PKL) hanya ada pada lapisan Pos Hidrologi BBWS II, bukan sebagai titik studi kedua.
 
 Radius sirine 1 km digambar sebagai lingkaran (buffer UTM zona 47N), garis hijau terang putus-putus `#00E676`. Sensor tidak punya radius. Penduduk tercover diambil dari Penduduk Terpapar desa yang dibagi rata ke piksel InaRISK `INDEKS_BAHAYA_BANJIR` di dalam poligon desa dengan indeks ≥ 0,01. Kelas rendah, sedang, dan tinggi adalah klasifikasi tampilan, bukan kelas resmi BNPB. Angka per sirine boleh tumpang tindih; total gabungan memakai union radius. Hitung ulang dengan `python scripts/cakupan_sirine.py`.
 
@@ -99,7 +99,7 @@ Bbox verteks: bujur 97,0586196–100,4401959, lintang −0,6383341–4,3016772. 
 
 Diperiksa 4 November 2026: berkas gaya kembali HTTP 200 bertipe JSON, tanpa kunci API, header `access-control-allow-origin: *`. Atribusi pada peta: OpenFreeMap, OpenMapTiles, dan OpenStreetMap contributors.
 
-Pemilih di kiri bawah peta punya tiga pilihan. **Peta jalan** adalah gaya Liberty itu dan menjadi bawaan. **Satelit** memakai petak Esri World Imagery (`.../World_Imagery/MapServer/tile/{z}/{y}/{x}`, `maxzoom` 19). **Satelit + label** menambah petak referensi `Reference/World_Boundaries_and_Places` di atas citra. Citra disisipkan di lapisan paling bawah; lapisan studi (titik, label, batas, sungai, DAS, bahaya, proksi, usulan, tanda silang) tidak dibuat ulang dan status nyala/mati tetap. Pilihan disimpan di `localStorage` dengan kunci `studi-ews-basemap`.
+Pemilih di kiri bawah peta punya tiga pilihan. **Peta jalan** adalah gaya Liberty itu dan menjadi bawaan. **Satelit** memakai petak Esri World Imagery (`.../World_Imagery/MapServer/tile/{z}/{y}/{x}`, sumber `maxzoom` 18). Di atas zoom 18 peta tetap bisa didekatkan; petak terakhir diperbesar, bukan petak pengganti “Map data not yet available”. **Satelit + label** menambah petak referensi `Reference/World_Boundaries_and_Places` di atas citra. Citra disisipkan di lapisan paling bawah; lapisan studi (titik, label, batas, sungai, DAS, bahaya, proksi, usulan, tanda silang) tidak dibuat ulang dan status nyala/mati tetap. Pilihan disimpan di `localStorage` dengan kunci `studi-ews-basemap`.
 
 Atribusi citra: Tiles © Esri — Source: Esri, Maxar, Earthstar Geographics, and the GIS User Community.
 
