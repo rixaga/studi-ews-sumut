@@ -1,0 +1,28 @@
+{
+  "type": "FeatureCollection",
+  "name": "Usulan BPBD",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "UBPBD-001",
+      "properties": {
+        "id": "UBPBD-001",
+        "nama": "Kantor Desa Sei Buluh",
+        "jenis": "sirine",
+        "status": "usulan_bpbd",
+        "sumber": "Usulan BPBD",
+        "wadmkk": "Serdang Bedagai",
+        "wadmkc": "Sei Bamban",
+        "wadmkd": "Sei Buluh",
+        "adm2_pcode": "ID1218",
+        "adm3_pcode": "ID1218081",
+        "adm4_pcode": "ID1218081006",
+        "catatan": "Koordinat dari tautan Google Maps. Nama wilayah dari batas desa HDX COD-AB."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [99.1782316, 3.4460196]
+      }
+    }
+  ]
+}

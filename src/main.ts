@@ -32,6 +32,7 @@ const togSirine = wajib(document.querySelector<HTMLInputElement>("#tog-sirine"),
 const togRadius = wajib(document.querySelector<HTMLInputElement>("#tog-radius"), "radius sirine");
 const togLabelEsri = wajib(document.querySelector<HTMLInputElement>("#tog-label-esri"), "label esri");
 const togPoi = wajib(document.querySelector<HTMLInputElement>("#tog-poi"), "poi");
+const togUsulanBpbd = wajib(document.querySelector<HTMLInputElement>("#tog-usulan-bpbd"), "usulan bpbd");
 const togSensor = wajib(document.querySelector<HTMLInputElement>("#tog-sensor"), "sensor");
 const togBahaya = wajib(document.querySelector<HTMLInputElement>("#tog-bahaya"), "bahaya");
 const togProxy = wajib(document.querySelector<HTMLInputElement>("#tog-proxy"), "proxy");
@@ -261,6 +262,7 @@ function terapkan(geserPeta: boolean) {
   peta?.setRadius(togRadius.checked, sirineSaring.map((titik) => titik.properties.id));
   peta?.setLabelEsri(togLabelEsri.checked);
   peta?.setPoi(togPoi.checked);
+  peta?.setUsulanBpbd(togUsulanBpbd.checked);
   bahayaDetail.hidden = !togBahaya.checked;
   proxyDetail.hidden = !togProxy.checked;
   batasDasDetail.hidden = !togBatasDas.checked;
@@ -443,7 +445,7 @@ function pasangLapisan() {
 function pasangMenu() {
   menuBtn.addEventListener("click", () => menu(!sidebar.classList.contains("terbuka")));
   scrim.addEventListener("click", () => menu(false));
-  for (const elemen of [kabSelect, statusSelect, togSirine, togSensor, togRadius, togLabelEsri, togPoi, togBahaya, togProxy, bahayaKelas, togBatasDas, togBatasKec, togBatasDesa, togJalanRtrw, togSungaiOsm, togSungaiRtrw, togDanauRtrw, togPosHidro]) {
+  for (const elemen of [kabSelect, statusSelect, togSirine, togSensor, togRadius, togLabelEsri, togPoi, togUsulanBpbd, togBahaya, togProxy, bahayaKelas, togBatasDas, togBatasKec, togBatasDesa, togJalanRtrw, togSungaiOsm, togSungaiRtrw, togDanauRtrw, togPosHidro]) {
     elemen.addEventListener("change", () => {
       const geser = elemen === kabSelect || elemen === statusSelect;
       terapkan(geser);
