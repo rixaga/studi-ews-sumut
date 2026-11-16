@@ -28,6 +28,33 @@
         "type": "Point",
         "coordinates": [99.1782316, 3.4460196]
       }
+    },
+    {
+      "type": "Feature",
+      "id": "UBPBD-002",
+      "properties": {
+        "id": "UBPBD-002",
+        "jenis": "sirine",
+        "wadmkk": "Serdang Bedagai",
+        "wadmkk_tampil": "Serdang Bedagai",
+        "wadmkc": "Bandar Khalipah",
+        "wadmkd": "Pekan Bandar Khalipah",
+        "keterangan": "",
+        "remark": "Kantor Camat Bandar Khalipah",
+        "nama": "Kantor Camat Bandar Khalipah",
+        "x_dms": "",
+        "y_dms": "",
+        "baris_excel": 0,
+        "status": "usulan_bpbd",
+        "status_sumber": "data/usulan_bpbd.geojson",
+        "adm2_pcode": "ID1218",
+        "adm3_pcode": "ID1218060",
+        "adm4_pcode": "ID1218060004"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [99.2801239, 3.4365244]
+      }
     }
   ]
 }

@@ -20,6 +20,7 @@ const files = [
   "pos_hidrologi_bbws2.geojson",
   "osm/sungai_sumut.geojson",
   "usulan_bpbd.geojson",
+  "usulan_bpbd_buffer_1km.geojson",
 ];
 
 for (const rel of files) {
