@@ -1802,7 +1802,7 @@ const batasLayer: Record<BatasJenis, string[]> = {
   das: ["batas-das-garis", "batas-das-label"],
   kab: ["batas-toba", "batas-toba-label", "batas-kab-casing", "batas-kab-garis", "batas-kab-label"],
   kec: ["batas-kec-casing", "batas-kec-garis"],
-  desa: ["batas-desa-casing", "batas-desa-garis"],
+  desa: ["batas-desa-label", "batas-desa-casing", "batas-desa-garis"],
 };
 const batasSource: Record<BatasJenis, string[]> = {
   das: ["batas-das"],
@@ -2053,6 +2053,30 @@ async function pasangBatas(
           },
         },
         "batas-desa-garis",
+      );
+      map.addLayer(
+        {
+          id: "batas-desa-label",
+          type: "symbol",
+          source: "batas-desa",
+          minzoom: 12,
+          layout: {
+            "text-field": ["get", "adm4_name"],
+            "text-font": ["Noto Sans Regular"],
+            "text-size": ["interpolate", ["linear"], ["zoom"], 12, 11, 15, 13],
+            "text-max-width": 8,
+            "text-padding": 6,
+            "text-allow-overlap": false,
+            "text-ignore-placement": false,
+            "symbol-placement": "point",
+          },
+          paint: {
+            "text-color": "#1c1c1f",
+            "text-halo-color": "#ffffff",
+            "text-halo-width": 1.6,
+          },
+        },
+        "titik-clusters",
       );
     }
     onRaster(kind, "ready");
