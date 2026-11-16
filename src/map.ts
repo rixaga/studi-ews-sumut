@@ -59,7 +59,6 @@ export type StudyMap = {
   setPosHidro(nyala: boolean): Promise<void>;
   setLabelEsri(nyala: boolean): void;
   setPoi(nyala: boolean): void;
-  setUsulanBpbd(nyala: boolean): void;
   setUsulan(fitur: GeoJSON.Feature[], tampil: boolean): void;
   setSurvei(fitur: GeoJSON.Feature[], tampil: boolean): void;
   aturIndeksSurvei(id: string[]): void;
@@ -195,15 +194,20 @@ function labelSirine(alternatif: unknown): string {
 
 function ikonSirine(): maplibregl.ExpressionSpecification {
   return [
-    "match",
-    ["get", "alternatif"],
-    "Alternatif 1",
-    "sirine-alt-1",
-    "Alternatif 2",
-    "sirine-alt-23",
-    "Alternatif 3",
-    "sirine-alt-23",
-    "sirine-alt-kosong",
+    "case",
+    ["==", ["get", "status"], "usulan_bpbd"],
+    "sirene-usulan-bpbd",
+    [
+      "match",
+      ["get", "alternatif"],
+      "Alternatif 1",
+      "sirine-alt-1",
+      "Alternatif 2",
+      "sirine-alt-23",
+      "Alternatif 3",
+      "sirine-alt-23",
+      "sirine-alt-kosong",
+    ],
   ];
 }
 
@@ -287,8 +291,12 @@ function popupHtml(properties: Record<string, unknown>, coordinates: [number, nu
   const baris: Array<[string, string]> = [
     ["ID", String(properties.id ?? "—")],
     ["Jenis", jenisTitik(properties)],
-    ...(properties.jenis === "sirine" ? [["Label", labelSirine(properties.alternatif)] as [string, string]] : []),
-    ["Alternatif", properties.jenis === "sirine" ? String(properties.alternatif || "tidak diisi") : "—"],
+    ...(properties.jenis === "sirine" && status !== "usulan_bpbd"
+      ? ([
+          ["Label", labelSirine(properties.alternatif)],
+          ["Alternatif", String(properties.alternatif || "tidak diisi")],
+        ] as Array<[string, string]>)
+      : []),
     ["Status", statusLabel],
     ["Sumber status", labelStatusSumber(String(properties.status_sumber ?? ""))],
     ["Kabupaten/kota (sumber)", String(properties.wadmkk ?? "—")],
@@ -590,18 +598,6 @@ export async function createStudyMap(
     filter: ["all", ["!", ["has", "point_count"]], ["==", ["get", "jenis"], "sensor"]],
     layout: { ...tataIkon, "icon-image": ikonSensor() },
   });
-  map.addSource("usulan-bpbd", { type: "geojson", data: { type: "FeatureCollection", features: [] } });
-  map.addLayer({
-    id: "usulan-bpbd-titik",
-    type: "symbol",
-    source: "usulan-bpbd",
-    layout: {
-      "icon-image": "sirene-usulan-bpbd",
-      "icon-anchor": "bottom",
-      "icon-allow-overlap": true,
-      "icon-ignore-placement": true,
-    },
-  });
   map.addSource("usulan", { type: "geojson", data: { type: "FeatureCollection", features: [] } });
   map.addLayer({
     id: "usulan-titik",
@@ -758,8 +754,6 @@ export async function createStudyMap(
   let lihatSirine = true;
   let lihatSensor = true;
   let lihatRadius = true;
-  let lihatUsulanBpbd = true;
-  let usulanBpbd: GeoJSON.Feature[] = [];
   let bufferSemua: GeoJSON.Feature[] = [];
   let idRadius = new Set<string>();
   const tulisRadius = () => {
@@ -768,42 +762,6 @@ export async function createStudyMap(
     const tampak = lihatRadius && fitur.length ? "visible" : "none";
     if (map.getLayer("buffer-sirine-garis")) map.setLayoutProperty("buffer-sirine-garis", "visibility", tampak);
   };
-  const tulisUsulanBpbd = () => {
-    const fitur = lihatUsulanBpbd ? usulanBpbd : [];
-    (map.getSource("usulan-bpbd") as GeoJSONSource).setData({ type: "FeatureCollection", features: fitur });
-    if (map.getLayer("usulan-bpbd-titik")) {
-      map.setLayoutProperty("usulan-bpbd-titik", "visibility", lihatUsulanBpbd && fitur.length ? "visible" : "none");
-    }
-  };
-  map.on("click", "usulan-bpbd-titik", (event) => {
-    const feature = event.features?.[0];
-    if (!feature || feature.geometry.type !== "Point") return;
-    const properties = (feature.properties ?? {}) as Record<string, unknown>;
-    const coordinates = feature.geometry.coordinates as [number, number];
-    const nama = String(properties.nama ?? "Usulan BPBD");
-    const baris = [
-      ["Nama", nama],
-      ["Sumber", "Usulan BPBD"],
-      ["Kabupaten/kota", String(properties.wadmkk ?? "—")],
-      ["Kecamatan", String(properties.wadmkc ?? "—")],
-      ["Desa", String(properties.wadmkd ?? "—")],
-      ["Bujur", formatDerajat(coordinates[0])],
-      ["Lintang", formatDerajat(coordinates[1])],
-    ];
-    const isi = baris.map(([label, value]) => `<tr><th>${escapeHtml(label)}</th><td>${escapeHtml(value)}</td></tr>`).join("");
-    popupKlaster?.remove();
-    popupTitik?.remove();
-    popupTitik = new maplibregl.Popup({ maxWidth: "320px", className: "ews-popup" })
-      .setLngLat(coordinates)
-      .setHTML(`<h3>${escapeHtml(nama)}</h3><p class="popup-catatan">Usulan BPBD. Bukan bagian dari titik studi Excel.</p><table>${isi}</table>`)
-      .addTo(map);
-  });
-  map.on("mouseenter", "usulan-bpbd-titik", () => {
-    map.getCanvas().style.cursor = "pointer";
-  });
-  map.on("mouseleave", "usulan-bpbd-titik", () => {
-    map.getCanvas().style.cursor = "";
-  });
   let adminUsulan = false;
   let onSuntingUsulan: ((id: string) => void) | null = null;
   let onHapusUsulan: ((id: string) => void) | null = null;
@@ -1351,17 +1309,6 @@ export async function createStudyMap(
   }
 
   try {
-    const responsBpbd = await fetch(asset("data/usulan_bpbd.geojson"));
-    if (responsBpbd.ok) {
-      const data = (await responsBpbd.json()) as GeoJSON.FeatureCollection;
-      usulanBpbd = data.features ?? [];
-      tulisUsulanBpbd();
-    }
-  } catch {
-    // Titik Usulan BPBD tetap kosong jika berkas belum tersedia.
-  }
-
-  try {
     const respons = await fetch(asset("data/sirine_buffer_1km.geojson"));
     if (respons.ok) {
       const data = (await respons.json()) as GeoJSON.FeatureCollection;
@@ -1551,10 +1498,6 @@ export async function createStudyMap(
     setLabelEsri(nyala) {
       lihatLabelEsri = nyala;
       segarLabelEsri();
-    },
-    setUsulanBpbd(nyala) {
-      lihatUsulanBpbd = nyala;
-      tulisUsulanBpbd();
     },
     setPoi(nyala) {
       const tampak = nyala ? "visible" : "none";
