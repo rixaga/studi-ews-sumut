@@ -1313,8 +1313,13 @@ export async function createStudyMap(
     if (respons.ok) {
       const data = (await respons.json()) as GeoJSON.FeatureCollection;
       bufferSemua = data.features ?? [];
-      tulisRadius();
     }
+    const responsBpbd = await fetch(asset("data/usulan_bpbd_buffer_1km.geojson"));
+    if (responsBpbd.ok) {
+      const data = (await responsBpbd.json()) as GeoJSON.FeatureCollection;
+      bufferSemua = bufferSemua.concat(data.features ?? []);
+    }
+    tulisRadius();
   } catch {
     // Radius tetap kosong jika berkas belum tersedia.
   }
