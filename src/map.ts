@@ -194,15 +194,20 @@ function labelSirine(alternatif: unknown): string {
 
 function ikonSirine(): maplibregl.ExpressionSpecification {
   return [
-    "match",
-    ["get", "alternatif"],
-    "Alternatif 1",
-    "sirine-alt-1",
-    "Alternatif 2",
-    "sirine-alt-23",
-    "Alternatif 3",
-    "sirine-alt-23",
-    "sirine-alt-kosong",
+    "case",
+    ["==", ["get", "status"], "usulan_bpbd"],
+    "sirene-usulan-bpbd",
+    [
+      "match",
+      ["get", "alternatif"],
+      "Alternatif 1",
+      "sirine-alt-1",
+      "Alternatif 2",
+      "sirine-alt-23",
+      "Alternatif 3",
+      "sirine-alt-23",
+      "sirine-alt-kosong",
+    ],
   ];
 }
 
@@ -286,8 +291,12 @@ function popupHtml(properties: Record<string, unknown>, coordinates: [number, nu
   const baris: Array<[string, string]> = [
     ["ID", String(properties.id ?? "—")],
     ["Jenis", jenisTitik(properties)],
-    ...(properties.jenis === "sirine" ? [["Label", labelSirine(properties.alternatif)] as [string, string]] : []),
-    ["Alternatif", properties.jenis === "sirine" ? String(properties.alternatif || "tidak diisi") : "—"],
+    ...(properties.jenis === "sirine" && status !== "usulan_bpbd"
+      ? ([
+          ["Label", labelSirine(properties.alternatif)],
+          ["Alternatif", String(properties.alternatif || "tidak diisi")],
+        ] as Array<[string, string]>)
+      : []),
     ["Status", statusLabel],
     ["Sumber status", labelStatusSumber(String(properties.status_sumber ?? ""))],
     ["Kabupaten/kota (sumber)", String(properties.wadmkk ?? "—")],

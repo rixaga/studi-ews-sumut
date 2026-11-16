@@ -467,7 +467,7 @@ async function mulai() {
   pasangMenu();
   void periksaUlang();
   try {
-    const [sirineData, sensorData, penduduk, alternatifData, batas, posData, cakupanData] = await Promise.all([
+    const [sirineData, sensorData, penduduk, alternatifData, batas, posData, cakupanData, bpbdData] = await Promise.all([
       muat<KoleksiTitik>("data/sirine.geojson"),
       muat<KoleksiTitik>("data/sensor.geojson"),
       muat<BerkasTerpapar>("data/penduduk_terpapar.json"),
@@ -479,8 +479,9 @@ async function mulai() {
         gabungan: { tercover: number; tinggi: number; sedang: number; rendah: number; total: number };
         desa: { positif: number; tepat: number; fuzzy_kecamatan: number; fuzzy_kabupaten: number; gagal: number };
       }>("data/sirine_cakupan.json"),
+      muat<KoleksiTitik>("data/usulan_bpbd.geojson"),
     ]);
-    sirine = sirineData.features;
+    sirine = [...sirineData.features, ...bpbdData.features];
     for (const titik of sirine) {
       const angka = cakupanData.per_sirine[titik.properties.id];
       if (!angka) continue;
