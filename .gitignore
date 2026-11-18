@@ -17,4 +17,5 @@ public/data/hidro/
 public/data/osm/
 public/data/usulan_bpbd.geojson
 public/data/usulan_bpbd_buffer_1km.geojson
+public/data/kantor_bpbd.geojson
 data/cache/

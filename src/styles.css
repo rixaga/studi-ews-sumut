@@ -202,6 +202,7 @@ input[type="range"] { width: 100%; accent-color: #1c1c1f; }
 .kotak-danau { background: rgba(151, 219, 242, 0.85); box-shadow: inset 0 0 0 1px #2a9bb8; }
 .kelas i.titik-pos { width: 12px; height: 12px; border: 2px solid #fff; box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25); }
 .ikon-sirine { width: 16px; height: 20px; display: block; flex: none; }
+.ikon-kantor { width: 16px; height: 16px; display: block; flex: none; }
 .kelas i.titik-sensor-rencana {
   width: 0;
   height: 0;
