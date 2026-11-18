@@ -28,8 +28,10 @@ function wajib<T>(node: T | null, nama: string): T {
 
 const kabSelect = wajib(document.querySelector<HTMLSelectElement>("#kab-select"), "kab");
 const statusSelect = wajib(document.querySelector<HTMLSelectElement>("#status-select"), "status");
-const togSirine = wajib(document.querySelector<HTMLInputElement>("#tog-sirine"), "sirine");
-const togRadius = wajib(document.querySelector<HTMLInputElement>("#tog-radius"), "radius sirine");
+const togStudi = wajib(document.querySelector<HTMLInputElement>("#tog-studi"), "usulan studi");
+const togRadiusStudi = wajib(document.querySelector<HTMLInputElement>("#tog-radius-studi"), "radius usulan studi");
+const togBpbd = wajib(document.querySelector<HTMLInputElement>("#tog-bpbd"), "usulan bpbd");
+const togRadiusBpbd = wajib(document.querySelector<HTMLInputElement>("#tog-radius-bpbd"), "radius usulan bpbd");
 const togLabelEsri = wajib(document.querySelector<HTMLInputElement>("#tog-label-esri"), "label esri");
 const togPoi = wajib(document.querySelector<HTMLInputElement>("#tog-poi"), "poi");
 const togSensor = wajib(document.querySelector<HTMLInputElement>("#tog-sensor"), "sensor");
@@ -256,9 +258,16 @@ function terapkan(geserPeta: boolean) {
   const sensorSaring = saringTitik(sensor);
   for (const titik of [...sirineSaring, ...sensorSaring]) tempelProperti(titik.properties, "asli");
   peta?.setTitik(sirineSaring, sensorSaring);
-  peta?.setVisible("sirine", togSirine.checked);
+  peta?.setVisible("studi", togStudi.checked);
+  peta?.setVisible("bpbd", togBpbd.checked);
   peta?.setVisible("sensor", togSensor.checked);
-  peta?.setRadius(togRadius.checked, sirineSaring.map((titik) => titik.properties.id));
+  const idRadius = sirineSaring
+    .filter((titik) => {
+      const bpbd = titik.properties.status_sumber === "data/usulan_bpbd.geojson";
+      return bpbd ? togBpbd.checked && togRadiusBpbd.checked : togStudi.checked && togRadiusStudi.checked;
+    })
+    .map((titik) => titik.properties.id);
+  peta?.setRadius(togRadiusStudi.checked || togRadiusBpbd.checked, idRadius);
   peta?.setLabelEsri(togLabelEsri.checked);
   peta?.setPoi(togPoi.checked);
   bahayaDetail.hidden = !togBahaya.checked;
@@ -443,7 +452,7 @@ function pasangLapisan() {
 function pasangMenu() {
   menuBtn.addEventListener("click", () => menu(!sidebar.classList.contains("terbuka")));
   scrim.addEventListener("click", () => menu(false));
-  for (const elemen of [kabSelect, statusSelect, togSirine, togSensor, togRadius, togLabelEsri, togPoi, togBahaya, togProxy, bahayaKelas, togBatasDas, togBatasKec, togBatasDesa, togJalanRtrw, togSungaiOsm, togSungaiRtrw, togDanauRtrw, togPosHidro]) {
+  for (const elemen of [kabSelect, statusSelect, togStudi, togRadiusStudi, togBpbd, togRadiusBpbd, togSensor, togLabelEsri, togPoi, togBahaya, togProxy, bahayaKelas, togBatasDas, togBatasKec, togBatasDesa, togJalanRtrw, togSungaiOsm, togSungaiRtrw, togDanauRtrw, togPosHidro]) {
     elemen.addEventListener("change", () => {
       const geser = elemen === kabSelect || elemen === statusSelect;
       terapkan(geser);
