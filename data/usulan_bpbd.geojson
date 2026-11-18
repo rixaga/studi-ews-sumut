@@ -26,7 +26,10 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [99.1782316, 3.4460196]
+        "coordinates": [
+          99.1782316,
+          3.4460196
+        ]
       }
     },
     {
@@ -53,7 +56,250 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [99.2801239, 3.4365244]
+        "coordinates": [
+          99.2801239,
+          3.4365244
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "UBPBD-003",
+      "properties": {
+        "id": "UBPBD-003",
+        "jenis": "sirine",
+        "wadmkk": "Kota Tebing Tinggi",
+        "wadmkk_tampil": "Kota Tebing Tinggi",
+        "wadmkc": "Rambutan",
+        "wadmkd": "Sri Padang",
+        "keterangan": "Kantor Lurah",
+        "remark": "Kantor Lurah Sri Padang",
+        "nama": "Kantor Lurah Sri Padang",
+        "x_dms": "",
+        "y_dms": "",
+        "baris_excel": 0,
+        "status": "usulan_bpbd",
+        "status_sumber": "data/usulan_bpbd.geojson",
+        "adm2_pcode": "ID1274",
+        "adm3_pcode": "ID1274020",
+        "adm4_pcode": "ID1274020008"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.167874,
+          3.342099
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "UBPBD-004",
+      "properties": {
+        "id": "UBPBD-004",
+        "jenis": "sirine",
+        "wadmkk": "Kota Tebing Tinggi",
+        "wadmkk_tampil": "Kota Tebing Tinggi",
+        "wadmkc": "Padang Hulu",
+        "wadmkd": "Persiakan",
+        "keterangan": "Kantor Lurah",
+        "remark": "Kantor Lurah Persiakan",
+        "nama": "Kantor Lurah Persiakan",
+        "x_dms": "",
+        "y_dms": "",
+        "baris_excel": 0,
+        "status": "usulan_bpbd",
+        "status_sumber": "data/usulan_bpbd.geojson",
+        "adm2_pcode": "ID1274",
+        "adm3_pcode": "ID1274010",
+        "adm4_pcode": "ID1274010003"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.15443,
+          3.313914
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "UBPBD-005",
+      "properties": {
+        "id": "UBPBD-005",
+        "jenis": "sirine",
+        "wadmkk": "Kota Tebing Tinggi",
+        "wadmkk_tampil": "Kota Tebing Tinggi",
+        "wadmkc": "Padang Hulu",
+        "wadmkd": "Tualang",
+        "keterangan": "Kantor Lurah",
+        "remark": "Kantor Lurah Tualang",
+        "nama": "Kantor Lurah Tualang",
+        "x_dms": "",
+        "y_dms": "",
+        "baris_excel": 0,
+        "status": "usulan_bpbd",
+        "status_sumber": "data/usulan_bpbd.geojson",
+        "adm2_pcode": "ID1274",
+        "adm3_pcode": "ID1274010",
+        "adm4_pcode": "ID1274010008"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.148052,
+          3.312644
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "UBPBD-006",
+      "properties": {
+        "id": "UBPBD-006",
+        "jenis": "sirine",
+        "wadmkk": "Kota Tebing Tinggi",
+        "wadmkk_tampil": "Kota Tebing Tinggi",
+        "wadmkc": "Padang Hilir",
+        "wadmkd": "Tambangan Hulu",
+        "keterangan": "Kantor Lurah",
+        "remark": "Kantor Lurah Tambangan Hulu",
+        "nama": "Kantor Lurah Tambangan Hulu",
+        "x_dms": "",
+        "y_dms": "",
+        "baris_excel": 0,
+        "status": "usulan_bpbd",
+        "status_sumber": "data/usulan_bpbd.geojson",
+        "adm2_pcode": "ID1274",
+        "adm3_pcode": "ID1274030",
+        "adm4_pcode": "ID1274030009"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.175919,
+          3.341449
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "UBPBD-007",
+      "properties": {
+        "id": "UBPBD-007",
+        "jenis": "sirine",
+        "wadmkk": "Kota Tebing Tinggi",
+        "wadmkk_tampil": "Kota Tebing Tinggi",
+        "wadmkc": "Bajenis",
+        "wadmkd": "Bandar Sakti",
+        "keterangan": "Kantor Lurah",
+        "remark": "Kantor Kelurahan Bandar Sakti",
+        "nama": "Kantor Kelurahan Bandar Sakti",
+        "x_dms": "",
+        "y_dms": "",
+        "baris_excel": 0,
+        "status": "usulan_bpbd",
+        "status_sumber": "data/usulan_bpbd.geojson",
+        "adm2_pcode": "ID1274",
+        "adm3_pcode": "ID1274021",
+        "adm4_pcode": "ID1274021004"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.154312,
+          3.329044
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "UBPBD-008",
+      "properties": {
+        "id": "UBPBD-008",
+        "jenis": "sirine",
+        "wadmkk": "Kota Tebing Tinggi",
+        "wadmkk_tampil": "Kota Tebing Tinggi",
+        "wadmkc": "Tebing Tinggi Kota",
+        "wadmkd": "Mandailing",
+        "keterangan": "Kantor Lurah",
+        "remark": "Kantor Lurah Mandailing",
+        "nama": "Kantor Lurah Mandailing",
+        "x_dms": "",
+        "y_dms": "",
+        "baris_excel": 0,
+        "status": "usulan_bpbd",
+        "status_sumber": "data/usulan_bpbd.geojson",
+        "adm2_pcode": "ID1274",
+        "adm3_pcode": "ID1274011",
+        "adm4_pcode": "ID1274011001"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.157813,
+          3.323808
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "UBPBD-009",
+      "properties": {
+        "id": "UBPBD-009",
+        "jenis": "sirine",
+        "wadmkk": "Kota Tebing Tinggi",
+        "wadmkk_tampil": "Kota Tebing Tinggi",
+        "wadmkc": "Tebing Tinggi Kota",
+        "wadmkd": "Badak Bejuang",
+        "keterangan": "Kantor Lurah",
+        "remark": "Kantor Lurah Badak Bejuang",
+        "nama": "Kantor Lurah Badak Bejuang",
+        "x_dms": "",
+        "y_dms": "",
+        "baris_excel": 0,
+        "status": "usulan_bpbd",
+        "status_sumber": "data/usulan_bpbd.geojson",
+        "adm2_pcode": "ID1274",
+        "adm3_pcode": "ID1274011",
+        "adm4_pcode": "ID1274011006"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.161234,
+          3.331027
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "UBPBD-010",
+      "properties": {
+        "id": "UBPBD-010",
+        "jenis": "sirine",
+        "wadmkk": "Kota Tebing Tinggi",
+        "wadmkk_tampil": "Kota Tebing Tinggi",
+        "wadmkc": "Tebing Tinggi Kota",
+        "wadmkd": "Bandar Utama",
+        "keterangan": "Kantor Lurah",
+        "remark": "Kantor Lurah Bandar Utama",
+        "nama": "Kantor Lurah Bandar Utama",
+        "x_dms": "",
+        "y_dms": "",
+        "baris_excel": 0,
+        "status": "usulan_bpbd",
+        "status_sumber": "data/usulan_bpbd.geojson",
+        "adm2_pcode": "ID1274",
+        "adm3_pcode": "ID1274011",
+        "adm4_pcode": "ID1274011007"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.158362,
+          3.332
+        ]
       }
     }
   ]
