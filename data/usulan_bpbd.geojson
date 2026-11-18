@@ -221,10 +221,10 @@
         "wadmkk": "Kota Tebing Tinggi",
         "wadmkk_tampil": "Kota Tebing Tinggi",
         "wadmkc": "Bajenis",
-        "wadmkd": "Bulian",
-        "keterangan": "Jl. Letda Sujono No. 7. Pin Google jatuh ~76 m di sisi Kel. Teluk Karang menurut batas HDX; kelurahan tetap Bulian.",
-        "remark": "Kantor Lurah Bulian",
-        "nama": "Kantor Lurah Bulian",
+        "wadmkd": "Pinang Mancung",
+        "keterangan": "Jalan Pramuka",
+        "remark": "Kantor Lurah Pinang Mancung",
+        "nama": "Kantor Lurah Pinang Mancung",
         "x_dms": "",
         "y_dms": "",
         "baris_excel": 0,
@@ -232,13 +232,13 @@
         "status_sumber": "data/usulan_bpbd.geojson",
         "adm2_pcode": "ID1274",
         "adm3_pcode": "ID1274021",
-        "adm4_pcode": "ID1274021001"
+        "adm4_pcode": "ID1274021006"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          99.137389,
-          3.334083
+          99.134182,
+          3.339067
         ]
       }
     }
