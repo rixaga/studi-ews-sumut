@@ -63,6 +63,7 @@ const togSungaiOsm = wajib(document.querySelector<HTMLInputElement>("#tog-sungai
 const togSungaiRtrw = wajib(document.querySelector<HTMLInputElement>("#tog-sungai-rtrw"), "sungai rtrw");
 const togDanauRtrw = wajib(document.querySelector<HTMLInputElement>("#tog-danau-rtrw"), "danau rtrw");
 const togPosHidro = wajib(document.querySelector<HTMLInputElement>("#tog-pos-hidro"), "pos hidrologi");
+const togKantorBpbd = wajib(document.querySelector<HTMLInputElement>("#tog-kantor-bpbd"), "kantor bpbd");
 const batasDasDetail = wajib(document.querySelector<HTMLElement>("#batas-das-detail"), "detail batas das");
 const batasKecDetail = wajib(document.querySelector<HTMLElement>("#batas-kec-detail"), "detail batas kecamatan");
 const batasDesaDetail = wajib(document.querySelector<HTMLElement>("#batas-desa-detail"), "detail batas desa");
@@ -71,6 +72,7 @@ const sungaiOsmDetail = wajib(document.querySelector<HTMLElement>("#sungai-osm-d
 const sungaiRtrwDetail = wajib(document.querySelector<HTMLElement>("#sungai-rtrw-detail"), "detail sungai rtrw");
 const danauRtrwDetail = wajib(document.querySelector<HTMLElement>("#danau-rtrw-detail"), "detail danau rtrw");
 const posHidroDetail = wajib(document.querySelector<HTMLElement>("#pos-hidro-detail"), "detail pos hidrologi");
+const kantorBpbdDetail = wajib(document.querySelector<HTMLElement>("#kantor-bpbd-detail"), "detail kantor bpbd");
 const tabPeta = wajib(document.querySelector<HTMLButtonElement>("#tab-peta"), "tab peta");
 const tabInfo = wajib(document.querySelector<HTMLButtonElement>("#tab-info"), "tab info");
 const panelPeta = wajib(document.querySelector<HTMLElement>("#panel-peta"), "panel peta");
@@ -96,6 +98,7 @@ let sungaiOsmNyala = false;
 let sungaiRtrwNyala = false;
 let danauRtrwNyala = false;
 let posHidroNyala = false;
+let kantorBpbdNyala = false;
 let sirine: Titik[] = [];
 let sensor: Titik[] = [];
 let posHitung = { pda: 0, pch: 0, pkl: 0 };
@@ -280,6 +283,7 @@ function terapkan(geserPeta: boolean) {
   sungaiRtrwDetail.hidden = !togSungaiRtrw.checked;
   danauRtrwDetail.hidden = !togDanauRtrw.checked;
   posHidroDetail.hidden = !togPosHidro.checked;
+  kantorBpbdDetail.hidden = !togKantorBpbd.checked;
   sinkronBatas("das", togBatasDas.checked);
   sinkronBatas("kec", togBatasKec.checked);
   sinkronBatas("desa", togBatasDesa.checked);
@@ -306,6 +310,10 @@ function terapkan(geserPeta: boolean) {
   if (togPosHidro.checked !== posHidroNyala) {
     posHidroNyala = togPosHidro.checked;
     void peta?.setPosHidro(posHidroNyala);
+  }
+  if (togKantorBpbd.checked !== kantorBpbdNyala) {
+    kantorBpbdNyala = togKantorBpbd.checked;
+    void peta?.setKantorBpbd(kantorBpbdNyala);
   }
   const desaAktif = desaSaring();
   const jumlahPenduduk = desaAktif.reduce((total, row) => total + (row.penduduk_terpapar ?? 0), 0);
@@ -452,7 +460,7 @@ function pasangLapisan() {
 function pasangMenu() {
   menuBtn.addEventListener("click", () => menu(!sidebar.classList.contains("terbuka")));
   scrim.addEventListener("click", () => menu(false));
-  for (const elemen of [kabSelect, statusSelect, togStudi, togRadiusStudi, togBpbd, togRadiusBpbd, togSensor, togLabelEsri, togPoi, togBahaya, togProxy, bahayaKelas, togBatasDas, togBatasKec, togBatasDesa, togJalanRtrw, togSungaiOsm, togSungaiRtrw, togDanauRtrw, togPosHidro]) {
+  for (const elemen of [kabSelect, statusSelect, togStudi, togRadiusStudi, togBpbd, togRadiusBpbd, togKantorBpbd, togSensor, togLabelEsri, togPoi, togBahaya, togProxy, bahayaKelas, togBatasDas, togBatasKec, togBatasDesa, togJalanRtrw, togSungaiOsm, togSungaiRtrw, togDanauRtrw, togPosHidro]) {
     elemen.addEventListener("change", () => {
       const geser = elemen === kabSelect || elemen === statusSelect;
       terapkan(geser);

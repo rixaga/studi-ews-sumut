@@ -21,6 +21,7 @@ const files = [
   "osm/sungai_sumut.geojson",
   "usulan_bpbd.geojson",
   "usulan_bpbd_buffer_1km.geojson",
+  "kantor_bpbd.geojson",
 ];
 
 for (const rel of files) {

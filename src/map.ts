@@ -57,6 +57,7 @@ export type StudyMap = {
   setSungaiOsm(nyala: boolean): Promise<void>;
   setDanauRtrw(nyala: boolean): Promise<void>;
   setPosHidro(nyala: boolean): Promise<void>;
+  setKantorBpbd(nyala: boolean): Promise<void>;
   setLabelEsri(nyala: boolean): void;
   setPoi(nyala: boolean): void;
   setUsulan(fitur: GeoJSON.Feature[], tampil: boolean): void;
@@ -789,6 +790,7 @@ export async function createStudyMap(
     if (!modeTambah || !onKlikKosong) return;
     const lapisanKlik = ["titik-sirine", "titik-sensor", "titik-clusters", "titik-label", "usulan-titik", "usulan-label"];
     if (map.getLayer("pos-hidro")) lapisanKlik.push("pos-hidro");
+    if (map.getLayer("kantor-bpbd")) lapisanKlik.push("kantor-bpbd");
     const kena = map.queryRenderedFeatures(event.point, { layers: lapisanKlik });
     if (kena.length) return;
     onKlikKosong(event.lngLat.lng, event.lngLat.lat);
@@ -1301,6 +1303,99 @@ export async function createStudyMap(
     }
   };
 
+  let genKantor = 0;
+  let popupKantor: maplibregl.Popup | null = null;
+  let klikKantor = false;
+  const gambarKantorBpbd = () => {
+    const ukuran = 64;
+    const kanvas = document.createElement("canvas");
+    kanvas.width = ukuran;
+    kanvas.height = ukuran;
+    const g = kanvas.getContext("2d");
+    if (!g) throw new Error("kanvas kantor");
+    g.fillStyle = "#0D47A1";
+    g.strokeStyle = "#ffffff";
+    g.lineWidth = 4;
+    g.beginPath();
+    g.arc(32, 32, 28, 0, Math.PI * 2);
+    g.fill();
+    g.stroke();
+    g.fillStyle = "#ffffff";
+    g.beginPath();
+    g.moveTo(32, 14);
+    g.lineTo(48, 26);
+    g.lineTo(16, 26);
+    g.closePath();
+    g.fill();
+    g.fillRect(18, 26, 28, 22);
+    g.fillStyle = "#0D47A1";
+    g.fillRect(21, 30, 6, 5);
+    g.fillRect(37, 30, 6, 5);
+    g.fillRect(28, 36, 8, 12);
+    return g.getImageData(0, 0, ukuran, ukuran);
+  };
+  const pasangKantorBpbd = async (nyala: boolean) => {
+    if (!nyala) {
+      genKantor += 1;
+      if (map.getLayer("kantor-bpbd")) map.removeLayer("kantor-bpbd");
+      if (map.getSource("kantor-bpbd")) map.removeSource("kantor-bpbd");
+      return;
+    }
+    const gen = ++genKantor;
+    let data: GeoJSON.FeatureCollection;
+    try {
+      data = await ambilVektor("data/kantor_bpbd.geojson");
+    } catch {
+      return;
+    }
+    if (gen !== genKantor) return;
+    if (!map.hasImage("kantor-bpbd-ikon")) map.addImage("kantor-bpbd-ikon", gambarKantorBpbd(), { pixelRatio: 2 });
+    if (map.getLayer("kantor-bpbd")) map.removeLayer("kantor-bpbd");
+    if (map.getSource("kantor-bpbd")) map.removeSource("kantor-bpbd");
+    map.addSource("kantor-bpbd", { type: "geojson", data });
+    map.addLayer(
+      {
+        id: "kantor-bpbd",
+        type: "symbol",
+        source: "kantor-bpbd",
+        layout: {
+          "icon-image": "kantor-bpbd-ikon",
+          "icon-allow-overlap": true,
+          "icon-ignore-placement": true,
+        },
+      },
+      "titik-clusters",
+    );
+    if (!klikKantor) {
+      klikKantor = true;
+      map.on("click", "kantor-bpbd", (event) => {
+        const feature = event.features?.[0];
+        if (!feature || feature.geometry.type !== "Point") return;
+        const props = (feature.properties ?? {}) as Record<string, unknown>;
+        const [lon, lat] = feature.geometry.coordinates as [number, number];
+        const nama = String(props.nama ?? "Kantor BPBD");
+        const kab = String(props.kabkota ?? "—");
+        const alamat = String(props.alamat ?? "—");
+        const yakin = String(props.keyakinan ?? "").trim();
+        const catatan = String(props.catatan ?? "").trim();
+        const tautan = `https://www.google.com/maps/search/?api=1&query=${lat},${lon}`;
+        popupKantor?.remove();
+        popupKantor = new maplibregl.Popup({ maxWidth: "320px", className: "ews-popup" })
+          .setLngLat(event.lngLat)
+          .setHTML(
+            `<h3>${escapeHtml(nama)}</h3><p class="popup-catatan">Kantor BPBD. Bukan titik sirine dan tanpa radius.</p><table><tr><th>Kabupaten/kota</th><td>${escapeHtml(kab)}</td></tr><tr><th>Alamat</th><td>${escapeHtml(alamat)}</td></tr><tr><th>Keyakinan</th><td>${escapeHtml(yakin || "—")}</td></tr><tr><th>Catatan</th><td>${escapeHtml(catatan || "—")}</td></tr></table><p><a href="${escapeHtml(tautan)}" target="_blank" rel="noopener noreferrer">Google Maps</a></p>`,
+          )
+          .addTo(map);
+      });
+      map.on("mouseenter", "kantor-bpbd", () => {
+        map.getCanvas().style.cursor = "pointer";
+      });
+      map.on("mouseleave", "kantor-bpbd", () => {
+        map.getCanvas().style.cursor = "";
+      });
+    }
+  };
+
   function pasangRaster(
   kind: RasterKind,
   sourceId: string,
@@ -1512,6 +1607,7 @@ export async function createStudyMap(
     setSungaiOsm: pasangSungaiOsm,
     setDanauRtrw: pasangDanauRtrw,
     setPosHidro: pasangPosHidro,
+    setKantorBpbd: pasangKantorBpbd,
     setLabelEsri(nyala) {
       lihatLabelEsri = nyala;
       segarLabelEsri();

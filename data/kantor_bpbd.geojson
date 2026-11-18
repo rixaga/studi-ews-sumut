@@ -1,0 +1,234 @@
+{
+  "type": "FeatureCollection",
+  "name": "Kantor BPBD",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "KBPBD-01",
+      "properties": {
+        "id": "KBPBD-01",
+        "nama": "Kantor BPBD Kota Binjai",
+        "kabkota": "Kota Binjai",
+        "alamat": "Jl. Pangeran Diponegoro No. 113, Kel. Mencirim, Kec. Binjai Timur",
+        "keyakinan": "tinggi",
+        "catatan": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.504757,
+          3.590144
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "KBPBD-02",
+      "properties": {
+        "id": "KBPBD-02",
+        "nama": "Kantor BPBD Kabupaten Langkat",
+        "kabkota": "Langkat",
+        "alamat": "Jl. Pattimura No. 3, Kel. Kwala Bingai, Kec. Stabat",
+        "keyakinan": "tinggi",
+        "catatan": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.444528,
+          3.736871
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "KBPBD-03",
+      "properties": {
+        "id": "KBPBD-03",
+        "nama": "Kantor BPBD Kota Medan",
+        "kabkota": "Kota Medan",
+        "alamat": "Jl. Rahmad No. 1, Komplek PIK Menteng, Kec. Medan Denai",
+        "keyakinan": "tinggi",
+        "catatan": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.723882,
+          3.56595
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "KBPBD-04",
+      "properties": {
+        "id": "KBPBD-04",
+        "nama": "Kantor BPBD Kabupaten Deli Serdang",
+        "kabkota": "Deli Serdang",
+        "alamat": "Jl. Karya Asih No. 3, Lubuk Pakam",
+        "keyakinan": "sedang",
+        "catatan": "Titik dari data sebaran BPBD BNPB, belum ada pin gedung; perlu verifikasi lapangan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.869073,
+          3.5457
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "KBPBD-05",
+      "properties": {
+        "id": "KBPBD-05",
+        "nama": "Kantor BPBD Kabupaten Serdang Bedagai",
+        "kabkota": "Serdang Bedagai",
+        "alamat": "Komplek Bumi Sergai, Jl. Negara, Desa Firdaus, Kec. Sei Rampah",
+        "keyakinan": "tinggi",
+        "catatan": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.117804,
+          3.502965
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "KBPBD-06",
+      "properties": {
+        "id": "KBPBD-06",
+        "nama": "Kantor BPBD Kota Tebing Tinggi",
+        "kabkota": "Kota Tebing Tinggi",
+        "alamat": "Jl. Gunung Leuser, Kel. Tanjung Marulak, Kec. Rambutan",
+        "keyakinan": "tinggi",
+        "catatan": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.158943,
+          3.346383
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "KBPBD-07",
+      "properties": {
+        "id": "KBPBD-07",
+        "nama": "Kantor BPBD Kabupaten Humbang Hasundutan",
+        "kabkota": "Humbang Hasundutan",
+        "alamat": "Desa Pakkat, Kec. Dolok Sanggul",
+        "keyakinan": "tinggi",
+        "catatan": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.789021,
+          2.250365
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "KBPBD-08",
+      "properties": {
+        "id": "KBPBD-08",
+        "nama": "Kantor BPBD Kabupaten Tapanuli Utara",
+        "kabkota": "Tapanuli Utara",
+        "alamat": "Jl. Raja Johanes No. 111, Kec. Tarutung",
+        "keyakinan": "tinggi",
+        "catatan": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.978775,
+          2.01873
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "KBPBD-09",
+      "properties": {
+        "id": "KBPBD-09",
+        "nama": "Kantor BPBD Kota Padangsidimpuan",
+        "kabkota": "Kota Padangsidimpuan",
+        "alamat": "Komplek Perkantoran Pijorkoling, Kec. Padangsidimpuan Tenggara",
+        "keyakinan": "tinggi",
+        "catatan": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.307913,
+          1.337731
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "KBPBD-10",
+      "properties": {
+        "id": "KBPBD-10",
+        "nama": "Kantor BPBD Kabupaten Tapanuli Selatan",
+        "kabkota": "Tapanuli Selatan",
+        "alamat": "Perkantoran Bupati, Jl. Prof. Lafran Pane, Kec. Sipirok",
+        "keyakinan": "tinggi",
+        "catatan": "Pindah 2019 dari Padangsidimpuan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.300048,
+          1.515984
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "KBPBD-11",
+      "properties": {
+        "id": "KBPBD-11",
+        "nama": "Kantor BPBD Kota Sibolga",
+        "kabkota": "Kota Sibolga",
+        "alamat": "Jl. Kom. Yos Sudarso No. 42, Kel. Kota Beringin, Kec. Sibolga Kota",
+        "keyakinan": "tinggi",
+        "catatan": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.775701,
+          1.740113
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "KBPBD-12",
+      "properties": {
+        "id": "KBPBD-12",
+        "nama": "Kantor BPBD Kabupaten Tapanuli Tengah",
+        "kabkota": "Tapanuli Tengah",
+        "alamat": "Jl. Gelar Sutan Kumala, Kec. Pandan",
+        "keyakinan": "tinggi",
+        "catatan": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.85068,
+          1.711344
+        ]
+      }
+    }
+  ]
+}
