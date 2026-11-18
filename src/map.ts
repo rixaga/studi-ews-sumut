@@ -47,7 +47,7 @@ type Stop = () => void;
 
 export type StudyMap = {
   setTitik(sirine: Titik[], sensor: Titik[]): void;
-  setVisible(lapisan: "sirine" | "sensor", nyala: boolean): void;
+  setVisible(lapisan: "studi" | "bpbd" | "sensor", nyala: boolean): void;
   setRadius(nyala: boolean, idSirine: string[]): void;
   setBahaya(nyala: boolean, opasitas: number, klasifikasi: boolean): void;
   setProxy(nyala: boolean, opasitas: number): void;
@@ -751,13 +751,23 @@ export async function createStudyMap(
   let popupTitik: maplibregl.Popup | null = null;
   let simpanSirine: Titik[] = [];
   let simpanSensor: Titik[] = [];
-  let lihatSirine = true;
+  let lihatStudi = true;
+  let lihatBpbd = true;
   let lihatSensor = true;
   let lihatRadius = true;
   let bufferSemua: GeoJSON.Feature[] = [];
   let idRadius = new Set<string>();
+  const titikBpbd = (titik: Titik) => titik.properties.status_sumber === "data/usulan_bpbd.geojson";
   const tulisRadius = () => {
-    const fitur = lihatRadius ? bufferSemua.filter((item) => idRadius.has(String(item.properties?.id ?? ""))) : [];
+    const idTampak = new Set(
+      simpanSirine.filter((titik) => (titikBpbd(titik) ? lihatBpbd : lihatStudi)).map((titik) => titik.properties.id),
+    );
+    const fitur = lihatRadius
+      ? bufferSemua.filter((item) => {
+          const id = String(item.properties?.id ?? "");
+          return idRadius.has(id) && idTampak.has(id);
+        })
+      : [];
     (map.getSource("buffer-sirine") as GeoJSONSource).setData({ type: "FeatureCollection", features: fitur });
     const tampak = lihatRadius && fitur.length ? "visible" : "none";
     if (map.getLayer("buffer-sirine-garis")) map.setLayoutProperty("buffer-sirine-garis", "visibility", tampak);
@@ -786,7 +796,7 @@ export async function createStudyMap(
 
   function tulisTitik() {
     const tampil = [
-      ...(lihatSirine ? simpanSirine : []),
+      ...simpanSirine.filter((titik) => (titikBpbd(titik) ? lihatBpbd : lihatStudi)),
       ...(lihatSensor ? simpanSensor : []),
     ];
     (map.getSource("titik") as GeoJSONSource).setData(koleksi(denganSpider(tampil)));
@@ -1452,9 +1462,11 @@ export async function createStudyMap(
       tulisTitik();
     },
     setVisible(lapisan, nyala) {
-      if (lapisan === "sirine") lihatSirine = nyala;
+      if (lapisan === "studi") lihatStudi = nyala;
+      else if (lapisan === "bpbd") lihatBpbd = nyala;
       else lihatSensor = nyala;
       tulisTitik();
+      tulisRadius();
     },
     setRadius(nyala, idSirine) {
       lihatRadius = nyala;
