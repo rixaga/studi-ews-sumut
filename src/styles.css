@@ -179,8 +179,8 @@ input[type="range"] { width: 100%; accent-color: #1c1c1f; }
 .kelas i { width: 14px; height: 10px; border-radius: 3px; border: 1px solid rgba(0, 0, 0, 0.12); display: inline-block; }
 .kelas i.garis { width: 28px; height: 0; border: 0; border-radius: 0; background: none; }
 .garis-das { border-top: 3px dashed #ff6d00 !important; }
-.garis-sungai { border-top: 3px solid #00b0ff !important; }
-.garis-anak { border-top: 2px solid #00b0ff !important; }
+.garis-sungai { border-top: 5px solid #00b0ff !important; }
+.garis-anak { border-top: 3.5px solid #00b0ff !important; }
 .garis-radius { border-top: 2.5px dashed #00e676 !important; }
 .garis-kab { border-top: 4px solid #111 !important; box-shadow: 0 0 0 1px #fff; }
 .kelas i.garis-kec {
@@ -201,6 +201,7 @@ input[type="range"] { width: 100%; accent-color: #1c1c1f; }
 .kotak-sungai { background: rgba(0, 176, 255, 0.45); box-shadow: inset 0 0 0 2px #00b0ff; }
 .kotak-danau { background: rgba(151, 219, 242, 0.85); box-shadow: inset 0 0 0 1px #2a9bb8; }
 .kelas i.titik-pos { width: 12px; height: 12px; border: 2px solid #fff; box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25); }
+.kelas i.titik-pda { width: 16px; height: 16px; }
 .ikon-sirine { width: 16px; height: 20px; display: block; flex: none; }
 .ikon-kantor { width: 16px; height: 16px; display: block; flex: none; }
 .kelas i.titik-sensor-rencana {

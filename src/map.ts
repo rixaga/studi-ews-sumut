@@ -834,10 +834,13 @@ export async function createStudyMap(
     "jalan-lokal-garis",
     "sungai-rtrw-label",
     "sungai-rtrw-garis",
+    "sungai-rtrw-casing",
     "sungai-rtrw-isi",
     "sungai-osm-label",
     "sungai-osm-besar",
+    "sungai-osm-besar-casing",
     "sungai-osm-anak",
+    "sungai-osm-anak-casing",
     "danau-rtrw-label",
     "danau-rtrw-garis",
     "danau-rtrw-isi",
@@ -1000,7 +1003,7 @@ export async function createStudyMap(
   const pasangSungaiRtrw = async (nyala: boolean) => {
     if (!nyala) {
       genSungaiRtrw += 1;
-      lepasLapisan(["sungai-rtrw-isi", "sungai-rtrw-garis", "sungai-rtrw-label"], "sungai-rtrw");
+      lepasLapisan(["sungai-rtrw-isi", "sungai-rtrw-casing", "sungai-rtrw-garis", "sungai-rtrw-label"], "sungai-rtrw");
       onRaster("sungai-rtrw", "off");
       return;
     }
@@ -1009,7 +1012,7 @@ export async function createStudyMap(
     try {
       const data = await ambilVektor("data/sipintar/sungai_induk.geojson");
       if (gen !== genSungaiRtrw) return;
-      lepasLapisan(["sungai-rtrw-isi", "sungai-rtrw-garis", "sungai-rtrw-label"], "sungai-rtrw");
+      lepasLapisan(["sungai-rtrw-isi", "sungai-rtrw-casing", "sungai-rtrw-garis", "sungai-rtrw-label"], "sungai-rtrw");
       map.addSource("sungai-rtrw", { type: "geojson", data, attribution: ATRIBUSI_SIPINTAR });
       map.addLayer(
         {
@@ -1022,10 +1025,28 @@ export async function createStudyMap(
       );
       map.addLayer(
         {
+          id: "sungai-rtrw-casing",
+          type: "line",
+          source: "sungai-rtrw",
+          layout: { "line-cap": "round", "line-join": "round" },
+          paint: {
+            "line-color": "#ffffff",
+            "line-width": ["interpolate", ["linear"], ["zoom"], 6, 4.6, 12, 6.4],
+            "line-opacity": 0.95,
+          },
+        },
+        sebelumSipintar("sungai-rtrw-casing"),
+      );
+      map.addLayer(
+        {
           id: "sungai-rtrw-garis",
           type: "line",
           source: "sungai-rtrw",
-          paint: { "line-color": "#00B0FF", "line-width": 1.6 },
+          layout: { "line-cap": "round", "line-join": "round" },
+          paint: {
+            "line-color": "#00B0FF",
+            "line-width": ["interpolate", ["linear"], ["zoom"], 6, 2.6, 12, 4.0],
+          },
         },
         sebelumSipintar("sungai-rtrw-garis"),
       );
@@ -1068,7 +1089,7 @@ export async function createStudyMap(
   const pasangSungaiOsm = async (nyala: boolean) => {
     if (!nyala) {
       genSungaiOsm += 1;
-      lepasLapisan(["sungai-osm-anak", "sungai-osm-besar", "sungai-osm-label"], "sungai-osm");
+      lepasLapisan(["sungai-osm-anak-casing", "sungai-osm-anak", "sungai-osm-besar-casing", "sungai-osm-besar", "sungai-osm-label"], "sungai-osm");
       onRaster("sungai-osm", "off");
       return;
     }
@@ -1077,8 +1098,24 @@ export async function createStudyMap(
     try {
       const data = await ambilVektor("data/osm/sungai_sumut.geojson");
       if (gen !== genSungaiOsm) return;
-      lepasLapisan(["sungai-osm-anak", "sungai-osm-besar", "sungai-osm-label"], "sungai-osm");
+      lepasLapisan(["sungai-osm-anak-casing", "sungai-osm-anak", "sungai-osm-besar-casing", "sungai-osm-besar", "sungai-osm-label"], "sungai-osm");
       map.addSource("sungai-osm", { type: "geojson", data, attribution: "© OpenStreetMap contributors" });
+      map.addLayer(
+        {
+          id: "sungai-osm-anak-casing",
+          type: "line",
+          source: "sungai-osm",
+          minzoom: 9,
+          filter: ["==", ["get", "waterway"], "stream"],
+          layout: { "line-cap": "round", "line-join": "round" },
+          paint: {
+            "line-color": "#ffffff",
+            "line-width": ["interpolate", ["linear"], ["zoom"], 9, 4.2, 14, 6.0],
+            "line-opacity": 0.95,
+          },
+        },
+        sebelumSipintar("sungai-osm-anak-casing"),
+      );
       map.addLayer(
         {
           id: "sungai-osm-anak",
@@ -1089,10 +1126,25 @@ export async function createStudyMap(
           layout: { "line-cap": "round", "line-join": "round" },
           paint: {
             "line-color": "#00B0FF",
-            "line-width": ["interpolate", ["linear"], ["zoom"], 9, 0.9, 14, 1.6],
+            "line-width": ["interpolate", ["linear"], ["zoom"], 9, 2.2, 14, 3.6],
           },
         },
         sebelumSipintar("sungai-osm-anak"),
+      );
+      map.addLayer(
+        {
+          id: "sungai-osm-besar-casing",
+          type: "line",
+          source: "sungai-osm",
+          filter: ["match", ["get", "waterway"], ["river", "canal"], true, false],
+          layout: { "line-cap": "round", "line-join": "round" },
+          paint: {
+            "line-color": "#ffffff",
+            "line-width": ["interpolate", ["linear"], ["zoom"], 6, 5.0, 12, 7.2],
+            "line-opacity": 0.95,
+          },
+        },
+        sebelumSipintar("sungai-osm-besar-casing"),
       );
       map.addLayer(
         {
@@ -1103,7 +1155,7 @@ export async function createStudyMap(
           layout: { "line-cap": "round", "line-join": "round" },
           paint: {
             "line-color": "#00B0FF",
-            "line-width": ["interpolate", ["linear"], ["zoom"], 6, 1.3, 12, 2.1],
+            "line-width": ["interpolate", ["linear"], ["zoom"], 6, 2.8, 12, 4.6],
           },
         },
         sebelumSipintar("sungai-osm-besar"),
@@ -1209,8 +1261,8 @@ export async function createStudyMap(
   let genPos = 0;
   let popupPos: maplibregl.Popup | null = null;
   let klikPos = false;
-  const ikonPos = (bentuk: "lingkaran" | "wajik" | "segitiga", warna: string) => {
-    const ukuran = 40;
+  const ikonPos = (bentuk: "lingkaran" | "wajik" | "segitiga", warna: string, ukuran = 40) => {
+    const skala = ukuran / 40;
     const kanvas = document.createElement("canvas");
     kanvas.width = ukuran;
     kanvas.height = ukuran;
@@ -1219,19 +1271,19 @@ export async function createStudyMap(
     g.translate(ukuran / 2, ukuran / 2);
     g.fillStyle = warna;
     g.strokeStyle = "#ffffff";
-    g.lineWidth = 4;
+    g.lineWidth = 4 * skala;
     g.beginPath();
-    if (bentuk === "lingkaran") g.arc(0, 0, 11, 0, Math.PI * 2);
+    if (bentuk === "lingkaran") g.arc(0, 0, 11 * skala, 0, Math.PI * 2);
     else if (bentuk === "wajik") {
-      g.moveTo(0, -13);
-      g.lineTo(13, 0);
-      g.lineTo(0, 13);
-      g.lineTo(-13, 0);
+      g.moveTo(0, -13 * skala);
+      g.lineTo(13 * skala, 0);
+      g.lineTo(0, 13 * skala);
+      g.lineTo(-13 * skala, 0);
       g.closePath();
     } else {
-      g.moveTo(0, -13);
-      g.lineTo(13, 11);
-      g.lineTo(-13, 11);
+      g.moveTo(0, -13 * skala);
+      g.lineTo(13 * skala, 11 * skala);
+      g.lineTo(-13 * skala, 11 * skala);
       g.closePath();
     }
     g.fill();
@@ -1253,7 +1305,8 @@ export async function createStudyMap(
       if (gen !== genPos) return;
       if (!map.hasImage("pos-pkl")) map.addImage("pos-pkl", ikonPos("wajik", "#E65100"), { pixelRatio: 2 });
       if (!map.hasImage("pos-pch")) map.addImage("pos-pch", ikonPos("lingkaran", "#1565C0"), { pixelRatio: 2 });
-      if (!map.hasImage("pos-pda")) map.addImage("pos-pda", ikonPos("segitiga", "#00897B"), { pixelRatio: 2 });
+      if (map.hasImage("pos-pda")) map.removeImage("pos-pda");
+      map.addImage("pos-pda", ikonPos("segitiga", "#00897B", 120), { pixelRatio: 2 });
       if (map.getLayer("pos-hidro")) map.removeLayer("pos-hidro");
       if (map.getSource("pos-hidro")) map.removeSource("pos-hidro");
       map.addSource("pos-hidro", {
@@ -1396,6 +1449,26 @@ export async function createStudyMap(
     }
   };
 
+  const sebelumOverlayRisiko = () => {
+    const bawah = [
+      "danau-rtrw-isi",
+      "sungai-osm-anak-casing",
+      "sungai-osm-anak",
+      "sungai-osm-besar-casing",
+      "sungai-osm-besar",
+      "sungai-osm-label",
+      "sungai-rtrw-isi",
+      "sungai-rtrw-casing",
+      "sungai-rtrw-garis",
+      "sungai-rtrw-label",
+      "sumut-garis",
+    ];
+    for (const id of bawah) {
+      if (map.getLayer(id)) return id;
+    }
+    return "sumut-garis";
+  };
+
   function pasangRaster(
   kind: RasterKind,
   sourceId: string,
@@ -1408,7 +1481,7 @@ export async function createStudyMap(
     map.addSource(sourceId, { type: "raster", tiles, tileSize: 256, ...extra });
     map.addLayer(
       { id: sourceId, type: "raster", source: sourceId, paint: { "raster-opacity": 0.75 } },
-      "sumut-garis",
+      sebelumOverlayRisiko(),
     );
     lepas[kind] = awasi(map, sourceId, (state) => onRaster(kind, state));
   }
